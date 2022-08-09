@@ -16,12 +16,9 @@ int main(int argc, char const *argv[])
 	size = 0;
 	while (1)
 	{
-		str = readline("->");
-		token = lexical_add(ft_split(str, ' '));
-		add_history(str);
-		if (strncmp(str, "!lx", 3) == 0)
-			size = print_lexical(token);
-		i++;
+		ft_read_line();
+		
+		
 	}
 	return 0;
 }
