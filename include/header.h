@@ -6,7 +6,7 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/08/10 12:42:38 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/08/10 12:53:38 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,8 @@ int			print_lexical(t_token *token);
 t_readline_prop ft_read_line(void);
 //history
 int			my_add_history(char *str);
+#pragma region
+//routine
+void routine();
+#pragma endregion
 #endif
