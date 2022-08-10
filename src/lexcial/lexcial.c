@@ -32,18 +32,17 @@ void lexical_append(t_token **lst, t_token *new)
 	tmp->next = new;
 }
 
-t_token *lexical_add(char **ptr)
+t_token *lexical_add(t_token *lst, char **ptr)
 {
-	static t_token *statictmp;
 	int i;
 
 	i = 0;
 	while (ptr[i])
 	{
-		lexical_append(&statictmp, lexical_new(ptr[i]));
+		lexical_append(&lst, lexical_new(ptr[i]));
 		i++;
 	}
-	return (statictmp);
+	return (lst);
 }
 
 int print_lexical(t_token *token)

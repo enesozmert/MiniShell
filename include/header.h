@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/08/10 14:27:12 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/08/10 15:20:26 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct s_readline_prop
 	t_word	*word;
 }	t_readline_prop;
 
-t_token			*lexical_add(char **ptr);
+t_token *lexical_add(t_token *lst, char **ptr);
 void			lexical_append(t_token **lst, t_token *new);
 t_token			*lexical_last(t_token *lst);
 t_token			*lexical_new(char *context);
