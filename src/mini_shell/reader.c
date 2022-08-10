@@ -3,8 +3,8 @@
 t_readline_prop ft_read_line(void)
 {
 	t_readline_prop rd_prop;
-	int i;
-	char **str;
+	int				i;
+	char			**str;
 
 	i = 0;
 	rd_prop.str = readline("->");
