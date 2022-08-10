@@ -2,5 +2,5 @@
 
 void ft_abc()
 {
-	//aaaaa
+	
 }
