@@ -16,7 +16,11 @@ SRC_HISTORY	= 	history/
 SRC_LIBFT	=	libft/
 
 #Files
+<<<<<<< HEAD
 COMMON		= 	main reader
+=======
+COMMON		= 	main ft_read_line
+>>>>>>> a6e1886c542c966f358e668330ee5a51a6b70d71
 LEXCIAL		=	lexcial
 HISTORY		=	history
 #FileCreate
