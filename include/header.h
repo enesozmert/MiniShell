@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/08/10 12:42:14 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/08/10 12:55:34 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,17 @@ typedef struct s_word
 
 typedef struct s_readline_prop
 {
-	char	*str;
 	int		len;
 	int		word_count;
+	t_word	*word;
 }	t_readline_prop;
 
-t_token		*lexical_add(char **ptr);
-void		lexical_append(t_token **lst, t_token *new);
-t_token		*lexical_last(t_token *lst);
-t_token		*lexical_new(char *context);
-int			print_lexical(t_token *token);
-t_readline_prop ft_read_line(void);
+t_token			*lexical_add(char **ptr);
+void			lexical_append(t_token **lst, t_token *new);
+t_token			*lexical_last(t_token *lst);
+t_token			*lexical_new(char *context);
+int				print_lexical(t_token *token);
+t_readline_prop	ft_read_line(void);
 //history
 int			my_add_history(char *str);
 #endif
