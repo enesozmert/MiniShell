@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/08/10 12:26:30 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/08/10 12:37:23 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@ typedef struct s_token
 	char			*context;
 	struct s_token	*next;
 }	t_token;
+
+typedef struct s_word
+{
+	int				len;
+	char			*str;
+}	t_word;
 
 typedef struct s_readline_prop
 {
