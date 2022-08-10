@@ -6,11 +6,7 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/08/10 12:37:23 by cyalniz          ###   ########.fr       */
-=======
-/*   Updated: 2022/08/10 12:36:11 by eozmert          ###   ########.fr       */
->>>>>>> 09ed74f054b4466d8084436911c3d7c001cb7e81
+/*   Updated: 2022/08/10 12:42:38 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +48,9 @@ typedef struct s_word
 
 typedef struct s_readline_prop
 {
-	char	*str;
 	int		len;
 	int		word_count;
+	t_word	*word;
 }	t_readline_prop;
 
 t_token		*lexical_add(char **ptr);
