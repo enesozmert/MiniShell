@@ -8,14 +8,21 @@ t_readline_prop ft_read_line(void)
 	char			**str;
 
 	i = 0;
-	word = malloc(sizeof(t_word));
-	rd_prop.word = word;
-	rd_prop.word->str = readline("->");
-	rd_prop.len = ft_strlen(rd_prop.word->str);
-	str = ft_split(rd_prop.word->str, ' ');
+	rd_prop.main_str = readline("->");
+	rd_prop.len = ft_strlen(rd_prop.main_str);
+	str = ft_split(rd_prop.main_str, ' ');
 	while (str[i])
 		i++;
 	rd_prop.word_count = i;
-	free(str);
+	word = malloc(sizeof(t_word) * i + 1);
+	i = 0;
+	while (str[i])
+	{
+		rd_prop.word[i].str = str[i];
+		rd_prop.word[i].len = ft_strlen(str[i]);
+		i++;
+	}
+	// free(str);
+	// free(word); // freelere bakılmalı.
 	return (rd_prop);
 }

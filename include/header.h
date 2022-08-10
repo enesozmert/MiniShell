@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/08/10 12:58:45 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/08/10 13:19:46 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_readline_prop
 {
 	int		len;
 	int		word_count;
+	char 	*main_str;
 	t_word	*word;
 }	t_readline_prop;
 
