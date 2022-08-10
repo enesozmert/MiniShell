@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/08/10 13:19:46 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/08/10 14:27:12 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,6 @@ t_token			*lexical_last(t_token *lst);
 t_token			*lexical_new(char *context);
 int				print_lexical(t_token *token);
 t_readline_prop	ft_read_line(void);
-//history
-int			my_add_history(char *str);
-
-#pragma region routine
-//routine
-void routine();
-#pragma endregion
+int				my_add_history(char *str);
+void			routine();
 #endif

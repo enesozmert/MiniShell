@@ -34,7 +34,7 @@ void lexical_append(t_token **lst, t_token *new)
 
 t_token *lexical_add(char **ptr)
 {
-	static t_token *statictmp = 0;
+	static t_token *statictmp;
 	int i;
 
 	i = 0;
