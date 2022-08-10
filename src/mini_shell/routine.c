@@ -14,7 +14,11 @@ void routine()
 		token = lexical_add(token, ft_split(rd_prop.main_str, ' '));
 		my_add_history(rd_prop.word->str);
 		if (strncmp(rd_prop.word->str, "!lx", 3) == 0)
+		{
 			size = print_lexical(token);
+		}
+		if (strncmp(rd_prop.word->str, "!r", 3) == 0)
+			get_next_token(&token);
 		free(rd_prop.main_str);
 	}
 }
