@@ -16,7 +16,7 @@ SRC_HISTORY	= 	history/
 SRC_LIBFT	=	libft/
 
 #Files
-COMMON		= 	main
+COMMON		= 	main reader
 LEXCIAL		=	lexcial
 HISTORY		=	history
 #FileCreate

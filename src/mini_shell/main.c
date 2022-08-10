@@ -8,20 +8,20 @@ int main(int argc, char const *argv[])
 	int i;
 	int size;
 	t_token *token;
-	char *str;
+	t_readline_prop rd_prop;
 
 	token = NULL;
-	str = NULL;
 	i = 0;
 	size = 0;
 	while (1)
 	{
-		str = readline("->");
-		token = lexical_add(ft_split(str, ' '));
-		add_history(str);
-		if (strncmp(str, "!lx", 3) == 0)
+		rd_prop = ft_read_line();
+		token = lexical_add(ft_split(rd_prop.str, ' '));
+		my_add_history(rd_prop.str);
+		if (strncmp(rd_prop.str, "!lx", 3) == 0)
 			size = print_lexical(token);
 		i++;
+		free(rd_prop.str);
 	}
 	return 0;
 }

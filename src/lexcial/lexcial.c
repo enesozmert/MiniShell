@@ -1,11 +1,11 @@
 #include "../../include/header.h"
 
-t_token *lexical_new(char *word)
+t_token *lexical_new(char *context)
 {
 	t_token *tmp;
 
 	tmp = malloc(sizeof(t_token));
-	tmp->word = word;
+	tmp->context = context;
 	tmp->next = NULL;
 	return (tmp);
 }
@@ -34,27 +34,15 @@ void lexical_append(t_token **lst, t_token *new)
 
 t_token *lexical_add(char **ptr)
 {
-	//t_token *lst;
 	static t_token *statictmp = 0;
 	int i;
 
 	i = 0;
-	//lst = NULL;
 	while (ptr[i])
 	{
 		lexical_append(&statictmp, lexical_new(ptr[i]));
 		i++;
 	}
-	// lst = malloc(sizeof(t_token));
-	// i = 0;
-	// while (ptr[i])
-	// {
-	// 	lst->word = ptr[i];
-	// 	lst->next = statictmp;
-	// 	statictmp = lst;
-	// 	i++;
-	// }
-
 	return (statictmp);
 }
 
@@ -65,7 +53,7 @@ int print_lexical(t_token *token)
 	size = 0;
 	while (token)
 	{
-		printf("%s\n", (token)->word);
+		printf("%s\n", (token)->context);
 		token = token->next;
 		size++;
 	}
