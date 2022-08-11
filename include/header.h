@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/08/11 13:35:09 by eozmert          ###   ########.fr       */
+=======
+/*   Updated: 2022/08/11 13:16:11 by cyalniz          ###   ########.fr       */
+>>>>>>> 18027617160437d820ff749443cc905612dd19bd
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +69,8 @@ void			lexical_lstdelone(t_token *lst);
 void			lexical_clear(t_token **token);
 
 t_readline_prop	ft_read_line(void);
+
+int	check_white_space(char *input);
 
 int				my_add_history(char *str);
 
