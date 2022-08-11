@@ -15,18 +15,21 @@ SRC_LEXCIAL	= 	lexcial/
 SRC_HISTORY	= 	history/
 SRC_PARSE	= 	parse/
 SRC_LIBFT	=	libft/
+SRC_READLINE_PROP	=	readline_prop/
 
 #Files
 COMMON		= 	main reader routine
 LEXCIAL		=	lexcial token
 HISTORY		=	history
 PARSE		=	parser
+READLINE_PROP		=	readline_prop
 #FileCreate
 
 SRC_FILES	+=	$(addprefix $(SRC_COMMON),$(COMMON))
 SRC_FILES	+=	$(addprefix $(SRC_LEXCIAL),$(LEXCIAL))
 SRC_FILES	+=	$(addprefix $(SRC_HISTORY),$(HISTORY))
 SRC_FILES	+=	$(addprefix $(SRC_PARSE),$(PARSE))
+SRC_FILES	+=	$(addprefix $(SRC_READLINE_PROP),$(READLINE_PROP))
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -40,6 +43,8 @@ $(OBJF):
 			@mkdir -p $(OBJ_DIR)$(SRC_COMMON)
 			@mkdir -p $(OBJ_DIR)$(SRC_LEXCIAL)
 			@mkdir -p $(OBJ_DIR)$(SRC_HISTORY)
+			@mkdir -p $(OBJ_DIR)$(SRC_PARSE)
+			@mkdir -p $(OBJ_DIR)$(SRC_READLINE_PROP)
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJF)
 			@$(CC) $(CFLAGS) -c $< -o $@

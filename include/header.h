@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/08/11 13:35:09 by eozmert          ###   ########.fr       */
-=======
-/*   Updated: 2022/08/11 13:16:11 by cyalniz          ###   ########.fr       */
->>>>>>> 18027617160437d820ff749443cc905612dd19bd
+/*   Updated: 2022/08/11 13:38:23 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +54,8 @@ typedef struct s_readline_prop
 	t_word	*word;
 }	t_readline_prop;
 
+//main
+void			routine();
 //lexcical
 t_token			*lexical_add(t_token *lst, char **ptr);
 void			lexical_append(t_token **lst, t_token *new);
@@ -67,15 +65,14 @@ void			get_next_token(t_token **token);
 int				print_lexical(t_token *token);
 void			lexical_lstdelone(t_token *lst);
 void			lexical_clear(t_token **token);
-
+//rd_line
 t_readline_prop	ft_read_line(void);
-
-int	check_white_space(char *input);
-
+void			readline_prop_clear(t_readline_prop rd_prop);
+//white_space
+int				check_white_space(char *input);
+//history
 int				my_add_history(char *str);
-
-
-int				parser(t_token **token, t_readline_prop **rd_prop);
+//parser
+int				parser(t_token **token, t_readline_prop rd_prop);
 int				parser_analizer(t_token *token);
-void			routine();
 #endif
