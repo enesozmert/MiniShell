@@ -1,10 +1,6 @@
 {
 	"files.associations": {
-		"readline.h": "c",
-		"stdio.h": "c",
 		"header.h": "c",
-		"__locale": "c",
-		"locale": "c",
 		"sstream": "c"
 	}
 }

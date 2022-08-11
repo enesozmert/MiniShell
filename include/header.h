@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/08/11 15:48:21 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/08/11 19:13:36 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,16 @@ int				print_lexical(t_token *token);
 void			lexical_lstdelone(t_token *lst);
 void			lexical_clear(t_token **token);
 //rd_line
-t_rdl_prop		ft_read_line(void);
-void			readline_prop_clear(t_rdl_prop rd_prop);
+char			*ft_read_line(void);
+t_rdl_prop		*rdl_prop_init(char *str);
+void			rdl_prop_clear(t_rdl_prop *rdl_prop);
+t_word			*get_rdl_prop_id(t_rdl_prop *rdl_prop, t_token *token);
 //white_space
 int				check_white_space(char *input);
 //history
 int				my_add_history(char *str);
 //parser
-int				parser(t_token **token, t_rdl_prop rd_prop);
+int				parser(t_token **token, t_rdl_prop *rd_prop);
 int				parser_analizer(t_token *token);
 //commands
 void			command_list(t_command *commands);

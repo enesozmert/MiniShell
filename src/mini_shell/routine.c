@@ -4,23 +4,19 @@ void routine()
 {
 	int				size;
 	t_token			*token;
-	t_rdl_prop		rd_prop;
+	t_rdl_prop		*rdl_prop;
+	char			*str;
 
 	token = NULL;
 	size = 0;
 	while (1)
 	{
-		rd_prop = ft_read_line();
-		token = lexical_add(token, ft_split(rd_prop.main_str, ' '));
-		parser(&token, rd_prop);
-		my_add_history(rd_prop.main_str);
-		// if (strncmp(rd_prop.word->str, "!lx", 3) == 0)
-		// 	size = print_lexical(token);
-		// if (strncmp(rd_prop.word->str, "!r", 3) == 0)
-		// 	get_next_token(&token);
-		// readline_prop_clear(rd_prop);
-		
+		str = ft_read_line();
+		rdl_prop = rdl_prop_init(str);
+		token = lexical_add(token, ft_split(rdl_prop->main_str, ' '));
+		parser(&token, rdl_prop);
+		my_add_history(rdl_prop->main_str);
+		rdl_prop_clear(rdl_prop);
 		lexical_clear(&token);
-		free(rd_prop.main_str);
 	}
 }
