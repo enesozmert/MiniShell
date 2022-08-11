@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/08/11 19:13:36 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/08/11 22:28:19 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ int				check_white_space(char *input);
 //history
 int				my_add_history(char *str);
 //parser
-int				parser(t_token **token, t_rdl_prop *rd_prop);
-int				parser_analizer(t_token *token);
+int				parser(t_token **token, t_rdl_prop *rdl_prop);
+int				parser_analizer(t_token *token, t_rdl_prop *rdl_prop);
 //commands
 void			command_list(t_command *commands);
 #endif
