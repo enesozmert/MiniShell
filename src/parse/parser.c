@@ -20,3 +20,8 @@ int parser_analizer(t_token *token)
 	printf("t->c %s¨\n", token->context);
 	return (1);
 }
+
+int	parser_syntax_analizer(t_token *token)
+{
+	
+}
