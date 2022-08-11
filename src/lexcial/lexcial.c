@@ -3,8 +3,11 @@
 t_token *lexical_new(char *context)
 {
 	t_token *tmp;
+	static int id = 0;
 
 	tmp = malloc(sizeof(t_token));
+	tmp->id = id;
+	id++;
 	tmp->context = context;
 	tmp->next = NULL;
 	return (tmp);

@@ -22,7 +22,5 @@ t_readline_prop ft_read_line(void)
 		rd_prop.word[i].len = ft_strlen(str[i]);
 		i++;
 	}
-	// free(str);
-	// free(word); // freelere bakılmalı.
 	return (rd_prop);
 }

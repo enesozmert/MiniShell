@@ -2,25 +2,16 @@
 
 void	get_next_token(t_token **token)
 {
-	t_token	*front;
-	t_token	*back;
-	t_token	*head;
+	t_token *head;
 
 	head = *token;
-	back = *token;
-	front = *token;
 	if (*token == NULL)
 		return ;
-	while (front->next != NULL)
-	{
-		front = front->next;
-		if (front->next != NULL)
-			back = back->next;
-	}
-	if (front->next == NULL)
-	{
-		front->next = head;
-		back->next = NULL;
-	}
-	*token = front;
+	while ((*token)->next != NULL)
+		*token = (*token)->next;
+	(*token)->next = head;
+	head = head->next;
+	*token = (*token)->next;
+	(*token)->next = NULL;
+	*token = head;
 }

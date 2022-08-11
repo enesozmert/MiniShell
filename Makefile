@@ -13,17 +13,20 @@ SRC_DIR		= 	src/
 SRC_COMMON	= 	mini_shell/
 SRC_LEXCIAL	= 	lexcial/
 SRC_HISTORY	= 	history/
+SRC_PARSE	= 	parse/
 SRC_LIBFT	=	libft/
 
 #Files
 COMMON		= 	main reader routine
 LEXCIAL		=	lexcial token
 HISTORY		=	history
+PARSE		=	parser
 #FileCreate
 
 SRC_FILES	+=	$(addprefix $(SRC_COMMON),$(COMMON))
 SRC_FILES	+=	$(addprefix $(SRC_LEXCIAL),$(LEXCIAL))
 SRC_FILES	+=	$(addprefix $(SRC_HISTORY),$(HISTORY))
+SRC_FILES	+=	$(addprefix $(SRC_PARSE),$(PARSE))
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
