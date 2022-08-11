@@ -45,18 +45,27 @@ t_token *lexical_add(t_token *lst, char **ptr)
 	return (lst);
 }
 
-int print_lexical(t_token *token)
+void lexical_clear(t_token **token)
 {
-	int size;
+	t_token	*current;
+	t_token	*next;
 
-	size = 0;
-	printf("-------------------\n");
-	while (token)
+	if (!token)
+		return ;
+	current = *token;
+	while (current)
 	{
-		printf("%s\n", (token)->context);
-		token = token->next;
-		size++;
+		next = current->next;
+		lexical_lstdelone(current);
+		current = next;
 	}
-	printf("-------------------\n");
-	return (size);
+	*token = NULL;
+}
+
+void	lexical_lstdelone(t_token *lst)
+{
+	if (!lst)
+		return ;
+	free((void *)lst->context);
+	free(lst);
 }
