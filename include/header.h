@@ -3,16 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/08/11 23:16:32 by eozmert          ###   ########.fr       */
-=======
-/*   Updated: 2022/08/11 23:18:37 by cyalniz          ###   ########.fr       */
->>>>>>> 4e4cb3b65be869c5a57f5b6976f0f155176ae4a9
+/*   Updated: 2022/08/12 00:08:21 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef HEADER_H
 # define HEADER_H
@@ -86,8 +83,8 @@ int				check_white_space(char *input);
 //history
 int				my_add_history(char *str);
 //parser
-int				parser(t_token **token, t_rdl_prop *rdl_prop);
-t_command				parser_analizer(t_token *token, t_rdl_prop *rdl_prop);
+t_command		parser(t_token **token, t_rdl_prop *rdl_prop);
+t_command		parser_analizer(t_token *token, t_rdl_prop *rdl_prop);
 //commands
 void			command_list(t_command *commands);
 #endif

@@ -69,6 +69,7 @@ void	lexical_lstdelone(t_token *lst)
 {
 	if (!lst)
 		return ;
+	lst->id = 0;
 	free((void *)lst->context);
 	free(lst);
 }
