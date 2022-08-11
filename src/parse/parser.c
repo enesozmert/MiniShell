@@ -1,6 +1,6 @@
 #include "../../include/header.h"
 
-int parser(t_token **token, t_readline_prop rd_prop)
+int parser(t_token **token, t_rdl_prop rd_prop)
 {
 	int i;
 
@@ -17,6 +17,25 @@ int parser(t_token **token, t_readline_prop rd_prop)
 
 int parser_analizer(t_token *token)
 {
-	printf("t->c %s¨\n", token->context);
+	int i;
+	int select_i;
+	t_command commands[8];
+
+	i = 0;
+	command_list(commands);
+	while (i < 8)
+	{
+		if(ft_strncmp(commands[i].type, token->context, ft_strlen(commands[i].type)) == 0)
+		{
+			printf("command is type => %s\n", commands->type);
+			select_i = i;
+		}
+		else
+		{
+			ft_strjoin(commands[select_i].arg, token->context);
+			printf("command is arg => %s\n", commands[select_i].arg);
+		}
+		i++;
+	}
 	return (1);
 }

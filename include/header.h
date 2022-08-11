@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/08/11 13:38:23 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/08/11 15:48:21 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,24 @@ typedef struct s_token
 
 typedef struct s_word
 {
+	int				id;
 	int				len;
 	char			*str;
 }	t_word;
 
-typedef struct s_readline_prop
+typedef struct s_rdl_prop
 {
 	int		len;
 	int		word_count;
 	char 	*main_str;
 	t_word	*word;
-}	t_readline_prop;
+}	t_rdl_prop;
+
+typedef struct s_command
+{
+	char	*type;
+	char	*arg;
+} t_command;
 
 //main
 void			routine();
@@ -66,13 +73,15 @@ int				print_lexical(t_token *token);
 void			lexical_lstdelone(t_token *lst);
 void			lexical_clear(t_token **token);
 //rd_line
-t_readline_prop	ft_read_line(void);
-void			readline_prop_clear(t_readline_prop rd_prop);
+t_rdl_prop		ft_read_line(void);
+void			readline_prop_clear(t_rdl_prop rd_prop);
 //white_space
 int				check_white_space(char *input);
 //history
 int				my_add_history(char *str);
 //parser
-int				parser(t_token **token, t_readline_prop rd_prop);
+int				parser(t_token **token, t_rdl_prop rd_prop);
 int				parser_analizer(t_token *token);
+//commands
+void			command_list(t_command *commands);
 #endif

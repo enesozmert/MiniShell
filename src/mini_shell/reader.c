@@ -1,8 +1,9 @@
 #include "../../include/header.h"
 
-t_readline_prop ft_read_line(void)
+t_rdl_prop ft_read_line(void)
 {
-	t_readline_prop rd_prop;
+	static	int		id = 0;
+	t_rdl_prop		rd_prop;
 	t_word			*word;
 	int				i;
 	char			**str;
@@ -18,6 +19,7 @@ t_readline_prop ft_read_line(void)
 	i = 0;
 	while (str[i])
 	{
+		rd_prop.word[i].id = id;
 		rd_prop.word[i].str = str[i];
 		rd_prop.word[i].len = ft_strlen(str[i]);
 		i++;
