@@ -39,11 +39,8 @@ int parser_analizer(t_token *token)
 	}
 	return (1);
 }
-<<<<<<< HEAD
 
 int	parser_syntax_analizer(t_token *token)
 {
 	
 }
-=======
->>>>>>> 00ce8868287359f87c5398d4bd11054b54ad59b3
