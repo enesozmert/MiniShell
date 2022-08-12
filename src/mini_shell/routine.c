@@ -11,6 +11,7 @@ void routine()
 	{
 		str = ft_read_line();
 		rdl = rdl_init(str);
+		rdl->token = token_add(rdl->token, ft_split(rdl->main_str, ' '));
 		parser(rdl);
 		printf("comamnd type %s\n", rdl->command.type);
 		printf("comamnd arg %s\n",  rdl->command.arg);

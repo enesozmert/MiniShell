@@ -15,7 +15,6 @@ t_rdl *rdl_init(char *str)
 	while (split_str[i])
 		i++;
 	rdl->word_count = i;
-	rdl->token = token_add(rdl->token, ft_split(rdl->main_str, ' '));
 	return (rdl);
 }
 
@@ -29,5 +28,6 @@ void rdl_clear(t_rdl *rdl)
 		// free(rdl->word[i].str);
 		i++;
 	}
+	free(rdl->command_list);
 	free(rdl->main_str);
 }

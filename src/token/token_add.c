@@ -11,15 +11,15 @@ t_token *token_last(t_token *token)
 
 void token_append(t_token **token, t_token *new)
 {
-	t_token *tmp;
+	t_token	*tmp;
 
 	if (!*token)
-	{
 		*token = new;
-		return;
+	else
+	{
+		tmp = token_last(*token);
+		tmp->next = new;
 	}
-	tmp = token_last(*token);
-	tmp->next = new;
 }
 
 t_token *token_add(t_token *token, char **ptr)
