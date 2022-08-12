@@ -3,7 +3,6 @@
 t_rdl *rdl_init(t_rdl *rdl)
 {
 	int i;
-	
 	char **split_str;
 
 	i = 0;

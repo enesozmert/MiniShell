@@ -22,7 +22,7 @@ SRC_STATIC	=	static/
 
 #Files
 COMMON		= 	main reader routine white_space
-COMMANDS	=	commands
+COMMANDS	=	commands commands_size
 TOKEN		=	get_token token_clear token_print token_add token_new token_size
 HISTORY		=	history
 PARSE		=	parser

@@ -10,12 +10,11 @@ void routine()
 	while (1)
 	{
 		rdl->main_str = ft_read_line();
+		if (check_white_space(rdl->main_str))
+			exit(-1);
 		rdl = rdl_init(rdl);
+		parser(rdl);
 		my_add_history(rdl->main_str);
-		if (!check_white_space(rdl->main_str))
-			parser(rdl);
-		// printf("comamnd type %s\n", rdl->command.type);
-		// printf("comamnd arg %s\n",  rdl->command.arg);
 		commands_clear(rdl->command_list);
 		token_clear(&rdl->token);
 		rdl_clear(rdl);

@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/08/12 18:06:17 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/08/12 19:19:19 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,5 @@ t_rdl			*parser_analizer(t_rdl *rdl);
 //commands
 void			command_list(t_command *commands);
 int				commands_clear(t_command *commands);
+int				commands_size(t_command *commands);
 #endif

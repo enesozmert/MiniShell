@@ -3,20 +3,20 @@
 int	check_white_space(char *input)
 {
 	int	space;
-	int	idx;
+	int	i;
 
 	space = 0;
-	idx = 0;
-	if(input[0] == '\0')
+	i = 0;
+	if (input[0] == 0)
 		return (1);
-	while(input[idx])
+	while (input[i])
 	{
-		if(input[idx] == '\r' || input[idx] == '\v'
-			|| input[idx] == 't' || input[idx] == '\f')
+		if (input[i] == '\r' || input[i] == '\v' || input[i] == '\t'
+			|| input[i] == '\f')
 			return (1);
-		else if(input[idx] == ' ')
+		else if (input[i] == ' ')
 			space++;
-		idx++;
+		i++;
 	}
 	if (space == (int)ft_strlen(input))
 		return (1);

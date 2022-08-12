@@ -14,3 +14,4 @@ int	commands_clear(t_command *commands)
 	}
 	return (1);
 }
+
