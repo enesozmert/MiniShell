@@ -12,29 +12,32 @@ SRC_DIR		= 	src/
 
 SRC_COMMON	= 	mini_shell/
 SRC_COMMANDS=	commands/
-SRC_LEXCIAL	= 	lexcial/
+SRC_TOKEN	= 	token/
 SRC_HISTORY	= 	history/
 SRC_PARSE	= 	parse/
 SRC_LIBFT	=	libft/
 SRC_RDL		=	rdl/
+SRC_SYNTAX	=	syntax/
 SRC_STATIC	=	static/
 
 #Files
 COMMON		= 	main reader routine
 COMMANDS	=	commands
-LEXCIAL		=	lexcial token
+TOKEN		=	get_token token_clear token_print token_add token_new token_size
 HISTORY		=	history
 PARSE		=	parser
 RDL			=	rdl
+SYNTAX		=	syntax
 STATIC		=	command_list
 #FileCreate
 
 SRC_FILES	+=	$(addprefix $(SRC_COMMON),$(COMMON))
 SRC_FILES	+=	$(addprefix $(SRC_COMMANDS),$(COMMANDS))
-SRC_FILES	+=	$(addprefix $(SRC_LEXCIAL),$(LEXCIAL))
+SRC_FILES	+=	$(addprefix $(SRC_TOKEN),$(TOKEN))
 SRC_FILES	+=	$(addprefix $(SRC_HISTORY),$(HISTORY))
 SRC_FILES	+=	$(addprefix $(SRC_PARSE),$(PARSE))
 SRC_FILES	+=	$(addprefix $(SRC_RDL),$(RDL))
+SRC_FILES	+=	$(addprefix $(SRC_SYNTAX),$(SYNTAX))
 SRC_FILES	+=	$(addprefix $(SRC_STATIC),$(STATIC))
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
@@ -48,10 +51,11 @@ $(OBJF):
 			@mkdir -p $(OBJ_DIR)
 			@mkdir -p $(OBJ_DIR)$(SRC_COMMON)
 			@mkdir -p $(OBJ_DIR)$(SRC_COMMANDS)
-			@mkdir -p $(OBJ_DIR)$(SRC_LEXCIAL)
+			@mkdir -p $(OBJ_DIR)$(SRC_TOKEN)
 			@mkdir -p $(OBJ_DIR)$(SRC_HISTORY)
 			@mkdir -p $(OBJ_DIR)$(SRC_PARSE)
 			@mkdir -p $(OBJ_DIR)$(SRC_RDL)
+			@mkdir -p $(OBJ_DIR)$(SRC_SYNTAX)
 			@mkdir -p $(OBJ_DIR)$(SRC_STATIC)
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJF)

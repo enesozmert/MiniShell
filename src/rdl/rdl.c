@@ -15,14 +15,7 @@ t_rdl *rdl_init(char *str)
 	while (split_str[i])
 		i++;
 	rdl->word_count = i;
-	rdl->word = malloc(sizeof(t_word) * i + 1);
-	i = 0;
-	while (split_str[i])
-	{
-		rdl->word[i].str = split_str[i];
-		rdl->word[i].len = ft_strlen(split_str[i]);
-		i++;
-	}
+	rdl->token = token_add(rdl->token, ft_split(rdl->main_str, ' '));
 	return (rdl);
 }
 
@@ -33,7 +26,7 @@ void rdl_clear(t_rdl *rdl)
 	i = 0;
 	while (i < rdl->word_count)
 	{
-		free(rdl->word[i].str);
+		// free(rdl->word[i].str);
 		i++;
 	}
 	free(rdl->main_str);

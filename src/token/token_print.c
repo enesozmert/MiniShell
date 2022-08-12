@@ -1,6 +1,6 @@
 #include "../../include/header.h"
 
-int print_lexical(t_token *token)
+int print_token(t_token *token)
 {
 	int size;
 
