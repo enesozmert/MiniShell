@@ -12,8 +12,6 @@ t_command parser(t_token **token, t_rdl_prop *rdl_prop)
 		get_next_token(token);
 		i++;
 	}
-	printf("comamnd type %s\n", command.type);
-	printf("comamnd arg %s\n", command.arg);
 	return (command);
 }
 
@@ -28,7 +26,7 @@ t_command parser_analizer(t_token *token, t_rdl_prop *rdl_prop)
 	command_list(commands);
 	while (commands[i].type != NULL)
 	{
-		if (ft_strncmp(commands[i].type, token->context, ft_strlen(commands[select_i].type)) == 0)
+		if (ft_strncmp(commands[i].type, rdl_prop->word[0].str, ft_strlen(commands[i].type)) == 0)
 			select_i = i;
 		i++;
 	}
@@ -38,11 +36,9 @@ t_command parser_analizer(t_token *token, t_rdl_prop *rdl_prop)
 		while (i < rdl_prop->word_count)
 		{
 			if (ft_strncmp(rdl_prop->word[i].str, token->context, rdl_prop->word[i].len) == 0)
-				commands[select_i].arg = ft_strdup(&rdl_prop->main_str[rdl_prop->word[0].len]);
+				commands[select_i].arg = ft_strdup(&rdl_prop->main_str[rdl_prop->word[0].len + 1]);
 			i++;
 		}
 	}
-	printf("comamnd type %s\n", commands[select_i].type);
-	printf("comamnd arg %s\n", commands[select_i].arg);
 	return (commands[select_i]);
 }
