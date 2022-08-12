@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/08/12 16:32:30 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/08/12 18:06:17 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ t_token			*get_token_id(t_token *token, int id);
 void			get_next_token(t_token **token);
 //rd_line
 char			*ft_read_line(void);
-t_rdl			*rdl_init(char *str);
+t_rdl			*rdl_init(t_rdl *rdl);
 void			rdl_clear(t_rdl *rdl);
 //white_space
 int				check_white_space(char *input);

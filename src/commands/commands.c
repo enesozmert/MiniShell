@@ -8,7 +8,7 @@ int	commands_clear(t_command *commands)
 	while (commands[i].type != NULL)
 	{
 		printf("type : %s | arg : %s\n", commands[i].type, commands[i].arg);
-		if (commands[i].arg != NULL)
+		// if (commands[i].arg != NULL)
 			free(commands[i].arg);
 		i++;
 	}

@@ -21,7 +21,7 @@ SRC_SYNTAX	=	syntax/
 SRC_STATIC	=	static/
 
 #Files
-COMMON		= 	main reader routine
+COMMON		= 	main reader routine white_space
 COMMANDS	=	commands
 TOKEN		=	get_token token_clear token_print token_add token_new token_size
 HISTORY		=	history

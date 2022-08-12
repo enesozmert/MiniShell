@@ -2,7 +2,7 @@
 
 void	parser(t_rdl *rdl)
 {
-	int			i;
+	int	i;
 
 	i = 0;
 	while (i < rdl->word_count)
@@ -22,7 +22,6 @@ t_rdl	*parser_analizer(t_rdl *rdl)
 	i = -1;
 	s_i = 0;
 	token_zero = get_token_id(rdl->token, 0);
-	printf("token zero %s\n", token_zero->context);
 	command_list(rdl->command_list);
 	while (rdl->command_list[++i].type != NULL)
 	{

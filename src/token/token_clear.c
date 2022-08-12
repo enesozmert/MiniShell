@@ -2,6 +2,7 @@
 
 void token_clear(t_token **token)
 {
+	printf("BURASI TOKEN CLEAR\n");
 	t_token	*current;
 	t_token	*next;
 
@@ -21,8 +22,6 @@ void	token_delone(t_token *token)
 {
 	if (!token)
 		return ;
-	token->id = 0;
-	token->len = 0;
 	free((void *)token->context);
 	free(token);
 }
