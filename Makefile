@@ -11,27 +11,30 @@ OBJ_DIR		=	obj/
 SRC_DIR		= 	src/
 
 SRC_COMMON	= 	mini_shell/
+SRC_COMMANDS=	commands/
 SRC_LEXCIAL	= 	lexcial/
 SRC_HISTORY	= 	history/
 SRC_PARSE	= 	parse/
 SRC_LIBFT	=	libft/
-SRC_RDL_PROP=	rdl_prop/
+SRC_RDL		=	rdl/
 SRC_STATIC	=	static/
 
 #Files
 COMMON		= 	main reader routine
+COMMANDS	=	commands
 LEXCIAL		=	lexcial token
 HISTORY		=	history
 PARSE		=	parser
-RDL_PROP	=	rdl_prop
+RDL			=	rdl
 STATIC		=	command_list
 #FileCreate
 
 SRC_FILES	+=	$(addprefix $(SRC_COMMON),$(COMMON))
+SRC_FILES	+=	$(addprefix $(SRC_COMMANDS),$(COMMANDS))
 SRC_FILES	+=	$(addprefix $(SRC_LEXCIAL),$(LEXCIAL))
 SRC_FILES	+=	$(addprefix $(SRC_HISTORY),$(HISTORY))
 SRC_FILES	+=	$(addprefix $(SRC_PARSE),$(PARSE))
-SRC_FILES	+=	$(addprefix $(SRC_RDL_PROP),$(RDL_PROP))
+SRC_FILES	+=	$(addprefix $(SRC_RDL),$(RDL))
 SRC_FILES	+=	$(addprefix $(SRC_STATIC),$(STATIC))
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
@@ -44,10 +47,11 @@ all:		welcome $(NAME)
 $(OBJF):
 			@mkdir -p $(OBJ_DIR)
 			@mkdir -p $(OBJ_DIR)$(SRC_COMMON)
+			@mkdir -p $(OBJ_DIR)$(SRC_COMMANDS)
 			@mkdir -p $(OBJ_DIR)$(SRC_LEXCIAL)
 			@mkdir -p $(OBJ_DIR)$(SRC_HISTORY)
 			@mkdir -p $(OBJ_DIR)$(SRC_PARSE)
-			@mkdir -p $(OBJ_DIR)$(SRC_RDL_PROP)
+			@mkdir -p $(OBJ_DIR)$(SRC_RDL)
 			@mkdir -p $(OBJ_DIR)$(SRC_STATIC)
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJF)

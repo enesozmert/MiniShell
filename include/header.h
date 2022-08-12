@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/08/12 00:08:21 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/08/12 11:08:57 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,31 +36,31 @@
 
 typedef struct s_token
 {
-	int				id;
 	char			*context;
 	struct s_token	*next;
 }	t_token;
 
 typedef struct s_word
 {
-	int				id;
 	int				len;
 	char			*str;
 }	t_word;
 
-typedef struct s_rdl_prop
+typedef struct s_command
+{
+	char				*type;
+	char				*arg;
+} t_command;
+
+typedef struct s_rdl
 {
 	int		len;
 	int		word_count;
 	char 	*main_str;
+	t_command *command_list;
+	t_command command;
 	t_word	*word;
-}	t_rdl_prop;
-
-typedef struct s_command
-{
-	char	*type;
-	char	*arg;
-} t_command;
+}	t_rdl;
 
 //main
 void			routine();
@@ -75,16 +75,17 @@ void			lexical_lstdelone(t_token *lst);
 void			lexical_clear(t_token **token);
 //rd_line
 char			*ft_read_line(void);
-t_rdl_prop		*rdl_prop_init(char *str);
-void			rdl_prop_clear(t_rdl_prop *rdl_prop);
-t_word			*get_rdl_prop_id(t_rdl_prop *rdl_prop, t_token *token);
+t_rdl			*rdl_init(char *str);
+void			rdl_clear(t_rdl *rdl);
+t_word			*get_rdl_id(t_rdl *rdl, t_token *token);
 //white_space
 int				check_white_space(char *input);
 //history
 int				my_add_history(char *str);
 //parser
-t_command		parser(t_token **token, t_rdl_prop *rdl_prop);
-t_command		parser_analizer(t_token *token, t_rdl_prop *rdl_prop);
+void			parser(t_token **token, t_rdl *rdl);
+t_rdl			*parser_analizer(t_token *token, t_rdl *rdl);
 //commands
 void			command_list(t_command *commands);
+int				commands_clear(t_command *commands);
 #endif

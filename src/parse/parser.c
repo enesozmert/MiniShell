@@ -1,44 +1,40 @@
 #include "../../include/header.h"
 
-t_command parser(t_token **token, t_rdl_prop *rdl_prop)
+void	parser(t_token **token, t_rdl *rdl)
 {
-	int i;
-	t_command command;
+	int			i;
 
 	i = 0;
-	while (i < rdl_prop->word_count)
+	while (i < rdl->word_count)
 	{
-		command = parser_analizer(*token, rdl_prop);
+		parser_analizer(*token, rdl);
 		get_next_token(token);
 		i++;
 	}
-	return (command);
 }
 
-t_command parser_analizer(t_token *token, t_rdl_prop *rdl_prop)
+t_rdl	*parser_analizer(t_token *token, t_rdl *rdl)
 {
 	int i;
-	int select_i;
-	t_command commands[8];
+	int s_i;
 
+	i = -1;
+	s_i = 0;
+	command_list(rdl->command_list);
+	while (rdl->command_list[++i].type != NULL)
+	{
+		if (ft_strncmp(rdl->command_list[i].type, rdl->word[0].str,
+					   ft_strlen(rdl->command_list[i].type)) == 0)
+			s_i = i;
+	}
 	i = 0;
-	select_i = 0;
-	command_list(commands);
-	while (commands[i].type != NULL)
+	while (++i < rdl->word_count)
 	{
-		if (ft_strncmp(commands[i].type, rdl_prop->word[0].str, ft_strlen(commands[i].type)) == 0)
-			select_i = i;
-		i++;
+		if (ft_strncmp(rdl->word[i].str, token->context,
+					   rdl->word[i].len) == 0)
+			rdl->command_list[s_i].arg =
+				ft_strdup(&rdl->main_str[rdl->word[0].len + 1]);
 	}
-	i = 1;
-	if (ft_strncmp(commands[select_i].type, token->context, ft_strlen(commands[select_i].type)))
-	{
-		while (i < rdl_prop->word_count)
-		{
-			if (ft_strncmp(rdl_prop->word[i].str, token->context, rdl_prop->word[i].len) == 0)
-				commands[select_i].arg = ft_strdup(&rdl_prop->main_str[rdl_prop->word[0].len + 1]);
-			i++;
-		}
-	}
-	return (commands[select_i]);
+	rdl->command = rdl->command_list[s_i];
+	return (rdl);
 }

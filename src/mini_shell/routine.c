@@ -4,22 +4,22 @@ void routine()
 {
 	int size;
 	t_token *token;
-	t_rdl_prop *rdl_prop;
+	t_rdl *rdl;
 	char *str;
-	t_command command;
 
 	token = NULL;
 	size = 0;
 	while (1)
 	{
 		str = ft_read_line();
-		rdl_prop = rdl_prop_init(str);
-		token = lexical_add(token, ft_split(rdl_prop->main_str, ' '));
-		command = parser(&token, rdl_prop);
-		printf("comamnd type %s\n", command.type);
-		printf("comamnd arg %s\n", command.arg);
-		my_add_history(rdl_prop->main_str);
-		rdl_prop_clear(rdl_prop);
+		rdl = rdl_init(str);
+		token = lexical_add(token, ft_split(rdl->main_str, ' '));
+		parser(&token, rdl);
+		printf("comamnd type %s\n", rdl->command.type);
+		printf("comamnd arg %s\n",  rdl->command.arg);
+		my_add_history(rdl->main_str);
+		commands_clear(rdl->command_list);
+		rdl_clear(rdl);
 		lexical_clear(&token);
 	}
 }
