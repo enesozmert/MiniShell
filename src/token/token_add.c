@@ -43,12 +43,11 @@ void	token_add_index(t_token **token)
 
 	i = 0;
 	token_cpy = *token;
-	while (token_cpy)
+	while (i < token_size(*token))
 	{
-		i = -1;
-		while (++i < token_size(*token))
-			(token_cpy)->id = i;
-		token_cpy = (token_cpy)->next;
+		token_cpy->id = i;
+		i++;
+		token_cpy = token_cpy->next;
 	}
 	token_cpy = *token;
 }

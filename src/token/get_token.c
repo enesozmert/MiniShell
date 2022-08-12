@@ -16,21 +16,17 @@ void	get_next_token(t_token **token)
 	*token = head;
 }
 
-t_token	*get_token_id(t_token **token, int id)
+t_token	*get_token_id(t_token *token, int id)
 {
 	(void)id;
 	t_token	*token_cpy;
 
-	token_cpy = *token;
-	printf("token_cpy %s", (*token)->context);
-	// while (token_cpy)
-	// {
-	// 	if (token_cpy->id == id)
-	// 	{
-	// 		printf("token_cpy %s", token_cpy->context);
-	// 		return (token_cpy);
-	// 	}
-	// 	(token_cpy) = (token_cpy)->next;
-	// }
+	token_cpy = token;
+	while (token_cpy)
+	{
+		if (token_cpy->id == id)
+			return (token_cpy);
+		(token_cpy) = (token_cpy)->next;
+	}
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/08/12 12:29:29 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/08/12 14:51:48 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void			token_delone(t_token *token);
 void			token_clear(t_token **token);
 int				token_size(t_token *token);
 void			token_add_index(t_token **token);
-t_token			*get_token_id(t_token **token, int id);
+t_token			*get_token_id(t_token *token, int id);
 void			get_next_token(t_token **token);
 //rd_line
 char			*ft_read_line(void);

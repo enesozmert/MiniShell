@@ -21,6 +21,8 @@ void	token_delone(t_token *token)
 {
 	if (!token)
 		return ;
+	token->id = 0;
+	token->len = 0;
 	free((void *)token->context);
 	free(token);
 }
