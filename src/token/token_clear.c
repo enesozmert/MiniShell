@@ -2,7 +2,6 @@
 
 void token_clear(t_token **token)
 {
-	printf("BURASI TOKEN CLEAR\n");
 	t_token	*current;
 	t_token	*next;
 

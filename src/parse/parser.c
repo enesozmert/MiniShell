@@ -31,6 +31,8 @@ t_rdl	*parser_analizer(t_rdl *rdl)
 			s_i = i;
 			break ;
 		}
+		else
+			s_i = commands_size(rdl->command_list);
 	}
 	i = 0;
 	rdl->command_list[s_i].arg =
