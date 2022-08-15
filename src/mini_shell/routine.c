@@ -12,7 +12,8 @@ void routine()
 		rdl = rdl_init(rdl);
 		if (!check_white_space(rdl->main_str))
 		{
-			parser(rdl);
+			syntax(rdl);
+			//parser(rdl);
 			my_add_history(rdl->main_str);
 			commands_clear(rdl->command_list);
 			token_clear(&rdl->token);

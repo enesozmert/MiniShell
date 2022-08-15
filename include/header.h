@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/08/15 11:07:02 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/08/15 17:39:57 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 # include <stdlib.h>
 # include <string.h>
 # include <sys/time.h>
-#include <fcntl.h>
-#include <readline/readline.h>
-#include <readline/history.h>
-#include "../libft/libft.h"
+# include <fcntl.h>
+# include <readline/readline.h>
+# include <readline/history.h>
+# include "../libft/libft.h"
 
 # define KNRM  "\x1B[0m"
 # define KRED  "\x1B[31m"
@@ -38,6 +38,7 @@ typedef struct s_token
 {
 	int				id;
 	int				len;
+	char			*type;
 	char			*context;
 	struct s_token	*next;
 }	t_token;
@@ -46,7 +47,7 @@ typedef struct s_command
 {
 	char				*type;
 	char				*arg;
-} t_command;
+}	t_command;
 
 typedef struct s_rdl
 {
@@ -55,8 +56,17 @@ typedef struct s_rdl
 	char 		*main_str;
 	t_command	*command_list;
 	t_command	command;
+	struct s_syntax	*syntax;
 	t_token		*token;
 }	t_rdl;
+
+typedef struct s_syntax
+{
+	char	*name;
+	char	*sybl;
+	int		(*f)(t_rdl *);
+}	t_syntax;
+
 
 //main
 void			routine();
@@ -87,4 +97,8 @@ t_rdl			*parser_analizer(t_rdl *rdl);
 void			command_list(t_command *commands);
 int				commands_clear(t_command *commands);
 int				commands_size(t_command *commands);
+//syntax
+void			syntax(t_rdl *rdl);
+int				syntax_analizer(t_rdl *rdl);
+void			syntax_list(t_syntax *syntax);
 #endif

@@ -12,6 +12,7 @@ int	commands_clear(t_command *commands)
 			free(commands[i].arg);
 		i++;
 	}
+	// free(commands);
 	return (1);
 }
 
