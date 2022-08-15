@@ -19,9 +19,10 @@ SRC_LIBFT	=	libft/
 SRC_RDL		=	rdl/
 SRC_SYNTAX	=	syntax/
 SRC_STATIC	=	static/
+SRC_CORE	=	core/
 
 #Files
-COMMON		= 	main reader routine white_space
+COMMON		= 	main reader routine 
 COMMANDS	=	commands commands_size
 TOKEN		=	get_token token_clear token_print token_add token_new token_size
 HISTORY		=	history
@@ -29,6 +30,7 @@ PARSE		=	parser
 RDL			=	rdl
 SYNTAX		=	syntax
 STATIC		=	command_list
+CORE		=	white_space
 #FileCreate
 
 SRC_FILES	+=	$(addprefix $(SRC_COMMON),$(COMMON))
@@ -39,6 +41,7 @@ SRC_FILES	+=	$(addprefix $(SRC_PARSE),$(PARSE))
 SRC_FILES	+=	$(addprefix $(SRC_RDL),$(RDL))
 SRC_FILES	+=	$(addprefix $(SRC_SYNTAX),$(SYNTAX))
 SRC_FILES	+=	$(addprefix $(SRC_STATIC),$(STATIC))
+SRC_FILES	+=	$(addprefix $(SRC_CORE),$(CORE))
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -57,6 +60,7 @@ $(OBJF):
 			@mkdir -p $(OBJ_DIR)$(SRC_RDL)
 			@mkdir -p $(OBJ_DIR)$(SRC_SYNTAX)
 			@mkdir -p $(OBJ_DIR)$(SRC_STATIC)
+			@mkdir -p $(OBJ_DIR)$(SRC_CORE)
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJF)
 			@$(CC) $(CFLAGS) -c $< -o $@
