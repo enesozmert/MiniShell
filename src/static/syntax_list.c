@@ -2,7 +2,7 @@
 
 void	syntax_list(t_syntax *syntax)
 {
-	syntax[0] = (t_syntax){"single_quote" ,"'", NULL};
+	syntax[0] = (t_syntax){"single_quote" ,"\'", single_quote};
 	syntax[1] = (t_syntax){"double_quote" ,"\"", NULL};
 	syntax[2] = (t_syntax){"redirect_in" ,"<", NULL};
 	syntax[3] = (t_syntax){"redirect_out" ,">", NULL};

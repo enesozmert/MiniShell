@@ -28,9 +28,9 @@ TOKEN		=	get_token token_clear token_print token_add token_new token_size
 HISTORY		=	history
 PARSE		=	parser
 RDL			=	rdl
-SYNTAX		=	syntax
-STATIC		=	command_list
-CORE		=	white_space
+SYNTAX		=	syntax quote
+STATIC		=	command_list syntax_list
+CORE		=	white_space count_char
 #FileCreate
 
 SRC_FILES	+=	$(addprefix $(SRC_COMMON),$(COMMON))

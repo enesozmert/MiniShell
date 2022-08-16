@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/08/15 17:39:57 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/08/16 14:07:56 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,14 @@ typedef struct s_command
 
 typedef struct s_rdl
 {
-	int			len;
-	int			word_count;
-	char 		*main_str;
-	t_command	*command_list;
-	t_command	command;
-	struct s_syntax	*syntax;
-	t_token		*token;
+	int				len;
+	int				word_count;
+	char			*main_str;
+	t_command		*command_list;
+	t_command		command;
+	t_token			*token;
+	struct s_syntax	*syntax_list;
+	// struct s_syntax	*syntax;
 }	t_rdl;
 
 typedef struct s_syntax
@@ -66,6 +67,14 @@ typedef struct s_syntax
 	char	*sybl;
 	int		(*f)(t_rdl *);
 }	t_syntax;
+
+typedef struct s_syntax_tree
+{
+	char	*context;
+	struct	s_syntax_tree	*left;
+	struct	s_syntax_tree	*right;
+}	t_syntax_tree;
+
 
 
 //main
@@ -86,8 +95,9 @@ void			get_next_token(t_token **token);
 char			*ft_read_line(void);
 t_rdl			*rdl_init(t_rdl *rdl);
 void			rdl_clear(t_rdl *rdl);
-//white_space
+//core
 int				check_white_space(char *input);
+int				count_char(char *str, char c);
 //history
 int				my_add_history(char *str);
 //parser
@@ -101,4 +111,7 @@ int				commands_size(t_command *commands);
 void			syntax(t_rdl *rdl);
 int				syntax_analizer(t_rdl *rdl);
 void			syntax_list(t_syntax *syntax);
+//quoet
+int				single_quote(t_rdl *rdl);
+
 #endif
