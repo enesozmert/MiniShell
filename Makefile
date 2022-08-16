@@ -18,6 +18,7 @@ SRC_PARSE	= 	parse/
 SRC_LIBFT	=	libft/
 SRC_RDL		=	rdl/
 SRC_SYNTAX	=	syntax/
+SRC_LEXICAL	=	lexical/
 SRC_STATIC	=	static/
 SRC_CORE	=	core/
 
@@ -30,6 +31,7 @@ PARSE		=	parser
 RDL			=	rdl
 SYNTAX		=	syntax quote
 STATIC		=	command_list syntax_list
+LEXICAL		=	lexical
 CORE		=	white_space count_char
 #FileCreate
 
@@ -40,6 +42,7 @@ SRC_FILES	+=	$(addprefix $(SRC_HISTORY),$(HISTORY))
 SRC_FILES	+=	$(addprefix $(SRC_PARSE),$(PARSE))
 SRC_FILES	+=	$(addprefix $(SRC_RDL),$(RDL))
 SRC_FILES	+=	$(addprefix $(SRC_SYNTAX),$(SYNTAX))
+SRC_FILES	+=	$(addprefix $(SRC_LEXICAL),$(LEXICAL))
 SRC_FILES	+=	$(addprefix $(SRC_STATIC),$(STATIC))
 SRC_FILES	+=	$(addprefix $(SRC_CORE),$(CORE))
 
@@ -59,6 +62,7 @@ $(OBJF):
 			@mkdir -p $(OBJ_DIR)$(SRC_PARSE)
 			@mkdir -p $(OBJ_DIR)$(SRC_RDL)
 			@mkdir -p $(OBJ_DIR)$(SRC_SYNTAX)
+			@mkdir -p $(OBJ_DIR)$(SRC_LEXICAL)
 			@mkdir -p $(OBJ_DIR)$(SRC_STATIC)
 			@mkdir -p $(OBJ_DIR)$(SRC_CORE)
 
