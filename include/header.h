@@ -113,5 +113,6 @@ int				syntax_analizer(t_rdl *rdl);
 void			syntax_list(t_syntax *syntax);
 //quoet
 int				single_quote(t_rdl *rdl);
-
+//lexical
+void			lexical_analizer(t_rdl *rdl);
 #endif

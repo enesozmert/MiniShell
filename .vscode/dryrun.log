@@ -1,0 +1,17 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/mnt/d/Document/42Ecole/MiniShell'
+echo "Mini Shelle"
+echo "\n"
+mkdir -p obj/
+mkdir -p obj/mini_shell/
+mkdir -p obj/commands/
+mkdir -p obj/token/
+mkdir -p obj/history/
+mkdir -p obj/parse/
+mkdir -p obj/rdl/
+mkdir -p obj/syntax/
+mkdir -p obj/lexical/
+mkdir -p obj/static/
+mkdir -p obj/core/
+make: Leaving directory '/mnt/d/Document/42Ecole/MiniShell'
+ 
