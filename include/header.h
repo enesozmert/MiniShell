@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/08/16 14:07:56 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/08/16 16:56:36 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,13 @@ typedef struct s_rdl
 	t_command		command;
 	t_token			*token;
 	struct s_syntax	*syntax_list;
-	// struct s_syntax	*syntax;
 }	t_rdl;
 
 typedef struct s_syntax
 {
 	char	*name;
 	char	*sybl;
+	int		count;
 	int		(*f)(t_rdl *);
 }	t_syntax;
 

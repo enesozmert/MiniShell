@@ -1,28 +1,23 @@
 #include "../../include/header.h"
 
-int single_quote(t_rdl *rdl)
+int	single_quote(t_rdl *rdl)
 {
 	int		i;
 	int		j;
-	char	*arg;
+	static	int	count = 0;
 	t_token	*token_cpy;
 
-	j = 0;
+	j = -1;
+	i = -1;
 	token_cpy = rdl->token;
 	while (token_cpy)
 	{
-		if (count_char(token_cpy->context, '\'') % 2)
+		count += count_char(token_cpy->context, '\'');
+		printf("count %d\n", count);
+		if (count % 2)
 			return (0);
 		token_cpy = token_cpy->next;
 	}
-	arg = malloc(sizeof(char) * rdl->token->len - count_char(rdl->token->context, '\''));
-	i = -1;
-	while (rdl->token->context[++i] != '\0')
-	{
-		if (rdl->token->context[i] !=  '\'')
-			arg[j++] = rdl->token->context[i];
-	}
-	printf("arg => %s\n", arg);
 	return (1);
 }
 

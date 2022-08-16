@@ -23,9 +23,9 @@ t_rdl *rdl_init(t_rdl *rdl)
 void rdl_clear(t_rdl *rdl)
 {
 	free(rdl->command_list);
+	free(rdl->syntax_list);
 	free(rdl->main_str);
 	free(rdl->token);
-	free(rdl->syntax_list);
 	// if (rdl != NULL)
 	// 	free(rdl);
 }
