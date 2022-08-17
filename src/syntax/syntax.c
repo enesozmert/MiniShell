@@ -14,21 +14,22 @@ void syntax(t_rdl *rdl)
 
 int syntax_analizer(t_rdl *rdl)
 {
-	int i;
-	t_token *token_zero;
+	(void)rdl;
+	// int i;
+	// t_token *token_zero;
 
-	i = -1;
-	syntax_list(rdl->syntax_list);
-	command_list(rdl->command_list);
-	token_zero = get_token_id(rdl->token, 0);
-	if (ft_strncmp(rdl->token->context, token_zero->context,
-				   rdl->token->len) == 0)
-		return (0);
-	i = -1;
-	while (rdl->syntax_list[++i].name != NULL)
-	{
-		rdl->syntax_list->f(rdl);
-		break;
-	}
+	// i = -1;
+	// syntax_list(rdl->syntax_list);
+	// command_list(rdl->command_list);
+	// token_zero = get_token_id(rdl->token, 0);
+	// if (ft_strncmp(rdl->token->context, token_zero->context,
+	// 			   rdl->token->len) == 0)
+	// 	return (0);
+	// i = -1;
+	// while (rdl->syntax_list[++i].name != NULL)
+	// {
+	// 	rdl->syntax_list->f(rdl);
+	// 	break;
+	// }
 	return (1);
 }

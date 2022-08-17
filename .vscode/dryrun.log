@@ -13,5 +13,19 @@ mkdir -p obj/syntax/
 mkdir -p obj/lexical/
 mkdir -p obj/static/
 mkdir -p obj/core/
+gcc -Wall -Werror -Wextra -g -lreadline -c src/lexical/is_keyword.c -o obj/lexical/is_keyword.o
+echo Compiling Success file is : src/lexical/is_keyword.c src/ obj/lexical/is_keyword.o 
+gcc -Wall -Werror -Wextra -g -lreadline -c src/lexical/is_operator.c -o obj/lexical/is_operator.o
+echo Compiling Success file is : src/lexical/is_operator.c src/ obj/lexical/is_operator.o 
+gcc -Wall -Werror -Wextra -g -lreadline -c src/static/command_list.c -o obj/static/command_list.o
+echo Compiling Success file is : src/static/command_list.c src/ obj/static/command_list.o 
+gcc -Wall -Werror -Wextra -g -lreadline -c src/static/operator_list.c -o obj/static/operator_list.o
+echo Compiling Success file is : src/static/operator_list.c src/ obj/static/operator_list.o 
+gcc -Wall -Werror -Wextra -g -lreadline -c src/core/white_space.c -o obj/core/white_space.o
+echo Compiling Success file is : src/core/white_space.c src/ obj/core/white_space.o 
+gcc -Wall -Werror -Wextra -g -lreadline -c src/core/count_char.c -o obj/core/count_char.o
+echo Compiling Success file is : src/core/count_char.c src/ obj/core/count_char.o 
+gcc obj/mini_shell/main.o obj/mini_shell/reader.o obj/mini_shell/routine.o obj/commands/commands.o obj/commands/commands_size.o obj/token/get_token.o obj/token/token_clear.o obj/token/token_print.o obj/token/token_add.o obj/token/token_new.o obj/token/token_size.o obj/history/history.o obj/parse/parser.o obj/rdl/rdl.o obj/syntax/syntax.o obj/syntax/quote.o obj/lexical/lexical.o obj/lexical/is_keyword.o obj/lexical/is_operator.o obj/static/command_list.o obj/static/operator_list.o obj/core/white_space.o obj/core/count_char.o -Wall -Werror -Wextra -g -lreadline -o mini_shell ./libft/libft.a
+echo mini_shell compiled!
 make: Leaving directory '/mnt/d/Document/42Ecole/MiniShell'
  

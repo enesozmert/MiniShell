@@ -57,16 +57,16 @@ typedef struct s_rdl
 	t_command		*command_list;
 	t_command		command;
 	t_token			*token;
-	struct s_syntax	*syntax_list;
+	struct s_operator	*operator_list;
 }	t_rdl;
 
-typedef struct s_syntax
+typedef struct s_operator
 {
 	char	*name;
 	char	*sybl;
 	int		count;
 	int		(*f)(t_rdl *);
-}	t_syntax;
+}	t_operator;
 
 typedef struct s_syntax_tree
 {
@@ -80,7 +80,7 @@ typedef struct s_syntax_tree
 //main
 void			routine();
 //lexcical
-t_token			*token_add(t_token *token, char **ptr);
+t_token			*token_add(t_token *token, char *ptr);
 void			token_append(t_token **token, t_token *new);
 t_token			*token_last(t_token *token);
 t_token			*token_new(char *context);
@@ -110,9 +110,11 @@ int				commands_size(t_command *commands);
 //syntax
 void			syntax(t_rdl *rdl);
 int				syntax_analizer(t_rdl *rdl);
-void			syntax_list(t_syntax *syntax);
+void			operator_list(t_operator *operator);
 //quoet
 int				single_quote(t_rdl *rdl);
 //lexical
 void			lexical_analizer(t_rdl *rdl);
+int				is_keyword(t_rdl *rdl, char *str);
+int				is_operator(t_rdl *rdl, char *str);
 #endif

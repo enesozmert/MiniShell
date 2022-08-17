@@ -3,6 +3,6 @@
 void lexical_analizer(t_rdl *rdl)
 {
 	command_list(rdl->command_list);
-	syntax_list(rdl->syntax_list);
-	
+	operator_list(rdl->operator_list);
+	parser(rdl);
 }

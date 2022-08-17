@@ -30,8 +30,8 @@ HISTORY		=	history
 PARSE		=	parser
 RDL			=	rdl
 SYNTAX		=	syntax quote
-STATIC		=	command_list syntax_list
-LEXICAL		=	lexical
+STATIC		=	command_list operator_list
+LEXICAL		=	lexical is_keyword is_operator
 CORE		=	white_space count_char
 #FileCreate
 

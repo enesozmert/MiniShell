@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Aug 16 19:50:21 2022
+# Make data base, printed on Tue Aug 16 20:51:53 2022
 
 # Variables
 
@@ -47,7 +47,7 @@ _ = /home/efyaz/.vscode-server/bin/6d9b74a70ca9c7733b29f0456fd8195364076dda/node
 # makefile (from 'Makefile', line 6)
 CFLAGS = -Wall -Werror -Wextra -g -lreadline
 # makefile (from 'Makefile', line 33)
-STATIC = command_list syntax_list
+STATIC = command_list operator_list
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # 'override' directive
@@ -83,7 +83,7 @@ LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:
 # automatic
 %F = $(notdir $%)
 # makefile (from 'Makefile', line 34)
-LEXICAL = lexical
+LEXICAL = lexical is_keyword is_operator
 # makefile (from 'Makefile', line 28)
 TOKEN = get_token token_clear token_print token_add token_new token_size
 # environment
@@ -221,6 +221,12 @@ obj/%.o: src/%.c | .cache_exists
 
 # Files
 
+# Not a target:
+obj/static/operator_list.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 welcome:
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: ''
@@ -314,11 +320,11 @@ obj/parse/parser.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-16 19:50:09.3139736
+#  Last modified 2022-08-16 20:51:16.3089961
 #  File has been updated.
 #  Successfully updated.
 
-mini_shell: obj/mini_shell/main.o obj/mini_shell/reader.o obj/mini_shell/routine.o obj/commands/commands.o obj/commands/commands_size.o obj/token/get_token.o obj/token/token_clear.o obj/token/token_print.o obj/token/token_add.o obj/token/token_new.o obj/token/token_size.o obj/history/history.o obj/parse/parser.o obj/rdl/rdl.o obj/syntax/syntax.o obj/syntax/quote.o obj/lexical/lexical.o obj/static/command_list.o obj/static/syntax_list.o obj/core/white_space.o obj/core/count_char.o
+mini_shell: obj/mini_shell/main.o obj/mini_shell/reader.o obj/mini_shell/routine.o obj/commands/commands.o obj/commands/commands_size.o obj/token/get_token.o obj/token/token_clear.o obj/token/token_print.o obj/token/token_add.o obj/token/token_new.o obj/token/token_size.o obj/history/history.o obj/parse/parser.o obj/rdl/rdl.o obj/syntax/syntax.o obj/syntax/quote.o obj/lexical/lexical.o obj/lexical/is_keyword.o obj/lexical/is_operator.o obj/static/command_list.o obj/static/operator_list.o obj/core/white_space.o obj/core/count_char.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -400,6 +406,12 @@ obj/syntax/syntax.o:
 #  Modification time never checked.
 #  File has not been updated.
 
+# Not a target:
+obj/lexical/is_operator.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 clean:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
@@ -409,6 +421,12 @@ clean:
 			@$(RM) -rf $(OBJ_DIR)
 			@$(RM) -f $(OBJF)const
 			@echo Objects files cleaned!
+
+# Not a target:
+obj/lexical/is_keyword.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 obj/mini_shell/routine.o:
@@ -459,12 +477,6 @@ obj/token/token_print.o:
 #  File has not been updated.
 
 # Not a target:
-obj/static/syntax_list.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
 obj/token/token_add.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -477,19 +489,19 @@ obj/commands/commands.o:
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=34/1024=3%, Rehash=0, Collisions=3/80=4%
+# Load=36/1024=4%, Rehash=0, Collisions=3/84=4%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 46 / storage = 660 B / avg = 14 B
-# current buf: size = 8162 B / used = 660 B / count = 46 / avg = 14 B
+# strcache buffers: 1 (0) / strings = 49 / storage = 724 B / avg = 14 B
+# current buf: size = 8162 B / used = 724 B / count = 49 / avg = 14 B
 
-# strcache performance: lookups = 74 / hit rate = 37%
+# strcache performance: lookups = 76 / hit rate = 35%
 # hash-table stats:
-# Load=46/8192=1%, Rehash=0, Collisions=1/74=1%
-# Finished Make data base on Tue Aug 16 19:50:21 2022
+# Load=49/8192=1%, Rehash=0, Collisions=1/76=1%
+# Finished Make data base on Tue Aug 16 20:51:53 2022
 
  
