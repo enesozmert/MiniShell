@@ -1,4 +1,4 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/mnt/d/Document/42Ecole/MiniShell'
 echo "Mini Shelle"
 echo "\n"
@@ -13,19 +13,53 @@ mkdir -p obj/syntax/
 mkdir -p obj/lexical/
 mkdir -p obj/static/
 mkdir -p obj/core/
-gcc -Wall -Werror -Wextra -g -lreadline -c src/lexical/is_keyword.c -o obj/lexical/is_keyword.o
+gcc -Wall -Werror -Wextra -g -c src/mini_shell/main.c -o obj/mini_shell/main.o
+echo Compiling Success file is : src/mini_shell/main.c src/ obj/mini_shell/main.o 
+gcc -Wall -Werror -Wextra -g -c src/mini_shell/reader.c -o obj/mini_shell/reader.o
+echo Compiling Success file is : src/mini_shell/reader.c src/ obj/mini_shell/reader.o 
+gcc -Wall -Werror -Wextra -g -c src/mini_shell/routine.c -o obj/mini_shell/routine.o
+echo Compiling Success file is : src/mini_shell/routine.c src/ obj/mini_shell/routine.o 
+gcc -Wall -Werror -Wextra -g -c src/commands/commands.c -o obj/commands/commands.o
+echo Compiling Success file is : src/commands/commands.c src/ obj/commands/commands.o 
+gcc -Wall -Werror -Wextra -g -c src/commands/commands_size.c -o obj/commands/commands_size.o
+echo Compiling Success file is : src/commands/commands_size.c src/ obj/commands/commands_size.o 
+gcc -Wall -Werror -Wextra -g -c src/token/get_token.c -o obj/token/get_token.o
+echo Compiling Success file is : src/token/get_token.c src/ obj/token/get_token.o 
+gcc -Wall -Werror -Wextra -g -c src/token/token_clear.c -o obj/token/token_clear.o
+echo Compiling Success file is : src/token/token_clear.c src/ obj/token/token_clear.o 
+gcc -Wall -Werror -Wextra -g -c src/token/token_print.c -o obj/token/token_print.o
+echo Compiling Success file is : src/token/token_print.c src/ obj/token/token_print.o 
+gcc -Wall -Werror -Wextra -g -c src/token/token_add.c -o obj/token/token_add.o
+echo Compiling Success file is : src/token/token_add.c src/ obj/token/token_add.o 
+gcc -Wall -Werror -Wextra -g -c src/token/token_new.c -o obj/token/token_new.o
+echo Compiling Success file is : src/token/token_new.c src/ obj/token/token_new.o 
+gcc -Wall -Werror -Wextra -g -c src/token/token_size.c -o obj/token/token_size.o
+echo Compiling Success file is : src/token/token_size.c src/ obj/token/token_size.o 
+gcc -Wall -Werror -Wextra -g -c src/history/history.c -o obj/history/history.o
+echo Compiling Success file is : src/history/history.c src/ obj/history/history.o 
+gcc -Wall -Werror -Wextra -g -c src/parse/parser.c -o obj/parse/parser.o
+echo Compiling Success file is : src/parse/parser.c src/ obj/parse/parser.o 
+gcc -Wall -Werror -Wextra -g -c src/rdl/rdl.c -o obj/rdl/rdl.o
+echo Compiling Success file is : src/rdl/rdl.c src/ obj/rdl/rdl.o 
+gcc -Wall -Werror -Wextra -g -c src/syntax/syntax.c -o obj/syntax/syntax.o
+echo Compiling Success file is : src/syntax/syntax.c src/ obj/syntax/syntax.o 
+gcc -Wall -Werror -Wextra -g -c src/syntax/quote.c -o obj/syntax/quote.o
+echo Compiling Success file is : src/syntax/quote.c src/ obj/syntax/quote.o 
+gcc -Wall -Werror -Wextra -g -c src/lexical/lexical.c -o obj/lexical/lexical.o
+echo Compiling Success file is : src/lexical/lexical.c src/ obj/lexical/lexical.o 
+gcc -Wall -Werror -Wextra -g -c src/lexical/is_keyword.c -o obj/lexical/is_keyword.o
 echo Compiling Success file is : src/lexical/is_keyword.c src/ obj/lexical/is_keyword.o 
-gcc -Wall -Werror -Wextra -g -lreadline -c src/lexical/is_operator.c -o obj/lexical/is_operator.o
+gcc -Wall -Werror -Wextra -g -c src/lexical/is_operator.c -o obj/lexical/is_operator.o
 echo Compiling Success file is : src/lexical/is_operator.c src/ obj/lexical/is_operator.o 
-gcc -Wall -Werror -Wextra -g -lreadline -c src/static/command_list.c -o obj/static/command_list.o
+gcc -Wall -Werror -Wextra -g -c src/static/command_list.c -o obj/static/command_list.o
 echo Compiling Success file is : src/static/command_list.c src/ obj/static/command_list.o 
-gcc -Wall -Werror -Wextra -g -lreadline -c src/static/operator_list.c -o obj/static/operator_list.o
+gcc -Wall -Werror -Wextra -g -c src/static/operator_list.c -o obj/static/operator_list.o
 echo Compiling Success file is : src/static/operator_list.c src/ obj/static/operator_list.o 
-gcc -Wall -Werror -Wextra -g -lreadline -c src/core/white_space.c -o obj/core/white_space.o
+gcc -Wall -Werror -Wextra -g -c src/core/white_space.c -o obj/core/white_space.o
 echo Compiling Success file is : src/core/white_space.c src/ obj/core/white_space.o 
-gcc -Wall -Werror -Wextra -g -lreadline -c src/core/count_char.c -o obj/core/count_char.o
+gcc -Wall -Werror -Wextra -g -c src/core/count_char.c -o obj/core/count_char.o
 echo Compiling Success file is : src/core/count_char.c src/ obj/core/count_char.o 
-gcc obj/mini_shell/main.o obj/mini_shell/reader.o obj/mini_shell/routine.o obj/commands/commands.o obj/commands/commands_size.o obj/token/get_token.o obj/token/token_clear.o obj/token/token_print.o obj/token/token_add.o obj/token/token_new.o obj/token/token_size.o obj/history/history.o obj/parse/parser.o obj/rdl/rdl.o obj/syntax/syntax.o obj/syntax/quote.o obj/lexical/lexical.o obj/lexical/is_keyword.o obj/lexical/is_operator.o obj/static/command_list.o obj/static/operator_list.o obj/core/white_space.o obj/core/count_char.o -Wall -Werror -Wextra -g -lreadline -o mini_shell ./libft/libft.a
+gcc obj/mini_shell/main.o obj/mini_shell/reader.o obj/mini_shell/routine.o obj/commands/commands.o obj/commands/commands_size.o obj/token/get_token.o obj/token/token_clear.o obj/token/token_print.o obj/token/token_add.o obj/token/token_new.o obj/token/token_size.o obj/history/history.o obj/parse/parser.o obj/rdl/rdl.o obj/syntax/syntax.o obj/syntax/quote.o obj/lexical/lexical.o obj/lexical/is_keyword.o obj/lexical/is_operator.o obj/static/command_list.o obj/static/operator_list.o obj/core/white_space.o obj/core/count_char.o ./libft/libft.a -Wall -Werror -Wextra -g -lreadline -o mini_shell
 echo mini_shell compiled!
 make: Leaving directory '/mnt/d/Document/42Ecole/MiniShell'
  
