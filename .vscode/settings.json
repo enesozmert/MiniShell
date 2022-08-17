@@ -3,6 +3,7 @@
 		"header.h": "c",
 		"sstream": "c",
 		"complex": "c",
-		"libft.h": "c"
+		"libft.h": "c",
+		"fcntl.h": "c"
 	}
 }

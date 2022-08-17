@@ -13,7 +13,7 @@ t_rdl *rdl_init(t_rdl *rdl)
 	rdl->operator_list = malloc(sizeof(t_operator) * 8);
 	rdl->len = ft_strlen(rdl->main_str);
 	split_str = ft_split(rdl->main_str, ' ');
-	rdl->token = token_add(rdl->token, ft_split(rdl->main_str ,' '));
+	// rdl->token = token_add(rdl->token, ft_split(rdl->main_str ,' '));
 	while (split_str[i])
 		i++;
 	rdl->word_count = i;

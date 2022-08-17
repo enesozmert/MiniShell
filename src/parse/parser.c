@@ -2,13 +2,37 @@
 
 void parser(t_rdl *rdl)
 {
-	int i;
+	int		i;
+	int		j;
+	char	c;
+	char	buffer[30];
 
 	i = -1;
-	while (++i < rdl->word_count)
+	j = 0;
+	c = ' ';
+	while (rdl->main_str[++i])
 	{
-		parser_analizer(rdl);
-		get_next_token(&rdl->token);
+		c = rdl->main_str[i];
+		if (is_operator(rdl, c))
+		{
+			
+			printf("%c is operator\n", c);
+		}
+		if (ft_isalnum(c) || c == ' ')
+		{
+			buffer[j++] = c;
+		}
+		else if ((c != ' ' || c != '\t') && (j != 0))
+		{
+			buffer[j] = '\0';
+			j = 0;
+
+			if (is_keyword(rdl, buffer) == 1)
+				printf("%s is keyword\n", buffer);
+			else
+				printf("%s is indentifier\n", buffer);
+			ft_bzero(buffer, ft_strlen(buffer));
+		}
 	}
 }
 

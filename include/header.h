@@ -81,7 +81,7 @@ typedef struct s_syntax_tree
 //main
 void			routine();
 //lexcical
-t_token			*token_add(t_token *token, char **ptr);
+t_token			*token_add(t_token *token, char *ptr);
 void			token_append(t_token **token, t_token *new);
 t_token			*token_last(t_token *token);
 t_token			*token_new(char *context);
@@ -99,6 +99,7 @@ void			rdl_clear(t_rdl *rdl);
 //core
 int				check_white_space(char *input);
 int				count_char(char *str, char c);
+int				ft_isalnum(int c);
 //history
 int				my_add_history(char *str);
 //parser
