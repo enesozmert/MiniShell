@@ -31,7 +31,7 @@ PARSE		=	parser
 RDL			=	rdl
 SYNTAX		=	syntax quote
 STATIC		=	command_list operator_list
-LEXICAL		=	lexical is_keyword is_operator
+LEXICAL		=	lexical is_keyword is_operator find_operator find_keyword
 CORE		=	white_space count_char
 #FileCreate
 

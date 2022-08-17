@@ -5,21 +5,17 @@ void parser(t_rdl *rdl)
 	int		i;
 	int		j;
 	char	c;
-	char	buffer[30];
-	t_operator operator;
+	char	*buffer;
 
 	i = -1;
 	j = 0;
 	c = ' ';
+	buffer = malloc(sizeof(char) * 30);
 	while (rdl->main_str[++i])
 	{
 		c = rdl->main_str[i];
 		if (is_operator(rdl, c))
-		{
-			operator = find_operator(rdl, c);
-			rdl->token = token_add(rdl->token, operator.sybl);
-			printf("%c is operator\n", operator.sybl[0]);
-		}
+			printf("%c is operator\n", c);
 		if (ft_isalnum(c) || c == ' ')
 		{
 			buffer[j++] = c;
@@ -29,14 +25,12 @@ void parser(t_rdl *rdl)
 			buffer[j] = '\0';
 			j = 0;
 
-			if (is_keyword(rdl, buffer) == 1)
+			if (is_keyword(rdl, ft_strtrim(buffer, " ")) == 1)
 			{
-				rdl->token = token_add(rdl->token, buffer);
 				printf("%s is keyword\n", buffer);
 			}
-			else
+			else if (is_keyword(rdl, buffer) == 0)
 			{
-				rdl->token = token_add(rdl->token, buffer);
 				printf("%s is indentifier\n", buffer);
 			}
 			ft_bzero(buffer, ft_strlen(buffer));
