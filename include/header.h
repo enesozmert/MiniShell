@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/08/17 12:13:07 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/08/17 18:14:04 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_rdl
 	t_command		command;
 	t_token			*token;
 	struct s_operator	*operator_list;
+	struct s_delimiter	*delimiter_list;
 }	t_rdl;
 
 typedef struct s_operator
@@ -80,7 +81,7 @@ typedef struct s_syntax_tree
 //main
 void			routine();
 //lexcical
-t_token			*token_add(t_token *token, char *ptr);
+t_token			*token_add(t_token *token, char **ptr);
 void			token_append(t_token **token, t_token *new);
 t_token			*token_last(t_token *token);
 t_token			*token_new(char *context);

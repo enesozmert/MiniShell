@@ -7,7 +7,7 @@ int is_keyword(t_rdl *rdl, char *str)
     i = -1;
     while (rdl->command_list[++i].type != NULL)
     {
-        if (ft_strncmp(rdl->command_list[i].type, str,
+        if (ft_strnstr(rdl->command_list[i].type, str,
         ft_strlen(rdl->command_list[i].type)))
             return (1);
     }

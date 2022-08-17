@@ -3,32 +3,38 @@
 void parser(t_rdl *rdl)
 {
 	int i;
-	int right;
-	int left;
 
 	i = -1;
-	right = 0;
-	left = 0;
-	while (rdl->main_str[++i])
+	while (++i < rdl->word_count)
 	{
-		if (is_operator(rdl ,rdl->main_str[i]) == 1)
-		{
-			printf("is operator : %c\n", rdl->main_str[i]);
-			left++;
-		}
-		else
-		{
-			char *str = ft_substr(rdl->main_str, right, left - 1);
-			if (is_keyword(rdl, str) == 1)
-				printf("is keyword : %s\n", str);
-			right++;
-		}
+		parser_analizer(rdl);
+		get_next_token(&rdl->token);
 	}
-	
 }
 
 t_rdl *parser_analizer(t_rdl *rdl)
 {
-	(void)rdl;
-	return (NULL);
+	int i;
+	int s_i;
+	t_token *token_zero;
+
+	i = -1;
+	s_i = 0;
+	token_zero = get_token_id(rdl->token, 0);
+	printf("token zero %s\n", token_zero->context);
+	command_list(rdl->command_list);
+	while (rdl->command_list[++i].type != NULL)
+	{
+		if (ft_strncmp(rdl->command_list[i].type, token_zero->context,
+					   ft_strlen(rdl->command_list[i].type)) == 0)
+		{
+			s_i = i;
+			break;
+		}
+	}
+	i = 0;
+	rdl->command_list[s_i].arg =
+		ft_strdup(&rdl->main_str[token_zero->len + 1]);
+	rdl->command = rdl->command_list[s_i];
+	return (rdl);
 }
