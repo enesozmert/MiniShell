@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/08/16 16:56:36 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/08/17 12:13:07 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,5 +116,5 @@ int				single_quote(t_rdl *rdl);
 //lexical
 void			lexical_analizer(t_rdl *rdl);
 int				is_keyword(t_rdl *rdl, char *str);
-int				is_operator(t_rdl *rdl, char *str);
+int				is_operator(t_rdl *rdl, char c);
 #endif

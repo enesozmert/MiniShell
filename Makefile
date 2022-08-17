@@ -3,7 +3,7 @@ CC          =   gcc
 NAME        =   mini_shell
 LIBFT		=	./libft/libft.a
 CC			=	gcc
-CFLAGS		=	-Wall -Werror -Wextra -g -lreadline
+CFLAGS		=	-Wall -Werror -Wextra -g
 RM			=	rm -f
 
 #Directory
@@ -76,7 +76,7 @@ norm:
 
 
 $(NAME):	$(OBJ)
-			@$(CC) $(OBJ) $(CFLAGS) -o $(NAME) $(LIBFT)
+			@$(CC) $(OBJ) $(LIBFT) $(CFLAGS) -lreadline -o $(NAME)
 			@echo $(NAME) compiled!
 
 clean:
