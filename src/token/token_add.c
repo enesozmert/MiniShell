@@ -24,9 +24,9 @@ void token_append(t_token **token, t_token *new)
 
 t_token *token_add(t_token *token, char *ptr)
 {
-	int i;
+	// int i;
 
-	i = 0;
+	// i = 0;
 	// while (ptr[i])
 	// {
 		token_append(&token, token_new(ptr));

@@ -6,6 +6,7 @@ void parser(t_rdl *rdl)
 	int		j;
 	char	c;
 	char	buffer[30];
+	t_operator operator;
 
 	i = -1;
 	j = 0;
@@ -15,8 +16,9 @@ void parser(t_rdl *rdl)
 		c = rdl->main_str[i];
 		if (is_operator(rdl, c))
 		{
-			
-			printf("%c is operator\n", c);
+			operator = find_operator(rdl, c);
+			rdl->token = token_add(rdl->token, operator.sybl);
+			printf("%c is operator\n", operator.sybl[0]);
 		}
 		if (ft_isalnum(c) || c == ' ')
 		{
@@ -28,12 +30,19 @@ void parser(t_rdl *rdl)
 			j = 0;
 
 			if (is_keyword(rdl, buffer) == 1)
+			{
+				rdl->token = token_add(rdl->token, buffer);
 				printf("%s is keyword\n", buffer);
+			}
 			else
+			{
+				rdl->token = token_add(rdl->token, buffer);
 				printf("%s is indentifier\n", buffer);
+			}
 			ft_bzero(buffer, ft_strlen(buffer));
 		}
 	}
+	print_token(rdl->token);
 }
 
 t_rdl *parser_analizer(t_rdl *rdl)

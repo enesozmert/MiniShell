@@ -119,4 +119,6 @@ int				single_quote(t_rdl *rdl);
 void			lexical_analizer(t_rdl *rdl);
 int				is_keyword(t_rdl *rdl, char *str);
 int				is_operator(t_rdl *rdl, char c);
+t_command		find_keyword(t_rdl *rdl, char *str);
+t_operator		find_operator(t_rdl *rdl, char c);
 #endif
