@@ -2,7 +2,8 @@
 
 void parser(t_rdl *rdl)
 {
-	    int i;
+	    
+	int i;
     int j;
     int flag = 0;
     char c;
@@ -16,54 +17,55 @@ void parser(t_rdl *rdl)
     {
         c = rdl->main_str[i];
         if (is_operator(rdl, c))
+		{
+			rdl->token = token_add(rdl->token, ft_strdup(&c));
             printf("%c is operator\n", c);
+		}
         if (is_operator(rdl, c) == 1)
             flag = 1;
         if (flag == 1)
         {
-            if (ft_isalnum(c) || c == ' ' || c == '.' || c == '/')
-            {
+            if (ft_isalnum(c) || c == ' ' || c == '.' || c == '/' || c == '~')
                 buffer[j++] = c;
-            }
             else if ((c != ' ' || c != '\t') && (j != 0))
             {
                 buffer[j] = '\0';
                 j = 0;
-
                 if (is_keyword(rdl, buffer) == 1)
                 {
+					rdl->token = token_add(rdl->token, buffer);
                     printf("%s is keyword\n", buffer);
                 }
                 if (is_keyword(rdl, buffer) == 0)
                 {
+					rdl->token = token_add(rdl->token, buffer);
                     printf("%s is indentifier\n", buffer);
                 }
-                ft_bzero(buffer, ft_strlen(buffer));
             }
         }
         if (flag == 0)
         {
-            if (ft_isalnum(c) || c == '.' || c == '/')
-            {
+            if (ft_isalnum(c) || c == '.' || c == '/' || c == '~')
                 buffer[j++] = c;
-            }
             else if ((c != ' ' || c != '\t') && (j != 0))
             {
                 buffer[j] = '\0';
                 j = 0;
-
                 if (is_keyword(rdl, buffer) == 1)
                 {
+					rdl->token = token_add(rdl->token, buffer);
                     printf("%s is keyword\n", buffer);
                 }
                 if (is_keyword(rdl, buffer) == 0)
                 {
+					rdl->token = token_add(rdl->token, buffer);
                     printf("%s is indentifier\n", buffer);
                 }
-                ft_bzero(buffer, ft_strlen(buffer));
+                // ft_bzero(buffer, ft_strlen(buffer));
             }
         }
     }
+	print_token(rdl->token);
 }
 
 t_rdl *parser_analizer(t_rdl *rdl)
