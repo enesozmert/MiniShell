@@ -2,41 +2,68 @@
 
 void parser(t_rdl *rdl)
 {
-	int		i;
-	int		j;
-	char	c;
-	char	*buffer;
+	    int i;
+    int j;
+    int flag = 0;
+    char c;
+    char *buffer;
 
-	i = -1;
-	j = 0;
-	c = ' ';
-	buffer = malloc(sizeof(char) * 30);
-	while (rdl->main_str[++i])
-	{
-		c = rdl->main_str[i];
-		if (is_operator(rdl, c))
-			printf("%c is operator\n", c);
-		if (ft_isalnum(c) || c == ' ')
-		{
-			buffer[j++] = c;
-		}
-		else if ((c != ' ' || c != '\t') && (j != 0))
-		{
-			buffer[j] = '\0';
-			j = 0;
+    i = -1;
+    j = 0;
+    c = ' ';
+    buffer = malloc(sizeof(char) * 30);
+    while (i++ < rdl->len)
+    {
+        c = rdl->main_str[i];
+        if (is_operator(rdl, c))
+            printf("%c is operator\n", c);
+        if (is_operator(rdl, c) == 1)
+            flag = 1;
+        if (flag == 1)
+        {
+            if (ft_isalnum(c) || c == ' ' || c == '.' || c == '/')
+            {
+                buffer[j++] = c;
+            }
+            else if ((c != ' ' || c != '\t') && (j != 0))
+            {
+                buffer[j] = '\0';
+                j = 0;
 
-			if (is_keyword(rdl, ft_strtrim(buffer, " ")) == 1)
-			{
-				printf("%s is keyword\n", buffer);
-			}
-			else if (is_keyword(rdl, buffer) == 0)
-			{
-				printf("%s is indentifier\n", buffer);
-			}
-			ft_bzero(buffer, ft_strlen(buffer));
-		}
-	}
-	print_token(rdl->token);
+                if (is_keyword(rdl, buffer) == 1)
+                {
+                    printf("%s is keyword\n", buffer);
+                }
+                if (is_keyword(rdl, buffer) == 0)
+                {
+                    printf("%s is indentifier\n", buffer);
+                }
+                ft_bzero(buffer, ft_strlen(buffer));
+            }
+        }
+        if (flag == 0)
+        {
+            if (ft_isalnum(c) || c == '.' || c == '/')
+            {
+                buffer[j++] = c;
+            }
+            else if ((c != ' ' || c != '\t') && (j != 0))
+            {
+                buffer[j] = '\0';
+                j = 0;
+
+                if (is_keyword(rdl, buffer) == 1)
+                {
+                    printf("%s is keyword\n", buffer);
+                }
+                if (is_keyword(rdl, buffer) == 0)
+                {
+                    printf("%s is indentifier\n", buffer);
+                }
+                ft_bzero(buffer, ft_strlen(buffer));
+            }
+        }
+    }
 }
 
 t_rdl *parser_analizer(t_rdl *rdl)
