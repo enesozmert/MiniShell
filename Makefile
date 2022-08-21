@@ -27,7 +27,7 @@ COMMON		= 	main reader routine
 COMMANDS	=	commands commands_size
 TOKEN		=	get_token token_clear token_print token_add token_new token_size
 HISTORY		=	history
-PARSE		=	parser
+PARSE		=	parser parser_add
 RDL			=	rdl
 SYNTAX		=	syntax quote
 STATIC		=	command_list operator_list
@@ -76,7 +76,7 @@ norm:
 
 
 $(NAME):	$(OBJ)
-			@$(CC) $(OBJ) $(LIBFT) $(CFLAGS) -lreadline -o $(NAME)
+			@$(CC) $(OBJ) $(CFLAGS) -lreadline -o $(NAME) $(LIBFT)
 			@echo $(NAME) compiled!
 
 clean:

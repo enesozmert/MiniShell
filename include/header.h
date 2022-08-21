@@ -105,6 +105,10 @@ int				my_add_history(char *str);
 //parser
 void			parser(t_rdl *rdl);
 t_rdl			*parser_analizer(t_rdl *rdl);
+void parser_add(t_rdl *rdl, char *buffer);
+void parser_add_indentifier(t_rdl *rdl, char *buffer);
+void parser_add_keyword(t_rdl *rdl, char *buffer);
+void parser_add_operator(t_rdl *rdl, char c);
 //commands
 void			command_list(t_command *commands);
 int				commands_clear(t_command *commands);
