@@ -8,7 +8,8 @@ int print_token(t_token *token)
 	printf("-------------------\n");
 	while (token)
 	{
-		printf("%s\n", (token)->context);
+		ft_putstr_fd((token)->context, 1);
+		ft_putstr_fd("\n", 1); 
 		token = token->next;
 		size++;
 	}

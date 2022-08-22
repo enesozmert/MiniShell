@@ -13,7 +13,7 @@ static void parser_default(t_rdl *rdl)
     while (++i < rdl->len)
     {
         c = rdl->main_str[i];
-        if (ft_isalnum(c) || c == '.' || c == '/')
+        if (ft_isalnum(c) || is_indentifier(rdl, c))
             buffer[j++] = c;
         else if ((c != ' ' || c != '\t') && (j != 0))
         {
@@ -46,7 +46,7 @@ static void parser_arg(t_rdl *rdl)
             flag = 1;
         if (flag == 1)
         {
-            if (ft_isalnum(c) || c == ' ' || c == '.' || c == '/' || c == '~')
+            if (ft_isalnum(c) || c == ' ' || is_indentifier(rdl, c))
                 buffer[j++] = c;
             else if ((c != ' ' || c != '\t') && (j != 0))
             {
@@ -57,7 +57,7 @@ static void parser_arg(t_rdl *rdl)
         }
         if (flag == 0)
         {
-            if (ft_isalnum(c) || c == '.' || c == '/' || c == '~')
+            if (ft_isalnum(c) || is_indentifier(rdl, c))
                 buffer[j++] = c;
             else if ((c != ' ' || c != '\t') && (j != 0))
             {
@@ -89,27 +89,26 @@ void parser(t_rdl *rdl)
 
 t_rdl *parser_analizer(t_rdl *rdl)
 {
-    int i;
-    int s_i;
-    t_token *token_zero;
+    // int i;
+    // int s_i;
+    // t_token *token_zero;
 
-    i = -1;
-    s_i = 0;
-    token_zero = get_token_id(rdl->token, 0);
-    printf("token zero %s\n", token_zero->context);
-    keyword_list(rdl->keyword_list);
-    while (rdl->keyword_list[++i].type != NULL)
-    {
-        if (ft_strncmp(rdl->keyword_list[i].type, token_zero->context,
-                       ft_strlen(rdl->keyword_list[i].type)) == 0)
-        {
-            s_i = i;
-            break;
-        }
-    }
-    i = 0;
-    rdl->keyword_list[s_i].arg =
-        ft_strdup(&rdl->main_str[token_zero->len + 1]);
-    rdl->keyword = rdl->keyword_list[s_i];
+    // i = -1;
+    // s_i = 0;
+    // token_zero = get_token_id(rdl->token, 0);
+    // printf("token zero %s\n", token_zero->context);
+    // keyword_list(rdl->keyword_list);
+    // while (rdl->keyword_list[++i].type != NULL)
+    // {
+    //     if (ft_strncmp(rdl->keyword_list[i].type, token_zero->context,
+    //                    ft_strlen(rdl->keyword_list[i].type)) == 0)
+    //     {
+    //         s_i = i;
+    //         break;
+    //     }
+    // }
+    // i = 0;
+    // rdl->keyword_list[s_i].arg =
+    //     ft_strdup(&rdl->main_str[token_zero->len + 1]);
     return (rdl);
 }
