@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/08/22 10:38:21 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/08/22 10:54:16 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,20 +43,20 @@ typedef struct s_token
 	struct s_token	*next;
 }	t_token;
 
-typedef struct s_command
+typedef struct s_keyword
 {
 	char				*type;
 	char				*arg;
-}	t_command;
+}	t_keyword;
 
 typedef struct s_rdl
 {
-	int				len;
-	int				word_count;
-	char			*main_str;
-	t_command		*command_list;
-	t_command		command;
-	t_token			*token;
+	int					len;
+	int					word_count;
+	char				*main_str;
+	t_keyword			*keyword_list;
+	t_keyword			keyword;
+	t_token				*token;
 	struct s_operator	*operator_list;
 	struct s_delimiter	*delimiter_list;
 }	t_rdl;
@@ -109,10 +109,10 @@ void			parser_add(t_rdl *rdl, char *buffer);
 void			parser_add_indentifier(t_rdl *rdl, char *buffer);
 void			parser_add_keyword(t_rdl *rdl, char *buffer);
 void			parser_add_operator(t_rdl *rdl, char c);
-//commands
-void			command_list(t_command *commands);
-int				commands_clear(t_command *commands);
-int				commands_size(t_command *commands);
+//keywords
+void			keyword_list(t_keyword *keyword);
+int				keywords_clear(t_keyword *keyword);
+int				keywords_size(t_keyword *keyword);
 //syntax
 void			syntax(t_rdl *rdl);
 int				syntax_analizer(t_rdl *rdl);
@@ -123,6 +123,6 @@ int				single_quote(t_rdl *rdl);
 void			lexical_analizer(t_rdl *rdl);
 int				is_keyword(t_rdl *rdl, char *str);
 int				is_operator(t_rdl *rdl, char c);
-t_command		find_keyword(t_rdl *rdl, char *str);
+t_keyword		find_keyword(t_rdl *rdl, char *str);
 t_operator		find_operator(t_rdl *rdl, char c);
 #endif

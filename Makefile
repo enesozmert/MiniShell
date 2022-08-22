@@ -11,7 +11,7 @@ OBJ_DIR		=	obj/
 SRC_DIR		= 	src/
 
 SRC_COMMON	= 	mini_shell/
-SRC_COMMANDS=	commands/
+SRC_KEYWORDS=	keywords/
 SRC_TOKEN	= 	token/
 SRC_HISTORY	= 	history/
 SRC_PARSE	= 	parse/
@@ -24,19 +24,19 @@ SRC_CORE	=	core/
 
 #Files
 COMMON		= 	main reader routine 
-COMMANDS	=	commands commands_size
+KEYWORDS	=	keywords keywords_size
 TOKEN		=	get_token token_clear token_print token_add token_new token_size
 HISTORY		=	history
 PARSE		=	parser parser_add
 RDL			=	rdl
 SYNTAX		=	syntax quote
-STATIC		=	command_list operator_list
+STATIC		=	keyword_list operator_list
 LEXICAL		=	lexical is_keyword is_operator find_operator find_keyword
 CORE		=	white_space count_char
 #FileCreate
 
 SRC_FILES	+=	$(addprefix $(SRC_COMMON),$(COMMON))
-SRC_FILES	+=	$(addprefix $(SRC_COMMANDS),$(COMMANDS))
+SRC_FILES	+=	$(addprefix $(SRC_KEYWORDS),$(KEYWORDS))
 SRC_FILES	+=	$(addprefix $(SRC_TOKEN),$(TOKEN))
 SRC_FILES	+=	$(addprefix $(SRC_HISTORY),$(HISTORY))
 SRC_FILES	+=	$(addprefix $(SRC_PARSE),$(PARSE))
@@ -56,7 +56,7 @@ all:		welcome $(NAME)
 $(OBJF):
 			@mkdir -p $(OBJ_DIR)
 			@mkdir -p $(OBJ_DIR)$(SRC_COMMON)
-			@mkdir -p $(OBJ_DIR)$(SRC_COMMANDS)
+			@mkdir -p $(OBJ_DIR)$(SRC_KEYWORDS)
 			@mkdir -p $(OBJ_DIR)$(SRC_TOKEN)
 			@mkdir -p $(OBJ_DIR)$(SRC_HISTORY)
 			@mkdir -p $(OBJ_DIR)$(SRC_PARSE)

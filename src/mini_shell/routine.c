@@ -14,7 +14,7 @@ void routine()
 			//syntax(rdl);
 			//parser(rdl);
 			my_add_history(rdl->main_str);
-			commands_clear(rdl->command_list);
+			keywords_clear(rdl->keyword_list);
 			token_clear(&rdl->token);
 			rdl_clear(rdl);
 		}
