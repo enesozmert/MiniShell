@@ -5,69 +5,20 @@ static void parser_default(t_rdl *rdl)
     int i;
     int j;
     char c;
-    char *buffer;
 
     i = -1;
     j = 0;
-    buffer = malloc(sizeof(char) * 30);
-    while (++i < rdl->len)
+    while (++i < rdl->len + 1)
     {
         c = rdl->main_str[i];
         if (ft_isalnum(c) || is_indentifier(rdl, c))
-            buffer[j++] = c;
-        else if ((c != ' ' || c != '\t') && (j != 0))
+            rdl->buffer[j++] = c;
+        else if ((c != ' ' || c != '\n') && (j != 0))
         {
-            buffer[j] = '\0';
+            rdl->buffer[j] = '\0';
             j = 0;
-            parser_add(rdl, buffer);
+            parser_add(rdl, rdl->buffer);
         }
-        if (is_operator(rdl, c))
-            parser_add_operator(rdl, c);
-    }
-}
-
-static void parser_arg(t_rdl *rdl)
-{
-
-    int i;
-    int j;
-    int flag = 0;
-    char c;
-    char *buffer;
-
-    i = -1;
-    j = 0;
-    c = ' ';
-    buffer = malloc(sizeof(char) * 30);
-    while (i++ < rdl->len)
-    {
-        c = rdl->main_str[i];
-        if (is_operator(rdl, c) == 1)
-            flag = 1;
-        if (flag == 1)
-        {
-            if (ft_isalnum(c) || c == ' ' || is_indentifier(rdl, c))
-                buffer[j++] = c;
-            else if ((c != ' ' || c != '\t') && (j != 0))
-            {
-                buffer[j] = '\0';
-                j = 0;
-                parser_add(rdl, buffer);
-            }
-        }
-        if (flag == 0)
-        {
-            if (ft_isalnum(c) || is_indentifier(rdl, c))
-                buffer[j++] = c;
-            else if ((c != ' ' || c != '\t') && (j != 0))
-            {
-                buffer[j] = '\0';
-                j = 0;
-                parser_add(rdl, buffer);
-            }
-        }
-        if (is_operator(rdl, c))
-            parser_add_operator(rdl, c);
     }
 }
 
@@ -78,11 +29,9 @@ void parser(t_rdl *rdl)
 
     i = -1;
     result = 0;
-    while (rdl->operator_list[++i].name != NULL)
-        result = ft_strchr(rdl->main_str, rdl->operator_list[i].sybl[0]);
-    if (result == 0)
-        parser_arg(rdl);
-    else
+    // while (rdl->operator_list[++i].name != NULL)
+    //     result = ft_strchr(rdl->main_str, rdl->operator_list[i].sybl[0]);
+    // if (result != 0)
         parser_default(rdl);
     print_token(rdl->token);
 }

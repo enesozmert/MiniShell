@@ -24,6 +24,5 @@ void	identifier_list(t_identifier *identifier)
 	identifier[19] = (t_identifier){"@"};
 	identifier[20] = (t_identifier){"?"};
 	identifier[21] = (t_identifier){"="};
-	identifier[22] = (t_identifier){"ş"};
-	identifier[23] = (t_identifier){NULL};
+	identifier[22] = (t_identifier){NULL};
 }
