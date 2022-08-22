@@ -5,7 +5,7 @@ void parser_add_operator(t_rdl *rdl, char c)
     t_operator operator;
 
     operator = find_operator(rdl, c);
-    rdl->token = token_add(rdl->token, operator.sybl);
+    rdl->token = token_add(rdl->token, ft_strdup(operator.sybl));
 }
 
 void parser_add_keyword(t_rdl *rdl, char *buffer)
