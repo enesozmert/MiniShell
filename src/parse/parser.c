@@ -1,6 +1,35 @@
 #include "../../include/header.h"
 
-void parser(t_rdl *rdl)
+static void parser_default(t_rdl *rdl)
+{
+	int i;
+	int j;
+	char c;
+	char *buffer;
+
+	i = -1;
+	j = 0;
+	buffer = malloc(sizeof(char) * 30);
+	while (++i < rdl->len)
+	{
+		c = rdl->main_str[i];
+		if (is_operator(rdl, c))
+		{
+            rdl->token = token_add(rdl->token, ft_strdup(&c));
+            printf("%c is operator\n", c);
+        }
+		if (ft_isalnum(c) || c == '.' || c == '/')
+			buffer[j++] = c;
+		else if ((c != ' ' || c != '\t') && (j != 0))
+		{
+			buffer[j] = '\0';
+			j = 0;
+			parser_add(rdl, buffer);
+		}
+	}
+}
+
+static void parser_arg(t_rdl *rdl)
 {
 	    
 	int i;
@@ -31,16 +60,7 @@ void parser(t_rdl *rdl)
             {
                 buffer[j] = '\0';
                 j = 0;
-                if (is_keyword(rdl, buffer) == 1)
-                {
-					rdl->token = token_add(rdl->token, buffer);
-                    printf("%s is keyword\n", buffer);
-                }
-                if (is_keyword(rdl, buffer) == 0)
-                {
-					rdl->token = token_add(rdl->token, buffer);
-                    printf("%s is indentifier\n", buffer);
-                }
+                parser_add(rdl, buffer);
             }
         }
         if (flag == 0)
@@ -51,20 +71,25 @@ void parser(t_rdl *rdl)
             {
                 buffer[j] = '\0';
                 j = 0;
-                if (is_keyword(rdl, buffer) == 1)
-                {
-					rdl->token = token_add(rdl->token, buffer);
-                    printf("%s is keyword\n", buffer);
-                }
-                if (is_keyword(rdl, buffer) == 0)
-                {
-					rdl->token = token_add(rdl->token, buffer);
-                    printf("%s is indentifier\n", buffer);
-                }
-                // ft_bzero(buffer, ft_strlen(buffer));
+                parser_add(rdl, buffer);
             }
         }
     }
+}
+
+void parser(t_rdl *rdl)
+{
+	char *result;
+	int i;
+
+	i = -1;
+	result = 0;
+	while (rdl->operator_list[++i].name != NULL)
+		result = ft_strchr(rdl->main_str, rdl->operator_list[i].sybl[0]);
+	if (result == 0)
+		parser_arg(rdl);
+	else
+		parser_default(rdl);
 	print_token(rdl->token);
 }
 
