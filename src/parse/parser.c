@@ -89,26 +89,26 @@ void parser(t_rdl *rdl)
 
 t_rdl *parser_analizer(t_rdl *rdl)
 {
-    // int i;
-    // int s_i;
-    // t_token *token_zero;
+    int i;
+    int s_i;
+    t_token *token_zero;
 
-    // i = -1;
-    // s_i = 0;
-    // token_zero = get_token_id(rdl->token, 0);
-    // printf("token zero %s\n", token_zero->context);
-    // keyword_list(rdl->keyword_list);
-    // while (rdl->keyword_list[++i].type != NULL)
-    // {
-    //     if (ft_strncmp(rdl->keyword_list[i].type, token_zero->context,
-    //                    ft_strlen(rdl->keyword_list[i].type)) == 0)
-    //     {
-    //         s_i = i;
-    //         break;
-    //     }
-    // }
-    // i = 0;
-    // rdl->keyword_list[s_i].arg =
-    //     ft_strdup(&rdl->main_str[token_zero->len + 1]);
+    i = -1;
+    s_i = 0;
+    token_zero = get_token_id(rdl->token, 0);
+    printf("token zero %s\n", token_zero->context);
+    keyword_list(rdl->keyword_list);
+    while (rdl->keyword_list[++i].type != NULL)
+    {
+        if (ft_strncmp(rdl->keyword_list[i].type, token_zero->context,
+                       ft_strlen(rdl->keyword_list[i].type)) == 0)
+        {
+            s_i = i;
+            break;
+        }
+    }
+    i = 0;
+    rdl->keyword_list[s_i].arg =
+        ft_strdup(&rdl->main_str[token_zero->len + 1]);
     return (rdl);
 }
