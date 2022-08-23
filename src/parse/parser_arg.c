@@ -8,11 +8,9 @@ void parser_arg_isoperator(unsigned int c, int *j, t_rdl *rdl)
 	if ((is_operator(rdl, c) == 0) || c == ' ')
 		rdl->buffer[i++] = c;
 	else if ((c != ' ' || c != '\t') && (i != 0))
-	{
-		rdl->buffer[i] = '\0';
-		i = 0;
-		parser_add(rdl, rdl->buffer);
-	}
+		parser_add_buffer(&i, rdl);
+	if (c == '\0')
+		parser_add_buffer(&i, rdl);
 	*j = i;
 }
 
@@ -22,21 +20,11 @@ void parser_arg_isnotoperator(unsigned int c, int *j, t_rdl *rdl)
 
 	i = *j;
 	if (is_operator(rdl, c) == 0 && c != ' ')
-	{
 		rdl->buffer[i++] = c;
-	}
 	else if ((c != ' ' || c != '\t') && (i != 0))
-	{
-		rdl->buffer[i] = '\0';
-		i = 0;
-		parser_add(rdl, rdl->buffer);
-	}
+		parser_add_buffer(&i, rdl);
 	if (c == '\0')
-	{
-		rdl->buffer[i] = '\0';
-		i = 0;
-		parser_add(rdl, rdl->buffer);
-	}
+		parser_add_buffer(&i, rdl);
 	*j = i;
 }
 

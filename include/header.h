@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/08/23 16:24:43 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/08/23 17:07:37 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,13 +110,13 @@ int				ft_isalnum(int c);
 int				my_add_history(char *str);
 //parser
 void			parser(t_rdl *rdl);
-t_rdl			*parser_analizer(t_rdl *rdl);
 void			parser_add(t_rdl *rdl, char *buffer);
 void			parser_add_indentifier(t_rdl *rdl, char *buffer);
 void			parser_add_keyword(t_rdl *rdl, char *buffer);
 void			parser_add_operator(t_rdl *rdl, char c);
 void			parser_arg(t_rdl *rdl);
 void			parser_default(t_rdl *rdl);
+void			parser_add_buffer(int *j, t_rdl *rdl);
 void			parser_arg_isnotoperator(unsigned int c, int *j, t_rdl *rdl);
 void			parser_arg_isoperator(unsigned int c, int *j, t_rdl *rdl);
 //keywords
