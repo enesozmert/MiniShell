@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/08/22 17:57:39 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/08/23 12:12:03 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,10 @@ void			parser_add(t_rdl *rdl, char *buffer);
 void			parser_add_indentifier(t_rdl *rdl, char *buffer);
 void			parser_add_keyword(t_rdl *rdl, char *buffer);
 void			parser_add_operator(t_rdl *rdl, char c);
+void			parser_arg(t_rdl *rdl);
+void			parser_default(t_rdl *rdl);
+void			parser_arg_isnotoperator(char c, int *j, t_rdl *rdl);
+void			parser_arg_isoperator(char c, int *j, t_rdl *rdl);
 //keywords
 void			keyword_list(t_keyword *keyword);
 int				keywords_clear(t_keyword *keyword);

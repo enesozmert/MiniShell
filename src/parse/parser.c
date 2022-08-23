@@ -1,27 +1,5 @@
 #include "../../include/header.h"
 
-static void parser_default(t_rdl *rdl)
-{
-    int i;
-    int j;
-    char c;
-
-    i = -1;
-    j = 0;
-    while (++i < rdl->len + 1)
-    {
-        c = rdl->main_str[i];
-        if (ft_isalnum(c) || is_indentifier(rdl, c))
-            rdl->buffer[j++] = c;
-        else if ((c != ' ' || c != '\n') && (j != 0))
-        {
-            rdl->buffer[j] = '\0';
-            j = 0;
-            parser_add(rdl, rdl->buffer);
-        }
-    }
-}
-
 void parser(t_rdl *rdl)
 {
     char *result;
@@ -29,11 +7,33 @@ void parser(t_rdl *rdl)
 
     i = -1;
     result = 0;
-    // while (rdl->operator_list[++i].name != NULL)
-    //     result = ft_strchr(rdl->main_str, rdl->operator_list[i].sybl[0]);
-    // if (result != 0)
+    while (rdl->operator_list[++i].name != NULL)
+        result = ft_strchr(rdl->main_str, rdl->operator_list[i].sybl[0]);
+    if (result == NULL)
+    {
+        printf("test2\n");
         parser_default(rdl);
+    }
+    else
+    {
+        printf("test1\n");
+        parser_arg(rdl);
+    }
     print_token(rdl->token);
+}
+
+void parser_default(t_rdl *rdl)
+{
+    int i;
+    char **str;
+
+    i = -1;
+    str = ft_split(rdl->main_str, ' ');
+    while (str[++i])
+    {
+        rdl->token = token_add(rdl->token, str[i]);
+    }
+    free(str);
 }
 
 t_rdl *parser_analizer(t_rdl *rdl)
