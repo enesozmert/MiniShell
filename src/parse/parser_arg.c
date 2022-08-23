@@ -18,12 +18,23 @@ void parser_arg_isoperator(char c, int *j, t_rdl *rdl)
 
 void parser_arg_isnotoperator(char c, int *j, t_rdl *rdl)
 {
+	int flag;
 	int i;
 
 	i = *j;
-	if ((ft_isascii(c) && is_operator(rdl, c) == 0) || c != ' ')
+	flag = 0;
+	if (ft_isascii(c) || c != ' ')
+	{
 		rdl->buffer[i++] = c;
-	else if ((c != ' ' || c != '\t') && (i != 0))
+		flag = 1;
+	}
+	else if ((c == ' ' || c == '\t') && (i != 0))
+	{
+		rdl->buffer[i] = '\0';
+		i = 0;
+		parser_add(rdl, rdl->buffer);
+	}
+	if (c == '\0')
 	{
 		rdl->buffer[i] = '\0';
 		i = 0;
@@ -37,29 +48,18 @@ void parser_arg(t_rdl *rdl)
 
 	int i;
 	int j;
-	int flag;
-	char c;
+	int c;
 
 	i = -1;
 	j = 0;
-	flag = 0;
-	while (++i < rdl->len)
+	while (++i < rdl->len + 1)
 	{
 		c = rdl->main_str[i];
-		if (c == '\"' || c == '\'')
-			flag = 1;
-		else
-			flag = 0;
-		if (flag == 1)
+		if ((c == '\"' || c == '\'') && c != ' ')
 			parser_arg_isoperator(c, &j, rdl);
-		if (flag == 0)
+		if (is_operator(rdl, c) == 0)
 			parser_arg_isnotoperator(c, &j, rdl);
 		if (is_operator(rdl, c))
 			parser_add_operator(rdl, c);
-		if (c == '\"' || c == '\'')
-			flag = 1;
-		else
-			flag = 0;
-		printf("falg : %d\n", flag);
 	}
 }
