@@ -5,7 +5,7 @@ void parser_arg_isoperator(char c, int *j, t_rdl *rdl)
     int i;
 
     i = *j;
-    if ((ft_isascii(c) && is_operator(rdl, c) == 0) || c == ' ')
+    if (ft_isalnum(c) || c == ' ')
         rdl->buffer[i++] = c;
     else if ((c != ' ' || c != '\t') && (i != 0))
     {
@@ -21,9 +21,9 @@ void parser_arg_isnotoperator(char c, int *j, t_rdl *rdl)
     int i;
 
     i = *j;
-    if ((ft_isascii(c) && is_operator(rdl, c) == 0) || c != ' ')
+    if (ft_isalnum(c))
         rdl->buffer[i++] = c;
-    else if ((c != ' ' || c != '\t') && (i != 0))
+    else if ((c == ' ' || c == '\t') && (i != 0))
     {
         rdl->buffer[i] = '\0';
         i = 0;

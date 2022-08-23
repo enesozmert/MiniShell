@@ -15,7 +15,6 @@ t_rdl *rdl_init(t_rdl *rdl)
 	rdl->operator_list = malloc(sizeof(t_operator) * 8);
 	rdl->identifier_list = malloc(sizeof(t_identifier) * 24);
 	split_str = ft_split(rdl->main_str, ' ');
-	// rdl->token = token_add(rdl->token, ft_split(rdl->main_str ,' '));
 	while (split_str[i])
 		i++;
 	rdl->word_count = i;
@@ -26,7 +25,9 @@ void rdl_clear(t_rdl *rdl)
 {
 	free(rdl->keyword_list);
 	free(rdl->operator_list);
+	free(rdl->identifier_list);
 	free(rdl->main_str);
+	free(rdl->buffer);
 	free(rdl->token);
 	// if (rdl != NULL)
 	// 	free(rdl);
