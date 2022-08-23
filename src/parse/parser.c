@@ -8,17 +8,15 @@ void parser(t_rdl *rdl)
     i = -1;
     result = 0;
     while (rdl->operator_list[++i].name != NULL)
+    {
         result = ft_strchr(rdl->main_str, rdl->operator_list[i].sybl[0]);
+        if (result != NULL)
+            break ;
+    }
     if (result == NULL)
-    {
-        printf("test2\n");
         parser_default(rdl);
-    }
     else
-    {
-        printf("test1\n");
         parser_arg(rdl);
-    }
     print_token(rdl->token);
 }
 
