@@ -23,15 +23,9 @@ int syntax_analizer(t_rdl *rdl)
 	s_i = 0;
 	token_zero = get_token_id(rdl->token, 0);
 	printf("token zero %s\n", token_zero->context);
-	while (rdl->keyword_list[++i].type != NULL)
-	{
-		if (ft_strncmp(rdl->keyword_list[i].type, token_zero->context,
-					   ft_strlen(rdl->keyword_list[i].type)) == 0)
-		{
-			s_i = i;
-			break;
-		}
-	}
-
+	if (is_keyword(rdl, token_zero->context))
+		printf("True\n");
+	else
+		printf("False\n");
 	return (1);
 }

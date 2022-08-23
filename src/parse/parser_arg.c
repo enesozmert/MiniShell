@@ -38,7 +38,7 @@ void parser_arg(t_rdl *rdl)
 
 	i = -1;
 	j = 0;
-	flag = 0;
+	flag = 1;
 	while (++i < rdl->len + 1)
 	{
 		c = rdl->main_str[i];
@@ -46,7 +46,7 @@ void parser_arg(t_rdl *rdl)
 			flag++;
 		if (flag % 2 == 0)
 			parser_arg_isnotoperator(c, &j, rdl);
-		if (flag % 2 != 0)
+		else
 			parser_arg_isoperator(c, &j, rdl);
 		if (is_operator(rdl, c))
 			parser_add_operator(rdl, c);
