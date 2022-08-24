@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/08/23 17:07:37 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/08/24 19:58:29 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ typedef struct s_token
 	struct s_token	*next;
 }	t_token;
 
+typedef struct s_quote_count
+{
+	int left;
+	int right;
+}	t_quote_count;
+
 typedef struct s_rdl
 {
 	int						len;
@@ -50,9 +56,9 @@ typedef struct s_rdl
 	char					*main_str;
 	char					*buffer;
 	t_token					*token;
+	t_quote_count			*quote_count;
 	struct s_keyword		*keyword_list;
 	struct s_operator		*operator_list;
-	struct s_identifier		*identifier_list;
 }	t_rdl;
 
 typedef struct s_keyword
@@ -60,11 +66,6 @@ typedef struct s_keyword
 	char				*type;
 	char				*arg;
 }	t_keyword;
-
-typedef struct s_identifier
-{
-	char	*sybl;
-}	t_identifier;
 
 typedef struct s_operator
 {
@@ -81,8 +82,6 @@ typedef struct s_syntax_tree
 	struct	s_syntax_tree	*left;
 	struct	s_syntax_tree	*right;
 }	t_syntax_tree;
-
-
 
 //main
 void			routine();
@@ -106,19 +105,21 @@ void			rdl_clear(t_rdl *rdl);
 int				check_white_space(char *input);
 int				count_char(char *str, char c);
 int				ft_isalnum(int c);
+int				quote_count_left(char *str);
+int				quote_count_right(char *str);
+int				count_matris(void **matris);
 //history
 int				my_add_history(char *str);
 //parser
 void			parser(t_rdl *rdl);
 void			parser_add(t_rdl *rdl, char *buffer);
-void			parser_add_indentifier(t_rdl *rdl, char *buffer);
-void			parser_add_keyword(t_rdl *rdl, char *buffer);
 void			parser_add_operator(t_rdl *rdl, char c);
 void			parser_arg(t_rdl *rdl);
 void			parser_default(t_rdl *rdl);
 void			parser_add_buffer(int *j, t_rdl *rdl);
-void			parser_arg_isnotoperator(unsigned int c, int *j, t_rdl *rdl);
-void			parser_arg_isoperator(unsigned int c, int *j, t_rdl *rdl);
+void			parser_arg_isnotoperator(int c, int *j, t_rdl *rdl);
+void			parser_arg_isoperator(int c, int *j, t_rdl *rdl);
+void			parser_arg_split(t_rdl *rdl);
 //keywords
 void			keyword_list(t_keyword *keyword);
 int				keywords_clear(t_keyword *keyword);
@@ -133,9 +134,6 @@ int				single_quote(t_rdl *rdl);
 void			lexical_analizer(t_rdl *rdl);
 int				is_keyword(t_rdl *rdl, char *str);
 int				is_operator(t_rdl *rdl, char c);
-int				is_indentifier(t_rdl *rdl, char c);
 t_keyword		find_keyword(t_rdl *rdl, char *str);
 t_operator		find_operator(t_rdl *rdl, char c);
-//identifier
-void			identifier_list(t_identifier *identifier);
 #endif

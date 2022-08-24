@@ -30,9 +30,9 @@ HISTORY		=	history
 PARSE		=	parser parser_add parser_arg parser_add_buffer
 RDL			=	rdl
 SYNTAX		=	syntax quote
-STATIC		=	keyword_list operator_list identifier_list
-LEXICAL		=	lexical is_keyword is_identifier is_operator find_operator find_keyword find_identifier
-CORE		=	white_space count_char
+STATIC		=	keyword_list operator_list
+LEXICAL		=	lexical is_keyword is_operator find_operator find_keyword
+CORE		=	white_space count_char quote_count count_matris
 #FileCreate
 
 SRC_FILES	+=	$(addprefix $(SRC_COMMON),$(COMMON))

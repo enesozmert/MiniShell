@@ -1,6 +1,6 @@
 #include "../../include/header.h"
 
-void parser_arg_isoperator(unsigned int c, int *j, t_rdl *rdl)
+void parser_arg_isoperator(int c, int *j, t_rdl *rdl)
 {
 	int i;
 
@@ -14,7 +14,7 @@ void parser_arg_isoperator(unsigned int c, int *j, t_rdl *rdl)
 	*j = i;
 }
 
-void parser_arg_isnotoperator(unsigned int c, int *j, t_rdl *rdl)
+void parser_arg_isnotoperator(int c, int *j, t_rdl *rdl)
 {
 	int i;
 
@@ -34,21 +34,68 @@ void parser_arg(t_rdl *rdl)
 	int i;
 	int j;
 	int c;
+	int left;
+	int right;
 	int flag;
 
 	i = -1;
 	j = 0;
-	flag = 1;
+	flag = 0;
+	left = quote_count_left(rdl->main_str);
+	right = quote_count_right(rdl->main_str);
 	while (++i < rdl->len + 1)
 	{
 		c = rdl->main_str[i];
 		if (c == '\"' || c == '\'')
 			flag++;
-		if (flag % 2 == 0)
+		if (flag <= 0)
 			parser_arg_isnotoperator(c, &j, rdl);
-		else
+		if (flag >= left && flag < right + left)
 			parser_arg_isoperator(c, &j, rdl);
+		if (flag >= right + left)
+			parser_arg_isnotoperator(c, &j, rdl);
 		if (is_operator(rdl, c))
 			parser_add_operator(rdl, c);
 	}
+}
+
+void parser_arg_split(t_rdl *rdl)
+{
+	// int i;
+	// char **redir_l;
+	// char **redir_r;
+	// int redir_l_c;
+	// int redir_r_c;
+
+	// redir_l = NULL;
+	// redir_r = NULL;
+	// redir_l_c = 0;
+	// redir_r_c = 0;
+	// if (is_operator(rdl, '>'))
+	// {
+	// 	i = -1;
+	// 	redir_r = ft_split(rdl->main_str, '>');
+	// 	redir_r_c = count_matris((void **)redir_r);
+	// 	printf("redir_r_c %d\n", redir_r_c);
+	// 	rdl->quote_count = malloc(sizeof(t_quote_count) * redir_r_c);
+	// 	while (++i < redir_r_c -1)
+	// 	{
+	// 		rdl->quote_count[i].left = quote_count_left(redir_r[i]);
+	// 		rdl->quote_count[i].right = quote_count_right(redir_r[i]);
+	// 	}
+	// }
+	// else if (is_operator(rdl, '<'))
+	// {
+	// 	i = -1;
+	// 	redir_l = ft_split(rdl->main_str, '<');
+	// 	redir_l_c = count_matris((void **)redir_l);
+	// 	printf("redir_l_c %d\n", redir_l_c);
+	// 	rdl->quote_count = malloc(sizeof(t_quote_count) * redir_l_c);
+	// 	while (++i < redir_l_c - 1)
+	// 	{
+	// 		rdl->quote_count[i].left = quote_count_left(redir_l[i]);
+	// 		rdl->quote_count[i].right = quote_count_right(redir_l[i]);
+	// 	}
+	// }
+	parser_arg(rdl);
 }
