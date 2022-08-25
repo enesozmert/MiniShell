@@ -76,7 +76,7 @@ norm:
 
 
 $(NAME):	$(OBJ)
-			@$(CC) $(OBJ) $(CFLAGS) -lreadline -o $(NAME) $(LIBFT)
+			@$(CC) $(OBJ) $(LIBFT) $(CFLAGS) -lreadline -o $(NAME)
 			@echo $(NAME) compiled!
 
 clean:

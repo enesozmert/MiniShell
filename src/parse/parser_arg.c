@@ -60,14 +60,18 @@ void parser_arg(t_rdl *rdl)
 			k++;
 		}
 		if (rdl->main_str[i] == '<' && rdl->main_str[i + 1] != '<')
+		{
 			flag = 0;
-		printf("k = %d\n", k);
+			k++;
+		}
+		// printf("k = %d\n", k);
 	}
 }
 
 void parser_arg_split(t_rdl *rdl)
 {
 	int i;
+	int flag_redir;
 	char **redir_l;
 	char **redir_r;
 	int redir_l_c;
@@ -77,19 +81,55 @@ void parser_arg_split(t_rdl *rdl)
 	redir_r = NULL;
 	redir_l_c = 0;
 	redir_r_c = 0;
-	if (ft_strchr(rdl->main_str, '>') != NULL)
+	if (ft_strchr(rdl->main_str, '<') != NULL && ft_strchr(rdl->main_str, '>') != NULL)
+	{
+		while (--i < rdl->len)
+		{
+			if (rdl->main_str[i] == '>')
+			{
+				flag_redir = 0;
+				break;
+			}
+			if (rdl->main_str[i] == '<')
+			{
+				flag_redir = 1;
+				break;
+			}
+		}
+		if (flag_redir == 0) //>
+		{
+			i = -1;
+			redir_r = ft_split(rdl->main_str, '>');
+			redir_r_c = count_matris((void **)redir_r);
+			rdl->quote_count = malloc(sizeof(t_quote_count) * redir_r_c);
+			while (redir_r[++i])
+			{
+				redir_l = ft_split(redir_r[i]);
+			}
+			
+			
+			// printf("redir_r_c %d\n", redir_r_c);
+			while (++i < redir_r_c)
+			{
+				rdl->quote_count[i].left = quote_count_left(redir_r[i]);
+				rdl->quote_count[i].right = quote_count_right(redir_r[i]);
+			}
+		}
+		else if (flag_redir == 1) //<
+		{
+		}
+	}
+	else if (ft_strchr(rdl->main_str, '>') != NULL)
 	{
 		i = -1;
 		redir_r = ft_split(rdl->main_str, '>');
 		redir_r_c = count_matris((void **)redir_r);
-		printf("redir_r_c %d\n", redir_r_c);
+		// printf("redir_r_c %d\n", redir_r_c);
 		rdl->quote_count = malloc(sizeof(t_quote_count) * redir_r_c);
 		while (++i < redir_r_c)
 		{
 			rdl->quote_count[i].left = quote_count_left(redir_r[i]);
 			rdl->quote_count[i].right = quote_count_right(redir_r[i]);
-			printf("rdl->quote_count[%d].left\n", rdl->quote_count[i].left);
-			printf("rdl->quote_count[%d].right\n", rdl->quote_count[i].right);
 		}
 	}
 	else if (ft_strchr(rdl->main_str, '<') != NULL)
@@ -97,7 +137,7 @@ void parser_arg_split(t_rdl *rdl)
 		i = -1;
 		redir_l = ft_split(rdl->main_str, '<');
 		redir_l_c = count_matris((void **)redir_l);
-		printf("redir_l_c %d\n", redir_l_c);
+		// printf("redir_l_c %d\n", redir_l_c);
 		rdl->quote_count = malloc(sizeof(t_quote_count) * redir_l_c);
 		while (++i < redir_l_c)
 		{
@@ -105,5 +145,6 @@ void parser_arg_split(t_rdl *rdl)
 			rdl->quote_count[i].right = quote_count_right(redir_l[i]);
 		}
 	}
+
 	parser_arg(rdl);
 }
