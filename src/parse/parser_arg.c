@@ -35,6 +35,7 @@ void parser_arg(t_rdl *rdl)
 	int j;
 	int k;
 	int c;
+	int c_n;
 	int flag;
 
 	i = -1;
@@ -44,6 +45,7 @@ void parser_arg(t_rdl *rdl)
 	while (++i < rdl->len + 1)
 	{
 		c = rdl->main_str[i];
+		c_n = rdl->main_str[i + 1];
 		if (c == '\"' || c == '\'')
 			flag++;
 		if (flag <= 0)
@@ -54,6 +56,11 @@ void parser_arg(t_rdl *rdl)
 			parser_arg_isnotoperator(c, &j, rdl);
 		if (is_operator(rdl, c))
 			parser_add_operator(rdl, c);
+		// if ((c == '\"' && c_n != '\"') || (c == '\'' && c_n != '\''))
+		// {
+		// 	flag = 0;
+		// 	k++;
+		// }
 		// printf("k = %d\n", k);
 	}
 }
@@ -103,8 +110,8 @@ void parser_arg_split(t_rdl *rdl)
 	int i;
 	int j;
 	int len;
-	int find;
 	int next;
+	int find;
 	int l_find;
 	int r_find;
 	int c;
@@ -117,8 +124,8 @@ void parser_arg_split(t_rdl *rdl)
 	r_find = 0;
 	l_find = 0;
 	find = 0;
-	next = 0;
 	len = 0;
+	next = 0;
 	while (i < rdl->len)
 	{
 		c = rdl->main_str[i];
@@ -136,25 +143,21 @@ void parser_arg_split(t_rdl *rdl)
 		if ((c == '\"' && c_n != '\"') || (c == '\'' && c_n != '\''))
 		{
 			if (find == 0)
-			{
 				l_find = i;
-			}
 			else if (find == 1)
 			{
 				r_find = i;
-				printf("ft_substr: %s\n", ft_substr(rdl->main_str, l_find, next + 2));
-				printf("quote_count_left %d : \n", quote_count_left(ft_substr(rdl->main_str, l_find, r_find)));
-				printf("quote_count_right %d : \n", quote_count_right(ft_substr(rdl->main_str, l_find, r_find)));
-				rdl->quote_count[j].left = quote_count_left(ft_substr(rdl->main_str, l_find, r_find));
-				rdl->quote_count[j].right = quote_count_right(ft_substr(rdl->main_str, l_find, r_find));
+				printf("ft_substr: %s\n", ft_substr(rdl->main_str, l_find, r_find));
+				printf("quote_count_left %d : \n", quote_count_left(ft_substr(rdl->main_str, l_find, r_find - l_find)));
+				printf("quote_count_right %d : \n", quote_count_right(ft_substr(rdl->main_str, l_find, r_find - l_find)));
+				rdl->quote_count[j].left = quote_count_left(ft_substr(rdl->main_str, l_find, r_find - l_find));
+				rdl->quote_count[j].right = quote_count_right(ft_substr(rdl->main_str, l_find, r_find - l_find));
 				find = 0;
+				next = 0;
 				j++;
 			}
 			find++;
-			next = 0;
 		}
-		else
-			next++;
 		i++;
 	}
 	i = 0;
