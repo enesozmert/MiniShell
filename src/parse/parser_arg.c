@@ -90,14 +90,14 @@ void parser_arg_split(t_rdl *rdl)
 	{
 		c = str[i];
 		c_n = str[i + 1];
-		if (find == 0)
+		if (!is_operator(rdl, rdl->main_str[i]) && find == 0)
 			parser_arg_isnotoperator(rdl->main_str[i], &j, rdl);
 		if (c == '\"' && c_n != '\"')
 			findl = i + 1;
 		else if (c != '\"' && c_n == '\"')
 		{
 			findr = i;
-			if (find % 2 != 0 && !is_operator(rdl, rdl->main_str[i]))
+			if (find % 2 != 0)
 				parser_add(rdl, ft_substr(str, findl, findr - findl + 1));
 			find++;
 		}
