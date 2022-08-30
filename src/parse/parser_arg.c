@@ -97,7 +97,7 @@ void parser_arg_split(t_rdl *rdl)
 		else if (c != '\"' && c_n == '\"')
 		{
 			findr = i;
-			if (find % 2 != 0)
+			if (find % 2 != 0 && !is_operator(rdl, rdl->main_str[i]))
 				parser_add(rdl, ft_substr(str, findl, findr - findl + 1));
 			find++;
 		}
