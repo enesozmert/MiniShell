@@ -56,12 +56,6 @@ void parser_arg(t_rdl *rdl)
 			parser_arg_isnotoperator(c, &j, rdl);
 		if (is_operator(rdl, c))
 			parser_add_operator(rdl, c);
-		// if ((c == '\"' && c_n != '\"') || (c == '\'' && c_n != '\''))
-		// {
-		// 	flag = 0;
-		// 	k++;
-		// }
-		// printf("k = %d\n", k);
 	}
 }
 
@@ -72,7 +66,6 @@ void parser_arg_split(t_rdl *rdl)
 	int findr;
 	int find;
 	int c_n;
-	int c_p;
 	int c;
 	char *str;
 
@@ -80,25 +73,33 @@ void parser_arg_split(t_rdl *rdl)
 	findl = 0;
 	findr = 0;
 	find = 0;
-	str = NULL;
+	str = ft_strdup(rdl->main_str);
 	while (i < rdl->len)
 	{
 		c = rdl->main_str[i];
-		c_n = rdl->main_str[i + 1];
-		c_p = rdl->main_str[i - 1];
-		if ((c == '\"' || c == '\'') && c_n != '\"' && find == 0)
+		if (c == '\'')
+			str[i] = '\"';
+		else
+			str[i] = c;
+		i++;
+	}
+	// printf("str : %s\n", str);
+	i = 0;
+	while (i < rdl->len)
+	{
+		c = str[i];
+		c_n = str[i + 1];
+		if (c == '\"' && c_n != '\"')
 		{
 			findl = i + 1;
-			find = 1;
 		}
-		else if ((c == '\"' || c == '\'') && c_p != '\'' && find == 1)
+		else if (c != '\"' && c_n == '\"')
 		{
 			findr = i;
-			str = ft_substr(rdl->main_str, findl, findr - findl);
-			printf("substr : %s \n", str);
-			find = 0;
+			if (find % 2 != 0)
+				printf("substr : %s \n", ft_substr(str, findl, findr - findl + 1));
+			find++;
 		}
-
 		i++;
 	}
 
