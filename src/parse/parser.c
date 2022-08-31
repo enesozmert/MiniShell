@@ -16,7 +16,7 @@ void parser(t_rdl *rdl)
     if (result == NULL)
         parser_default(rdl);
     else
-        parser_arg_split(rdl);
+        parser_arg(rdl);
     print_token(rdl->token);
 }
 

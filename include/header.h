@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/08/25 21:27:55 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/08/31 16:10:58 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,6 @@ typedef struct s_token
 	struct s_token	*next;
 }	t_token;
 
-typedef struct s_quote_count
-{
-	int left;
-	int right;
-}	t_quote_count;
-
 typedef struct s_rdl
 {
 	int						len;
@@ -56,7 +50,6 @@ typedef struct s_rdl
 	char					*main_str;
 	char					*buffer;
 	t_token					*token;
-	t_quote_count			*quote_count;
 	struct s_keyword		*keyword_list;
 	struct s_operator		*operator_list;
 }	t_rdl;
@@ -119,7 +112,6 @@ void			parser_default(t_rdl *rdl);
 void			parser_add_buffer(int *j, t_rdl *rdl);
 void			parser_arg_isnotoperator(int c, int *j, t_rdl *rdl);
 void			parser_arg_isoperator(int c, int *j, t_rdl *rdl);
-void			parser_arg_split(t_rdl *rdl);
 //keywords
 void			keyword_list(t_keyword *keyword);
 int				keywords_clear(t_keyword *keyword);
