@@ -63,6 +63,7 @@ void parser_arg_split(t_rdl *rdl)
 {
 	int i;
 	int j;
+	int k;
 	int findl;
 	int findr;
 	int find;
@@ -70,13 +71,15 @@ void parser_arg_split(t_rdl *rdl)
 	int c_n;
 	int c;
 	char *str;
+	char *sub_str;
 
 	i = 0;
-	flag = 0;
+	j = 0;
+	k = -1;
 	findl = 0;
 	findr = 0;
 	find = 0;
-	j = 0;
+	flag = 0;
 	str = ft_strdup(rdl->main_str);
 	while (i < rdl->len)
 	{
@@ -88,28 +91,29 @@ void parser_arg_split(t_rdl *rdl)
 		i++;
 	}
 	i = 0;
-	while (i < rdl->len)
+	while (i < rdl->len + 1)
 	{
 		c = str[i];
 		c_n = str[i + 1];
-		if (find == 0)
+		if (find % 2 == 0)
 			parser_arg_isnotoperator(rdl->main_str[i], &j, rdl);
-		if (c == '\"' && c_n != '\"')
+		if (is_operator(rdl, rdl->main_str[i]))
+			parser_add_operator(rdl, rdl->main_str[i]);
+		if ((c == '\"' || c == '\0') && c_n != '\"')
+		{
+			find++;
 			findl = i + 1;
+		}
 		else if (c != '\"' && c_n == '\"')
 		{
 			findr = i;
 			if (find % 2 != 0)
 			{
-				parser_add(rdl, ft_substr(str, findl, findr - findl + 1));
-				find = 0;
+				sub_str = ft_substr(str, findl, findr - findl + 1);
+				parser_add(rdl, sub_str);
 			}
-			find++;
 		}
-		if (is_operator(rdl, rdl->main_str[i]))
-			parser_add_operator(rdl, rdl->main_str[i]);
 		i++;
 	}
-
 	// parser_arg(rdl);
 }
