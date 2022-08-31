@@ -105,13 +105,15 @@ void parser_arg_split(t_rdl *rdl)
 			findl = i + 1;
 			flag = 0;
 		}
-		else if (c != '\"' && c_n == '\"')
+		if (c != '\"' && c_n == '\"')
 		{
 			findr = i;
 			if (find % 2 != 0)
 			{
 				sub_str = ft_substr(str, findl, findr - findl + 1);
-				printf("substr : %s\n", sub_str);
+				printf("substr : '%s'\n", sub_str);
+				if (sub_str[0] == ' ')
+					find++;
 				parser_add(rdl, sub_str);
 			}
 			flag = 1;
