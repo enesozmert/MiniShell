@@ -50,16 +50,7 @@ void parser_arg(t_rdl *rdl)
 	find = 0;
 	flag = 0;
 	str = ft_strdup(rdl->main_str);
-	while (i < rdl->len)
-	{
-		c = rdl->main_str[i];
-		if (c == '\'')
-			str[i] = '\"';
-		else
-			str[i] = c;
-		i++;
-	}
-	i = 0;
+	str = char_replace(str, '\'', '\"');
 	while (i < rdl->len + 1)
 	{
 		c = str[i];
@@ -80,14 +71,11 @@ void parser_arg(t_rdl *rdl)
 			if (find % 2 != 0)
 			{
 				sub_str = ft_substr(str, findl, findr - findl + 1);
-				printf("substr : '%s'\n", sub_str);
-				if (sub_str[0] == ' ')
-					find++;
+				printf("substr : %s\n", sub_str);
 				parser_add(rdl, sub_str);
 			}
 			flag = 1;
 		}
 		i++;
 	}
-	// parser_arg(rdl);
 }

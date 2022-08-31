@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/08/31 16:10:58 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/08/31 16:17:48 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ int				ft_isalnum(int c);
 int				quote_count_left(char *str);
 int				quote_count_right(char *str);
 int				count_matris(void **matris);
+char			*char_replace(char *str, char find, char replace);
 //history
 int				my_add_history(char *str);
 //parser

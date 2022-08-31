@@ -32,7 +32,7 @@ RDL			=	rdl
 SYNTAX		=	syntax quote
 STATIC		=	keyword_list operator_list
 LEXICAL		=	lexical is_keyword is_operator find_operator find_keyword
-CORE		=	white_space count_char quote_count count_matris
+CORE		=	white_space count_char quote_count count_matris char_replace
 #FileCreate
 
 SRC_FILES	+=	$(addprefix $(SRC_COMMON),$(COMMON))
