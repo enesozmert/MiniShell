@@ -92,22 +92,21 @@ void parser_arg_split(t_rdl *rdl)
 	{
 		c = str[i];
 		c_n = str[i + 1];
+		if (find == 0)
+			parser_arg_isnotoperator(rdl->main_str[i], &j, rdl);
 		if (c == '\"' && c_n != '\"')
 			findl = i + 1;
 		else if (c != '\"' && c_n == '\"')
 		{
 			findr = i;
 			if (find % 2 != 0)
+			{
 				parser_add(rdl, ft_substr(str, findl, findr - findl + 1));
+				find = 0;
+			}
 			find++;
 		}
-		if (c == '\"' && c_n != '\"')
-			flag = 1;
-		else if (c != '\"' && c_n == '\"')
-			flag = 0;
-		if (flag == 0)
-			parser_arg_isnotoperator(rdl->main_str[i], &j, rdl);
-		else if (is_operator(rdl, rdl->main_str[i]) && flag == 1)
+		if (is_operator(rdl, rdl->main_str[i]))
 			parser_add_operator(rdl, rdl->main_str[i]);
 		i++;
 	}
