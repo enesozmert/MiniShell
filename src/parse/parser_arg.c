@@ -66,11 +66,13 @@ void parser_arg_split(t_rdl *rdl)
 	int findl;
 	int findr;
 	int find;
+	int flag;
 	int c_n;
 	int c;
 	char *str;
 
 	i = 0;
+	flag = 0;
 	findl = 0;
 	findr = 0;
 	find = 0;
@@ -90,8 +92,6 @@ void parser_arg_split(t_rdl *rdl)
 	{
 		c = str[i];
 		c_n = str[i + 1];
-		if (!is_operator(rdl, rdl->main_str[i]) && find == 0)
-			parser_arg_isnotoperator(rdl->main_str[i], &j, rdl);
 		if (c == '\"' && c_n != '\"')
 			findl = i + 1;
 		else if (c != '\"' && c_n == '\"')
@@ -101,7 +101,13 @@ void parser_arg_split(t_rdl *rdl)
 				parser_add(rdl, ft_substr(str, findl, findr - findl + 1));
 			find++;
 		}
-		if (is_operator(rdl, rdl->main_str[i]))
+		if (c == '\"' && c_n != '\"')
+			flag = 1;
+		else if (c != '\"' && c_n == '\"')
+			flag = 0;
+		if (flag == 0)
+			parser_arg_isnotoperator(rdl->main_str[i], &j, rdl);
+		else if (is_operator(rdl, rdl->main_str[i]) && flag == 1)
 			parser_add_operator(rdl, rdl->main_str[i]);
 		i++;
 	}
