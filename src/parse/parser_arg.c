@@ -34,63 +34,51 @@ void parser_arg(t_rdl *rdl)
 	int j;
 	char *s;
 	char **str;
-	i = 1;
+	i = 0;
 	j = 0;
 	s = ft_strdup(rdl->main_str);
 	str = ft_split(s, ' ');
 	i = ft_strlen(str[0]);
 	parser_add(rdl, str[0]);
-	i++;
 	while (s[i])
-	{	j = 0;
+	{
+		j = 0;
 		if (s[i] == '\'')
 		{
-			//printf("testif 1 ");
-			i++;
+			// i++;
 			while (s[i] != '\'')
 			{
 				rdl->buffer[j++] = s[i];
 				i++;
 			}
- 			rdl->buffer[j] = '\0';
+			rdl->buffer[j] = '\0';
 			parser_add(rdl, rdl->buffer);
 		}
 		else if (s[i] == '\"')
 		{
-			//printf("testif 2 ");
 			i++;
 			while (s[i] != '\"')
 			{
 				rdl->buffer[j++] = s[i];
 				i++;
 			}
-			//printf("i: %d\n", i);
 			rdl->buffer[j] = '\0';
 			parser_add(rdl, rdl->buffer);
 		}
 		else if (is_operator(rdl, s[i]))
 		{
-			//printf("testif 3");
 			parser_add_operator(rdl, s[i]);
 		}
-		else if (s[i] != '\'' && s[i] != '\"' && s[i] > 32)
+		else if (is_operator(rdl, s[i]) == 0 && s[i] > 32)
 		{
-			printf("testif 4 ");
-			printf("s[i] : %c i:%d\n", s[i], i);
-	
-			while (s[i] != '\"' && s[i] != '\'' && s[i] != '\0')
+			while (is_operator(rdl, s[i]) == 0 && s[i] != '\0')
 			{
 				rdl->buffer[j++] = s[i];
 				i++;
 			}
 			rdl->buffer[j] = '\0';
-
-			printf("son else if: %s i: %d\n", rdl->buffer, i);
 			parser_add(rdl, rdl->buffer);
 		}
-		
-			i++;
-
-
+		i++;
 	}
 }
