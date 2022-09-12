@@ -40,38 +40,56 @@ void parser_arg(t_rdl *rdl)
 	str = ft_split(s, ' ');
 	i = ft_strlen(str[0]);
 	parser_add(rdl, str[0]);
+	i++;
 	while (s[i])
 	{
+		j = 0;
 		if (s[i] == '\'')
 		{
+			printf("testif 1");
 			i++;
 			while (s[i] != '\'')
 			{
 				rdl->buffer[j++] = s[i];
 				i++;
 			}
+			i++;
 			rdl->buffer[j] = '\0';
 			parser_add(rdl, rdl->buffer);
 		}
 		else if (s[i] == '\"')
 		{
+			printf("testif 2");
 			i++;
 			while (s[i] != '\"')
 			{
 				rdl->buffer[j++] = s[i];
 				i++;
 			}
+			i++;
+			//printf("i: %d\n", i);
 			rdl->buffer[j] = '\0';
 			parser_add(rdl, rdl->buffer);
 		}
 		else if (is_operator(rdl, s[i]))
 		{
+			printf("testif 3");
 			parser_add_operator(rdl, s[i]);
 		}
-		else if (is_operator(rdl, s[i]) == 0 && s[i] > 32)
+		else if (s[i] != '\'' && s[i] != '\"' && s[i] > 32)
 		{
-			parser_arg_isnotoperator(s[i], &i, rdl);
+			printf("testif 3");
+			printf("s[i] : %c i:%d\n", s[i], i);
+			while (s[i] != '\"' && s[i] != '\'' )
+			{
+				rdl->buffer[j++] = s[i];
+				i++;
+			}
+			rdl->buffer[j] = '\0';
+			i++;
+			printf("son else if: %s\n", rdl->buffer);
+			parser_add(rdl, rdl->buffer);
 		}
-		i++;
+			i++;
 	}
 }
