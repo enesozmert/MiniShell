@@ -47,7 +47,7 @@ void parser_arg(t_rdl *rdl)
 		{
 			//printf("testif 1 ");
 			i++;
-			while (s[i] != '\'')
+			while (s[i] != '\'' && s[i] != '\0')
 			{
 				rdl->buffer[j++] = s[i];
 				i++;
@@ -59,7 +59,7 @@ void parser_arg(t_rdl *rdl)
 		{
 			//printf("testif 2 ");
 			i++;
-			while (s[i] != '\"')
+			while (s[i] != '\"' && s[i] != '\0')
 			{
 				rdl->buffer[j++] = s[i];
 				i++;
@@ -89,7 +89,7 @@ void parser_arg(t_rdl *rdl)
 			parser_add(rdl, rdl->buffer);
 		}
 		
-			i++;
+		i++;
 
 
 	}
