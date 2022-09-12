@@ -80,5 +80,6 @@ void parser_arg(t_rdl *rdl)
 			parser_add(rdl, rdl->buffer);
 		}
 		i++;
+		
 	}
 }
