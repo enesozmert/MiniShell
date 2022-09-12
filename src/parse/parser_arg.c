@@ -32,49 +32,45 @@ void parser_arg(t_rdl *rdl)
 {
 	int i;
 	int j;
-	int k;
-	int findl;
-	int findr;
-	int find;
-	int flag;
-	int c_n;
-	int c;
-	char *str;
-	char *sub_str;
-
-	i = 0;
+	char *s;
+	char **str;
+	i = 1;
 	j = 0;
-	k = -1;
-	findl = 0;
-	findr = 0;
-	find = 0;
-	flag = 0;
-	str = ft_strdup(rdl->main_str);
-	str = char_replace(str, '\'', '\"');
-	while (i < rdl->len + 1)
+	s = ft_strdup(rdl->main_str);
+	str = ft_split(s, ' ');
+	i = ft_strlen(str[0]);
+	parser_add(rdl, str[0]);
+	while (s[i])
 	{
-		c = str[i];
-		c_n = str[i + 1];
-		if (find % 2 == 0)
-			parser_arg_isnotoperator(rdl->main_str[i], &j, rdl);
-		if (is_operator(rdl, rdl->main_str[i]) && (find % 2 == 0 || flag == 1))
-			parser_add_operator(rdl, rdl->main_str[i]);
-		if ((c == '\"' || c == '\0') && c_n != '\"')
+		if (s[i] == '\'')
 		{
-			find++;
-			findl = i + 1;
-			flag = 0;
-		}
-		if (c != '\"' && c_n == '\"')
-		{
-			findr = i;
-			if (find % 2 != 0)
+			i++;
+			while (s[i] != '\'')
 			{
-				sub_str = ft_substr(str, findl, findr - findl + 1);
-				printf("substr : %s\n", sub_str);
-				parser_add(rdl, sub_str);
+				rdl->buffer[j++] = s[i];
+				i++;
 			}
-			flag = 1;
+			rdl->buffer[j] = '\0';
+			parser_add(rdl, rdl->buffer);
+		}
+		else if (s[i] == '\"')
+		{
+			i++;
+			while (s[i] != '\"')
+			{
+				rdl->buffer[j++] = s[i];
+				i++;
+			}
+			rdl->buffer[j] = '\0';
+			parser_add(rdl, rdl->buffer);
+		}
+		else if (is_operator(rdl, s[i]))
+		{
+			parser_add_operator(rdl, s[i]);
+		}
+		else if (is_operator(rdl, s[i]) == 0 && s[i] > 32)
+		{
+			parser_arg_isnotoperator(s[i], &i, rdl);
 		}
 		i++;
 	}
