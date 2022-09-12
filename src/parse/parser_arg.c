@@ -89,6 +89,7 @@ void parser_arg(t_rdl *rdl)
 			i++;
 			printf("son else if: %s\n", rdl->buffer);
 			parser_add(rdl, rdl->buffer);
+			
 		}
 			i++;
 	}
