@@ -1,107 +1,79 @@
 #include "../../include/header.h"
 
-void parser_arg_isoperator(int c, int *j, t_rdl *rdl)
+void parser_arg_isoperator(int c, int *k, t_rdl *rdl)
 {
 	int i;
+	int j;
 
-	i = *j;
-	if ((is_operator(rdl, c) == 0) || c == ' ')
-		rdl->buffer[i++] = c;
-	else if ((c != ' ' || c != '\t') && (i != 0))
-		parser_add_buffer(&i, rdl);
-	// if (c == '\0')
-	// 	parser_add_buffer(&i, rdl);
-	*j = i;
+	j = 0;
+	i = *k;
+	i++;
+	while (rdl->main_str[i] != (char)c && rdl->main_str[i] != '\0')
+	{
+		rdl->buffer[j++] = rdl->main_str[i];
+		i++;
+		rdl->flag = 1;
+	}
+	if (rdl->flag == 1)
+		rdl->buffer[j] = '\0';
+	if (ft_strlen(rdl->buffer) != 0)
+		parser_add(rdl, rdl->buffer);
+	else
+		ft_bzero(rdl->buffer, ft_strlen(rdl->buffer));
+	if (rdl->main_str[i] == (char)c)
+	{
+		parser_add_operator(rdl, rdl->main_str[i]);
+		i++;
+		rdl->flag = 1;
+	}
+	*k = i;
 }
 
-void parser_arg_isnotoperator(int c, int *j, t_rdl *rdl)
+void parser_arg_isnotoperator(int *k, t_rdl *rdl)
+{
+	int i;
+	int j;
+
+	i = *k;
+	j = 0;
+	while (is_operator(rdl, rdl->main_str[i]) == 0 && rdl->main_str[i] != '\0' && is_keyword(rdl, rdl->buffer) == 0)
+	{
+		rdl->buffer[j++] = rdl->main_str[i];
+		i++;
+		rdl->flag = 1;
+	}
+	rdl->buffer[j] = '\0';
+	parser_add(rdl, rdl->buffer);
+	*k = i;
+}
+
+void parser_add_quote(int c, int *k, t_rdl *rdl)
 {
 	int i;
 
-	i = *j;
-	if (is_operator(rdl, c) == 0 && c != ' ')
-		rdl->buffer[i++] = c;
-	else if ((c != ' ' || c != '\t') && (i != 0))
-		parser_add_buffer(&i, rdl);
-	if (c == '\0')
-		parser_add_buffer(&i, rdl);
-	*j = i;
+	i = *k;
+	parser_add_operator(rdl, rdl->main_str[i]);
+	parser_arg_isoperator((char)c, &i, rdl);
+	*k = i;
 }
 
 void parser_arg(t_rdl *rdl)
 {
 	int i;
-	int j;
-	char *s;
-	int flag = 0;
 
 	i = 0;
-	j = 0;
-	s = ft_strdup(rdl->main_str);
 	while (i < rdl->len + 1)
 	{
-		j = 0;
-		flag = 0;
-		if (s[i] == '\'')
-		{
-			parser_add_operator(rdl, s[i]);
-			i++;
-			while (s[i] != '\'' && s[i] != '\0')
-			{
-				rdl->buffer[j++] = s[i];
-				i++;
-				flag = 1;
-			}
-			if(flag == 1)
-				rdl->buffer[j] = '\0';
-			if (ft_strlen(rdl->buffer) != 0)
-				parser_add(rdl, rdl->buffer);
-			else
-				ft_bzero(rdl->buffer, ft_strlen(rdl->buffer));
-			if (s[i] == '\'')
-			{
-				parser_add_operator(rdl, s[i]);
-				i++;
-				flag = 1;
-			}
-		}
-		else if (s[i] == '\"')
-		{
-			parser_add_operator(rdl, s[i]);
-			i++;
-			while (s[i] != '\"' && s[i] != '\0')
-			{
-				rdl->buffer[j++] = s[i];
-				i++;
-				flag = 1;
-			}
-			if(flag == 1)
-				rdl->buffer[j] = '\0';
-			if (ft_strlen(rdl->buffer) != 0)
-				parser_add(rdl, rdl->buffer);
-			else
-				ft_bzero(rdl->buffer, ft_strlen(rdl->buffer));
-			if (s[i] == '\"')
-			{
-				parser_add_operator(rdl, s[i]);
-				i++;
-				flag = 1;
-			}
-		}
-		else if (is_operator(rdl, s[i]))
-			parser_add_operator(rdl, s[i]);
-		else if (is_operator(rdl, s[i]) == 0 && s[i] > 32 && s[i] != '\0')
-		{
-			while (is_operator(rdl, s[i]) == 0 && s[i] != '\0' && is_keyword(rdl, rdl->buffer) == 0)
-			{
-				rdl->buffer[j++] = s[i];
-				i++;
-				flag = 1;
-			}
-			rdl->buffer[j] = '\0';
-			parser_add(rdl, rdl->buffer);
-		}
-		if (flag == 0)
+		rdl->flag = 0;
+		if (rdl->main_str[i] == '\'')
+			parser_add_quote('\'', &i, rdl);
+		else if (rdl->main_str[i] == '\"')
+			parser_add_quote('\"', &i, rdl);
+		else if (is_operator(rdl, rdl->main_str[i]))
+			parser_add_operator(rdl, rdl->main_str[i]);
+		else if (is_operator(rdl, rdl->main_str[i]) == 0 && rdl->main_str[i] > 32 && rdl->main_str[i] != '\0')
+			parser_arg_isnotoperator(&i, rdl);
+		if (rdl->flag == 0)
 			i++;
 	}
 }

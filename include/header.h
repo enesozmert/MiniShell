@@ -46,6 +46,7 @@ typedef struct s_token
 typedef struct s_rdl
 {
 	int						len;
+	int						flag;
 	int						word_count;
 	char					*main_str;
 	char					*buffer;
@@ -111,8 +112,8 @@ void			parser_add_operator(t_rdl *rdl, char c);
 void			parser_arg(t_rdl *rdl);
 void			parser_default(t_rdl *rdl);
 void			parser_add_buffer(int *j, t_rdl *rdl);
-void			parser_arg_isnotoperator(int c, int *j, t_rdl *rdl);
-void			parser_arg_isoperator(int c, int *j, t_rdl *rdl);
+void			parser_arg_isnotoperator(int *k, t_rdl *rdl);
+void			parser_arg_isoperator(int c, int *k, t_rdl *rdl);
 //keywords
 void			keyword_list(t_keyword *keyword);
 int				keywords_clear(t_keyword *keyword);
