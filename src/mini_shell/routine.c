@@ -11,7 +11,7 @@ void routine()
 		if (!check_white_space(rdl->main_str))
 		{
 			lexical_analizer(rdl);
-			// syntax(rdl);
+			syntax(rdl);
 			//parser(rdl);
 			my_add_history(rdl->main_str);
 			keywords_clear(rdl->keyword_list);
