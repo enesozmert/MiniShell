@@ -69,8 +69,7 @@ void parser_arg(t_rdl *rdl)
 				parser_add_operator(rdl, s[i]);
 				i++;
 				flag = 1;
-			}
-			
+			}	
 		}
 		else if (s[i] == '\"')
 		{
