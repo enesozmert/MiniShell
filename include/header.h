@@ -101,19 +101,24 @@ int				count_char(char *str, char c);
 int				ft_isalnum(int c);
 int				quote_count_left(char *str);
 int				quote_count_right(char *str);
+int				quote_count(char *str, int c);
 int				count_matris(void **matris);
 char			*char_replace(char *str, char find, char replace);
+int				char_pos(char *str);
+char			*keyword_trim(char *str);
 //history
 int				my_add_history(char *str);
 //parser
 void			parser(t_rdl *rdl);
 void			parser_add(t_rdl *rdl, char *buffer);
 void			parser_add_operator(t_rdl *rdl, char c);
-void			parser_arg(t_rdl *rdl);
 void			parser_default(t_rdl *rdl);
 void			parser_add_buffer(int *j, t_rdl *rdl);
+void			parser_arg(t_rdl *rdl);
 void			parser_arg_isnotoperator(int *k, t_rdl *rdl);
 void			parser_arg_isoperator(int c, int *k, t_rdl *rdl);
+void			parser_arg_quote(int c, int *k, t_rdl *rdl);
+void			parser_arg_keyword(t_rdl *rdl);
 //keywords
 void			keyword_list(t_keyword *keyword);
 int				keywords_clear(t_keyword *keyword);

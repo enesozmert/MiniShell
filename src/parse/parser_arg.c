@@ -47,7 +47,7 @@ void parser_arg_isnotoperator(int *k, t_rdl *rdl)
 	*k = i;
 }
 
-void parser_add_quote(int c, int *k, t_rdl *rdl)
+void parser_arg_quote(int c, int *k, t_rdl *rdl)
 {
 	int i;
 
@@ -57,18 +57,37 @@ void parser_add_quote(int c, int *k, t_rdl *rdl)
 	*k = i;
 }
 
+void parser_arg_keyword(t_rdl *rdl)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (rdl->main_str[i] <= 32 && rdl->main_str[i] != '\0')
+		i++;
+	while (rdl->main_str[i] != '\0' && rdl->main_str[i] > 32)
+	{
+		rdl->buffer[j++] = rdl->main_str[i];
+		i++;
+	}
+	rdl->buffer[j] = '\0';
+	parser_add(rdl, rdl->buffer);
+}
+
 void parser_arg(t_rdl *rdl)
 {
 	int i;
 
-	i = 0;
+	parser_arg_keyword(rdl);
+	i = char_pos(rdl->main_str);
 	while (i < rdl->len + 1)
 	{
 		rdl->flag = 0;
 		if (rdl->main_str[i] == '\'')
-			parser_add_quote('\'', &i, rdl);
+			parser_arg_quote('\'', &i, rdl);
 		else if (rdl->main_str[i] == '\"')
-			parser_add_quote('\"', &i, rdl);
+			parser_arg_quote('\"', &i, rdl);
 		else if (is_operator(rdl, rdl->main_str[i]))
 			parser_add_operator(rdl, rdl->main_str[i]);
 		else if (is_operator(rdl, rdl->main_str[i]) == 0 && rdl->main_str[i] > 32 && rdl->main_str[i] != '\0')

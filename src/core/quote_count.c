@@ -38,3 +38,18 @@ int quote_count_right(char *str)
 	}
 	return (count);
 }
+
+int quote_count(char *str, int c)
+{
+	int count;
+	int i;
+
+	i = -1;
+	count = 0;
+	while (str[++i])
+	{
+		if (str[i] == (char)c)
+			count++;
+	}
+	return (count);
+}
