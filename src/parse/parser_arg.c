@@ -42,7 +42,7 @@ void parser_arg(t_rdl *rdl)
 	str = ft_split(s, ' ');
 	i = ft_strlen(str[0]);
 	parser_add(rdl, str[0]);
-	while (s[i])
+	while (i < rdl->len + 1)
 	{
 		j = 0;
 		flag = 0;
