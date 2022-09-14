@@ -16,7 +16,8 @@ int syntax_analizer(t_rdl *rdl)
 {
 	t_token *token_zero;
 
-	token_zero = get_token_id(rdl->token, 0);
+	token_zero = get_token_id(rdl->token, 0); 
+	token_zero->context = keyword_trim(token_zero->context);
 	printf("token zero %s\n", token_zero->context);
 	if (is_keyword(rdl, token_zero->context))
 		printf("True\n");
