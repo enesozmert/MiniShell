@@ -33,15 +33,11 @@ void parser_arg(t_rdl *rdl)
 	int i;
 	int j;
 	char *s;
-	char **str;
 	int flag = 0;
 
-	i = 1;
+	i = 0;
 	j = 0;
 	s = ft_strdup(rdl->main_str);
-	str = ft_split(s, ' ');
-	i = ft_strlen(str[0]);
-	parser_add(rdl, str[0]);
 	while (i < rdl->len + 1)
 	{
 		j = 0;
@@ -59,9 +55,7 @@ void parser_arg(t_rdl *rdl)
 			if(flag == 1)
 				rdl->buffer[j] = '\0';
 			if (ft_strlen(rdl->buffer) != 0)
-			{
 				parser_add(rdl, rdl->buffer);
-			}
 			else
 				ft_bzero(rdl->buffer, ft_strlen(rdl->buffer));
 			if (s[i] == '\'')
@@ -69,7 +63,7 @@ void parser_arg(t_rdl *rdl)
 				parser_add_operator(rdl, s[i]);
 				i++;
 				flag = 1;
-			}	
+			}
 		}
 		else if (s[i] == '\"')
 		{
@@ -84,9 +78,7 @@ void parser_arg(t_rdl *rdl)
 			if(flag == 1)
 				rdl->buffer[j] = '\0';
 			if (ft_strlen(rdl->buffer) != 0)
-			{
 				parser_add(rdl, rdl->buffer);
-			}
 			else
 				ft_bzero(rdl->buffer, ft_strlen(rdl->buffer));
 			if (s[i] == '\"')
@@ -97,12 +89,10 @@ void parser_arg(t_rdl *rdl)
 			}
 		}
 		else if (is_operator(rdl, s[i]))
-		{
 			parser_add_operator(rdl, s[i]);
-		}
 		else if (is_operator(rdl, s[i]) == 0 && s[i] > 32 && s[i] != '\0')
 		{
-			while (is_operator(rdl, s[i]) == 0 && s[i] != '\0')
+			while (is_operator(rdl, s[i]) == 0 && s[i] != '\0' && is_keyword(rdl, rdl->buffer) == 0)
 			{
 				rdl->buffer[j++] = s[i];
 				i++;
