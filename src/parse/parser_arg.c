@@ -35,6 +35,7 @@ void parser_arg(t_rdl *rdl)
 	char *s;
 	char **str;
 	int flag = 0;
+
 	i = 1;
 	j = 0;
 	s = ft_strdup(rdl->main_str);
@@ -47,6 +48,7 @@ void parser_arg(t_rdl *rdl)
 		flag = 0;
 		if (s[i] == '\'')
 		{
+			parser_add_operator(rdl, s[i]);
 			i++;
 			while (s[i] != '\'' && s[i] != '\0')
 			{
@@ -54,22 +56,25 @@ void parser_arg(t_rdl *rdl)
 				i++;
 				flag = 1;
 			}
-			rdl->buffer[j] = '\0';
-			if (s[i] == '\'')
-			{
-				i++;
-				flag = 1;
-			}
+			if(flag == 1)
+				rdl->buffer[j] = '\0';
 			if (ft_strlen(rdl->buffer) != 0)
 			{
 				parser_add(rdl, rdl->buffer);
-				ft_bzero(rdl->buffer, ft_strlen(rdl->buffer));
 			}
 			else
 				ft_bzero(rdl->buffer, ft_strlen(rdl->buffer));
+			if (s[i] == '\'')
+			{
+				parser_add_operator(rdl, s[i]);
+				i++;
+				flag = 1;
+			}
+			
 		}
 		else if (s[i] == '\"')
 		{
+			parser_add_operator(rdl, s[i]);
 			i++;
 			while (s[i] != '\"' && s[i] != '\0')
 			{
@@ -77,19 +82,24 @@ void parser_arg(t_rdl *rdl)
 				i++;
 				flag = 1;
 			}
-			rdl->buffer[j] = '\0';
-			if (s[i] == '\"')
-			{
-				i++;
-				flag = 1;
-			}
+			if(flag == 1)
+				rdl->buffer[j] = '\0';
 			if (ft_strlen(rdl->buffer) != 0)
 			{
 				parser_add(rdl, rdl->buffer);
-				ft_bzero(rdl->buffer, ft_strlen(rdl->buffer));
 			}
 			else
 				ft_bzero(rdl->buffer, ft_strlen(rdl->buffer));
+			if (s[i] == '\"')
+			{
+				parser_add_operator(rdl, s[i]);
+				i++;
+				flag = 1;
+			}
+		}
+		else if (is_operator(rdl, s[i]))
+		{
+			parser_add_operator(rdl, s[i]);
 		}
 		else if (is_operator(rdl, s[i]) == 0 && s[i] > 32 && s[i] != '\0')
 		{
@@ -103,9 +113,6 @@ void parser_arg(t_rdl *rdl)
 			parser_add(rdl, rdl->buffer);
 		}
 		if (flag == 0)
-		{
-			parser_add_operator(rdl, (char)s[i]);
 			i++;
-		}
 	}
 }
