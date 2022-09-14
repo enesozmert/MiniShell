@@ -35,7 +35,7 @@ void parser_arg(t_rdl *rdl)
 	char *s;
 	char **str;
 	int flag = 0;
-	
+
 	i = 1;
 	j = 0;
 	s = ft_strdup(rdl->main_str);
