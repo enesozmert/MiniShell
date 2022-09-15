@@ -69,14 +69,6 @@ typedef struct s_operator
 	int		(*f)(t_rdl *);
 }	t_operator;
 
-
-typedef struct s_syntax_tree
-{
-	char	*context;
-	struct	s_syntax_tree	*left;
-	struct	s_syntax_tree	*right;
-}	t_syntax_tree;
-
 //main
 void			routine();
 //lexcical
@@ -126,6 +118,7 @@ int				keywords_size(t_keyword *keyword);
 //syntax
 void			syntax(t_rdl *rdl);
 int				syntax_analizer(t_rdl *rdl);
+int				keyword_syntax(t_rdl *rdl, char *str);
 void			operator_list(t_operator *operator);
 //quoet
 int				single_quote(t_rdl *rdl);
