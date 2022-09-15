@@ -119,6 +119,7 @@ int				keywords_size(t_keyword *keyword);
 void			syntax(t_rdl *rdl);
 int				syntax_analizer(t_rdl *rdl);
 int				keyword_syntax(t_rdl *rdl, char *str);
+int				keyword_quoute_syntax(char *str);
 void			operator_list(t_operator *operator);
 //quoet
 int				single_quote(t_rdl *rdl);
