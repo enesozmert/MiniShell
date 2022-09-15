@@ -21,6 +21,7 @@ SRC_SYNTAX	=	syntax/
 SRC_LEXICAL	=	lexical/
 SRC_STATIC	=	static/
 SRC_CORE	=	core/
+SRC_EXCEPTION	=	exception/
 
 #Files
 COMMON		= 	main reader routine 
@@ -29,10 +30,11 @@ TOKEN		=	get_token token_clear token_print token_add token_new token_size
 HISTORY		=	history
 PARSE		=	parser parser_add parser_arg parser_add_buffer
 RDL			=	rdl
-SYNTAX		=	syntax quote keyword_syntax
+SYNTAX		=	syntax quote keyword_syntax quote_syntax
 STATIC		=	keyword_list operator_list
 LEXICAL		=	lexical is_keyword is_operator find_operator find_keyword
 CORE		=	white_space count_char quote_count count_matris char_replace char_pos keyword_trim
+EXCEPTION   =	exception_handler
 #FileCreate
 
 SRC_FILES	+=	$(addprefix $(SRC_COMMON),$(COMMON))
@@ -45,6 +47,7 @@ SRC_FILES	+=	$(addprefix $(SRC_SYNTAX),$(SYNTAX))
 SRC_FILES	+=	$(addprefix $(SRC_LEXICAL),$(LEXICAL))
 SRC_FILES	+=	$(addprefix $(SRC_STATIC),$(STATIC))
 SRC_FILES	+=	$(addprefix $(SRC_CORE),$(CORE))
+SRC_FILES	+=	$(addprefix $(SRC_EXCEPTION),$(EXCEPTION))
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -65,6 +68,7 @@ $(OBJF):
 			@mkdir -p $(OBJ_DIR)$(SRC_LEXICAL)
 			@mkdir -p $(OBJ_DIR)$(SRC_STATIC)
 			@mkdir -p $(OBJ_DIR)$(SRC_CORE)
+			@mkdir -p $(OBJ_DIR)$(SRC_EXCEPTION)
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJF)
 			@$(CC) $(CFLAGS) -c $< -o $@

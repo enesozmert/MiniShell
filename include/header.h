@@ -69,6 +69,13 @@ typedef struct s_operator
 	int		(*f)(t_rdl *);
 }	t_operator;
 
+typedef struct s_exception
+{
+	int				error_code;
+	char			*message;
+	int				(*f)(t_rdl *);
+}	t_exception;
+
 //main
 void			routine();
 //lexcical
@@ -118,8 +125,8 @@ int				keywords_size(t_keyword *keyword);
 //syntax
 void			syntax(t_rdl *rdl);
 int				syntax_analizer(t_rdl *rdl);
-int				keyword_syntax(t_rdl *rdl, char *str);
-int				keyword_quoute_syntax(char *str);
+int				keyword_syntax(t_rdl *rdl);
+int				keyword_quoute_syntax(t_rdl *rdl);
 void			operator_list(t_operator *operator);
 //quoet
 int				single_quote(t_rdl *rdl);
@@ -129,4 +136,7 @@ int				is_keyword(t_rdl *rdl, char *str);
 int				is_operator(t_rdl *rdl, char c);
 t_keyword		find_keyword(t_rdl *rdl, char *str);
 t_operator		find_operator(t_rdl *rdl, char c);
+//exception
+void			exception_handler(t_rdl *rdl);
 #endif
+

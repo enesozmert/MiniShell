@@ -5,7 +5,7 @@ void syntax(t_rdl *rdl)
 	int i;
 
 	i = -1;
-	while (++i < rdl->word_count)
+	while (++i < token_size(rdl->token))
 	{
 		syntax_analizer(rdl);
 		get_next_token(&rdl->token);
@@ -14,13 +14,6 @@ void syntax(t_rdl *rdl)
 
 int syntax_analizer(t_rdl *rdl)
 {
-	t_token *token_zero;
-
-	token_zero = get_token_id(rdl->token, 0);
-	printf("token zero %s\n", token_zero->context);
-	if (keyword_syntax(rdl, token_zero->context))
-		printf("True\n");
-	else
-		printf("False\n");
+	exception_handler(rdl);
 	return (1);
 }

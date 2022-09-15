@@ -2,10 +2,6 @@
 
 t_rdl *rdl_init(t_rdl *rdl)
 {
-	int i;
-	char **split_str;
-
-	i = 0;
 	if (rdl == NULL)
 		rdl = malloc(sizeof(t_rdl) * 1);
 	rdl->main_str = ft_read_line();
@@ -13,10 +9,6 @@ t_rdl *rdl_init(t_rdl *rdl)
 	rdl->buffer = malloc(sizeof(char) * rdl->len);
 	rdl->keyword_list = malloc(sizeof(t_keyword) * 8);
 	rdl->operator_list = malloc(sizeof(t_operator) * 8);
-	split_str = ft_split(rdl->main_str, ' ');
-	while (split_str[i])
-		i++;
-	rdl->word_count = i;
 	return (rdl);
 }
 
