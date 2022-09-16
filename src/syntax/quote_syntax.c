@@ -11,17 +11,17 @@ int keyword_quoute_syntax(t_rdl *rdl)
 	s_q = 0;
 	i = 0;
 	token = get_token_id(rdl->token, 0);
-	printf("token context : %s\n", token->context);
 	while(i < (int)ft_strlen(token->context))
 	{
 	    if(token->context[i] == '\"' )
 	    {
 	        d_q++;
 	        i++;
-	        while(token->context[i++] != '\"')
+	        while(token->context[i] != '\"')
 	        {
                 if(token->context[i] == '\0')
                     break;
+				i++;
 	        }
 	        if(token->context[i] == '\"')
 	            d_q++;
@@ -30,10 +30,11 @@ int keyword_quoute_syntax(t_rdl *rdl)
 	    {
 	        s_q++;
 	        i++;
-	        while(token->context[i++] != '\'' )
+	        while(token->context[i] != '\'' )
 	        {
                 if(token->context[i] == '\0')
                     break;
+				i++;
 	        }
 	        if(token->context[i] == '\'')
 	            s_q++;

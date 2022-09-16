@@ -50,6 +50,7 @@ typedef struct s_rdl
 	int						word_count;
 	char					*main_str;
 	char					*buffer;
+	char					*error_arg;
 	t_token					*token;
 	struct s_keyword		*keyword_list;
 	struct s_operator		*operator_list;
@@ -105,6 +106,7 @@ int				count_matris(void **matris);
 char			*char_replace(char *str, char find, char replace);
 int				char_pos(char *str);
 char			*keyword_trim(char *str);
+int				keyword_trim_len(char *str);
 //history
 int				my_add_history(char *str);
 //parser
@@ -137,6 +139,7 @@ int				is_operator(t_rdl *rdl, char c);
 t_keyword		find_keyword(t_rdl *rdl, char *str);
 t_operator		find_operator(t_rdl *rdl, char c);
 //exception
-void			exception_handler(t_rdl *rdl);
+int				exception_handler(t_rdl *rdl);
+void			exception_write(t_rdl *rdl, char *message);
 #endif
 
