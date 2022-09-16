@@ -5,6 +5,7 @@ LIBFT		=	./libft/libft.a
 CC			=	gcc
 CFLAGS		=	-Wall -Werror -Wextra -g
 RM			=	rm -f
+READLINE	=	/Users/eozmert/goinfre/homebrew/opt/readline/lib/libreadline.8.dylib
 
 #Directory
 OBJ_DIR		=	obj/
@@ -80,7 +81,7 @@ norm:
 
 
 $(NAME):	$(OBJ)
-			@$(CC) $(OBJ) $(LIBFT) $(CFLAGS) -lreadline -o $(NAME)
+			@$(CC) $(OBJ) $(READLINE) $(LIBFT) $(CFLAGS) -lreadline -o $(NAME) 
 			@echo $(NAME) compiled!
 
 clean:
