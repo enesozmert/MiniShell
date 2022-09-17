@@ -43,14 +43,21 @@ typedef struct s_token
 	struct s_token	*next;
 }	t_token;
 
+typedef struct	s_quote
+{
+	int	flag;
+	int	dq;
+	int	sq;
+}	t_quote;
+
 typedef struct s_rdl
 {
 	int						len;
-	int						flag;
 	int						word_count;
 	char					*main_str;
 	char					*buffer;
 	char					*error_arg;
+	t_quote					*quote;
 	t_token					*token;
 	struct s_keyword		*keyword_list;
 	struct s_operator		*operator_list;
@@ -129,6 +136,7 @@ void			syntax(t_rdl *rdl);
 int				syntax_analizer(t_rdl *rdl);
 int				keyword_syntax(t_rdl *rdl);
 int				keyword_quoute_syntax(t_rdl *rdl);
+int				quote_syntax(t_rdl *rdl);
 void			operator_list(t_operator *operator);
 //quoet
 int				single_quote(t_rdl *rdl);
