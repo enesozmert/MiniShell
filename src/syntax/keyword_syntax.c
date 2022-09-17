@@ -6,6 +6,8 @@ int keyword_syntax(t_rdl *rdl)
 	t_token *token;
 
 	i = -1;
+	if (rdl->token->id != 0)
+		return (0);
 	token = get_token_id(rdl->token, 0);
 	while (token->context[++i])
 		ft_tolower(token->context[i]);

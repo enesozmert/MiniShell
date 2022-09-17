@@ -1,4 +1,4 @@
-#include "../../include/header.h"
+// #include "../../include/header.h"
 
 // char *env_path(char *env, char *cmd)
 // {

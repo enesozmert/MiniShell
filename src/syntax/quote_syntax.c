@@ -10,6 +10,8 @@ int keyword_quoute_syntax(t_rdl *rdl)
 	d_q = 0;
 	s_q = 0;
 	i = 0;
+	if (rdl->token->id != 0)
+		return (0);
 	token = get_token_id(rdl->token, 0);
 	while(i < (int)ft_strlen(token->context))
 	{

@@ -84,6 +84,15 @@ typedef struct s_exception
 	int				(*f)(t_rdl *);
 }	t_exception;
 
+typedef struct s_command
+{
+	char	*type;
+	char	*arg;
+	char	*option;
+	int		(*f)(char *);
+}	t_command;
+
+
 //main
 void			routine();
 //lexcical
