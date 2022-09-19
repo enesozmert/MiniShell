@@ -13,6 +13,9 @@ int redir_syntax(t_rdl *rdl)
             rdl->redir->output_count++;
         else if (rdl->token->context[0] == '<')
             rdl->redir->input_count++;
+        if ((rdl->token->context[0] == '>' && rdl->token->next->context[0] == '<')
+            || (rdl->token->context[0] == '<' && rdl->token->next->context[0] == '>'))
+            return (103);
     }
     if (rdl->redir->input_count > 2 || rdl->redir->output_count > 2)
         return (103);
