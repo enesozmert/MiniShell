@@ -5,7 +5,8 @@ LIBFT		=	./libft/libft.a
 CC			=	gcc
 CFLAGS		=	-Wall -Werror -Wextra -g
 RM			=	rm -f
-READLINE	=	/Users/eozmert/goinfre/homebrew/opt/readline/lib/libreadline.8.dylib
+#READLINE	=	/Users/eozmert/goinfre/homebrew/opt/readline/lib/libreadline.8.dylib
+READLINE	=	/Users/cyalniz/goinfre/homebrew/opt/readline/lib/libreadline.8.dylib
 
 #Directory
 OBJ_DIR		=	obj/
