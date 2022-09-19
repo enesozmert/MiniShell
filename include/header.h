@@ -67,7 +67,6 @@ typedef struct s_rdl
 typedef struct s_keyword
 {
 	char				*type;
-	char				*arg;
 }	t_keyword;
 
 typedef struct s_operator
@@ -157,5 +156,7 @@ t_operator		find_operator(t_rdl *rdl, char c);
 //exception
 int				exception_handler(t_rdl *rdl);
 void			exception_write(t_rdl *rdl, char *message);
+//command
+void			command_list(t_command *command);
 #endif
 

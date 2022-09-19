@@ -9,7 +9,7 @@ int	keywords_clear(t_keyword *keywords)
 	{
 		// printf("type : %s | arg : %s\n", commands[i].type, commands[i].arg);
 		// if (commands[i].arg != NULL)
-			free(keywords[i].arg);
+		// free(keywords[i].arg);
 		i++;
 	}
 	// free(commands);
