@@ -9,7 +9,7 @@ int print_token(t_token *token)
 	while (token)
 	{
 		ft_putstr_fd((token)->context, 1);
-		ft_putstr_fd(" ", 1); 
+		ft_putstr_fd(" ", 1);
 		ft_putstr_fd((token)->type, 1);
 		ft_putstr_fd("\n", 1); 
 		token = token->next;

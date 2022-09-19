@@ -111,6 +111,7 @@ void			token_delone(t_token *token);
 void			token_clear(t_token **token);
 int				token_size(t_token *token);
 void			token_add_index(t_token **token);
+void			token_add_type(t_token **token);
 t_token			*get_token_id(t_token *token, int id);
 void			get_next_token(t_token **token);
 //rd_line

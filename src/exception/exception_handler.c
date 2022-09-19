@@ -30,7 +30,6 @@ int	exception_handler(t_rdl *rdl)
 		handle_code = exception[i].f(rdl);
 		if (handle_code == exception[i].error_code)
 		{
-			printf("excep_hand func: %d excp_mes: %s\n", handle_code, exception->message);
 			exception_write(rdl, exception[i].message);
 			rl_on_new_line();
 			return (-1);
