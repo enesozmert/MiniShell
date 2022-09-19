@@ -61,8 +61,8 @@ void	token_add_type(t_token **token)
 
 	i = 0;
 	rdl = malloc(sizeof(t_rdl));
-	rdl->keyword_list = malloc(sizeof(t_keyword));
-	rdl->operator_list = malloc(sizeof(t_operator));
+	rdl->keyword_list = malloc(sizeof(t_keyword) * 8);
+	rdl->operator_list = malloc(sizeof(t_operator) * 8);
 	keyword_list(rdl->keyword_list);
 	operator_list(rdl->operator_list);
 	token_cpy = *token;
