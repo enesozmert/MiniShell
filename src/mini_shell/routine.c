@@ -12,7 +12,6 @@ void routine()
 		{
 			lexical_analizer(rdl);
 			syntax(rdl);
-			//parser(rdl);
 			my_add_history(rdl->main_str);
 			keywords_clear(rdl->keyword_list);
 			token_clear(&rdl->token);

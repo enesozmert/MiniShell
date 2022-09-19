@@ -14,6 +14,9 @@ t_rdl *rdl_init(t_rdl *rdl)
 	rdl->quote->dq = 0;
 	rdl->quote->sq = 0;
 	rdl->quote->flag = 0;
+	rdl->redir = malloc(sizeof(t_redir) * 1);
+	rdl->redir->input_count = 0;
+	rdl->redir->output_count = 0;
 	return (rdl);
 }
 

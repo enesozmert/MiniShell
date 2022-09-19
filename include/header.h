@@ -50,6 +50,13 @@ typedef struct	s_quote
 	int	sq;
 }	t_quote;
 
+typedef	struct s_redir
+{
+	int	input_count;
+	int	output_count;
+}	t_redir;
+
+
 typedef struct s_rdl
 {
 	int						len;
@@ -58,6 +65,7 @@ typedef struct s_rdl
 	char					*buffer;
 	char					*error_arg;
 	t_quote					*quote;
+	t_redir					*redir;
 	t_token					*token;
 	struct s_keyword		*keyword_list;
 	struct s_operator		*operator_list;
@@ -145,6 +153,7 @@ int				keyword_syntax(t_rdl *rdl);
 int				keyword_quoute_syntax(t_rdl *rdl);
 int				quote_syntax(t_rdl *rdl);
 void			operator_list(t_operator *operator);
+int				redir_syntax(t_rdl *rdl);
 //quoet
 int				single_quote(t_rdl *rdl);
 //lexical
