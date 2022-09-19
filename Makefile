@@ -38,7 +38,7 @@ STATIC		=	keyword_list operator_list command_list
 LEXICAL		=	lexical is_keyword is_operator find_operator find_keyword
 CORE		=	white_space count_char quote_count count_matris char_replace char_pos keyword_trim keyword_trim_len
 EXCEPTION   =	exception_handler exception_write
-COMMAND		=	create_command
+COMMAND		=	command_create
 #FileCreate
 
 SRC_FILES	+=	$(addprefix $(SRC_COMMON),$(COMMON))
