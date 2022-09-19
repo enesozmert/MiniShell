@@ -9,6 +9,7 @@ t_rdl *rdl_init(t_rdl *rdl)
 	rdl->buffer = malloc(sizeof(char) * rdl->len);
 	rdl->keyword_list = malloc(sizeof(t_keyword) * 8);
 	rdl->operator_list = malloc(sizeof(t_operator) * 8);
+	rdl->command_list = malloc(sizeof(t_command) * 8);
 	rdl->quote = malloc(sizeof(t_quote) * 1);
 	rdl->quote->dq = 0;
 	rdl->quote->sq = 0;
