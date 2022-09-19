@@ -22,7 +22,7 @@ int command(t_rdl *rdl)
         command_create(rdl);
 		get_next_token(&rdl->token);
 	}
-    
+    return (0);
 }
 
 int command_create(t_rdl *rdl)
@@ -31,18 +31,16 @@ int command_create(t_rdl *rdl)
     {
         rdl->command_list->type = "keyword";
         rdl->command_list->arg = rdl->token->context;
-/*         rdl->command_list->option = 
+    /*  rdl->command_list->option = 
         rdl->command_list->f =  */
     }
     else if (ft_strncmp(rdl->token->type, "arg", ft_strlen("arg")))
     {
         rdl->command_list->type = "arg";
         rdl->command_list->arg = rdl->token->context;
-/*         rdl->command_list->option = 
+    /*  rdl->command_list->option = 
         rdl->command_list->f =  */
     }
     //optionsı alamadığımız için burada ekletemiyoruz :(
-
-
-        
+    return (0);       
 }

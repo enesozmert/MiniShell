@@ -33,7 +33,7 @@ t_token *token_add(t_token *token, char *ptr)
 	// 	i++;
 	// }
 	token_add_index(&token);
-	token_add_type(&token);
+	//token_add_type(&token);
 	return (token);
 }
 

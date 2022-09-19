@@ -167,6 +167,8 @@ t_operator		find_operator(t_rdl *rdl, char c);
 int				exception_handler(t_rdl *rdl);
 void			exception_write(t_rdl *rdl, char *message);
 //command
+int				command(t_rdl *rdl);
+int				command_create(t_rdl *rdl);
 void			command_list(t_command *command);
 #endif
 
