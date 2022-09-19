@@ -13,6 +13,7 @@
         "unordered_map": "c",
         "exception_handler": "c",
         "history.h": "c",
-        "exception": "c"
+        "exception": "c",
+        "chrono": "c"
     }
 }
