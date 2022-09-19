@@ -12,9 +12,17 @@ int keyword_syntax(t_rdl *rdl)
 	while (token->context[++i])
 		ft_tolower(token->context[i]);
 	token->context = keyword_trim(token->context);
-	rdl->error_arg = malloc(sizeof(char)*ft_strlen(token->context));
-	rdl->error_arg = token->context;
     if (is_keyword(rdl, token->context))
+	{
+		rdl->error_arg = malloc(sizeof(char)*ft_strlen(token->context));
+		rdl->error_arg = NULL;
         return (0);
-    return (101);
+	}
+	else
+	{
+		rdl->error_arg = malloc(sizeof(char)*ft_strlen(token->context));
+		rdl->error_arg = token->context;
+    	return (101);
+	}
+	return (0);
 }
