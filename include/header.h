@@ -61,6 +61,7 @@ typedef struct s_rdl
 	t_token					*token;
 	struct s_keyword		*keyword_list;
 	struct s_operator		*operator_list;
+	struct s_command		*command_list;
 }	t_rdl;
 
 typedef struct s_keyword
@@ -73,8 +74,6 @@ typedef struct s_operator
 {
 	char	*name;
 	char	*sybl;
-	int		count;
-	int		(*f)(t_rdl *);
 }	t_operator;
 
 typedef struct s_exception
