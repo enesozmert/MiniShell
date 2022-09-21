@@ -95,7 +95,8 @@ typedef struct s_command
 	char	*type;
 	char	*arg;
 	char	*option;
-	int		(*f)(char *);
+	int		(*f)(struct s_command *);
+	int		count;
 }	t_command;
 
 
@@ -170,5 +171,8 @@ void			exception_write(t_rdl *rdl, char *message);
 int				command(t_rdl *rdl);
 int				command_create(t_rdl *rdl);
 void			command_list(t_command *command);
+int				command_run(t_rdl *rdl);
+int				command_find(t_rdl *rdl, char *type);
+//builtin
+int				echo_start(t_command *command);
 #endif
-

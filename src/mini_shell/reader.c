@@ -4,6 +4,6 @@ char  *ft_read_line(void)
 {
 	char *str;
 	
-	str = readline("🧿");
+	str = readline("->");
 	return (str);
 }

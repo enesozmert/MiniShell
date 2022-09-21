@@ -2,9 +2,6 @@
 
 int redir_syntax(t_rdl *rdl)
 {
-    int i;
-
-    i = 0;
     if (rdl->token->id == 0)
         return (0);
     if (rdl->token->len == 1)
