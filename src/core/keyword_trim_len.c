@@ -9,6 +9,8 @@ int keyword_trim_len(char *str)
 	i = 0;
 	j = 0;
     flag = 0;
+	// if (ft_strncmp(str, "\'", ft_strlen(str)) != 0 && ft_strncmp(str, "\"", ft_strlen(str)) != 0)
+	// 	return (ft_strlen(str));
 	while(str[i])
 	{
 	    flag = 0;

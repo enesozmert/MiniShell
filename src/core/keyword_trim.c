@@ -5,11 +5,14 @@ char *keyword_trim(char *str)
   	int i;
 	int j;
 	int len;
-	int flag = 0;
+	int flag;
 	char *dest;
 
 	i = 0;
 	j = 0;
+	flag = 0;
+	// if (ft_strncmp(str, "\'", ft_strlen(str)) != 0 && ft_strncmp(str, "\"", ft_strlen(str)) != 0)
+	// 	return (str);
 	len = keyword_trim_len(str);
 	dest = malloc(sizeof(char ) * len);
 	while(str[i])
