@@ -12,8 +12,6 @@ int keyword_syntax(t_rdl *rdl)
 	while (token->context[++i])
 		ft_tolower(token->context[i]);
 	token->context = keyword_trim(token->context);
-	printf("token->context %s\n", token->context);
-	print_token(rdl->token);
     if (is_keyword(rdl, token->context))
 	{
 		rdl->error_arg = malloc(sizeof(char)*ft_strlen(token->context));
