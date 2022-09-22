@@ -17,8 +17,7 @@ void parser(t_rdl *rdl)
         parser_default(rdl);
     else
         parser_arg(rdl);
-    print_token(rdl->token);
-    
+    //print_token(rdl->token);
 }
 
 void parser_default(t_rdl *rdl)
