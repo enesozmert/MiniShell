@@ -58,7 +58,7 @@ void	token_add_type(t_token **token)
 	int		i;
 	t_rdl  *rdl;
 	t_token	*token_cpy;
-
+	char	*new_trim;
 	i = -1;
 	rdl = malloc(sizeof(t_rdl));
 	rdl->keyword_list = malloc(sizeof(t_keyword) * 8);
@@ -68,9 +68,11 @@ void	token_add_type(t_token **token)
 	token_cpy = *token;
 	while (++i < token_size(*token))
 	{
-		if (is_keyword(rdl, token_cpy->context))
+		if (token_cpy->id == 0)
+			new_trim = keyword_trim(token_cpy->context);
+		if (token_cpy->id == 0 && is_keyword(rdl, new_trim))
 			token_cpy->type = ft_strdup("keyword");
-		else if (is_operator(rdl, token_cpy->context[0]) 
+		else if (is_operator(rdl, token_cpy->context[0])
 				&& (token_cpy)->len == 1)
 			token_cpy->type = ft_strdup("operator");
 		else if ((token_cpy)->len > 1 && is_keyword(rdl, token_cpy->context) == 0)
