@@ -1,8 +1,8 @@
 #include "../../include/header.h"
 
-int echo_start(t_command *command)
+int echo_start(t_command command)
 {
-    (void)command;
+    // (void)command;
     // int i;
     // int arg_count;
 
@@ -10,7 +10,7 @@ int echo_start(t_command *command)
     // arg_count = 2;
     // while (++i < arg_count)
     // {
-        // printf("%s\n", command->arg[0]);
+        printf("%s\n", command.arg[0]);
     // }
     return (0);
 }
