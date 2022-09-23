@@ -131,6 +131,7 @@ char			*char_replace(char *str, char find, char replace);
 int				char_pos(char *str);
 char			*keyword_trim(char *str);
 int				keyword_trim_len(char *str);
+int				token_arg_count(t_token *token);
 //history
 int				my_add_history(char *str);
 //parser
