@@ -39,11 +39,8 @@ int command_create(t_rdl *rdl)
 {
     int command_id;
     int arg_id;
-<<<<<<< HEAD
     int arg_count;
-=======
     //int op_id;
->>>>>>> 53730c1edf77ec24658a4448e65b25e036587c1e
 
     //op_id = 0;
     command_id = 0;
