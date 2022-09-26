@@ -6,7 +6,7 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:48:35 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/09/26 10:06:34 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/09/26 11:27:31 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int command_create(t_rdl *rdl)
         // printf("token arg count : %d\n", token_arg_count(rdl->token));
         // printf("command_id %d\n", command_id);
         rdl->command_list->count++;
+            
     }
     else if (ft_strncmp(rdl->token->type, "arg", ft_strlen("arg")) == 0)
     {
