@@ -6,7 +6,7 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:48:35 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/09/19 17:02:36 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/09/26 10:06:34 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int command(t_rdl *rdl)
 	i = -1;
 	while (++i < token_size(rdl->token))
 	{
-        command_create(rdl);
+        //command_create(rdl);
 		get_next_token(&rdl->token);
 	}
     command_run(rdl);
@@ -39,7 +39,9 @@ int command_create(t_rdl *rdl)
 {
     int command_id;
     int arg_id;
+    //int op_id;
 
+    //op_id = 0;
     command_id = 0;
     arg_id = 0;
     if (ft_strncmp(rdl->token->type, "keyword", ft_strlen("keyword")) == 0)
@@ -60,6 +62,11 @@ int command_create(t_rdl *rdl)
         // printf("command_id %d\n", command_id);
         arg_id++;
     }
+/*     else if(ft_strncmp(rdl->token->type, "operator", ft_strlen("operator")) == 0)
+    {
+        rdl->operator_list[op_id].sybl = rdl->token->context;
+        op_id++;
+    } */
     //optionsı alamadığımız için burada ekletemiyoruz :(
 
     return (0);       

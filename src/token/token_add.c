@@ -59,6 +59,9 @@ void	token_add_type(t_token **token)
 	t_rdl  *rdl;
 	t_token	*token_cpy;
 	char	*new_trim;
+	static int op_flag;
+
+	op_flag = 0;
 	i = -1;
 	rdl = malloc(sizeof(t_rdl));
 	rdl->keyword_list = malloc(sizeof(t_keyword) * 8);
@@ -66,6 +69,7 @@ void	token_add_type(t_token **token)
 	keyword_list(rdl->keyword_list);
 	operator_list(rdl->operator_list);
 	token_cpy = *token;
+	
 	while (++i < token_size(*token))
 	{
 		if (token_cpy->id == 0)
@@ -77,9 +81,14 @@ void	token_add_type(t_token **token)
 			token_cpy->type = ft_strdup("operator");
 		else if ((token_cpy)->len > 1 && is_keyword(rdl, token_cpy->context) == 0)
 			token_cpy->type = ft_strdup("arg");
+		//printf("%s: type: %s\n" , token_cpy->context,token_cpy->type);
 		token_cpy = token_cpy->next;
 	}
 	token_cpy = *token;
+/* 	if(ft_strncmp(token_cpy->context, "|", 1) == 0)
+		token_cpy->id = 0; */
+
+	
 	free(rdl->keyword_list);
 	free(rdl->operator_list);
 	free(rdl);
