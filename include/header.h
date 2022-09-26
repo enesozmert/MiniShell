@@ -93,7 +93,7 @@ typedef struct s_exception
 typedef struct s_command
 {
 	char	*type;
-	char	*arg;
+	char	**arg;
 	char	*option;
 	int		(*f)(struct s_command);
 	int		count;
