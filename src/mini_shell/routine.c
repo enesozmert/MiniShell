@@ -12,6 +12,8 @@ void routine()
 		{
 			lexical_analizer(rdl);
 			syntax(rdl);
+			//find_pipe_count(rdl);//new
+			//printf("pipe: %d", rdl->pipe_count);
 			command(rdl);
 			my_add_history(rdl->main_str);
 			keywords_clear(rdl->keyword_list);
