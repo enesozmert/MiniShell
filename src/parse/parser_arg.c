@@ -54,6 +54,7 @@ void parser_arg_quote(int c, int *k, t_rdl *rdl)
 	i = *k;
 	parser_add_operator(rdl, rdl->main_str[i]);
 	parser_arg_isoperator((char)c, &i, rdl);
+
 	*k = i;
 }
 

@@ -28,7 +28,7 @@ SRC_COMMAND	=	command/
 SRC_BUILTIN =	builtin/
 
 #Files
-COMMON		= 	main reader routine 
+COMMON		= 	main reader routine pipe
 KEYWORDS	=	keywords keywords_size
 TOKEN		=	get_token token_clear token_print token_add token_new token_size
 HISTORY		=	history

@@ -6,7 +6,7 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/09/19 15:41:03 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/09/27 09:46:36 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_rdl
 {
 	int						len;
 	int						word_count;
+	int						pipe_count;//new
 	char					*main_str;
 	char					*buffer;
 	char					*error_arg;
@@ -176,4 +177,7 @@ int				command_run(t_rdl *rdl);
 int				command_find(t_rdl *rdl, char *type);
 //builtin
 int				echo_start(t_command command);
+
+//new
+void			find_pipe_count(t_rdl *rdl);//new
 #endif
