@@ -175,6 +175,7 @@ int				command_create(t_rdl *rdl);
 void			command_list(t_command *command);
 int				command_run(t_rdl *rdl);
 int				command_find(t_rdl *rdl, char *type);
+int				command_malloc(t_rdl *rdl);
 //builtin
 int				echo_start(t_command command);
 

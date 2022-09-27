@@ -17,6 +17,7 @@ int command(t_rdl *rdl)
     int i;
 
 	i = -1;
+    command_malloc(rdl);
 	while (++i < token_size(rdl->token))
 	{
         command_create(rdl);
@@ -24,14 +25,30 @@ int command(t_rdl *rdl)
 	}
     command_run(rdl);
     i = -1;
-    // while (++i < 8)
-    // {
-    //     printf("type : %s |", rdl->command_list[i].type);
-    //     printf("arg : %s |", rdl->command_list[i].arg);
-    //     printf("option : %s |", rdl->command_list[i].option);
-    //     printf("count : %d |", rdl->command_list[i].count);
-    //     printf("\n");
-    // }
+    while (++i < 8)
+    {
+        printf("type : %s |", rdl->command_list[i].type);
+        printf("arg : %s |", rdl->command_list[i].arg[0]);
+        printf("option : %s |", rdl->command_list[i].option);
+        printf("count : %d |", rdl->command_list[i].count);
+        printf("\n");
+    }
+    return (0);
+}
+
+int command_malloc(t_rdl *rdl)
+{
+    int command_id;
+    int arg_count;
+
+    command_id = 0;
+    arg_count = token_arg_count(rdl->token);
+    if (ft_strncmp(rdl->token->type, "keyword", ft_strlen("keyword")) == 0)
+    {
+        command_id = command_find(rdl, rdl->token->context);
+        rdl->command_list[command_id].arg = (char **)ft_calloc(arg_count, sizeof(char *));
+        rdl->command_list[command_id].count++;
+    }
     return (0);
 }
 
@@ -40,27 +57,24 @@ int command_create(t_rdl *rdl)
     int command_id;
     int arg_id;
     int arg_count;
-    //int op_id;
-
-    //op_id = 0;
-    command_id = 0;
+    //şimdi header.h da command kısmında arg double poniter tutmalıyız
+    //evet
+    //şimdi çoklu mesaj yazdırmak vs lazım
+    //double pointer olunca *arg string oluyor ya
+    //command_id = 0;
     arg_id = 0;
+    command_id = command_find(rdl, rdl->token->context);
     arg_count = token_arg_count(rdl->token);
     if (ft_strncmp(rdl->token->type, "keyword", ft_strlen("keyword")) == 0)
     {
         command_id = command_find(rdl, rdl->token->context);
-        rdl->command_list[command_id].arg = (char **)malloc(sizeof(char *) * arg_count);
+        printf("arg_count %d\n", arg_count);
         rdl->command_list[command_id].count++;
     }
     else if (ft_strncmp(rdl->token->type, "arg", ft_strlen("arg")) == 0)
     {
-		// printf("arg id : %d\n", arg_id);
-        // rdl->command_list[command_id].arg[arg_id][0] = 'a';
-        rdl->command_list[command_id].arg[arg_id] = (char *)malloc(sizeof(char) * rdl->token->len);
-        rdl->command_list[command_id].arg[arg_id] = rdl->token->context;
-        // printf("%s\n",rdl->command_list[command_id].arg[0]);
-        // printf("%s\n",rdl->command_list[command_id].arg[arg_id]);
-        // printf("command_id %d\n", command_id);
+        if(!rdl->command_list[command_id].arg[arg_id])
+            rdl->command_list[command_id].arg[arg_id] = ft_strdup(rdl->token->context);
         arg_id++;
     }
 /*     else if(ft_strncmp(rdl->token->type, "operator", ft_strlen("operator")) == 0)
