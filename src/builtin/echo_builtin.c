@@ -1,15 +1,17 @@
 #include "../../include/header.h"
 
-int echo_start(t_command command)
+int echo_start(t_command command, t_rdl *rdl)
 {
     int i;
     int arg_count;
 
-    i = -1;
-    arg_count = 2;
-    while (++i < arg_count)
+    i = 0;
+    arg_count = token_arg_count(rdl->token);
+    printf("arg_count : %d\n", arg_count);
+    while (i < arg_count)
     {
-        printf("%s", command.arg[0]);
+        printf("%s", command.arg[i]);
+        i++;
     }
     printf("\n");
     return (0);

@@ -47,10 +47,10 @@ int command_malloc(t_rdl *rdl)
     if (ft_strncmp(rdl->token->type, "keyword", ft_strlen("keyword")) == 0)
     {
         command_id = command_find(rdl, rdl->token->context);
-        printf("command_id %d\n", command_id);
+        // printf("command_id %d\n", command_id);
         rdl->command_list[command_id].arg = (char **)ft_calloc(arg_count, sizeof(char *));
         rdl->command_list[command_id].count++;
-        printf("ok\n");
+        // printf("ok\n");
     }
     return (0);
 }
