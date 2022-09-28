@@ -73,6 +73,7 @@ int command_create(t_rdl *rdl)
     }
     else if (ft_strncmp(rdl->token->type, "arg", ft_strlen("arg")) == 0)
     {
+        command_id = command_find(rdl, rdl->token->context);
         if(!rdl->command_list[command_id].arg[arg_id])
             rdl->command_list[command_id].arg[arg_id] = ft_strdup(rdl->token->context);
         arg_id++;

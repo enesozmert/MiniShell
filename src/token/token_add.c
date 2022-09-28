@@ -75,7 +75,7 @@ void	token_add_type(t_token **token)
 		else if (is_operator(rdl, token_cpy->context[0])
 				&& (token_cpy)->len == 1)
 			token_cpy->type = ft_strdup("operator");
-		else if ((token_cpy)->len > 1)
+		else if ((token_cpy)->len > 0)
 			token_cpy->type = ft_strdup("arg");
 		token_cpy = token_cpy->next;
 	}
