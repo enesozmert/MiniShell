@@ -96,8 +96,9 @@ typedef struct s_command
 	char	*type;
 	char	**arg;
 	char	*option;
-	int		(*f)(struct s_rdl *, struct s_command);
+	int		(*f)(struct s_command);
 	int		count;
+	int		arg_count;
 }	t_command;
 
 
@@ -171,13 +172,15 @@ int				exception_handler(t_rdl *rdl);
 void			exception_write(t_rdl *rdl, char *message);
 //command
 int				command(t_rdl *rdl);
+int				command_init();
+int				command_clear(t_rdl *rdl);
 int				command_create(t_rdl *rdl);
 void			command_list(t_command *command);
 int				command_run(t_rdl *rdl);
 int				command_find(t_rdl *rdl, char *type);
 int				command_malloc(t_rdl *rdl);
 //builtin
-int				echo_start(t_rdl *rdl, t_command command);
+int				echo_start(t_command command);
 
 //new
 void			find_pipe_count(t_rdl *rdl);//new

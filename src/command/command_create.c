@@ -47,10 +47,8 @@ int command_malloc(t_rdl *rdl)
     if (ft_strncmp(rdl->token->type, "keyword", ft_strlen("keyword")) == 0)
     {
         command_id = command_find(rdl, rdl->token->context);
-        // printf("command_id %d\n", command_id);
         rdl->command_list[command_id].arg = (char **)ft_calloc(arg_count, sizeof(char *));
         rdl->command_list[command_id].count++;
-        // printf("ok\n");
     }
     return (0);
 }
@@ -65,14 +63,12 @@ int command_create(t_rdl *rdl)
     if (ft_strncmp(rdl->token->type, "keyword", ft_strlen("keyword")) == 0)
     {
         command_id = command_find(rdl, rdl->token->context);
-        //printf("command_id %d\n", command_id);
     }
     else if (ft_strncmp(rdl->token->type, "arg", ft_strlen("arg")) == 0)
     {
-        //printf("command_id %d\n", command_id);
-        rdl->command_list[command_id].arg[arg_id] = malloc(sizeof(char *) * rdl->token->len);
-        rdl->command_list[command_id].arg[arg_id] = rdl->token->context;
-        arg_id++;
+        arg_id = rdl->command_list[command_id].arg_count;
+        rdl->command_list[command_id].arg[arg_id] = ft_strdup(rdl->token->context);
+        rdl->command_list[command_id].arg_count++;
     }
 /*     else if(ft_strncmp(rdl->token->type, "operator", ft_strlen("operator")) == 0)
     {

@@ -10,10 +10,11 @@ int command_run(t_rdl *rdl)
 	while (rdl->command_list[i].type != NULL)
 	{
 		if (rdl->command_list[i].count >= 1)
-		    handle_code = rdl->command_list[i].f(rdl ,rdl->command_list[i]);
+		    handle_code = rdl->command_list[i].f(rdl->command_list[i]);
         if (handle_code == -1)
             return (-1);
 		i++;
 	}
+	command_clear(rdl);
 	return (0);
 }
