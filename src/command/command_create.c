@@ -70,11 +70,6 @@ int command_create(t_rdl *rdl)
         rdl->command_list[command_id].arg[arg_id] = ft_strdup(rdl->token->context);
         rdl->command_list[command_id].arg_count++;
     }
-/*     else if(ft_strncmp(rdl->token->type, "operator", ft_strlen("operator")) == 0)
-    {
-        rdl->operator_list[op_id].sybl = rdl->token->context;
-        op_id++;
-    } */
     //optionsı alamadığımız için burada ekletemiyoruz :(
 
     return (0);

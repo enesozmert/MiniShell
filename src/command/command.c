@@ -14,8 +14,6 @@ int command_clear(t_rdl *rdl)
     j = -1;
     while (++i < 8)
     {
-        // if (rdl->command_list[i].arg[0] == NULL)
-        //     return (0);
         while (++j < rdl->command_list[i].arg_count)
         {
             if (rdl->command_list[i].arg[j] != NULL)
