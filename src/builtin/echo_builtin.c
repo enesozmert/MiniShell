@@ -1,6 +1,6 @@
 #include "../../include/header.h"
 
-int echo_start(t_command command, t_rdl *rdl)
+int echo_start(t_rdl *rdl, t_command command)
 {
     int i;
     int arg_count;

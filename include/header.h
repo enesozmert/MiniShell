@@ -177,7 +177,7 @@ int				command_run(t_rdl *rdl);
 int				command_find(t_rdl *rdl, char *type);
 int				command_malloc(t_rdl *rdl);
 //builtin
-int				echo_start(t_command command, t_rdl *rdl);
+int				echo_start(t_rdl *rdl, t_command command);
 
 //new
 void			find_pipe_count(t_rdl *rdl);//new
