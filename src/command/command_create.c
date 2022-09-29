@@ -17,7 +17,6 @@ int command(t_rdl *rdl)
     int i;
 
 	i = -1;
-    // (void)rdl;
     command_malloc(rdl);
 	while (++i < token_size(rdl->token))
 	{
@@ -25,15 +24,6 @@ int command(t_rdl *rdl)
 		get_next_token(&rdl->token);
 	}
     command_run(rdl);
-    // i = -1;
-    // while (++i < 1)
-    // {
-    //     printf("type : %s |", rdl->command_list[i].type);
-    //     printf("arg : %s |", rdl->command_list[i].arg[0]);
-    //     printf("option : %s |", rdl->command_list[i].option);
-    //     printf("count : %d |", rdl->command_list[i].count);
-    //     printf("\n");
-    // }
     return (0);
 }
 
@@ -71,6 +61,5 @@ int command_create(t_rdl *rdl)
         rdl->command_list[command_id].arg_count++;
     }
     //optionsı alamadığımız için burada ekletemiyoruz :(
-
     return (0);
 }
