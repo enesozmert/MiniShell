@@ -54,7 +54,6 @@ void parser_arg_quote(int c, int *k, t_rdl *rdl)
 	i = *k;
 	parser_add_operator(rdl, rdl->main_str[i]);
 	parser_arg_isoperator((char)c, &i, rdl);
-
 	*k = i;
 }
 
@@ -93,6 +92,8 @@ void parser_arg(t_rdl *rdl)
 			parser_add_operator(rdl, rdl->main_str[i]);
 		else if (is_operator(rdl, rdl->main_str[i]) == 0 && rdl->main_str[i] > 32 && rdl->main_str[i] != '\0')
 			parser_arg_isnotoperator(&i, rdl);
+		if (rdl->quote->flag == 1 && rdl->main_str[i] <= 32 && rdl->main_str[i] != '\0')
+			parser_add(rdl, ft_strdup(" "));
 		if (rdl->quote->flag == 0)
 			i++;
 	}
