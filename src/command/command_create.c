@@ -6,7 +6,7 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:48:35 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/09/26 11:27:31 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/10/04 10:44:07 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int command_create(t_rdl *rdl)
     else if (ft_strncmp(rdl->token->type, "arg", ft_strlen("arg")) == 0)
     {
         arg_id = rdl->command_list[command_id].arg_count;
-        rdl->command_list[command_id].arg[arg_id] = ft_strdup(rdl->token->context);
+        rdl->command_list[command_id].arg[arg_id] = ft_strdup(rdl->token->context);//cd komutu burada segfault veriyor. neden? 
         rdl->command_list[command_id].arg_count++;
     }
     //optionsı alamadığımız için burada ekletemiyoruz :(

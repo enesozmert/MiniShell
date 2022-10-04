@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine.c                                          :+:      :+:    :+:   */
+/*   cd_builtin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/04 10:22:50 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/10/04 10:22:51 by cyalniz          ###   ########.fr       */
+/*   Created: 2022/10/04 10:32:33 by cyalniz           #+#    #+#             */
+/*   Updated: 2022/10/04 10:32:40 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-void routine()
+int cd_start(t_command command)
 {
-	t_rdl *rdl;
+    int i;
+    int arg_count;
 
-	rdl = NULL;
-	while (1)
-	{
-		rdl = rdl_init(rdl);
-		if (!check_white_space(rdl->main_str))
-		{
-			lexical_analizer(rdl);
-			syntax(rdl);
-			find_pipe_count(rdl);//new
-			command(rdl);
-			my_add_history(rdl->main_str);
-			keywords_clear(rdl->keyword_list);
-			token_clear(&rdl->token);
-			rdl_clear(rdl);
-		}
-	}
+    i = 0;
+    arg_count = command.arg_count;
+    if (arg_count > 2)
+        printf("to many arguments for cd");
+/*     while (i < arg_count)
+    {
+        
+        
+    } */
+    
+    return (0);
 }

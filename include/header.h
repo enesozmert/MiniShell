@@ -6,7 +6,7 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/10/04 09:38:04 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/10/04 10:46:19 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,8 @@ int				command_find(t_rdl *rdl, char *type);
 int				command_malloc(t_rdl *rdl);
 //builtin
 int				echo_start(t_command command);
+int				cd_start(t_command command);
+int				pwd_start(t_command command);
 
 //new
 void			find_pipe_count(t_rdl *rdl);//new

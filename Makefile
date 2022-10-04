@@ -41,7 +41,7 @@ CORE		=	white_space count_char quote_count count_matris char_replace \
 char_pos keyword_trim keyword_trim_len token_arg_count
 EXCEPTION   =	exception_handler exception_write
 COMMAND		=	command_create command_run command_find command
-BUILTIN		=	echo_builtin
+BUILTIN		=	echo_builtin cd_builtin pwd_builtin
 #FileCreate
 
 SRC_FILES	+=	$(addprefix $(SRC_COMMON),$(COMMON))
