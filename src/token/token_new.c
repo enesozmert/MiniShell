@@ -1,6 +1,6 @@
 #include "../../include/header.h"
 
-t_token *token_new(char *context)
+t_token *token_new(char *context, int flag)
 {
 	t_token *tmp;
 
@@ -9,5 +9,8 @@ t_token *token_new(char *context)
 	tmp->len = ft_strlen(context);
 	tmp->type = NULL;
 	tmp->next = NULL;
+	tmp->next = NULL;
+	tmp->t_flag = flag;
+	//printf("token new: %s\n", context);
 	return (tmp);
 }

@@ -22,18 +22,22 @@ void token_append(t_token **token, t_token *new)
 	}
 }
 
-t_token *token_add(t_token *token, char *ptr)
+t_token *token_add(t_token *token, char *ptr, int flag)
 {
 	// int i;
 
 	// i = 0;
 	// while (ptr[i])
 	// {
-		token_append(&token, token_new(ptr));
+		token_append(&token, token_new(ptr, flag));
+		//token->t_flag = flag;
+		
 	// 	i++;
 	// }
-	token_add_index(&token);
-	token_add_type(&token);
+
+	/* token_add_index(&token);
+	token_add_type(&token); */
+
 	return (token);
 }
 
@@ -59,6 +63,7 @@ void	token_add_type(t_token **token)
 	t_rdl  *rdl;
 	t_token	*token_cpy;
 	char	*new_trim;
+	
 	i = -1;
 	rdl = malloc(sizeof(t_rdl));
 	rdl->keyword_list = malloc(sizeof(t_keyword) * 8);
@@ -73,7 +78,7 @@ void	token_add_type(t_token **token)
 		if (token_cpy->id == 0 && is_keyword(rdl, new_trim))
 			token_cpy->type = ft_strdup("keyword");
 		else if (is_operator(rdl, token_cpy->context[0])
-				&& (token_cpy)->len == 1)
+				&& (token_cpy)->len == 1 && token_cpy->t_flag == 1)
 			token_cpy->type = ft_strdup("operator");
 		else if ((token_cpy)->len > 0)
 			token_cpy->type = ft_strdup("arg");
@@ -84,3 +89,4 @@ void	token_add_type(t_token **token)
 	free(rdl->operator_list);
 	free(rdl);
 }
+//echo "mer asd" | xxx << "<" "|"

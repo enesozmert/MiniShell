@@ -6,7 +6,7 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/09/27 09:46:36 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/10/04 09:38:04 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_token
 {
 	int				id;
 	int				len;
+	int				t_flag;
 	char			*type;
 	char			*context;
 	struct s_token	*next;
@@ -105,10 +106,10 @@ typedef struct s_command
 //main
 void			routine();
 //lexcical
-t_token			*token_add(t_token *token, char *ptr);
+t_token			*token_add(t_token *token, char *ptr, int flag);//t_token			*token_add(t_token *token, char *ptr);
 void			token_append(t_token **token, t_token *new);
 t_token			*token_last(t_token *token);
-t_token			*token_new(char *context);
+t_token *token_new(char *context, int flag);//t_token			*token_new(char *context);
 int				print_token(t_token *token);
 void			token_delone(t_token *token);
 void			token_clear(t_token **token);
@@ -138,7 +139,7 @@ int				token_arg_count(t_token *token);
 int				my_add_history(char *str);
 //parser
 void			parser(t_rdl *rdl);
-void			parser_add(t_rdl *rdl, char *buffer);
+void			parser_add(t_rdl *rdl, char *buffer, int flag);//void			parser_add(t_rdl *rdl, char *buffer);
 void			parser_add_operator(t_rdl *rdl, char c);
 void			parser_default(t_rdl *rdl);
 void			parser_add_buffer(int *j, t_rdl *rdl);

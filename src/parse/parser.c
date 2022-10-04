@@ -17,6 +17,15 @@ void parser(t_rdl *rdl)
         parser_default(rdl);
     else
         parser_arg(rdl);
+    
+    t_token *tkn;
+    tkn = rdl->token;
+    //while(tkn->context)
+    //{
+        token_add_index(&tkn);
+	    token_add_type(&tkn);
+     //   get_next_token(&tkn);
+    //}
     print_token(rdl->token);
 }
 
@@ -28,6 +37,6 @@ void parser_default(t_rdl *rdl)
     i = -1;
     str = ft_split(rdl->main_str, ' ');
     while (str[++i])
-        rdl->token = token_add(rdl->token, str[i]);
+        rdl->token = token_add(rdl->token, str[i], 0);
     free(str);
 }

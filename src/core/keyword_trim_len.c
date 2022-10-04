@@ -30,7 +30,7 @@ int keyword_trim_len(char *str)
 		else if(str[i] == '\"')
 		{
 			i++;
-			while(str[i] != '\"')
+			while( str[i] != '\"')
 			{
 				i++;
 				j++;

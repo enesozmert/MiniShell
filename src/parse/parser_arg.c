@@ -17,7 +17,7 @@ void parser_arg_isoperator(int c, int *k, t_rdl *rdl)
 	if (rdl->quote->flag == 1)
 		rdl->buffer[j] = '\0';
 	if (ft_strlen(rdl->buffer) != 0)
-		parser_add(rdl, rdl->buffer);
+		parser_add(rdl, rdl->buffer, 0);
 	else
 		ft_bzero(rdl->buffer, ft_strlen(rdl->buffer));
 	if (rdl->main_str[i] == (char)c)
@@ -43,7 +43,7 @@ void parser_arg_isnotoperator(int *k, t_rdl *rdl)
 		rdl->quote->flag = 1;
 	}
 	rdl->buffer[j] = '\0';
-	parser_add(rdl, rdl->buffer);
+	parser_add(rdl, rdl->buffer, 0);
 	*k = i;
 }
 
@@ -72,7 +72,7 @@ void parser_arg_keyword(t_rdl *rdl)
 		i++;
 	}
 	rdl->buffer[j] = '\0';
-	parser_add(rdl, rdl->buffer);
+	parser_add(rdl, rdl->buffer, 0);
 }
 
 void parser_arg(t_rdl *rdl)
@@ -93,7 +93,7 @@ void parser_arg(t_rdl *rdl)
 		else if (is_operator(rdl, rdl->main_str[i]) == 0 && rdl->main_str[i] > 32 && rdl->main_str[i] != '\0')
 			parser_arg_isnotoperator(&i, rdl);
 		if (rdl->quote->flag == 1 && rdl->main_str[i] <= 32 && rdl->main_str[i] != '\0')
-			parser_add(rdl, ft_strdup(" "));
+			parser_add(rdl, ft_strdup(" "), 0);
 		if (rdl->quote->flag == 0)
 			i++;
 	}
