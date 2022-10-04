@@ -7,6 +7,6 @@ void parser_add_buffer(int *j, t_rdl *rdl)
 	i = *j; 
 	rdl->buffer[i] = '\0';
 	i = 0;
-	parser_add(rdl, rdl->buffer, 0);
+	parser_add(rdl, rdl->buffer);
 	*j = i;
 }
