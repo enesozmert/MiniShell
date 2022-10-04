@@ -14,10 +14,10 @@
 
 int cd_start(t_command command)
 {
-    int i;
+    // int i;
     int arg_count;
 
-    i = 0;
+    // i = 0;
     arg_count = command.arg_count;
     if (arg_count > 2)
         printf("to many arguments for cd");

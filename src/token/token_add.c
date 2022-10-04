@@ -89,4 +89,3 @@ void	token_add_type(t_token **token)
 	free(rdl->operator_list);
 	free(rdl);
 }
-//echo "mer asd" | xxx << "<" "|"

@@ -57,7 +57,7 @@ int command_create(t_rdl *rdl)
     else if (ft_strncmp(rdl->token->type, "arg", ft_strlen("arg")) == 0)
     {
         arg_id = rdl->command_list[command_id].arg_count;
-        rdl->command_list[command_id].arg[arg_id] = ft_strdup(rdl->token->context);//cd komutu burada segfault veriyor. neden? 
+        rdl->command_list[command_id].arg[arg_id] = ft_strdup(rdl->token->context);
         rdl->command_list[command_id].arg_count++;
     }
     //optionsı alamadığımız için burada ekletemiyoruz :(

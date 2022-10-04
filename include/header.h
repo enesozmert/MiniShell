@@ -62,7 +62,8 @@ typedef struct s_rdl
 {
 	int						len;
 	int						word_count;
-	int						pipe_count;//new
+	int						pipe_count;
+	int						t_flag;
 	char					*main_str;
 	char					*buffer;
 	char					*error_arg;
@@ -139,7 +140,7 @@ int				token_arg_count(t_token *token);
 int				my_add_history(char *str);
 //parser
 void			parser(t_rdl *rdl);
-void			parser_add(t_rdl *rdl, char *buffer, int flag);//void			parser_add(t_rdl *rdl, char *buffer);
+void			parser_add(t_rdl *rdl, char *buffer);//void			parser_add(t_rdl *rdl, char *buffer);
 void			parser_add_operator(t_rdl *rdl, char c);
 void			parser_default(t_rdl *rdl);
 void			parser_add_buffer(int *j, t_rdl *rdl);
