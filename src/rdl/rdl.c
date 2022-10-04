@@ -17,6 +17,7 @@ t_rdl *rdl_init(t_rdl *rdl)
 	rdl->redir = malloc(sizeof(t_redir) * 1);
 	rdl->redir->input_count = 0;
 	rdl->redir->output_count = 0;
+	rdl->pipe_count = 0;
 	return (rdl);
 }
 
