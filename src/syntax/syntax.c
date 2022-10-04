@@ -1,6 +1,6 @@
 #include "../../include/header.h"
 
-void syntax(t_rdl *rdl)
+int syntax(t_rdl *rdl)
 {
 	int i;
 
@@ -8,9 +8,10 @@ void syntax(t_rdl *rdl)
 	while (++i < token_size(rdl->token))
 	{
 		if (exception_handler(rdl) == -1)
-			break ;
+			return (-1);
 		get_next_token(&rdl->token);
 	}
+	return (0);
 }
 
 // int syntax_analizer(t_rdl *rdl)

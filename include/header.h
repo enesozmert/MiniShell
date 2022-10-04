@@ -6,7 +6,7 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/10/04 10:46:19 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/10/04 15:08:16 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,7 @@ void			keyword_list(t_keyword *keyword);
 int				keywords_clear(t_keyword *keyword);
 int				keywords_size(t_keyword *keyword);
 //syntax
-void			syntax(t_rdl *rdl);
+int			syntax(t_rdl *rdl);
 int				syntax_analizer(t_rdl *rdl);
 int				keyword_syntax(t_rdl *rdl);
 int				keyword_quoute_syntax(t_rdl *rdl);

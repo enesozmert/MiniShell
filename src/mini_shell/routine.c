@@ -6,7 +6,7 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:22:50 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/10/04 10:22:51 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/10/04 15:18:02 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void routine()
 		if (!check_white_space(rdl->main_str))
 		{
 			lexical_analizer(rdl);
-			syntax(rdl);
+			if(syntax(rdl) == -1)
+				exit(0);
 			find_pipe_count(rdl);//new
 			command(rdl);
 			my_add_history(rdl->main_str);
