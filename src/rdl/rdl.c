@@ -23,12 +23,18 @@ t_rdl *rdl_init(t_rdl *rdl)
 
 void rdl_clear(t_rdl *rdl)
 {
-	free(rdl->keyword_list);
-	free(rdl->operator_list);
-	free(rdl->main_str);
-	free(rdl->buffer);
-	free(rdl->token);
-	free(rdl->quote);
+	if (!rdl->keyword_list)
+		free(rdl->keyword_list);
+	if (!rdl->operator_list)
+		free(rdl->operator_list);
+	if (!rdl->main_str)
+		free(rdl->main_str);
+	if (!rdl->buffer)
+		free(rdl->buffer);
+	if (!rdl->token)
+		free(rdl->token);
+	if (!rdl->quote)
+		free(rdl->quote);
 	// free(rdl->error_arg);
 	// if (rdl != NULL)
 	// 	free(rdl);
