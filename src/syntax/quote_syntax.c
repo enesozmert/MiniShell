@@ -50,8 +50,8 @@ int keyword_quoute_syntax(t_rdl *rdl)
 
 int quote_syntax(t_rdl *rdl)
 {
-	rdl->quote->sq = 0;
-	rdl->quote->dq = 0;
+	//rdl->quote->sq = 0;
+	//rdl->quote->dq = 0;
 	if(rdl->token->len == 1 && rdl->token->id != 0)
 	{
 		if (ft_strncmp(rdl->token->context, "\'", rdl->token->len) == 0)
