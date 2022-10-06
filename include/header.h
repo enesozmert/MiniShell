@@ -6,7 +6,7 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/10/04 15:08:16 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/10/06 16:47:58 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,7 @@ void			keyword_list(t_keyword *keyword);
 int				keywords_clear(t_keyword *keyword);
 int				keywords_size(t_keyword *keyword);
 //syntax
-int			syntax(t_rdl *rdl);
+int				syntax(t_rdl *rdl);
 int				syntax_analizer(t_rdl *rdl);
 int				keyword_syntax(t_rdl *rdl);
 int				keyword_quoute_syntax(t_rdl *rdl);
@@ -185,6 +185,7 @@ int				command_malloc(t_rdl *rdl);
 int				echo_start(t_command command);
 int				cd_start(t_command command);
 int				pwd_start(t_command command);
+int				exit_start(t_command command);
 
 //new
 void			find_pipe_count(t_rdl *rdl);//new
