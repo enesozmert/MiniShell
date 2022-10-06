@@ -7,6 +7,6 @@ int pwd_start(t_command command)
 
 	getcwd(cwd, sizeof(cwd));
 	printf("\nDir: %s\n", cwd);
-	usleep(1000);
+	// usleep(1000);
 	return 0;
 }

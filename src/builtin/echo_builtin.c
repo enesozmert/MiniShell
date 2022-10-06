@@ -10,8 +10,6 @@ int echo_start(t_command command)
     while (i < arg_count)
     {
         printf("%s", command.arg[i]);
-        // if(i < arg_count)
-        //     printf(" ");
         i++;
     }
     printf("\n");

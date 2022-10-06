@@ -37,7 +37,7 @@ int command_malloc(t_rdl *rdl)
     if (ft_strncmp(rdl->token->type, "keyword", ft_strlen("keyword")) == 0)
     {
         command_id = command_find(rdl, rdl->token->context);
-        rdl->command_list[command_id].arg = (char **)ft_calloc(arg_count, sizeof(char *));
+        rdl->command_list[command_id].arg = (char **)malloc(arg_count * sizeof(char *) + 1);
         rdl->command_list[command_id].count++;
     }
     return (0);
@@ -47,13 +47,13 @@ int command_create(t_rdl *rdl)
 {
     int command_id;
     int arg_id;
+    t_token *token;
 
     arg_id = 0;
-    command_id = command_find(rdl, rdl->token->context);
+    token = get_token_id(rdl->token, 0);
+    command_id = command_find(rdl, token->context);
     if (ft_strncmp(rdl->token->type, "keyword", ft_strlen("keyword")) == 0)
-    {
-        command_id = command_find(rdl, rdl->token->context);
-    }
+        command_id = command_find(rdl, token->context);
     else if (ft_strncmp(rdl->token->type, "arg", ft_strlen("arg")) == 0)
     {
         arg_id = rdl->command_list[command_id].arg_count;
