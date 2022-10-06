@@ -6,7 +6,7 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:48:35 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/10/04 14:21:15 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/10/06 15:45:48 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int command(t_rdl *rdl)
         command_create(rdl);
 		get_next_token(&rdl->token);
 	}
+    
     command_run(rdl);
     return (0);
 }
@@ -45,11 +46,12 @@ int command_malloc(t_rdl *rdl)
 
 int command_create(t_rdl *rdl)
 {
-    int command_id;
+    static int command_id;
     int arg_id;
 
     arg_id = 0;
-    command_id = command_find(rdl, rdl->token->context);
+    if(command_id == 0)
+        command_id = command_find(rdl, rdl->token->context);
     if (ft_strncmp(rdl->token->type, "keyword", ft_strlen("keyword")) == 0)
     {
         command_id = command_find(rdl, rdl->token->context);
@@ -59,6 +61,9 @@ int command_create(t_rdl *rdl)
         arg_id = rdl->command_list[command_id].arg_count;
         rdl->command_list[command_id].arg[arg_id] = ft_strdup(rdl->token->context);
         rdl->command_list[command_id].arg_count++;
+/*         rdl->command_list[command_id].type = "arg";
+        rdl->command_list[command_id].option = "test";
+        rdl->command_list[command_id].count = 0; */
     }
     //optionsı alamadığımız için burada ekletemiyoruz :(
     return (0);

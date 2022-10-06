@@ -62,7 +62,7 @@ int quote_syntax(t_rdl *rdl)
 	}
 	//printf("sq %d dq %d \n", rdl->sq, rdl->dq);
 	// printf("%s %d\n",rdl->token->context, rdl->token->id);
-	if ((rdl->quote->sq %2 != 0 || rdl->quote->dq %2 != 0) && rdl->token->id == token_size(rdl->token) - 1)
+	if ((rdl->quote->sq %2 != 0 || rdl->quote->dq %2 != 0) && rdl->token->id == token_size(rdl->token) - 1)		
 		return (102);
 	return (0);
 }
