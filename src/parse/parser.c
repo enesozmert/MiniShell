@@ -20,12 +20,8 @@ void parser(t_rdl *rdl)
     
     t_token *tkn;
     tkn = rdl->token;
-    //while(tkn->context)
-    //{
-        token_add_index(&tkn);
-	    token_add_type(&tkn);
-     //   get_next_token(&tkn);
-    //}
+    token_add_index(&tkn);
+	token_add_type(&tkn);
     print_token(rdl->token);
 }
 
