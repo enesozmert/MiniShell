@@ -57,7 +57,6 @@ typedef	struct s_redir
 	int	output_count;
 }	t_redir;
 
-
 typedef struct s_rdl
 {
 	int						len;
@@ -102,6 +101,11 @@ typedef struct s_command
 	int		count;
 	int		arg_count;
 }	t_command;
+
+typedef	struct s_env
+{
+	
+}	t_env;
 
 
 //main

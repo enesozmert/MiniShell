@@ -20,8 +20,7 @@ int cd_start(t_command command)
     new_dir = command.arg[0];
 
     if (chdir(new_dir) != 0)
-        return (104); 
-    chdir(new_dir);
+        return (104);
     printf("cd_start: %s\n", new_dir);
     getcwd(new_dir, sizeof(new_dir));
     printf("\nDir: %s\n", new_dir);
