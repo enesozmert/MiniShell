@@ -17,11 +17,8 @@ void parser(t_rdl *rdl)
         parser_default(rdl);
     else
         parser_arg(rdl);
-    
-    t_token *tkn;
-    tkn = rdl->token;
-    token_add_index(&tkn);
-	token_add_type(&tkn);
+    token_add_index(&rdl->token);
+	token_add_type(&rdl->token);
     print_token(rdl->token);
 }
 
