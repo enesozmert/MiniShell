@@ -17,7 +17,7 @@ int cd_start(t_command command)
     char *new_dir;
     new_dir = ft_strdup(command.arg[0]);
 
-    if (chdir(new_dir) != 0)
+    if (chdir(new_dir) == -1)
         return (104);
     if (chdir(new_dir) != -1)
         getcwd(new_dir, sizeof(new_dir));
