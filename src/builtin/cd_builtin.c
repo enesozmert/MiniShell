@@ -19,7 +19,8 @@ int cd_start(t_command command)
 
     if (chdir(new_dir) != 0)
         return (104);
-    getcwd(new_dir, sizeof(new_dir));
+    if (chdir(new_dir) != -1)
+        getcwd(new_dir, sizeof(new_dir));
     free(new_dir);
     return (0);
 }
