@@ -7,6 +7,7 @@ int pwd_start(t_command command)
 
 	cwd = getcwd(0, __SHRT_MAX__);
 	printf("%s\n", cwd);
-	free(cwd);
+	if (!cwd)
+		free(cwd);
 	return 0;
 }

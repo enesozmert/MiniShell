@@ -85,7 +85,10 @@ void	token_add_type(t_token **token)
 		token_cpy = token_cpy->next;
 	}
 	token_cpy = *token;
-	free(rdl->keyword_list);
-	free(rdl->operator_list);
-	free(rdl);
+	if (!rdl->keyword_list)
+		free(rdl->keyword_list);
+	if (!rdl->operator_list)
+		free(rdl->operator_list);
+	if (!rdl->operator_list)
+		free(rdl);
 }
