@@ -22,14 +22,11 @@
 int	env_len(char **env)
 {
 	int		i;
-	int		count;
 
 	i = -1;
-	count = 0;
-	while (env[++i])
-		count++;
-	return (count);
-
+	while (env[i])
+		i++;
+	return (i);
 }
 
 void env_init(char **env)
@@ -39,13 +36,11 @@ void env_init(char **env)
 
 	i = -1;
 	count = env_len(env);
-	g_env.env = (char **)malloc(sizeof(char *) * (count )+1);
+	g_env.env = (char **)malloc(sizeof(char *) * (count ) + 1);
 	if (!g_env.env)
 		return ;
-	while (env[++i]){
+	while (env[++i] != NULL){
 		g_env.env[i] = ft_strdup(env[i]);
-	if (g_env.env[i] == NULL)
-			return ;
 	}
 }
 

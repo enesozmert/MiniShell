@@ -22,7 +22,6 @@ void routine()
 		rdl = rdl_init(rdl);
 		if (!check_white_space(rdl->main_str))
 		{
-			printf("\n %s\n", g_env.env[0]);
 			lexical_analizer(rdl);
 			if(syntax(rdl) != -1)
 				command(rdl);
