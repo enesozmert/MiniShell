@@ -6,7 +6,7 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:22:50 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/10/11 16:23:46 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/10/11 16:46:29 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void routine()
 		rdl = rdl_init(rdl);
 		if (!check_white_space(rdl->main_str))
 		{
-			printf("\n %s\n", g_env.env[0]);
 			lexical_analizer(rdl);
 			if(syntax(rdl) != -1)
 				command(rdl);
