@@ -29,7 +29,7 @@ char **env_init(char **env)
 	count = 0;
 	while (env[count] != NULL)
 		count++;
-	if (new = malloc(sizeof(char *) * (count + 1)))
+	if (!(new = malloc(sizeof(char *) * (count + 1))))
 		return (NULL);
 	while (env[++i] != NULL)
 		new[i] = ft_strdup(env[i]);
