@@ -6,7 +6,7 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:32:33 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/10/11 23:12:15 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/10/11 23:16:05 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,10 @@ int cd_start(t_command command)
         free(new_dir);
     }
     if (strcmp(command.arg[0], "~") == 0)
+    {
         cd_home(command);
+        set_oldpwd_pwd();
+    }
     
     return (0);
 }
