@@ -3,10 +3,10 @@
 int pwd_start(t_command command)
 {
     (void)command;
-    char	cwd[100];
+    char	*cwd;
 
-	getcwd(cwd, sizeof(cwd));
-	printf("\nDir: %s\n", cwd);
-	// usleep(1000);
+	cwd = getcwd(0, __SHRT_MAX__);
+	printf("%s\n", cwd);
+	free(cwd);
 	return 0;
 }
