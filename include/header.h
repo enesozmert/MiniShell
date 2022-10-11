@@ -6,7 +6,7 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/10/11 16:12:24 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/10/11 21:13:35 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <fcntl.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+# include <sys/stat.h>
 # include "../libft/libft.h"
 
 # define KNRM  "\x1B[0m"
@@ -190,6 +191,7 @@ int				command_malloc(t_rdl *rdl);
 //builtin
 int				echo_start(t_command command);
 int				cd_start(t_command command);
+int				cd_home(t_command command);
 int				pwd_start(t_command command);
 int				exit_start(t_command command);
 int				env_start(t_command command);
@@ -197,6 +199,8 @@ int				env_start(t_command command);
 void			env_init(char **env);
 int				env_len(char **env);
 void			ft_env_print(char **env);
+char			*env_find_path(char *cmd);
+char			*env_find_value(char *key);
 //new	
 void			find_pipe_count(t_rdl *rdl);
 #endif
