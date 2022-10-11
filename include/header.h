@@ -6,7 +6,7 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/10/06 16:47:58 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/10/11 12:50:42 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,17 +104,19 @@ typedef struct s_command
 
 typedef	struct s_env
 {
-	
+	char	**env;
 }	t_env;
+
+extern t_env g_env;
 
 
 //main
 void			routine();
 //lexcical
-t_token			*token_add(t_token *token, char *ptr, int flag);//t_token			*token_add(t_token *token, char *ptr);
+t_token			*token_add(t_token *token, char *ptr, int flag);
 void			token_append(t_token **token, t_token *new);
 t_token			*token_last(t_token *token);
-t_token *token_new(char *context, int flag);//t_token			*token_new(char *context);
+t_token			*token_new(char *context, int flag);
 int				print_token(t_token *token);
 void			token_delone(t_token *token);
 void			token_clear(t_token **token);
@@ -144,7 +146,7 @@ int				token_arg_count(t_token *token);
 int				my_add_history(char *str);
 //parser
 void			parser(t_rdl *rdl);
-void			parser_add(t_rdl *rdl, char *buffer);//void			parser_add(t_rdl *rdl, char *buffer);
+void			parser_add(t_rdl *rdl, char *buffer);
 void			parser_add_operator(t_rdl *rdl, char c);
 void			parser_default(t_rdl *rdl);
 void			parser_add_buffer(int *j, t_rdl *rdl);
@@ -190,7 +192,8 @@ int				echo_start(t_command command);
 int				cd_start(t_command command);
 int				pwd_start(t_command command);
 int				exit_start(t_command command);
-
-//new
-void			find_pipe_count(t_rdl *rdl);//new
+//env
+char			**env_init(char **env);
+//new	
+void			find_pipe_count(t_rdl *rdl);
 #endif
