@@ -26,6 +26,7 @@ SRC_CORE	=	core/
 SRC_EXCEPTION	=	exception/
 SRC_COMMAND	=	command/
 SRC_BUILTIN =	builtin/
+SRC_ENVIRONMENT = environment/
 
 #Files
 COMMON		= 	main reader routine pipe
@@ -41,7 +42,8 @@ CORE		=	white_space count_char quote_count count_matris char_replace \
 char_pos keyword_trim keyword_trim_len token_arg_count
 EXCEPTION   =	exception_handler exception_write
 COMMAND		=	command_create command_run command_find command
-BUILTIN		=	echo_builtin cd_builtin pwd_builtin exit_builtin
+BUILTIN		=	echo_builtin cd_builtin pwd_builtin exit_builtin env_builtin
+ENVIRONMENT =	environment
 #FileCreate
 
 SRC_FILES	+=	$(addprefix $(SRC_COMMON),$(COMMON))
@@ -57,6 +59,7 @@ SRC_FILES	+=	$(addprefix $(SRC_CORE),$(CORE))
 SRC_FILES	+=	$(addprefix $(SRC_EXCEPTION),$(EXCEPTION))
 SRC_FILES	+=	$(addprefix $(SRC_COMMAND),$(COMMAND))
 SRC_FILES	+=	$(addprefix $(SRC_BUILTIN),$(BUILTIN))
+SRC_FILES	+=	$(addprefix $(SRC_ENVIRONMENT),$(ENVIRONMENT))
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -80,6 +83,7 @@ $(OBJF):
 			@mkdir -p $(OBJ_DIR)$(SRC_EXCEPTION)
 			@mkdir -p $(OBJ_DIR)$(SRC_COMMAND)
 			@mkdir -p $(OBJ_DIR)$(SRC_BUILTIN)
+			@mkdir -p $(OBJ_DIR)$(SRC_ENVIRONMENT)
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJF)
 			@$(CC) $(CFLAGS) -c $< -o $@

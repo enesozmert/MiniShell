@@ -6,7 +6,7 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/10/11 12:50:42 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/10/11 16:12:24 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ typedef	struct s_env
 	char	**env;
 }	t_env;
 
-extern t_env g_env;
+t_env g_env;
 
 
 //main
@@ -192,8 +192,11 @@ int				echo_start(t_command command);
 int				cd_start(t_command command);
 int				pwd_start(t_command command);
 int				exit_start(t_command command);
+int				env_start(t_command command);
 //env
-char			**env_init(char **env);
+void			env_init(char **env);
+int				env_len(char **env);
+void			ft_env_print(char **env);
 //new	
 void			find_pipe_count(t_rdl *rdl);
 #endif

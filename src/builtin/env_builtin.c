@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine.c                                          :+:      :+:    :+:   */
+/*   env_builtin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/04 10:22:50 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/10/11 16:23:46 by cyalniz          ###   ########.fr       */
+/*   Created: 2022/10/11 16:10:05 by cyalniz           #+#    #+#             */
+/*   Updated: 2022/10/11 16:28:05 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-void routine()
+void ft_env_print(char **env)
 {
-	t_rdl *rdl;
-	
-	rdl = NULL;
-	while (1)
-	{
-		rdl = rdl_init(rdl);
-		if (!check_white_space(rdl->main_str))
-		{
-			printf("\n %s\n", g_env.env[0]);
-			lexical_analizer(rdl);
-			if(syntax(rdl) != -1)
-				command(rdl);
-			find_pipe_count(rdl);
-			my_add_history(rdl->main_str);
-			keywords_clear(rdl->keyword_list);
-			token_clear(&rdl->token);
-			rdl_clear(rdl);
-		}
-	}
+    int i;
+
+    i = -1;
+    while(env[++i])
+        printf("%s\n", env[i]);
+}
+
+int env_start(t_command command)
+{
+    //int i;
+    int arg_count;
+    //i = 0;
+    arg_count = command.arg_count;
+
+    if(arg_count == 1)
+        ft_env_print(g_env.env);
+    
+    return (1);
 }

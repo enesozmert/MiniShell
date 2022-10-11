@@ -1,6 +1,6 @@
 #include "../../include/header.h"
 
-char *env_path(char *env, char *cmd)
+/* char *env_path(char *env, char *cmd)
 {
 	int		idx;
 	int		counter;
@@ -17,27 +17,39 @@ char *env_path(char *env, char *cmd)
 			path_cmd_idx++;
 		idx++;
 	}
-}
+} */
 
-char **env_init(char **env)
+int	env_len(char **env)
 {
 	int		i;
 	int		count;
-	char	**new;
 
 	i = -1;
 	count = 0;
-	while (env[count] != NULL)
+	while (env[++i])
 		count++;
-	if (!(new = malloc(sizeof(char *) * (count + 1))))
-		return (NULL);
-	while (env[++i] != NULL)
-		new[i] = ft_strdup(env[i]);
-	new[i] = NULL;
-	return (new);
+	return (count);
+
 }
 
-void set_env()
+void env_init(char **env)
+{
+	int		i;
+	int		count;
+
+	i = -1;
+	count = env_len(env);
+	g_env.env = (char **)malloc(sizeof(char *) * (count )+1);
+	if (!g_env.env)
+		return ;
+	while (env[++i]){
+		g_env.env[i] = ft_strdup(env[i]);
+	if (g_env.env[i] == NULL)
+			return ;
+	}
+}
+
+/* void set_env()
 {
 
-}
+} */
