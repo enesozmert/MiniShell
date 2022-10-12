@@ -6,7 +6,7 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 16:10:05 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/10/11 16:46:25 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/10/11 21:20:11 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ int env_start(t_command command)
 
     if(arg_count == 1)
         ft_env_print(g_env.env);
+    else if(arg_count == 3)//env 
+    {
+        
+    }
     
     return (1);
 }
