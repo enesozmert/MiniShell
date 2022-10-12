@@ -6,7 +6,7 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 16:10:05 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/10/11 16:28:05 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/10/11 16:46:25 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ void ft_env_print(char **env)
 
 int env_start(t_command command)
 {
-    //int i;
     int arg_count;
-    //i = 0;
     arg_count = command.arg_count;
 
     if(arg_count == 1)

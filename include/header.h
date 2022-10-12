@@ -107,7 +107,7 @@ typedef	struct s_env
 	char	**env;
 }	t_env;
 
-extern t_env g_env;
+t_env g_env;
 
 
 //main
