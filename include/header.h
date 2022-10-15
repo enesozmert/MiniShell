@@ -6,7 +6,7 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/10/15 16:38:52 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/10/15 17:00:27 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ typedef	struct s_env
 	char	**env;
 }	t_env;
 
-extern struct s_env g_env;
+t_env g_env;
 
 //main
 void			routine();
@@ -194,6 +194,8 @@ int				cd_home(t_command command);
 int				pwd_start(t_command command);
 int				exit_start(t_command command);
 int				env_start(t_command command);
+int				export_start(t_command command);
+int				unset_start(t_command command);
 //env
 int				env_init(char **env);
 int				env_len(char **env);
