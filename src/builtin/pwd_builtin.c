@@ -5,9 +5,10 @@ int pwd_start(t_command command)
     (void)command;
     char	*cwd;
 
-	cwd = getcwd(0, __SHRT_MAX__);
+	cwd = getcwd(NULL, 0);
+	if (cwd == NULL)
+		return (108);
 	printf("%s\n", cwd);
-	if (!cwd)
-		free(cwd);
-	return 0;
+	free(cwd);
+	return (0);
 }

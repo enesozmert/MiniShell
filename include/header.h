@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/10/11 21:13:35 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/10/15 16:20:47 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,7 @@ typedef	struct s_env
 	char	**env;
 }	t_env;
 
-t_env g_env;
-
+extern struct s_env g_env;
 
 //main
 void			routine();
@@ -196,7 +195,7 @@ int				pwd_start(t_command command);
 int				exit_start(t_command command);
 int				env_start(t_command command);
 //env
-void			env_init(char **env);
+int				env_init(char **env);
 int				env_len(char **env);
 void			ft_env_print(char **env);
 char			*env_find_path(char *cmd);
