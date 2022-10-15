@@ -6,7 +6,7 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/10/15 16:20:47 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/10/15 16:38:52 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,6 +200,7 @@ int				env_len(char **env);
 void			ft_env_print(char **env);
 char			*env_find_path(char *cmd);
 char			*env_find_value(char *key);
+int				env_update(char *key, char *str);
 //new	
 void			find_pipe_count(t_rdl *rdl);
 #endif
