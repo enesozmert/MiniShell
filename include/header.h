@@ -6,7 +6,7 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/10/15 17:00:27 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/10/16 22:32:24 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,10 +199,12 @@ int				unset_start(t_command command);
 //env
 int				env_init(char **env);
 int				env_len(char **env);
+int				env_find_id(char *key);
 void			ft_env_print(char **env);
 char			*env_find_path(char *cmd);
 char			*env_find_value(char *key);
-int				env_update(char *key, char *str);
+int				env_update(char *key, char *value);
+int				env_add(char *key, char *value);
 //new	
 void			find_pipe_count(t_rdl *rdl);
 #endif

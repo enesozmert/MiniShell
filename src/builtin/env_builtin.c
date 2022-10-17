@@ -6,7 +6,7 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 16:10:05 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/10/15 16:49:05 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/10/16 16:02:56 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void ft_env_print(char **env)
         printf("%s\n", env[i]);
 }
 
-int env_start(__attribute__((unused))t_command command)
+int env_start(t_command command)
 {
-    // (void)command;
+    (void)command;
     // int arg_count;
     // arg_count = command.arg_count;
 

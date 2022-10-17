@@ -27,6 +27,7 @@ void parser_default(t_rdl *rdl)
 
     i = -1;
     str = ft_split(rdl->main_str, ' ');
+    printf("%s\n", str[0]);
     while (str[++i])
         rdl->token = token_add(rdl->token, str[i], 0);
     free(str);
