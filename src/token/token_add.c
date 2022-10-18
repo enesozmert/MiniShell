@@ -24,20 +24,9 @@ void token_append(t_token **token, t_token *new)
 
 t_token *token_add(t_token *token, char *ptr, int flag)
 {
-	// int i;
-
-	// i = 0;
-	// while (ptr[i])
-	// {
-		token_append(&token, token_new(ptr, flag));
-		//token->t_flag = flag;
-		
-	// 	i++;
-	// }
-
+	token_append(&token, token_new(ptr, flag));
 	token_add_index(&token);
-	token_add_type(&token);
-
+	// token_add_type(&token);
 	return (token);
 }
 
@@ -65,7 +54,7 @@ void	token_add_type(t_token **token)
 	char	*new_trim;
 	
 	i = -1;
-	rdl = malloc(sizeof(t_rdl));
+	rdl = malloc(sizeof(t_rdl) * 1);
 	rdl->keyword_list = malloc(sizeof(t_keyword) * 8);
 	rdl->operator_list = malloc(sizeof(t_operator) * 8);
 	keyword_list(rdl->keyword_list);
