@@ -43,7 +43,7 @@ CORE		=	white_space count_char quote_count count_matris char_replace \
 EXCEPTION   =	exception_handler exception_write
 COMMAND		=	command_create command_run command_find command
 BUILTIN		=	echo_builtin cd_builtin pwd_builtin exit_builtin env_builtin export_builtin unset_builtin
-ENVIRONMENT =	environment env_find env_len env_update env_add
+ENVIRONMENT =	environment env_find env_len env_update env_add env_exist env_asc env_dsc env_delete
 #FileCreate
 
 SRC_FILES	+=	$(addprefix $(SRC_COMMON),$(COMMON))

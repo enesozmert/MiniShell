@@ -8,7 +8,7 @@ int env_add(char *key, char *value)
 
 	i = -1;
 	count = env_len(g_env.env); 
-    if (env_find_id(key) == -1)
+    if (env_exist(key) == 0)
     {
 		new_env = (char **)malloc(sizeof(char *) * (count) + 2);
 		while (g_env.env[++i])

@@ -9,5 +9,6 @@ void	operator_list(t_operator *operator)
 	operator[4] = (t_operator){"varible" ,"$"};
 	operator[5] = (t_operator){"pipe" ,"|"};
 	operator[6] = (t_operator){"and" ,"&"};
-	operator[7] = (t_operator){NULL ,NULL};
+	operator[7] = (t_operator){"equal" ,"="};
+	operator[8] = (t_operator){NULL ,NULL};
 }

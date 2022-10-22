@@ -6,7 +6,7 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:32:33 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/10/17 17:42:51 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/10/22 22:29:31 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,7 @@ int cd_start(t_command command)
         free(new_dir);
     }
     if (ft_strncmp(command.arg[0], "~", ft_strlen(command.arg[0])) == 0)
-    {
         cd_home(command);
-    }
     env_add("OLDPWD", env_find_value("PWD"));
     env_add("PWD", getcwd(NULL, 0));
     return (0);
