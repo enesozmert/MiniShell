@@ -6,10 +6,9 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/10/23 16:56:50 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/10/24 11:52:27 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef HEADER_H
 # define HEADER_H
@@ -45,11 +44,17 @@ typedef struct s_token
 	struct s_token	*next;
 }	t_token;
 
-typedef struct	s_quote
+typedef struct	s_quote_prop
 {
 	int	flag;
 	int	dq;
 	int	sq;
+}	t_quote_prop;
+
+typedef struct s_quote
+{
+	char	*name;
+	char	*sybl;
 }	t_quote;
 
 typedef	struct s_redir
@@ -67,12 +72,13 @@ typedef struct s_rdl
 	char					*main_str;
 	char					*buffer;
 	char					*error_arg;
-	t_quote					*quote;
+	t_quote_prop			*quote_prop;
 	t_redir					*redir;
 	t_token					*token;
 	struct s_keyword		*keyword_list;
 	struct s_operator		*operator_list;
 	struct s_command		*command_list;
+	struct s_quote			*quote_list;
 }	t_rdl;
 
 typedef struct s_keyword
@@ -151,8 +157,8 @@ void			parser_add_operator(t_rdl *rdl, char c);
 void			parser_default(t_rdl *rdl);
 void			parser_add_buffer(int *j, t_rdl *rdl);
 void			parser_arg(t_rdl *rdl);
-void			parser_arg_isnotoperator(int *k, t_rdl *rdl);
-void			parser_arg_isoperator(int c, int *k, t_rdl *rdl);
+void			parser_arg_isnot(int *k, t_rdl *rdl);
+void			parser_arg_is(int c, int *k, t_rdl *rdl);
 void			parser_arg_quote(int c, int *k, t_rdl *rdl);
 void			parser_arg_keyword(t_rdl *rdl);
 //keywords
@@ -170,10 +176,12 @@ int				redir_syntax(t_rdl *rdl);
 int				export_syntax(t_rdl *rdl);
 //quoet
 int				single_quote(t_rdl *rdl);
+void			quote_list(t_quote *quote);
 //lexical
 void			lexical_analizer(t_rdl *rdl);
 int				is_keyword(t_rdl *rdl, char *str);
 int				is_operator(t_rdl *rdl, char c);
+int				is_quote(t_rdl *rdl, char c);
 t_keyword		find_keyword(t_rdl *rdl, char *str);
 t_operator		find_operator(t_rdl *rdl, char c);
 //exception

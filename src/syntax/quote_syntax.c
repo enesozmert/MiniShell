@@ -53,11 +53,11 @@ int quote_syntax(t_rdl *rdl)
 	if(rdl->token->len == 1 && rdl->token->id != 0)
 	{
 		if (ft_strncmp(rdl->token->context, "\'", rdl->token->len) == 0)
-			rdl->quote->sq++;
+			rdl->quote_prop->sq++;
 		else if (ft_strncmp(rdl->token->context, "\"", rdl->token->len) == 0)
-			rdl->quote->dq++;
+			rdl->quote_prop->dq++;
 	}
-	if ((rdl->quote->sq %2 != 0 || rdl->quote->dq %2 != 0) && rdl->token->id == token_size(rdl->token) - 1)		
+	if ((rdl->quote_prop->sq %2 != 0 || rdl->quote_prop->dq %2 != 0) && rdl->token->id == token_size(rdl->token) - 1)		
 		return (102);
 	return (0);
 }
