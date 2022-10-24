@@ -4,6 +4,7 @@ int keyword_syntax(t_rdl *rdl)
 {
 	int i;
 	t_token *token;
+	char	*path;
 
 	i = -1;
 	if (rdl->token->id != 0)
@@ -17,6 +18,12 @@ int keyword_syntax(t_rdl *rdl)
 		rdl->error_arg = malloc(sizeof(char)*ft_strlen(token->context));
 		rdl->error_arg = NULL;
         return (0);
+	}
+	else if (is_keyword(rdl, token->context) == 0)
+	{
+			path = env_find_path(rdl->token[0].context);
+			execve(path, &rdl->token[0].context, g_env.env);
+			return (0);
 	}
 	else
 	{
