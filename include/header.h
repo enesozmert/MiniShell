@@ -6,7 +6,7 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/10/24 11:52:27 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/10/24 14:27:08 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,6 +194,8 @@ int				command_clear(t_rdl *rdl);
 int				command_create(t_rdl *rdl);
 void			command_list(t_command *command);
 int				command_run(t_rdl *rdl);
+int				command_execv(t_rdl *rdl);
+char			*command_find_path(t_rdl *rdl);
 int				command_find(t_rdl *rdl, char *type);
 int				command_malloc(t_rdl *rdl);
 //builtin
@@ -216,8 +218,8 @@ char			*env_find_value(char *key);
 int				env_add(char *key, char *value);
 int				env_update(char *key, char *value);
 int				env_delete(char *key);
-int				env_asc();
-int				env_dsc();
+int				env_asc(char **env);
+int				env_dsc(char **env);
 //new
 void			find_pipe_count(t_rdl *rdl);
 #endif

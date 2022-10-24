@@ -41,7 +41,7 @@ LEXICAL		=	lexical is_keyword is_operator is_quote find_operator find_keyword
 CORE		=	white_space count_char quote_count count_matris char_replace \
 				char_pos keyword_trim keyword_trim_len token_arg_count
 EXCEPTION   =	exception_handler exception_write
-COMMAND		=	command_create command_run command_find command
+COMMAND		=	command_create command_run command_find command_exec command_find_path command
 BUILTIN		=	echo_builtin cd_builtin pwd_builtin exit_builtin env_builtin export_builtin unset_builtin
 ENVIRONMENT =	environment env_find env_len env_update env_add env_exist env_asc env_dsc env_delete
 #FileCreate
