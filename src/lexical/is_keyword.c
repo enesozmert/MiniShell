@@ -1,6 +1,6 @@
 #include "../../include/header.h"
 
-int is_keyword(t_rdl *rdl, char *str)
+int is_keyword_builtin(t_rdl *rdl, char *str)
 {
     int i;
 
@@ -8,8 +8,25 @@ int is_keyword(t_rdl *rdl, char *str)
     while (rdl->keyword_list[++i].type != NULL)
     {
         if (ft_strncmp(rdl->keyword_list[i].type, str,
-            ft_strlen(rdl->keyword_list[i].type)) == 0)
+                       ft_strlen(rdl->keyword_list[i].type)) == 0)
             return (1);
     }
+    return (0);
+}
+
+int is_keyword_exec(t_rdl *rdl, char *str)
+{
+    char *find_path;
+
+    find_path = command_find_path(str);
+    if (find_path != NULL && is_keyword_builtin(rdl, str) == 0)
+        return (1);
+    return (0);
+}
+
+int is_keyword(t_rdl *rdl, char *str)
+{
+    if (is_keyword_builtin(rdl, str) == 1 || is_keyword_exec(rdl, str) == 1)
+        return (1);
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/10/24 14:27:08 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/10/24 22:29:21 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,6 +180,8 @@ void			quote_list(t_quote *quote);
 //lexical
 void			lexical_analizer(t_rdl *rdl);
 int				is_keyword(t_rdl *rdl, char *str);
+int				is_keyword_exec(t_rdl *rdl, char *str);
+int				is_keyword_builtin(t_rdl *rdl, char *str);
 int				is_operator(t_rdl *rdl, char c);
 int				is_quote(t_rdl *rdl, char c);
 t_keyword		find_keyword(t_rdl *rdl, char *str);
@@ -195,7 +197,7 @@ int				command_create(t_rdl *rdl);
 void			command_list(t_command *command);
 int				command_run(t_rdl *rdl);
 int				command_execv(t_rdl *rdl);
-char			*command_find_path(t_rdl *rdl);
+char			*command_find_path(char *keyword);
 int				command_find(t_rdl *rdl, char *type);
 int				command_malloc(t_rdl *rdl);
 //builtin
@@ -213,7 +215,6 @@ int				env_len(char **env);
 int				env_exist(char *key);
 int				env_find_id(char *key);
 void			env_print(char **env);
-char			*env_find_path(char *cmd);
 char			*env_find_value(char *key);
 int				env_add(char *key, char *value);
 int				env_update(char *key, char *value);
