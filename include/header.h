@@ -6,7 +6,7 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/10/22 23:30:31 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/10/23 16:56:50 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,7 @@ int				keyword_quoute_syntax(t_rdl *rdl);
 int				quote_syntax(t_rdl *rdl);
 void			operator_list(t_operator *operator);
 int				redir_syntax(t_rdl *rdl);
+int				export_syntax(t_rdl *rdl);
 //quoet
 int				single_quote(t_rdl *rdl);
 //lexical

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exception_handler.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:52:59 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/10/06 15:07:36 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/10/23 17:11:45 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	exception_handler(t_rdl *rdl)
 {
 	int			i;
 	int			handle_code;
-	t_exception	exception[5];
+	t_exception	exception[6];
 
 	i = 0;
 	handle_code = 0;
@@ -24,7 +24,8 @@ int	exception_handler(t_rdl *rdl)
 	exception[1] = (t_exception){101, "command not found", keyword_syntax};
 	exception[2] = (t_exception){102, "quote", quote_syntax};
 	exception[3] = (t_exception){103, "parse error near", redir_syntax};
-	exception[4] = (t_exception){-1, NULL, NULL};
+	exception[4] = (t_exception){104, "export : not a valid identifier", export_syntax};
+	exception[5] = (t_exception){-1, NULL, NULL};
 	while (exception[i].message != NULL)
 	{
 		handle_code = exception[i].f(rdl);
