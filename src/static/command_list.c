@@ -9,5 +9,6 @@ void	command_list(t_command *command)
 	command[4] = (t_command){"unset", ((char **)0), NULL, unset_start, 0, 0};
 	command[5] = (t_command){"env", ((char **)0), NULL, env_start, 0, 0};
 	command[6] = (t_command){"exit", ((char **)0), NULL, exit_start, 0, 0};
-	command[7] = (t_command){NULL, NULL, NULL, NULL, 0, 0};
+	command[7] = (t_command){"exec", ((char **)0), NULL, command_execv, 0, 0};
+	command[8] = (t_command){NULL, NULL, NULL, NULL, 0, 0};
 }
