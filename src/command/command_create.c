@@ -6,9 +6,10 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:48:35 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/10/25 17:12:33 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/10/25 17:14:08 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../../include/header.h"
 
@@ -52,9 +53,9 @@ int command_create(t_rdl *rdl)
     arg_id = 0;
     token = get_token_id(rdl->token, 0);
     command_id = command_find(rdl, token->context);
-    if (ft_strncmp(rdl->token->type, "keyword", ft_strlen("keyword")) == 0)
+    if (rdl->token->type && ft_strncmp(rdl->token->type, "keyword", ft_strlen("keyword")) == 0)
         command_id = command_find(rdl, token->context);
-    else if (ft_strncmp(rdl->token->type, "arg", ft_strlen("arg")) == 0)
+    else if (rdl->token->type && ft_strncmp(rdl->token->type, "arg", ft_strlen("arg")) == 0)
     {
         arg_id = rdl->command_list[command_id].arg_count;
         rdl->command_list[command_id].arg[arg_id] = ft_strdup(rdl->token->context);

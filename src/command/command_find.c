@@ -5,7 +5,6 @@ int command_find(t_rdl *rdl, char *type)
     int i;
     char *find_path;
 
-    // printf("type: %s\n", type);
     find_path = command_find_path(type);
     i = -1;
     if (find_path != NULL)

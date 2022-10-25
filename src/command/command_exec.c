@@ -2,14 +2,14 @@
 
 int command_execv(t_command command)
 {
-    printf("ok\n");
     int     result;
     char    *path;
+    char    *type;
 
-    // printf("command->type %s", command.type);
-    path = command_find_path(command.type);
-    // printf("path : %s\n", path);
-	result = execve(path, &command.type, g_env.env);
+    type = ft_strdup(command.type);
+    path = command_find_path(type);
+	result = execve(path, &type, g_env.env);
+    free(type);
     if (result == -1)
         return(-1);
     return (0);
