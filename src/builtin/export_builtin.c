@@ -8,7 +8,7 @@ int export_start(t_command command)
     key = ft_strdup(command.arg[0]);
     value = ft_strdup(command.arg[1]);
     env_add(key, value);
-    env_asc(g_env.env);
+    // env_asc(g_env.env);
     free(key);
     free(value);
     return (0);
