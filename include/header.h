@@ -6,7 +6,7 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/10/25 17:12:43 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/10/26 00:12:52 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 
 # include <pthread.h>
 # include <unistd.h>
+# include <signal.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <sys/wait.h>
 # include <sys/time.h>
 # include <fcntl.h>
 # include <readline/readline.h>
@@ -149,6 +151,7 @@ int				char_pos(char *str);
 char			*keyword_trim(char *str);
 int				keyword_trim_len(char *str);
 int				token_arg_count(t_token *token);
+void			proc_signal_handler(int signo);
 //history
 int				my_add_history(char *str);
 //parser
