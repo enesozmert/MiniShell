@@ -26,7 +26,7 @@ int is_keyword_exec(t_rdl *rdl, char *str)
 
 int is_keyword(t_rdl *rdl, char *str)
 {
-    if (is_keyword_builtin(rdl, str) == 1)
+    if (is_keyword_builtin(rdl, str) == 1 || is_keyword_exec(rdl, str))
         return (1);
     return (0);
 }
