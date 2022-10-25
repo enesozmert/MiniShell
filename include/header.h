@@ -6,7 +6,7 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/10/24 22:44:10 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/10/25 17:12:43 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ typedef struct s_exception
 
 typedef struct s_command
 {
+	char	*name;
 	char	*type;
 	char	**arg;
 	char	*option;
