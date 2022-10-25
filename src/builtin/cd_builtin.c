@@ -6,7 +6,7 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:32:33 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/10/24 22:41:49 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/10/25 17:55:49 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int cd_home(t_command command)
 int cd_start(t_command command)
 {
     char    *new_dir;
-    printf("command_type : %s", command.type);
     if (command.arg[0] == NULL)
         return(204);
     if (ft_strncmp(command.arg[0], "~", ft_strlen(command.arg[0])) != 0
