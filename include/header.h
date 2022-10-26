@@ -6,7 +6,7 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/10/26 11:48:24 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/10/26 12:00:07 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,7 +204,7 @@ int				command_run(t_rdl *rdl);
 int				command_execv(t_command command);
 char			*command_find_path(char *keyword);
 int				command_find(t_rdl *rdl, char *type);
-int				command_fork(int (*f)(struct s_command));
+int				command_fork();
 //builtin
 int				echo_start(t_command command);
 int				cd_start(t_command command);
