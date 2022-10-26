@@ -6,7 +6,7 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/10/26 00:12:52 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/10/26 11:48:24 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,6 +196,7 @@ void			exception_write(t_rdl *rdl, char *message);
 //command
 int				command(t_rdl *rdl);
 int				command_init();
+int				command_malloc(t_rdl *rdl);
 int				command_clear(t_rdl *rdl);
 int				command_create(t_rdl *rdl);
 void			command_list(t_command *command);
@@ -203,7 +204,7 @@ int				command_run(t_rdl *rdl);
 int				command_execv(t_command command);
 char			*command_find_path(char *keyword);
 int				command_find(t_rdl *rdl, char *type);
-int				command_malloc(t_rdl *rdl);
+int				command_fork(int (*f)(struct s_command));
 //builtin
 int				echo_start(t_command command);
 int				cd_start(t_command command);
