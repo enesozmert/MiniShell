@@ -2,11 +2,21 @@
 
 int export_start(t_command command)
 {
-    char    *key;
-    char    *value;
+    printf("command->value_count : %d\n", command.value_count);
+    printf("command->key_count : %d\n", command.key_count);
+    int i;
+    char *key;
+    char *value;
 
-    key = ft_strdup(command.arg[0]);
-    value = ft_strdup(command.arg[1]);
+    i = -1;
+    value = ft_strdup("");
+    key = ft_strdup("");
+    while (++i < command.value_count)
+        value = ft_strjoin(value, command.value[i]);
+    i = -1;
+    while (++i < command.key_count)
+        key = ft_strjoin(key, command.key[i]);
+    printf("key: %s\n", key);
     env_add(key, value);
     env_asc(g_env.env);
     free(key);

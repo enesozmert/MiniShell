@@ -112,6 +112,8 @@ typedef struct s_command
 	int		(*f)(struct s_command);
 	int		count;
 	int		arg_count;
+	int		key_count;
+	int		value_count;
 }	t_command;
 
 typedef	struct s_env
