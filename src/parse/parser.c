@@ -7,9 +7,9 @@ void parser(t_rdl *rdl)
 
     i = -1;
     result = 0;
-    while (rdl->operator_list[++i].name != NULL)
+    while (rdl->quote_list[++i].name != NULL)
     {
-        result = ft_strchr(rdl->main_str, rdl->operator_list[i].sybl[0]);
+        result = ft_strchr(rdl->main_str, rdl->quote_list[i].sybl[0]);
         if (result != NULL)
             break ;
     }
