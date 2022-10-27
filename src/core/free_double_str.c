@@ -18,12 +18,9 @@ void	ft_free_dbl_str(char **str)
 
 	if (!str)
 		return ;
-	i = 0;
-	while (str[i])
-	{
+	i = -1;
+	while (str[++i])
 		free(str[i]);
-		i++;
-	}
 	free(str);
 	str = NULL;
 }

@@ -1,6 +1,6 @@
 #include "../../include/header.h"
 
-void parser_add_operator(t_rdl *rdl, char c)
+void	parser_add_operator(t_rdl *rdl, char c)
 {
     t_operator operator;
 
@@ -8,7 +8,16 @@ void parser_add_operator(t_rdl *rdl, char c)
     rdl->token = token_add(rdl->token, ft_strdup(operator.sybl), 1);
 }
 
-void parser_add(t_rdl *rdl, char *buffer)
+void	parser_add_quote(t_rdl *rdl, char c)
+{
+	t_quote quote;
+
+	quote = find_quote(rdl, c);
+	printf("ok\n");
+	rdl->token = token_add(rdl->token, ft_strdup(quote.sybl), 2);
+}
+
+void	parser_add(t_rdl *rdl, char *buffer)
 {
     if (is_keyword(rdl, buffer) == 1)
     {

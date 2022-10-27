@@ -25,7 +25,7 @@ void parser_arg_is(int c, int *k, t_rdl *rdl)
 		ft_bzero(rdl->buffer, ft_strlen(rdl->buffer));
 	if (rdl->main_str[i] == (char)c)
 	{
-		parser_add_operator(rdl, rdl->main_str[i]);
+		parser_add_quote(rdl, rdl->main_str[i]);
 		i++;
 		rdl->quote_prop->flag = 1;
 	}
@@ -51,15 +51,39 @@ void parser_arg_isnot(int *k, t_rdl *rdl)
 	*k = i;
 }
 
+void parser_arg_isoperator(int *k, t_rdl *rdl)
+{
+	(void)rdl;
+	int i;
+	// int j;
+	printf("is_operator\n");
+	i = *k;
+	// j = 0;
+	// while (is_operator(rdl, rdl->main_str[i]) == 0 && rdl->main_str[i] != '\0' && is_keyword_builtin(rdl, rdl->buffer) == 0)
+	// {
+	// 	rdl->buffer[j++] = rdl->main_str[i];
+	// 	i++;
+	// 	rdl->quote_prop->flag = 1;
+	// }
+	// rdl->buffer[j] = '\0';
+	// rdl->t_flag = 0;
+	// printf("rdl->buffer : %s\n", rdl->buffer);
+	// parser_add(rdl, rdl->buffer);
+	*k = i;
+}
+
 void parser_arg_quote(int c, int *k, t_rdl *rdl)
 {
 	int i;
 
 	i = *k;
-	parser_add_operator(rdl, rdl->main_str[i]);
+	printf("ok1\n");
+	parser_add_quote(rdl, rdl->main_str[i]);
+	rdl->t_flag = 2;
 	parser_arg_is((char)c, &i, rdl);
 	*k = i;
 }
+
 
 void parser_arg_keyword(t_rdl *rdl)
 {
