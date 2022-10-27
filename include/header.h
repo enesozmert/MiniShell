@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/10/26 12:04:40 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/10/27 14:50:06 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,7 @@ char			*keyword_trim(char *str);
 int				keyword_trim_len(char *str);
 int				token_arg_count(t_token *token);
 void			proc_signal_handler(int signo);
+void			ft_free_dbl_str(char **str);
 //history
 int				my_add_history(char *str);
 //parser

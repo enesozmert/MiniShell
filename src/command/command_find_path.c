@@ -17,8 +17,11 @@ char *command_find_path(char *keyword)
         new_path = ft_strjoin(paths[i], path);
         free(path);
         if (stat(new_path, &s) == 0)
+         {   ft_free_dbl_str(paths);
             return (new_path);
-        free(new_path);
+         }
+         free(new_path);
     }
+    ft_free_dbl_str(paths);
     return (NULL);
 }

@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine.c                                          :+:      :+:    :+:   */
+/*   free_double_str.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/04 10:22:50 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/10/27 13:55:33 by cyalniz          ###   ########.fr       */
+/*   Created: 2022/10/27 14:48:24 by cyalniz           #+#    #+#             */
+/*   Updated: 2022/10/27 14:48:39 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-void routine()
+void	ft_free_dbl_str(char **str)
 {
-	t_rdl *rdl;
-	
-	rdl = NULL;
-	while (1)
+	int	i;
+
+	if (!str)
+		return ;
+	i = 0;
+	while (str[i])
 	{
-		rdl = rdl_init(rdl);
-		if (!check_white_space(rdl->main_str))
-		{
-			lexical_analizer(rdl);
-			if(syntax(rdl) != -1)
-				command(rdl);
-			find_pipe_count(rdl);
-			my_add_history(rdl->main_str);
-			keywords_clear(rdl->keyword_list);
-			token_clear(&rdl->token);
-			rdl_clear(rdl);
-		}
+		free(str[i]);
+		i++;
 	}
+	free(str);
+	str = NULL;
 }

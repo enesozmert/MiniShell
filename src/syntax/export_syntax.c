@@ -13,7 +13,7 @@ int export_syntax(t_rdl *rdl)
     first_arg = rdl->token->next;
     second_arg = rdl->token->next->next->next;
     if (ft_strncmp(token_zero->context, "export",
-        token_zero->len) == 0)
+        ft_strlen("export")) == 0)
     {
         if (first_arg->context[first_arg->len - 1] == ' ' ||
             second_arg->context[second_arg->len - 1] == ' ')

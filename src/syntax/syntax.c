@@ -11,6 +11,7 @@ int syntax(t_rdl *rdl)
 			return (-1);
 		get_next_token(&rdl->token);
 	}
+	    
 	return (0);
 }
 
