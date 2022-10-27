@@ -13,7 +13,11 @@ void	parser_add_quote(t_rdl *rdl, char c)
 	t_quote quote;
 
 	quote = find_quote(rdl, c);
-	rdl->token = token_add(rdl->token, ft_strdup(quote.sybl), 2);
+    if (c == '\'')
+	    rdl->token = token_add(rdl->token, ft_strdup(quote.sybl), 2);
+    else if (c == '\"')
+	    rdl->token = token_add(rdl->token, ft_strdup(quote.sybl), 3);
+    
 }
 
 void	parser_add(t_rdl *rdl, char *buffer)

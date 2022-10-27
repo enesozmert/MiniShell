@@ -59,7 +59,6 @@ void parser_arg_quote(int c, int *k, t_rdl *rdl)
 	i = *k;
 	parser_add_quote(rdl, rdl->main_str[i]);
 	parser_arg_is((char)c, &i, rdl);
-	rdl->t_flag = 2;
 	*k = i;
 }
 
@@ -91,10 +90,8 @@ void parser_arg(t_rdl *rdl)
 	while (i < rdl->len + 1)
 	{
 		rdl->quote_prop->flag = 0;
-		if (rdl->main_str[i] == '\'')
-			parser_arg_quote('\'', &i, rdl);
-		else if (rdl->main_str[i] == '\"')
-			parser_arg_quote('\"', &i, rdl);
+		if (is_quote(rdl, rdl->main_str[i]))
+			parser_arg_quote(rdl->main_str[i], &i, rdl);
 		else if (is_operator(rdl, rdl->main_str[i]))
 			parser_add_operator(rdl, rdl->main_str[i]);
 		else if (is_quote(rdl, rdl->main_str[i]))

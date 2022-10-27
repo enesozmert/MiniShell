@@ -106,6 +106,8 @@ typedef struct s_command
 	char	*name;
 	char	*type;
 	char	**arg;
+	char	**key;
+	char	**value;
 	char	*option;
 	int		(*f)(struct s_command);
 	int		count;

@@ -55,7 +55,7 @@ int command_create(t_rdl *rdl)
     command_id = command_find(rdl, token->context);
     if (rdl->token->type && ft_strncmp(rdl->token->type, "keyword", ft_strlen("keyword")) == 0)
         command_id = command_find(rdl, token->context);
-    else if (rdl->token->type && ft_strncmp(rdl->token->type, "arg", ft_strlen("arg")) == 0)
+    else if (rdl->token->type && ft_strncmp(rdl->token->type, "key", ft_strlen("key")) == 0)
     {
         arg_id = rdl->command_list[command_id].arg_count;
         rdl->command_list[command_id].arg[arg_id] = ft_strdup(rdl->token->context);
