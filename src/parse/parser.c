@@ -2,18 +2,27 @@
 
 void parser(t_rdl *rdl)
 {
-    char *result;
+    char    *result;
+    char    *result1;
     int i;
 
     i = -1;
     result = 0;
+    result1 = 0;
     while (rdl->quote_list[++i].name != NULL)
     {
         result = ft_strchr(rdl->main_str, rdl->quote_list[i].sybl[0]);
         if (result != NULL)
             break ;
     }
-    if (result == NULL)
+    i = -1;
+    while (rdl->operator_list[++i].name != NULL)
+    {
+        result1 = ft_strchr(rdl->main_str, rdl->operator_list[i].sybl[0]);
+        if (result1 != NULL)
+            break ;
+    }
+    if (result == NULL && result1 == NULL)
         parser_default(rdl);
     else
         parser_arg(rdl);

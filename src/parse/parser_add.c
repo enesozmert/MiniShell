@@ -13,7 +13,6 @@ void	parser_add_quote(t_rdl *rdl, char c)
 	t_quote quote;
 
 	quote = find_quote(rdl, c);
-	printf("ok\n");
 	rdl->token = token_add(rdl->token, ft_strdup(quote.sybl), 2);
 }
 
