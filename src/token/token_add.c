@@ -80,7 +80,12 @@ void token_add_type(t_token **token)
 				&& keyword_in_operator(rdl, keyword, token_cpy->context[0]))
 		{
 			token_cpy->type = ft_strdup("operator");
-			opr_flag = 1;
+			if (token_cpy->context[0] == '=')
+				opr_flag = 1;
+			else if (token_cpy->context[0] == '$')
+				opr_flag = 0;
+			else if (token_cpy->context[0] == '=' && token_cpy->next->context[0] == '$')
+				opr_flag = 0;
 		}
 		else if (is_quote(rdl, token_cpy->context[0]) && (token_cpy)->len == 1 && token_cpy->t_flag == 2)
 		{
@@ -91,12 +96,12 @@ void token_add_type(t_token **token)
 			opr_flag = 0;
 			token_cpy->type = ft_strdup("double_quote");
 		}
-		else if ((token_cpy)->len > 0 && opr_flag == 1)
+		else if ((token_cpy)->len > 0 && opr_flag == 0)
 		{
 			token_cpy->type = ft_strdup("key");
 			opr_flag = 0;
 		}
-		else if ((token_cpy)->len > 0 && opr_flag == 0)
+		else if ((token_cpy)->len > 0 && opr_flag == 1)
 		{
 			token_cpy->type = ft_strdup("value");
 			opr_flag = 0;
