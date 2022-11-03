@@ -48,11 +48,13 @@ void token_add_index(t_token **token)
 
 void token_add_type(t_token **token)
 {
-	int i;
-	t_rdl *rdl;
-	t_token *token_cpy;
-	char *new_trim;
-	int opr_flag;
+	int		i;
+	int		opr_flag;
+	t_rdl	*rdl;
+	t_token	*token_cpy;
+	char	*keyword;
+	// t_token	*token_zero;
+	char	*new_trim;
 
 	i = -1;
 	opr_flag = 0;
@@ -63,14 +65,19 @@ void token_add_type(t_token **token)
 	keyword_list(rdl->keyword_list);
 	operator_list(rdl->operator_list);
 	quote_list(rdl->quote_list);
+	// token_zero = get_token_id(rdl->token, 0);
 	token_cpy = *token;
 	while (++i < token_size(*token))
 	{
 		if (token_cpy->id == 0)
 			new_trim = keyword_trim(token_cpy->context);
 		if (token_cpy->id == 0 && is_keyword(rdl, new_trim))
+		{
 			token_cpy->type = ft_strdup("keyword");
-		else if (is_operator(rdl, token_cpy->context[0]) && (token_cpy)->len == 1 && token_cpy->t_flag == 1)
+			keyword = ft_strdup(token_cpy->context);
+		}
+		else if (is_operator(rdl, token_cpy->context[0]) && (token_cpy)->len == 1 && token_cpy->t_flag == 1
+				&& keyword_in_operator(rdl, keyword, token_cpy->context[0]))
 		{
 			token_cpy->type = ft_strdup("operator");
 			opr_flag = 1;

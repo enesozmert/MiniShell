@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/10/27 20:58:21 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/11/03 12:18:39 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ typedef struct s_rdl
 typedef struct s_keyword
 {
 	char				*type;
+	char				*operators_id;
 }	t_keyword;
 
 typedef struct s_operator
@@ -200,6 +201,7 @@ int				is_quote(t_rdl *rdl, char c);
 t_keyword		find_keyword(t_rdl *rdl, char *str);
 t_operator		find_operator(t_rdl *rdl, char c);
 t_quote			find_quote(t_rdl *rdl, char c);
+int				keyword_in_operator(t_rdl *rdl, char *str, char operator);
 //exception
 int				exception_handler(t_rdl *rdl);
 void			exception_write(t_rdl *rdl, char *message);

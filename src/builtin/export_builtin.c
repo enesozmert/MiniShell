@@ -17,7 +17,7 @@ int export_start(t_command command)
     while (++i < command.key_count)
         key = ft_strjoin(key, command.key[i]);
     printf("key: %s\n", key);
-    env_add(key, value);
+    env_add(value, key);
     env_asc(g_env.env);
     free(key);
     free(value);
