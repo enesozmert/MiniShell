@@ -29,8 +29,6 @@ void parser_arg_is(int c, int *k, t_rdl *rdl)
 		i++;
 		rdl->quote_prop->flag = 1;
 	}
-	if (rdl->quote_prop->flag == 1 && rdl->main_str[i] <= 32 && rdl->main_str[i] != '\0')
-		parser_add(rdl, ft_strdup(" "));
 	*k = i;
 }
 
@@ -63,6 +61,25 @@ void parser_arg_quote(int c, int *k, t_rdl *rdl)
 	*k = i;
 }
 
+static void parser_space(int *k, t_rdl *rdl)
+{
+	int i;
+	char *x;
+
+	x = malloc(sizeof(char)*2);
+	x[0] = ' ';
+	x[1] = '\0';
+	i = *k; 
+	while(rdl->main_str[i] <= 32)
+		i++;
+
+	i--;
+	*k = i;
+	
+	parser_add(rdl, x);
+	free(x);
+}
+
 void parser_arg_keyword(t_rdl *rdl)
 {
 	int i;
@@ -85,11 +102,13 @@ void parser_arg_keyword(t_rdl *rdl)
 void parser_arg(t_rdl *rdl)
 {
 	int i;
-
+	
+	
 	parser_arg_keyword(rdl);
 	i = char_pos(rdl->main_str);
 	while (i < rdl->len + 1)
 	{
+			
 		rdl->quote_prop->flag = 0;
 		if (is_quote(rdl, rdl->main_str[i]))
 			parser_arg_quote(rdl->main_str[i], &i, rdl);
@@ -99,7 +118,10 @@ void parser_arg(t_rdl *rdl)
 			parser_add_quote(rdl, rdl->main_str[i]);
 		else if (is_operator(rdl, rdl->main_str[i]) == 0 && rdl->main_str[i] > 32 && rdl->main_str[i] != '\0')
 			parser_arg_isnot(&i, rdl);
+		else if(rdl->main_str[i] <= 32)
+			parser_space(&i, rdl);
 		if (rdl->quote_prop->flag == 0)
 			i++;
+
 	}
 }
