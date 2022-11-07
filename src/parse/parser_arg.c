@@ -41,7 +41,7 @@ void parser_arg_isnot(int *k, t_rdl *rdl)
 
 	i = *k;
 	j = 0;
-	if (rdl->quote_prop->flag == 1 && rdl->main_str[i] <= 32 && rdl->main_str[i + 1] > 32  && rdl->main_str[i] != '\0')
+	if (rdl->main_str[i] <= 32 && rdl->main_str[i + 1] > 32  && rdl->main_str[i] != '\0')
 			parser_add(rdl, ft_strdup(" "));
 	while (is_quote(rdl, rdl->main_str[i]) == 0 && rdl->main_str[i] > 32 && is_operator(rdl, rdl->main_str[i]) == 0 && rdl->main_str[i] != '\0' && is_keyword_builtin(rdl, rdl->buffer) == 0)
 	{
