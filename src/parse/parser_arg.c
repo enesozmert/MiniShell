@@ -49,6 +49,9 @@ void parser_arg_isnot(int *k, t_rdl *rdl)
 	}
 	rdl->buffer[j] = '\0';
 	rdl->t_flag = 0;
+	// rdl->buffer = ft_substr(rdl->buffer, 0, ft_strchr(rdl->buffer, 32) - rdl->buffer);
+	// ft_bzero(rdl->buffer, ft_strlen(rdl->buffer));
+	// printf("ok : %s-\n", rdl->buffer);
 	parser_add(rdl, rdl->buffer);
 	*k = i;
 }

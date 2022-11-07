@@ -9,6 +9,8 @@ t_rdl *rdl_init(t_rdl *rdl)
 	rdl->buffer = malloc(sizeof(char) * rdl->len);
 	rdl->keyword_list = malloc(sizeof(t_keyword) * 8);
 	rdl->operator_list = malloc(sizeof(t_operator) * 7);
+	rdl->delimiter_list = malloc(sizeof(t_delimiter) * 18);
+	rdl->identifier_list = malloc(sizeof(t_operator) * 11);
 	rdl->command_list = malloc(sizeof(t_command) * 9);
 	rdl->quote_list = malloc(sizeof(t_quote) * 3);
 	rdl->quote_prop = malloc(sizeof(t_quote_prop) * 1);
@@ -26,6 +28,8 @@ void rdl_clear(t_rdl *rdl)
 {
 	free(rdl->keyword_list);
 	free(rdl->operator_list);
+	free(rdl->delimiter_list);
+	free(rdl->identifier_list);
 	free(rdl->quote_list);
 	free(rdl->main_str);
 	free(rdl->buffer);

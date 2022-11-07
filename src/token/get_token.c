@@ -18,7 +18,6 @@ void	get_next_token(t_token **token)
 
 t_token	*get_token_id(t_token *token, int id)
 {
-	// (void)id;
 	t_token	*token_cpy;
 
 	token_cpy = token;

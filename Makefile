@@ -36,8 +36,9 @@ HISTORY		=	history
 PARSE		=	parser parser_add parser_arg parser_add_buffer
 RDL			=	rdl
 SYNTAX		=	syntax quote keyword_syntax quote_syntax redir_syntax export_syntax
-STATIC		=	keyword_list operator_list command_list quote_list
-LEXICAL		=	lexical is_keyword is_operator is_quote find_operator find_keyword find_quote \
+STATIC		=	keyword_list operator_list command_list quote_list delimiter_list identifier_list
+LEXICAL		=	lexical is_keyword is_operator is_quote is_identifier is_delimiter\
+				find_operator find_keyword find_quote \
 				keyword_in_operator
 CORE		=	white_space count_char quote_count count_matris char_replace free_double_str \
 				char_pos keyword_trim keyword_trim_len token_arg_count signal_handler \

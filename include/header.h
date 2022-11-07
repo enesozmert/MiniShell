@@ -6,7 +6,7 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/11/03 12:18:39 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/11/06 22:26:47 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ typedef struct s_rdl
 	t_token					*token;
 	struct s_keyword		*keyword_list;
 	struct s_operator		*operator_list;
+	struct s_delimiter		*delimiter_list;
+	struct s_identifier		*identifier_list;
 	struct s_command		*command_list;
 	struct s_quote			*quote_list;
 }	t_rdl;
@@ -94,6 +96,16 @@ typedef struct s_operator
 	char	*name;
 	char	*sybl;
 }	t_operator;
+
+typedef struct s_delimiter
+{
+	char	*sybl;
+}	t_delimiter;
+
+typedef	struct s_identifier
+{
+	char	*sybl;
+}	t_identifier;
 
 typedef struct s_exception
 {
@@ -198,6 +210,8 @@ int				is_keyword_exec(t_rdl *rdl, char *str);
 int				is_keyword_builtin(t_rdl *rdl, char *str);
 int				is_operator(t_rdl *rdl, char c);
 int				is_quote(t_rdl *rdl, char c);
+int				is_delimiter(t_rdl *rdl, char c);
+int				is_identifier(t_rdl *rdl, char *str);
 t_keyword		find_keyword(t_rdl *rdl, char *str);
 t_operator		find_operator(t_rdl *rdl, char c);
 t_quote			find_quote(t_rdl *rdl, char c);
@@ -240,4 +254,8 @@ int				env_asc(char **env);
 int				env_dsc(char **env);
 //new
 void			find_pipe_count(t_rdl *rdl);
+//delimiter
+void	delimiter_list(t_delimiter *delimiter);
+//identifier
+void	identifier_list(t_identifier *identifier);
 #endif
