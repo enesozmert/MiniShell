@@ -41,8 +41,6 @@ void parser_arg_isnot(int *k, t_rdl *rdl)
 
 	i = *k;
 	j = 0;
-	if (rdl->main_str[i] <= 32 && rdl->main_str[i + 1] > 32  && rdl->main_str[i] != '\0')
-			parser_add(rdl, ft_strdup(" "));
 	while (is_quote(rdl, rdl->main_str[i]) == 0 && rdl->main_str[i] > 32 && is_operator(rdl, rdl->main_str[i]) == 0 && rdl->main_str[i] != '\0' && is_keyword_builtin(rdl, rdl->buffer) == 0)
 	{
 		rdl->buffer[j++] = rdl->main_str[i];
@@ -51,9 +49,6 @@ void parser_arg_isnot(int *k, t_rdl *rdl)
 	}
 	rdl->buffer[j] = '\0';
 	rdl->t_flag = 0;
-	// rdl->buffer = ft_substr(rdl->buffer, 0, ft_strchr(rdl->buffer, 32) - rdl->buffer);
-	// ft_bzero(rdl->buffer, ft_strlen(rdl->buffer));
-	// printf("ok : %s-\n", rdl->buffer);
 	parser_add(rdl, rdl->buffer);
 	*k = i;
 }
@@ -102,7 +97,7 @@ void parser_arg(t_rdl *rdl)
 			parser_add_operator(rdl, rdl->main_str[i]);
 		else if (is_quote(rdl, rdl->main_str[i]))
 			parser_add_quote(rdl, rdl->main_str[i]);
-		else if (is_operator(rdl, rdl->main_str[i]) == 0 && rdl->main_str[i] != '\0')
+		else if (is_operator(rdl, rdl->main_str[i]) == 0 && rdl->main_str[i] > 32 && rdl->main_str[i] != '\0')
 			parser_arg_isnot(&i, rdl);
 		if (rdl->quote_prop->flag == 0)
 			i++;
