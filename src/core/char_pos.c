@@ -9,7 +9,7 @@ int char_pos(char *str)
     {
         if (str[i] <= 32 && str[i + 1] > 32)
         {
-            return (i);
+            return (i + 1);
         }
     }
     return (0);
