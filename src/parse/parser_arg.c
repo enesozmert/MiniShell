@@ -17,7 +17,7 @@ void parser_arg(t_rdl *rdl)
 			parser_add_quote(rdl, rdl->main_str[i]);
 		else if (is_operator(rdl, rdl->main_str[i]) == 0 && rdl->main_str[i] > 32)
 			parser_arg_isnot(&i, rdl);
-		else if(rdl->main_str[i] >= 32)
+		else if(rdl->main_str[i] <= 32)
 			parser_arg_space(&i, rdl);
 		if (rdl->quote_prop->flag == 0)
 			i++;
