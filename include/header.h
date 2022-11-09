@@ -259,4 +259,6 @@ void			find_pipe_count(t_rdl *rdl);
 void	delimiter_list(t_delimiter *delimiter);
 //identifier
 void	identifier_list(t_identifier *identifier);
+//signal
+void	set_signal();
 #endif
