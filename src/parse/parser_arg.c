@@ -5,9 +5,7 @@ void parser_arg(t_rdl *rdl)
 	int i;
 	
 	parser_arg_keyword(rdl);
-	i = char_pos(rdl, rdl->main_str);
-	// printf("i: %d\n", i);
-	// printf("rdl->len : %d\n", rdl->len);
+	i = char_pos(rdl);
 	while (i < rdl->len)
 	{
 		rdl->quote_prop->flag = 0;

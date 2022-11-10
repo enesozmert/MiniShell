@@ -1,30 +1,45 @@
 #include "../../include/header.h"
 
-int char_pos(t_rdl *rdl, char *str)
+int char_pos(t_rdl *rdl)
 {
-    char *keyword;
     int i;
     int j;
-    int len;
+    int total_space;
+    int	total_len;
+    int	keyword_len;
+    char *keyword;
 
-    len = 0;
-    i = -1;
+    i = 0;
     j = 0;
+    total_space = 0;
+	total_len = 0;
+	keyword_len = 0;
     keyword = malloc(sizeof(char) * rdl->len);
-    while (rdl->main_str[i] <= 32 && rdl->main_str[i] != '\0')
+	while (rdl->main_str[i] <= 32)
+	{
+		total_space++;
 		i++;
-    while (str[++i] > 32)
-    {
-        if (str[i] > 32)
-            keyword[j++] = str[i];
-    }
+	}
+	while (rdl->main_str[i] != '\0' && rdl->main_str[i] > 32)
+	{
+		keyword[j++] = rdl->main_str[i];
+		i++;
+	}
     keyword[j] = '\0';
-    //bu keyword leaks yapar hocam, ileride başımızı ağrıtır
+	while (rdl->main_str[i] <= 32)
+	{
+		total_space++;
+		i++;
+	}
+	// printf("keyword: %s\n", keyword);
+    // printf("total space : %d\n", total_space);
     if (is_keyword(rdl, keyword))
     {
-        len = ft_strlen(keyword);
+		keyword_len = ft_strlen(keyword);
+		total_len = keyword_len + total_space;
+		// printf("total len : %d\n", total_len);
         free(keyword);
-        return (len);
+        return (total_len);
     }
     return (0);
 }
