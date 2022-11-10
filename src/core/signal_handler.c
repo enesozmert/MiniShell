@@ -8,6 +8,8 @@ void	proc_signal_handler(int signo)
 	pid = waitpid(-1, &status, WNOHANG);
 	if (signo == SIGINT)
 	{
+		ft_putstr_fd("\n", 1);
+		signal(SIGINT, proc_signal_handler);
 		if (pid == -1)
 		{
 			ft_putstr_fd("\b\b  \b\b\n->", 1);
@@ -17,9 +19,6 @@ void	proc_signal_handler(int signo)
 		}
 		else
 			ft_putstr_fd("2", 1);
-/* 
-		ft_putstr_fd("\n", 1);
-		signal(SIGINT, proc_signal_handler); */
 	}
 	else if (signo == SIGQUIT)
 	{

@@ -6,7 +6,7 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/11/10 12:02:24 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/11/10 12:13:34 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,7 @@ int				quote_count_right(char *str);
 int				quote_count(char *str, int c);
 int				count_matris(void **matris);
 char			*char_replace(char *str, char find, char replace);
-int				char_pos(char *str);
+int				char_pos(t_rdl *rdl, char *str);
 char			*keyword_trim(char *str);
 int				keyword_trim_len(char *str);
 int				token_arg_count(t_token *token);
@@ -258,7 +258,7 @@ void			find_pipe_count(t_rdl *rdl);
 //delimiter
 void			delimiter_list(t_delimiter *delimiter);
 //identifier
-void	identifier_list(t_identifier *identifier);
+void			identifier_list(t_identifier *identifier);
 //signal
-void	set_signal();
+void			set_signal();
 #endif
