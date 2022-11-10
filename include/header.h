@@ -6,7 +6,7 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/11/09 12:05:13 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/11/10 12:02:24 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,5 +258,7 @@ void			find_pipe_count(t_rdl *rdl);
 //delimiter
 void			delimiter_list(t_delimiter *delimiter);
 //identifier
-void			identifier_list(t_identifier *identifier);
+void	identifier_list(t_identifier *identifier);
+//signal
+void	set_signal();
 #endif
