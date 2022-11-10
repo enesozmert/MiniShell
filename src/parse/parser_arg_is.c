@@ -39,7 +39,7 @@ void parser_arg_isnot(int *k, t_rdl *rdl)
 
 	i = *k;
 	j = 0;
-	while (is_quote(rdl, rdl->main_str[i]) == 0 && rdl->main_str[i] > 32 && is_operator(rdl, rdl->main_str[i]) == 0  && is_keyword_builtin(rdl, rdl->buffer) == 0)
+	while (is_quote(rdl, rdl->main_str[i]) == 0 && rdl->main_str[i] > 32 && is_operator(rdl, rdl->main_str[i]) == 0)
 	{
 		rdl->buffer[j++] = rdl->main_str[i];
 		i++;
