@@ -85,36 +85,38 @@ void token_add_type(t_token **token)
 				key_flag = 2;
 		}
 		else if (token_cpy->len == 1
-				&& token_cpy->t_flag == 1
 				&& is_operator(rdl, token_cpy->context[0])
 				&& keyword_in_operator(rdl, keyword, token_cpy->context[0]))
 				{
 					token_cpy->type = ft_strdup("operator");
 					if (token_cpy->context[0] == '$')
-						opr_flag = 1;	
+						opr_flag = 1;
+					if (token_cpy->context[0] == '=')
+						opr_flag = 2;	
 				}
 		else if (token_cpy->len == 1
-				&& token_cpy->t_flag == 1
 				&& is_operator(rdl, token_cpy->context[0])
 				&& keyword_in_operator(rdl, keyword, token_cpy->context[0]) == 0)
 				{
-					token_cpy->type = ft_strdup("not_operator");
+					token_cpy->type = ft_strdup("value");
 					if (token_cpy->context[0] == '$')
 						opr_flag = 1;
+					if (token_cpy->context[0] == '=')
+						opr_flag = 2;
 				}
 		else if (is_quote(rdl, token_cpy->context[0]) && (token_cpy)->len == 1 && token_cpy->t_flag == 2)
 			token_cpy->type = ft_strdup("single_quote");
 		else if (is_quote(rdl, token_cpy->context[0]) && (token_cpy)->len == 1 && token_cpy->t_flag == 3)
 			token_cpy->type = ft_strdup("double_quote");
 		else if ((token_cpy)->len > 0 && is_identifier(rdl, token_cpy->context)
-					&& is_delimiter(rdl, token_cpy->context[token_cpy->len - 1]) == 0 && key_flag == 2)
+					&& is_delimiter(rdl, token_cpy->context[token_cpy->len - 1]) == 0 && key_flag == 2 && opr_flag != 2 && opr_flag != 1)
 			token_cpy->type = ft_strdup("valid_identifier");
 		else if ((token_cpy)->len > 0 && is_identifier(rdl, token_cpy->context) == 0
-					&& is_delimiter(rdl, token_cpy->context[token_cpy->len - 1]) == 0 && key_flag == 2)
+					&& is_delimiter(rdl, token_cpy->context[token_cpy->len - 1]) == 0 && key_flag == 2 && opr_flag != 2 && opr_flag != 1)
 			token_cpy->type = ft_strdup("invalid_identifier");
-		else if ((token_cpy)->len > 0 && key_flag == 1 && opr_flag != 1)
+		else if ((token_cpy)->len > 0 && (key_flag == 1 || opr_flag == 2) && (opr_flag != 1 || opr_flag == 2))
 			token_cpy->type = ft_strdup("value");
-		else if ((token_cpy)->len > 0 && opr_flag == 1 && key_flag == 1)
+		else if ((token_cpy)->len > 0 && (opr_flag == 1 || opr_flag == 2) && (key_flag == 1 || key_flag == 2))
 		{
 			token_cpy->type = ft_strdup("key");
 			opr_flag = 0;

@@ -8,7 +8,7 @@ int is_keyword_builtin(t_rdl *rdl, char *str)
     while (rdl->keyword_list[++i].type != NULL)
     {
         if (ft_strncmp(rdl->keyword_list[i].type, str,
-                       ft_strlen(rdl->keyword_list[i].type) + 1) == 0)
+                       ft_strlen(rdl->keyword_list[i].type)) == 0)
             return (1);
     }
     return (0);
