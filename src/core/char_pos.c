@@ -37,7 +37,6 @@ int char_pos(t_rdl *rdl)
     {
 		keyword_len = ft_strlen(keyword);
 		total_len = keyword_len + total_space;
-		// printf("total len : %d\n", total_len);
         free(keyword);
         return (total_len);
     }

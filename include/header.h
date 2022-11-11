@@ -6,7 +6,7 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/11/10 23:19:13 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/11/11 21:01:11 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,11 @@ typedef	struct s_identifier
 {
 	char	*sybl;
 }	t_identifier;
+
+typedef struct s_token_type
+{
+	char	*name;
+}	t_token_type;
 
 typedef struct s_exception
 {

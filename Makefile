@@ -22,6 +22,7 @@ SRC_RDL		=	rdl/
 SRC_SYNTAX	=	syntax/
 SRC_LEXICAL	=	lexical/
 SRC_STATIC	=	static/
+SRC_SIGNAL	=	signal/
 SRC_CORE	=	core/
 SRC_EXCEPTION	=	exception/
 SRC_COMMAND	=	command/
@@ -42,13 +43,14 @@ LEXICAL		=	lexical is_keyword is_operator is_quote is_identifier is_delimiter\
 				find_operator find_keyword find_quote \
 				keyword_in_operator
 CORE		=	white_space count_char quote_count count_matris char_replace free_double_str \
-				char_pos keyword_trim keyword_trim_len token_arg_count signal_handler \
+				char_pos keyword_trim keyword_trim_len token_arg_count \
 				token_key_count token_value_count
 EXCEPTION   =	exception_handler exception_write
 COMMAND		=	command_create command_run command_find command_exec command_find_path \
 				command_clear command_fork command 
 BUILTIN		=	echo_builtin cd_builtin pwd_builtin exit_builtin env_builtin export_builtin unset_builtin
 ENVIRONMENT =	environment env_find env_len env_update env_add env_exist env_asc env_dsc env_delete
+SIGNAL		=	signal_handler
 #FileCreate
 
 SRC_FILES	+=	$(addprefix $(SRC_COMMON),$(COMMON))
@@ -60,6 +62,7 @@ SRC_FILES	+=	$(addprefix $(SRC_RDL),$(RDL))
 SRC_FILES	+=	$(addprefix $(SRC_SYNTAX),$(SYNTAX))
 SRC_FILES	+=	$(addprefix $(SRC_LEXICAL),$(LEXICAL))
 SRC_FILES	+=	$(addprefix $(SRC_STATIC),$(STATIC))
+SRC_FILES	+=	$(addprefix $(SRC_SIGNAL),$(SIGNAL))
 SRC_FILES	+=	$(addprefix $(SRC_CORE),$(CORE))
 SRC_FILES	+=	$(addprefix $(SRC_EXCEPTION),$(EXCEPTION))
 SRC_FILES	+=	$(addprefix $(SRC_COMMAND),$(COMMAND))
@@ -84,6 +87,7 @@ $(OBJF):
 			@mkdir -p $(OBJ_DIR)$(SRC_SYNTAX)
 			@mkdir -p $(OBJ_DIR)$(SRC_LEXICAL)
 			@mkdir -p $(OBJ_DIR)$(SRC_STATIC)
+			@mkdir -p $(OBJ_DIR)$(SRC_SIGNAL)
 			@mkdir -p $(OBJ_DIR)$(SRC_CORE)
 			@mkdir -p $(OBJ_DIR)$(SRC_EXCEPTION)
 			@mkdir -p $(OBJ_DIR)$(SRC_COMMAND)
