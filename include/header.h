@@ -6,7 +6,7 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/11/11 21:01:11 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/11/12 00:48:06 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef struct s_rdl
 	char					*buffer;
 	char					*error_arg;
 	t_quote_prop			*quote_prop;
+	t_token_type_prop		*token_type_prop;
 	t_redir					*redir;
 	t_token					*token;
 	struct s_keyword		*keyword_list;
@@ -82,6 +83,7 @@ typedef struct s_rdl
 	struct s_delimiter		*delimiter_list;
 	struct s_identifier		*identifier_list;
 	struct s_command		*command_list;
+	struct s_token_type		*token_type_list;
 	struct s_quote			*quote_list;
 }	t_rdl;
 
@@ -110,7 +112,17 @@ typedef	struct s_identifier
 typedef struct s_token_type
 {
 	char	*name;
+	int		(*f)(t_rdl *);
 }	t_token_type;
+
+typedef struct s_token_type_prop
+{
+	int		opr_flag;
+	int		key_flag;
+	char	*keyword;
+	char	*new_trim;
+	t_token	token;
+}	t_token_type_prop;
 
 typedef struct s_exception
 {
@@ -154,8 +166,21 @@ void			token_clear(t_token **token);
 int				token_size(t_token *token);
 void			token_add_index(t_token **token);
 void			token_add_type(t_token **token);
+int				token_add_type_handler(t_rdl *rdl);
 t_token			*get_token_id(t_token *token, int id);
 void			get_next_token(t_token **token);
+void			token_type_list(t_token_type *token_type);
+int				is_token_type(t_rdl *rdl, char *str);
+//lexcical->token_type_is
+int				token_type_is_keyword(t_rdl *rdl);
+int				token_type_is_single_quote(t_rdl *rdl);
+int				token_type_is_double_quote(t_rdl *rdl);
+int				token_type_is_valid_identifier(t_rdl *rdl);
+int				token_type_is_invalid_identifier(t_rdl *rdl);
+int				token_type_is_value(t_rdl *rdl);
+int				token_type_is_key(t_rdl *rdl);
+int				token_type_is_add_operator(t_rdl *rdl);
+int				token_type_is_add_value(t_rdl *rdl);
 //rd_line
 char			*ft_read_line(void);
 t_rdl			*rdl_init(t_rdl *rdl);
