@@ -5,7 +5,6 @@ int is_keyword_builtin(t_rdl *rdl, char *str)
     int i;
 
     i = -1;
-    printf("str: %s\n", str);
     while (rdl->keyword_list[++i].type != NULL)
     {
         if (ft_strncmp(rdl->keyword_list[i].type, str,
