@@ -45,17 +45,3 @@ void token_add_index(t_token **token)
 	}
 	token_cpy = *token;
 }
-
-void token_add_type(t_rdl *rdl, t_token **token)
-{
-	int	i;
-
-	i = -1;
-	while (++i < token_size(*token))
-	{
-		rdl->token_type_prop->token = *token;
-		token_add_type_handler(rdl);
-		*token = rdl->token_type_prop->token;
-		get_next_token(&rdl->token);
-	}
-}
