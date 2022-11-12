@@ -6,7 +6,7 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/11/12 17:12:51 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/11/12 22:15:25 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,6 +184,7 @@ int				token_type_is_value1(t_rdl *rdl);
 int				token_type_is_value2(t_rdl *rdl);
 int				token_type_is_value(t_rdl *rdl);
 int				token_type_is_arg(t_rdl *rdl);
+int				token_type_is_string(t_rdl *rdl);
 //rd_line
 char			*ft_read_line(void);
 t_rdl			*rdl_init(t_rdl *rdl);
