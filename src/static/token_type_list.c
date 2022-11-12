@@ -3,7 +3,7 @@
 void	token_type_list(t_token_type *token_type)
 {
 	token_type[0] = (t_token_type){"keyword", token_type_is_keyword};
-	token_type[1] = (t_token_type){"operator", token_type_is_add_operator};
+	token_type[1] = (t_token_type){"operator", token_type_is_operator};
 	token_type[2] = (t_token_type){"key", token_type_is_key};
 	token_type[3] = (t_token_type){"value", token_type_is_value};
 	token_type[4] = (t_token_type){"single_quote", token_type_is_single_quote};

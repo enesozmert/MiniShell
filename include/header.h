@@ -6,7 +6,7 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/11/12 00:48:06 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/11/12 16:36:13 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ typedef struct s_token_type_prop
 	int		key_flag;
 	char	*keyword;
 	char	*new_trim;
-	t_token	token;
+	struct	s_token	*token;
 }	t_token_type_prop;
 
 typedef struct s_rdl
@@ -165,7 +165,7 @@ void			token_delone(t_token *token);
 void			token_clear(t_token **token);
 int				token_size(t_token *token);
 void			token_add_index(t_token **token);
-void			token_add_type(t_token **token);
+void			token_add_type(t_rdl *rdl, t_token **token);
 int				token_add_type_handler(t_rdl *rdl);
 t_token			*get_token_id(t_token *token, int id);
 void			get_next_token(t_token **token);
@@ -179,8 +179,10 @@ int				token_type_is_valid_identifier(t_rdl *rdl);
 int				token_type_is_invalid_identifier(t_rdl *rdl);
 int				token_type_is_value(t_rdl *rdl);
 int				token_type_is_key(t_rdl *rdl);
-int				token_type_is_add_operator(t_rdl *rdl);
-int				token_type_is_add_value(t_rdl *rdl);
+int				token_type_is_operator(t_rdl *rdl);
+int				token_type_is_value1(t_rdl *rdl);
+int				token_type_is_value2(t_rdl *rdl);
+int				token_type_is_value(t_rdl *rdl);
 //rd_line
 char			*ft_read_line(void);
 t_rdl			*rdl_init(t_rdl *rdl);

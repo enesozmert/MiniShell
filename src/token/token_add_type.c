@@ -11,7 +11,10 @@ int token_add_type_handler(t_rdl *rdl)
 	{
         handle_code = rdl->token_type_list[i].f(rdl);
         if (handle_code == 1)
-            rdl->token_type_prop->token.type = ft_strdup(rdl->token_type_list[i].name);
+        {
+            rdl->token_type_prop->token->type = ft_strdup(rdl->token_type_list[i].name);
+            break ;
+        }
         handle_code = 0;
 		i++;
 	}
