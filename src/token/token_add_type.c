@@ -15,8 +15,9 @@ int token_add_type_handler(t_rdl *rdl)
             rdl->token_type_prop->token->type = ft_strdup(rdl->token_type_list[i].name);
             break ;
         }
-        handle_code = 0;
 		i++;
 	}
+    // free(rdl->token_type_prop->keyword);
+    // free(rdl->token_type_prop->new_trim);
     return (0);
 }
