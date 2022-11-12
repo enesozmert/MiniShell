@@ -12,7 +12,7 @@ t_rdl *rdl_init(t_rdl *rdl)
 	rdl->delimiter_list = malloc(sizeof(t_delimiter) * 18);
 	rdl->identifier_list = malloc(sizeof(t_operator) * 11);
 	rdl->command_list = malloc(sizeof(t_command) * 9);
-	rdl->token_type_list = malloc(sizeof(t_token_type) * 9);
+	rdl->token_type_list = malloc(sizeof(t_token_type) * 10);
 	rdl->quote_list = malloc(sizeof(t_quote) * 3);
 	rdl->quote_prop = malloc(sizeof(t_quote_prop) * 1);
 	rdl->token_type_prop = malloc(sizeof(t_token_type_prop) * 1);

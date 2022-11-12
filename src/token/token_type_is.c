@@ -113,3 +113,11 @@ int token_type_is_key(t_rdl *rdl)
         return (1);
     return (0);
 }
+
+int token_type_is_arg(t_rdl *rdl)
+{
+    if (rdl->token_type_prop->token->len > 0 &&
+        (rdl->token_type_prop->key_flag != 1 || rdl->token_type_prop->key_flag != 2))
+        return (1);
+    return (0);
+}

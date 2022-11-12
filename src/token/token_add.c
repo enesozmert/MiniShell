@@ -26,7 +26,6 @@ t_token *token_add(t_token *token, char *ptr, int flag)
 {
 	token_append(&token, token_new(ptr, flag));
 	token_add_index(&token);
-	// token_add_type(&token);
 	return (token);
 }
 

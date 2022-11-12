@@ -10,5 +10,6 @@ void	token_type_list(t_token_type *token_type)
 	token_type[5] = (t_token_type){"value", token_type_is_value};
 	token_type[6] = (t_token_type){"valid_identifier", token_type_is_valid_identifier};
 	token_type[7] = (t_token_type){"invalid_identifier", token_type_is_invalid_identifier};
+	token_type[7] = (t_token_type){"arg", token_type_is_arg};
 	token_type[8] = (t_token_type){NULL, NULL};
 }
