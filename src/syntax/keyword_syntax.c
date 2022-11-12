@@ -14,8 +14,8 @@ int keyword_syntax(t_rdl *rdl)
 	token->context = keyword_trim(token->context);
 	if (is_keyword(rdl, token->context) == 1)
 	{
-		rdl->error_arg = malloc(sizeof(char) * ft_strlen(token->context));
-		rdl->error_arg = NULL;
+		// rdl->error_arg = malloc(sizeof(char) * ft_strlen(token->context));
+		// rdl->error_arg = NULL;
 		return (0);
 	}
 	else

@@ -6,7 +6,7 @@ void exception_write(t_rdl *rdl, char *message)
     {
         printf("bash : %s : %s\n", rdl->error_arg, message);
         if(rdl->error_arg != NULL)
-            free(rdl->error_arg);
+            ft_bzero(rdl->error_arg, ft_strlen(rdl->error_arg));
     }
     else
         printf("bash : %s\n", message);
