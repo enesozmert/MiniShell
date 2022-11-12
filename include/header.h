@@ -65,6 +65,15 @@ typedef	struct s_redir
 	int	output_count;
 }	t_redir;
 
+typedef struct s_token_type_prop
+{
+	int		opr_flag;
+	int		key_flag;
+	char	*keyword;
+	char	*new_trim;
+	t_token	token;
+}	t_token_type_prop;
+
 typedef struct s_rdl
 {
 	int						len;
@@ -114,15 +123,6 @@ typedef struct s_token_type
 	char	*name;
 	int		(*f)(t_rdl *);
 }	t_token_type;
-
-typedef struct s_token_type_prop
-{
-	int		opr_flag;
-	int		key_flag;
-	char	*keyword;
-	char	*new_trim;
-	t_token	token;
-}	t_token_type_prop;
 
 typedef struct s_exception
 {
