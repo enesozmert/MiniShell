@@ -13,6 +13,7 @@ int token_add_type_handler(t_rdl *rdl)
         if (handle_code == 1)
         {
             rdl->token_type_prop->token->type = ft_strdup(rdl->token_type_list[i].name);
+            rdl->token_type_prop->token->type_id = i;
             break ;
         }
 		i++;

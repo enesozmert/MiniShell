@@ -6,7 +6,7 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/11/12 22:15:25 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/11/13 16:46:25 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_token
 	int				len;
 	int				t_flag;
 	char			*type;
+	int				type_id;
 	char			*context;
 	struct s_token	*next;
 }	t_token;
@@ -134,16 +135,11 @@ typedef struct s_exception
 typedef struct s_command
 {
 	char	*name;
-	char	*type;
-	char	**arg;
-	char	**key;
-	char	**value;
-	char	*option;
+	char	*keyword;
+	char	*token_types_id;
+	t_token	*tokens;
 	int		(*f)(struct s_command);
 	int		count;
-	int		arg_count;
-	int		key_count;
-	int		value_count;
 }	t_command;
 
 typedef	struct s_env
@@ -251,6 +247,7 @@ t_keyword		find_keyword(t_rdl *rdl, char *str);
 t_operator		find_operator(t_rdl *rdl, char c);
 t_quote			find_quote(t_rdl *rdl, char c);
 int				keyword_in_operator(t_rdl *rdl, char *str, char operator);
+int				command_in_token_type(t_rdl *rdl, int command_id, int token_id);
 //exception
 int				exception_handler(t_rdl *rdl);
 void			exception_write(t_rdl *rdl, char *message);

@@ -43,7 +43,7 @@ STATIC		=	keyword_list operator_list command_list quote_list delimiter_list iden
 				token_type_list
 LEXICAL		=	lexical is_keyword is_operator is_quote is_identifier is_delimiter is_token_type\
 				find_operator find_keyword find_quote \
-				keyword_in_operator
+				command_in_token_type keyword_in_operator
 CORE		=	white_space count_char quote_count count_matris char_replace free_double_str \
 				char_pos keyword_trim keyword_trim_len token_arg_count \
 				token_key_count token_value_count

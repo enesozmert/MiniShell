@@ -8,7 +8,7 @@ int command_execv(t_command command)
     char    *type[2];
 
 	result = 0;	
-    type[0] = ft_strdup(command.type);
+    type[0] = ft_strdup(command.keyword);
     type[1] = NULL;
     path = command_find_path(type[0]);
 	pid = fork();
