@@ -6,7 +6,7 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/11/13 16:46:25 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/11/13 19:18:00 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,7 +261,7 @@ void			command_list(t_command *command);
 int				command_run(t_rdl *rdl);
 int				command_execv(t_command command);
 char			*command_find_path(char *keyword);
-int				command_find(t_rdl *rdl, char *type);
+int				command_find(t_rdl *rdl, char *keyword);
 int				command_fork();
 //builtin
 int				echo_start(t_command command);

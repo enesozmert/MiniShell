@@ -8,9 +8,8 @@ t_token *token_new(char *context, int flag)
 	tmp->context = context;
 	tmp->len = ft_strlen(context);
 	tmp->type = NULL;
-	tmp->next = NULL;
+	tmp->type_id = 0;
 	tmp->next = NULL;
 	tmp->t_flag = flag;
-	//printf("token new: %s\n", context);
 	return (tmp);
 }

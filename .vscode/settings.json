@@ -15,6 +15,7 @@
         "history.h": "c",
         "exception": "c",
         "chrono": "c",
-        "bitset": "c"
+        "bitset": "c",
+        "type_traits": "c"
     }
 }

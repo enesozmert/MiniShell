@@ -16,11 +16,3 @@ void token_clear(t_token **token)
 	}
 	*token = NULL;
 }
-
-void	token_delone(t_token *token)
-{
-	if (!token)
-		return ;
-	free((void *)token->context);
-	free(token);
-}

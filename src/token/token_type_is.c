@@ -18,7 +18,6 @@ int token_type_is_keyword(t_rdl *rdl)
     return (0);
 }
 
-
 int token_type_is_operator(t_rdl *rdl)
 {
     if (rdl->token_type_prop->token->len == 1 &&
