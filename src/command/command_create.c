@@ -6,7 +6,7 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:48:35 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/11/13 23:39:49 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/11/14 00:37:15 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ int command(t_rdl *rdl)
 		get_next_token(&rdl->token);
 	}
     command_run(rdl);
+    // i = -1;
+    // while (rdl->command_list[++i].tokens != NULL)
+    //     print_token(rdl->command_list[i].tokens);
     return (0);
 }
 
@@ -33,6 +36,7 @@ int command_malloc(t_rdl *rdl)
     int command_id;
 
     command_id = command_find(rdl, rdl->token->context);
+    rdl->command_list[command_id].tokens = token_copy_whole(rdl->token);
     if (rdl->token->type_id == 0)
     {
         command_id = command_find(rdl, rdl->token->context);
@@ -52,7 +56,7 @@ int command_create(t_rdl *rdl)
     if (rdl->token->type && ft_strncmp(rdl->token->type, "keyword", ft_strlen("keyword")) == 0)
         command_id = command_find(rdl, token->context);
     is_token_type = command_in_token_type(rdl, command_id, rdl->token->id);
-	if (is_token_type == 1)
-        return (0);
+	if (is_token_type == 0)
+        token_delone(rdl->token);
     return (0);
 }

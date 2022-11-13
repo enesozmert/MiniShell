@@ -6,7 +6,7 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/11/13 19:18:00 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/11/14 00:18:34 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,17 +156,18 @@ t_token			*token_add(t_token *token, char *ptr, int flag);
 void			token_append(t_token **token, t_token *new);
 t_token			*token_last(t_token *token);
 t_token			*token_new(char *context, int flag);
-int				print_token(t_token *token);
+t_token			*token_copy_whole(t_token *token);
 void			token_delone(t_token *token);
 void			token_clear(t_token **token);
 int				token_size(t_token *token);
 void			token_add_index(t_token **token);
 void			token_add_type(t_rdl *rdl, t_token **token);
 int				token_add_type_handler(t_rdl *rdl);
+int				print_token(t_token *token);
 t_token			*get_token_id(t_token *token, int id);
 void			get_next_token(t_token **token);
-void			token_type_list(t_token_type *token_type);
 int				is_token_type(t_rdl *rdl, char *str);
+void			token_type_list(t_token_type *token_type);
 //lexcical->token_type_is
 int				token_type_is_keyword(t_rdl *rdl);
 int				token_type_is_single_quote(t_rdl *rdl);
