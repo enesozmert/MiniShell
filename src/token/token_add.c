@@ -31,8 +31,8 @@ t_token *token_add(t_token *token, char *ptr, int flag)
 
 void token_add_index(t_token **token)
 {
-	t_token *token_cpy;
-	int i;
+	int		i;
+	t_token	*token_cpy;
 
 	i = 0;
 	token_cpy = *token;

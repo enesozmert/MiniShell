@@ -11,7 +11,7 @@ int command_in_token_type(t_rdl *rdl, int command_id, int token_id)
 	token = get_token_id(rdl->token, token_id);
 	while (token_types_id[++i] != NULL)
 	{
-		if (token->id == ft_atoi(token_types_id[i]))
+		if (token->type_id == ft_atoi(token_types_id[i]))
 			return (1);
 	}
 	return (0);

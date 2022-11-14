@@ -6,7 +6,7 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/11/14 00:18:34 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/11/14 21:23:22 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,7 @@ t_token			*token_add(t_token *token, char *ptr, int flag);
 void			token_append(t_token **token, t_token *new);
 t_token			*token_last(t_token *token);
 t_token			*token_new(char *context, int flag);
-t_token			*token_copy_whole(t_token *token);
+t_token			*token_add_copy(t_token *cpy, t_token *token);
 void			token_delone(t_token *token);
 void			token_clear(t_token **token);
 int				token_size(t_token *token);
