@@ -6,7 +6,7 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/11/14 23:16:46 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/11/14 23:30:22 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,8 +142,13 @@ typedef struct s_command
 	int		count;
 }	t_command;
 
-char	**g_env;
-extern	char	**g_env;
+typedef	struct s_env
+{
+	char	**env;
+}	t_env;
+
+t_env g_env;
+extern t_env g_env;
 
 //main
 void			routine();
