@@ -19,7 +19,7 @@ int export_start(t_command command)
     //     key = ft_strjoin(key, command.key[i]);
     // printf("key: %s\n", key);
     // env_add(value, key);
-    // env_asc(g_env.env);
+    // env_asc(g_env);
     // free(key);
     // free(value);
     return (0);

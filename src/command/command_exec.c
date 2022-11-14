@@ -14,7 +14,7 @@ int command_execv(t_command command)
 	pid = fork();
 	signal(SIGINT, proc_signal_handler);
 	if (pid == 0)
-		result = execve(path, type, g_env.env);
+		result = execve(path, type, g_env);
 	else if (pid < 0)
 		return (-1);
 	if (result == -1)

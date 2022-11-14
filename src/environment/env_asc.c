@@ -26,6 +26,6 @@ int env_asc(char **env)
 			i++;
 		}
 	}
-	g_env.env = env;
+	g_env = env;
 	return (0);
 }
