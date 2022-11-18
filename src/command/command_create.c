@@ -6,7 +6,7 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:48:35 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/11/14 21:38:47 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/11/14 23:47:05 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,7 @@ int command_create(t_rdl *rdl)
     if (rdl->token->type && ft_strncmp(rdl->token->type, "keyword", ft_strlen("keyword")) == 0)
         command_id = command_find(rdl, token->context);
     is_token_type = command_in_token_type(rdl, command_id, rdl->token->id);
-	if (is_token_type == 1)
-    {
-        printf("rdl->token->token_type_id : %d\n", rdl->token->type_id);
+    if (is_token_type == 1)
         rdl->command_list[command_id].tokens = token_add_copy(rdl->command_list[command_id].tokens, rdl->token);
-    }
     return (0);
 }

@@ -7,5 +7,6 @@ t_token *token_add_copy(t_token *cpy, t_token *token)
 	cpy->len = token->len;
 	cpy->type = ft_strdup(token->type);
 	cpy->type_id = token->type_id;
+	printf("cpy->type_id : %d\n", cpy->type_id);
 	return (cpy);
 }
