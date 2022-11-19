@@ -16,7 +16,7 @@ int command_execv(t_command command)
 	result = 0;
 	size = token_size(command.tokens);
     path = command_find_path(command.keyword);
-	type = (char**)malloc(sizeof(char *) * (size - 1) + 2);
+	type = (char**)malloc(sizeof(char *) * ((size - 1) + 2));
 	type[0] = ft_strdup(path);
 	while (++i < size)
 	{
@@ -34,7 +34,7 @@ int command_execv(t_command command)
 	if (result == -1)
         return (-1);
 	wait(&pid);
-    free(type[0]);
-    // free(path);
+    // free(type[0]);
+    free(path);
     return (0);
 }

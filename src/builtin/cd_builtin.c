@@ -12,7 +12,7 @@
 
 #include "../../include/header.h"
 
-int cd_home(t_command command)
+static int cd_home(t_command command)
 {
     (void)command;
     char *new_dir;

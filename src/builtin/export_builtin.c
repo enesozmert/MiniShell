@@ -6,11 +6,13 @@ int export_start(t_command command)
     int		size;
     char	*key;
 	char	*value;
+	char	*tmp_value;
     char	*identifier;
 
     i = -1;
     key = ft_strdup("");
     value = ft_strdup("");
+    tmp_value = ft_strdup("");
     identifier = ft_strdup("");
     size = token_size(command.tokens);
     while (++i < size)
@@ -18,7 +20,11 @@ int export_start(t_command command)
         if (command.tokens->type_id == 4)
             identifier = ft_strjoin(identifier, command.tokens->context);
 		if (command.tokens->type_id == 6)
-            key = ft_strjoin(key, command.tokens->context);
+		{
+            key = ft_strdup(command.tokens->context);
+			tmp_value = env_find_value(key);
+			value = ft_strjoin(value, tmp_value);
+		}
         if (command.tokens->type_id == 7)
             value = ft_strjoin(value, command.tokens->context);
         get_next_token(&command.tokens);

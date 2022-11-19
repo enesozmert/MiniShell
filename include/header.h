@@ -268,7 +268,6 @@ int				command_fork();
 //builtin
 int				echo_start(t_command command);
 int				cd_start(t_command command);
-int				cd_home(t_command command);
 int				pwd_start(t_command command);
 int				exit_start(t_command command);
 int				env_start(t_command command);
