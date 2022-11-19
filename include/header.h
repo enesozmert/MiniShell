@@ -288,6 +288,7 @@ int				env_asc(char **env);
 int				env_dsc(char **env);
 //new
 void			find_pipe_count(t_rdl *rdl);
+int				option_count(t_token *token);
 //delimiter
 void			delimiter_list(t_delimiter *delimiter);
 //identifier

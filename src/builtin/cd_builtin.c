@@ -14,6 +14,7 @@
 
 int cd_home(t_command command)
 {
+    (void)command;
     char *new_dir;
 
     new_dir = env_find_value("HOME");

@@ -97,6 +97,8 @@ int token_type_is_value2(t_rdl *rdl)
                 rdl->token_type_prop->opr_flag = 1;
             if (rdl->token_type_prop->token->context[0] == '=')
                 rdl->token_type_prop->opr_flag = 2;
+            if (rdl->token_type_prop->token->context[0] == ' ')
+                rdl->token_type_prop->opr_flag = 3;
             return (1);
         }
         return (0);
