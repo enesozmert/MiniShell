@@ -27,6 +27,7 @@ int token_type_is_keyword(t_rdl *rdl)
 int token_type_is_operator(t_rdl *rdl)
 {
     if (rdl->token_type_prop->token->len == 1 &&
+        rdl->token->t_flag == 1 &&
         is_operator(rdl, rdl->token_type_prop->token->context[0]) &&
         keyword_in_operator(rdl, rdl->token_type_prop->keyword, rdl->token_type_prop->token->context[0]))
     {
@@ -103,7 +104,7 @@ int token_type_is_value2(t_rdl *rdl)
 {
     if (rdl->token_type_prop->token->len == 1 &&
         is_operator(rdl, rdl->token_type_prop->token->context[0]) &&
-        keyword_in_operator(rdl, rdl->token_type_prop->keyword, rdl->token_type_prop->token->context[0]))
+        keyword_in_operator(rdl, rdl->token_type_prop->keyword, rdl->token_type_prop->token->context[0]) == 0)
     {
         if (rdl->token_type_prop->token->context[0] == '$')
             rdl->token_type_prop->opr_flag = 1;
