@@ -64,7 +64,7 @@ int cd_start(t_command command)
         cd_home(command);
     while (++i < size)
     {
-        if (command.tokens->type_id == 6)
+        if (command.tokens->type_id == 7)
             error = cd_key(command);
         if (command.tokens->type_id == 9)
             error = cd_arg(command);

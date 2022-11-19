@@ -119,7 +119,7 @@ int token_type_is_value2(t_rdl *rdl)
 
 int token_type_is_value(t_rdl *rdl)
 {
-    if (token_type_is_value1(rdl) || token_type_is_value2(rdl))
+    if (token_type_is_value1(rdl))
         return (1);
     return (0);
 }
