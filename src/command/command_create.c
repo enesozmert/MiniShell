@@ -32,6 +32,7 @@ int command_malloc(t_rdl *rdl)
 {
     int command_id;
 
+    rdl->token->context = keyword_trim(rdl->token->context);
     command_id = command_find(rdl, rdl->token->context);
     if (rdl->token->type_id == 0)
     {
@@ -48,6 +49,7 @@ int command_create(t_rdl *rdl)
     int command_id;
     
     token = get_token_id(rdl->token, 0);
+    token->context = keyword_trim(token->context);
     command_id = command_find(rdl, token->context);
     if (rdl->token->type_id == 0)
         command_id = command_find(rdl, token->context);

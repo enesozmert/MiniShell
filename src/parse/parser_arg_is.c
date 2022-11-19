@@ -63,7 +63,7 @@ void parser_arg_isnot(int *k, t_rdl *rdl)
 		rdl->quote_prop->flag = 1;
 	}
 	rdl->buffer[j] = '\0';
-	if (ft_strlen(rdl->buffer) > 1)
+	if (ft_strlen(rdl->buffer) > 0)
 	{
 		rdl->t_flag = 0;
 		parser_add(rdl, rdl->buffer);

@@ -6,7 +6,7 @@ int token_type_is_keyword(t_rdl *rdl)
         rdl->token_type_prop->new_trim = keyword_trim(rdl->token_type_prop->token->context);
     if (rdl->token_type_prop->token->id == 0 && is_keyword(rdl, rdl->token_type_prop->new_trim))
     {
-        rdl->token_type_prop->keyword = ft_strdup(rdl->token_type_prop->token->context);
+        rdl->token_type_prop->keyword = ft_strdup(rdl->token_type_prop->new_trim);
         if (ft_strncmp(rdl->token_type_prop->keyword, "echo",
                        ft_strlen(rdl->token_type_prop->keyword)) == 0)
             rdl->token_type_prop->key_flag = 1;
@@ -126,6 +126,8 @@ int token_type_is_value(t_rdl *rdl)
 
 int token_type_is_key(t_rdl *rdl)
 {
+    if (rdl->token_type_prop->opr_flag == 3 || rdl->token_type_prop->token->context[0] == ' ')
+        return (0);
     if (rdl->token_type_prop->token->len > 0 &&
         ((rdl->token_type_prop->opr_flag == 1 && rdl->token_type_prop->key_flag == 1) ||
          (rdl->token_type_prop->opr_flag == 1 && rdl->token_type_prop->key_flag == 2) ||
@@ -153,6 +155,9 @@ int token_type_is_string(t_rdl *rdl)
         (rdl->token_type_prop->opr_flag != 1 || rdl->token_type_prop->opr_flag == 2))
         return (1);
     if (rdl->token_type_prop->token->context[0] == ' ')
+    {
+        rdl->token_type_prop->opr_flag = 3;
         return (1);
+    }
     return (0);
 }

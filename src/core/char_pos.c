@@ -20,7 +20,7 @@ int char_pos(t_rdl *rdl)
 		total_space++;
 		i++;
 	}
-	while (rdl->main_str[i] != '\0' && rdl->main_str[i] > 32)
+	while (rdl->main_str[i] > 32)
 	{
 		keyword[j++] = rdl->main_str[i];
 		i++;
@@ -31,14 +31,16 @@ int char_pos(t_rdl *rdl)
 		total_space++;
 		i++;
 	}
+	printf("i: %d\n", i);
 	// printf("keyword: %s\n", keyword);
     // printf("total space : %d\n", total_space);
+	keyword_len = ft_strlen(keyword);
+	keyword = keyword_trim(keyword);
     if (is_keyword(rdl, keyword))
     {
-		keyword_len = ft_strlen(keyword);
-		total_len = keyword_len + total_space;
+		total_len = i;
         free(keyword);
         return (total_len);
     }
-    return (0);
+    return (i);
 }

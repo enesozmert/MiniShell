@@ -19,7 +19,7 @@ static int cd_home(t_command command)
 
     new_dir = env_find_value("HOME");
     if (chdir(new_dir) == -1)
-            return (206);
+        return (205);
     return (0);
 }
 
@@ -71,8 +71,9 @@ int cd_start(t_command command)
         get_next_token(&command.tokens);
     }
 
-   env_add("OLDPWD", env_find_value("PWD"));
-   env_add("PWD", getcwd(NULL, 0));
-
+    if (error == 205)
+        return (205);
+    env_add("OLDPWD", env_find_value("PWD"));
+    env_add("PWD", getcwd(NULL, 0));
     return (0);
 }

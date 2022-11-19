@@ -23,10 +23,15 @@ int export_start(t_command command)
 		{
             key = ft_strdup(command.tokens->context);
 			tmp_value = env_find_value(key);
-			value = ft_strjoin(value, tmp_value);
+            if (tmp_value != NULL)
+			    value = ft_strjoin(value, tmp_value);
 		}
         if (command.tokens->type_id == 7)
+        {
             value = ft_strjoin(value, command.tokens->context);
+            if (ft_strncmp(value, " ", 1) == 0)
+                return (206);
+        }
         get_next_token(&command.tokens);
     }
 	env_add(identifier, value);

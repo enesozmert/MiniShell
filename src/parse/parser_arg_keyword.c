@@ -7,7 +7,7 @@ void parser_arg_keyword(t_rdl *rdl)
 
 	i = 0;
 	j = 0;
-	while (rdl->main_str[i] <= 32 )
+	while (rdl->main_str[i] <= 32)
 		i++;
 	while (rdl->main_str[i] != '\0' && rdl->main_str[i] > 32)
 	{
