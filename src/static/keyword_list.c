@@ -3,7 +3,7 @@
 void	keyword_list(t_keyword *keyword)
 {
 	keyword[0] = (t_keyword){"echo", "2"};
-	keyword[1] = (t_keyword){"cd", NULL};
+	keyword[1] = (t_keyword){"cd", "2"};
 	keyword[2] = (t_keyword){"pwd", NULL};
 	keyword[3] = (t_keyword){"export", "2,5"};
 	keyword[4] = (t_keyword){"unset", NULL};

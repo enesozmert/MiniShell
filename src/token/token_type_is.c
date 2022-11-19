@@ -13,6 +13,12 @@ int token_type_is_keyword(t_rdl *rdl)
 		if (ft_strncmp(rdl->token_type_prop->keyword, "export",
             ft_strlen(rdl->token_type_prop->keyword)) == 0)
 			rdl->token_type_prop->key_flag = 2;
+        if (ft_strncmp(rdl->token_type_prop->keyword, "unset",
+            ft_strlen(rdl->token_type_prop->keyword)) == 0)
+			rdl->token_type_prop->key_flag = 3;
+        if (ft_strncmp(rdl->token_type_prop->keyword, "cd",
+            ft_strlen(rdl->token_type_prop->keyword)) == 0)
+			rdl->token_type_prop->key_flag = 4;
         return (1);
 	}
     return (0);
@@ -107,7 +113,8 @@ int token_type_is_key(t_rdl *rdl)
 {
     if (rdl->token_type_prop->token->len > 0 &&
         ((rdl->token_type_prop->opr_flag == 1 && rdl->token_type_prop->key_flag == 1) ||
-        (rdl->token_type_prop->opr_flag == 1 && rdl->token_type_prop->key_flag == 2)))
+        (rdl->token_type_prop->opr_flag == 1 && rdl->token_type_prop->key_flag == 2) ||
+        (rdl->token_type_prop->opr_flag == 1 && rdl->token_type_prop->key_flag == 4)))
         return (1);
     return (0);
 }

@@ -2,7 +2,16 @@
 
 int unset_start(t_command command)
 {
-    (void)command;
-    // env_delete(command.arg[0]);
+    int i;
+	int size;
+
+	i = -1;
+	size = token_size(command.tokens);
+	while (++i < size)
+	{
+		if (command.tokens->type_id == 6)
+			env_delete(command.tokens->context);
+		get_next_token(&command.tokens);
+	}
     return (0);
 }

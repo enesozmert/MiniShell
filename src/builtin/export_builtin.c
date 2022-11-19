@@ -2,25 +2,31 @@
 
 int export_start(t_command command)
 {
-    (void)command;
-    // printf("command->value_count : %d\n", command.value_count);
-    // printf("command->key_count : %d\n", command.key_count);
-    // int i;
-    // char *key;
-    // char *value;
+    int		i;
+    int		size;
+    char	*key;
+	char	*value;
+    char	*identifier;
 
-    // i = -1;
-    // value = ft_strdup("");
-    // key = ft_strdup("");
-    // while (++i < command.value_count)
-    //     value = ft_strjoin(value, command.value[i]);
-    // i = -1;
-    // while (++i < command.key_count)
-    //     key = ft_strjoin(key, command.key[i]);
-    // printf("key: %s\n", key);
-    // env_add(value, key);
+    i = -1;
+    key = ft_strdup("");
+    value = ft_strdup("");
+    identifier = ft_strdup("");
+    size = token_size(command.tokens);
+    while (++i < size)
+    {
+        if (command.tokens->type_id == 4)
+            identifier = ft_strjoin(identifier, command.tokens->context);
+		if (command.tokens->type_id == 6)
+            key = ft_strjoin(key, command.tokens->context);
+        if (command.tokens->type_id == 7)
+            value = ft_strjoin(value, command.tokens->context);
+        get_next_token(&command.tokens);
+    }
+	env_add(identifier, value);
     // env_asc(g_env.env);
-    // free(key);
-    // free(value);
+    free(key);
+    free(value);
+    free(identifier);
     return (0);
 }
