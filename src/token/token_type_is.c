@@ -26,6 +26,7 @@ int token_type_is_keyword(t_rdl *rdl)
 
 int token_type_is_operator(t_rdl *rdl)
 {
+    printf("rdl->token->t_flag : %d\n", rdl->token->t_flag);
     if (rdl->token_type_prop->token->len == 1 &&
         rdl->token->t_flag == 1 &&
         is_operator(rdl, rdl->token_type_prop->token->context[0]) &&
@@ -70,8 +71,7 @@ int token_type_is_valid_identifier(t_rdl *rdl)
         is_identifier(rdl, rdl->token_type_prop->token->context) &&
         is_delimiter(rdl, rdl->token_type_prop->token->context[rdl->token_type_prop->token->len - 1]) == 0 &&
         rdl->token_type_prop->key_flag == 2 &&
-        rdl->token_type_prop->opr_flag != 2 && rdl->token_type_prop->opr_flag != 1 &&
-        rdl->token_type_prop->opr_flag != 3 && rdl->token_type_prop->opr_flag != 4)
+        (rdl->token_type_prop->opr_flag != 2 && rdl->token_type_prop->opr_flag != 1))
         return (1);
     return (0);
 }
@@ -82,19 +82,19 @@ int token_type_is_invalid_identifier(t_rdl *rdl)
         is_identifier(rdl, rdl->token_type_prop->token->context) == 0 &&
         is_delimiter(rdl, rdl->token_type_prop->token->context[rdl->token_type_prop->token->len - 1]) == 0 &&
         rdl->token_type_prop->key_flag == 2 &&
-        rdl->token_type_prop->opr_flag != 2 && rdl->token_type_prop->opr_flag != 1 &&
-        rdl->token_type_prop->opr_flag != 3 && rdl->token_type_prop->opr_flag != 4)
+        (rdl->token_type_prop->opr_flag != 2 && rdl->token_type_prop->opr_flag != 1))
         return (1);
     return (0);
 }
 
 int token_type_is_value1(t_rdl *rdl)
 {
+
     if (rdl->token_type_prop->token->len > 0 &&
-        ((rdl->token_type_prop->key_flag == 2 || rdl->token_type_prop->opr_flag == 2)))
+        ((rdl->token_type_prop->key_flag == 2 && rdl->token_type_prop->opr_flag == 2)))
         return (1);
     if (rdl->token_type_prop->token->len > 0 &&
-        ((rdl->token_type_prop->key_flag == 2 && (rdl->token_type_prop->opr_flag == 3 ||
+        (((rdl->token_type_prop->key_flag == 2 && rdl->token_type_prop->opr_flag == 2) && (rdl->token_type_prop->opr_flag == 3 ||
             rdl->token_type_prop->opr_flag == 4))))
         return (1);
     return (0);
@@ -111,7 +111,7 @@ int token_type_is_value2(t_rdl *rdl)
         if (rdl->token_type_prop->token->context[0] == '=')
             rdl->token_type_prop->opr_flag = 2;
         if (rdl->token_type_prop->token->context[0] == ' ')
-            rdl->token_type_prop->opr_flag = 3;
+            rdl->token_type_prop->opr_flag = 5;
         return (1);
     }
     return (0);
@@ -126,7 +126,7 @@ int token_type_is_value(t_rdl *rdl)
 
 int token_type_is_key(t_rdl *rdl)
 {
-    if (rdl->token_type_prop->opr_flag == 3 || rdl->token_type_prop->token->context[0] == ' ')
+    if (rdl->token_type_prop->opr_flag == 5 || rdl->token_type_prop->token->context[0] == ' ')
         return (0);
     if (rdl->token_type_prop->token->len > 0 &&
         ((rdl->token_type_prop->opr_flag == 1 && rdl->token_type_prop->key_flag == 1) ||
@@ -135,7 +135,7 @@ int token_type_is_key(t_rdl *rdl)
          (rdl->token_type_prop->key_flag == 3)))
         return (1);
     if ((rdl->token_type_prop->key_flag == 2 && 
-        (rdl->token_type_prop->opr_flag == 3 || rdl->token_type_prop->key_flag == 4)))
+        (rdl->token_type_prop->opr_flag == 3 || rdl->token_type_prop->opr_flag == 4)))
         return (0);
     return (0);
 }
@@ -152,11 +152,12 @@ int token_type_is_string(t_rdl *rdl)
 {
     if (rdl->token_type_prop->token->len > 0 &&
         (rdl->token_type_prop->key_flag == 1 || rdl->token_type_prop->opr_flag == 2) &&
-        (rdl->token_type_prop->opr_flag != 1 || rdl->token_type_prop->opr_flag == 2))
+        (rdl->token_type_prop->opr_flag != 1 || rdl->token_type_prop->opr_flag == 2) &&
+        (rdl->token_type_prop->key_flag != 2))
         return (1);
     if (rdl->token_type_prop->token->context[0] == ' ')
     {
-        rdl->token_type_prop->opr_flag = 3;
+        rdl->token_type_prop->opr_flag = 5;
         return (1);
     }
     return (0);

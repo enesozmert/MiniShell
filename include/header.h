@@ -210,6 +210,7 @@ int				my_add_history(char *str);
 void			parser(t_rdl *rdl);
 void			parser_add(t_rdl *rdl, char *buffer);
 void			parser_add_operator(t_rdl *rdl, char c);
+void			parser_add_notoperator(t_rdl *rdl, char c);
 void			parser_add_quote(t_rdl *rdl, char c);
 void			parser_add_buffer(int *j, t_rdl *rdl);
 void			parser_arg(t_rdl *rdl);

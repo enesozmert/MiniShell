@@ -28,6 +28,7 @@ t_token *token_add(t_token *token, char *ptr, int flag)
 
 	get_token.context = ft_strdup(ptr);
 	get_token.t_flag = flag;
+	get_token.type_id = -1;
 	token_append(&token, token_new(&get_token));
 	token_add_index(&token);
 	return (token);

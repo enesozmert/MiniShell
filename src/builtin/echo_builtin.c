@@ -5,7 +5,8 @@ static int echo_key(t_command command)
 	char *env_value;
 
 	env_value = env_find_value(command.tokens->context);
-	printf("%s", env_value);
+	if (env_value != NULL)
+		printf("%s", env_value);
 	if (!env_value)
 		free(env_value);
 	return (0);

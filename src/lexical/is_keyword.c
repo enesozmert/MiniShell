@@ -24,7 +24,7 @@ int is_keyword_exec(t_rdl *rdl, char *str)
         free(find_path);
         return (1);
     }
-    free(find_path);
+    // free(find_path);
     return (0);
 }
 

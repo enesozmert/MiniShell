@@ -8,6 +8,14 @@ void	parser_add_operator(t_rdl *rdl, char c)
     rdl->token = token_add(rdl->token, ft_strdup(operator.sybl), 1);
 }
 
+void	parser_add_notoperator(t_rdl *rdl, char c)
+{
+    t_operator operator;
+
+    operator = find_operator(rdl, c);
+    rdl->token = token_add(rdl->token, ft_strdup(operator.sybl), rdl->t_flag);
+}
+
 void	parser_add_quote(t_rdl *rdl, char c)
 {
 	t_quote quote;

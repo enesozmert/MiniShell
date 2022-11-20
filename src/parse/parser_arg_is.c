@@ -14,21 +14,20 @@ void parser_arg_is(int c, int *k, t_rdl *rdl)
 		i++;
 		rdl->quote_prop->flag = 1;
 	}
-	printf("buffer : %s\n", rdl->buffer);
 	if (rdl->quote_prop->flag == 1)
 		rdl->buffer[j] = '\0';
-	if (ft_strlen(rdl->buffer) == 1)
-	{
-		rdl->t_flag = 0;
-		parser_add(rdl, rdl->buffer);
-	}
-	if (ft_strlen(rdl->buffer) > 1)
+	// if (ft_strlen(rdl->buffer) == 1)
+	// {
+	// 	rdl->t_flag = 0;
+	// 	parser_add(rdl, rdl->buffer);
+	// }
+	if (ft_strlen(rdl->buffer) > 0)
 	{
 		rdl->t_flag = 0;
 		j = -1;
 		while (rdl->buffer[++j])
 		{
-			if (is_operator(rdl, rdl->buffer[j]))
+			if (is_operator(rdl, rdl->buffer[j]) && is_quote(rdl, rdl->buffer[j + 1]) == 0)
 			{
 				*k = i - (ft_strlen(rdl->buffer) - j);
 				rdl->quote_prop->flag = 1;
@@ -59,7 +58,7 @@ void parser_arg_isnot(int *k, t_rdl *rdl)
 
 	i = *k;
 	j = 0;
-	while (is_operator(rdl, rdl->main_str[i]) && rdl->main_str[i] != '\0')
+	while (is_operator(rdl, rdl->main_str[i]) && rdl->main_str[i + 1] != '\0')
 		return ;
 	while (is_quote(rdl, rdl->main_str[i]) == 0 && rdl->main_str[i] > 32 && rdl->main_str[i] != '\0' && is_operator(rdl, rdl->main_str[i]) == 0)
 	{
@@ -71,6 +70,7 @@ void parser_arg_isnot(int *k, t_rdl *rdl)
 	if (ft_strlen(rdl->buffer) > 0)
 	{
 		rdl->t_flag = 0;
+		printf("ok1\n");
 		parser_add(rdl, rdl->buffer);
 	}
 	else
