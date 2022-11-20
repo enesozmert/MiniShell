@@ -30,7 +30,8 @@ void parser_arg_is(int c, int *k, t_rdl *rdl)
 		{
 			if (is_operator(rdl, rdl->buffer[j]))
 			{
-				*k = i - j;
+				*k = j;
+				printf("i: %d\n", i);
 				return ;
 			}
 		}
@@ -60,7 +61,7 @@ void parser_arg_isnot(int *k, t_rdl *rdl)
 	{
 		rdl->buffer[j++] = rdl->main_str[i];
 		i++;
-		rdl->quote_prop->flag = 1;
+		rdl->quote_prop->flag = 0;
 	}
 	rdl->buffer[j] = '\0';
 	if (ft_strlen(rdl->buffer) > 0)

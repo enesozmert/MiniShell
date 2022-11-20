@@ -9,5 +9,6 @@ void parser_arg_space(int *k, t_rdl *rdl)
 		i++;
 	i--;
 	parser_add(rdl, ft_strdup(" "));
+	rdl->quote_prop->flag = 0;
 	*k = i;
 }
