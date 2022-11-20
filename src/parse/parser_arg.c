@@ -6,7 +6,7 @@ void parser_arg(t_rdl *rdl)
 	
 	parser_arg_keyword(rdl);
 	i = char_pos(rdl);
-	while (i < rdl->len)
+	while (i < rdl->len && rdl->main_str[i] != '\0')
 	{
 		rdl->quote_prop->flag = 0;
 		if (is_quote(rdl, rdl->main_str[i]))

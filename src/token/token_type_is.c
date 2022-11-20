@@ -125,7 +125,7 @@ int token_type_is_value(t_rdl *rdl)
 
 int token_type_is_key(t_rdl *rdl)
 {
-    if (rdl->token_type_prop->key_flag == 2 && (rdl->token_type_prop->opr_flag == 2))
+    if (rdl->token_type_prop->key_flag == 2 && (rdl->token_type_prop->opr_flag == 1))
         return (1);
     if (rdl->token_type_prop->opr_flag == 5 || rdl->token_type_prop->token->context[0] == ' ')
         return (0);

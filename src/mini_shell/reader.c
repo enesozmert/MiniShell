@@ -7,7 +7,7 @@ char  *ft_read_line(void)
 	str = readline("->");
 	if(!str)
 	{
-		ft_putstr_fd("\nexit\n", 1);
+		ft_putstr_fd("exit\n", 1);
 		exit(1);
 	}
 	return (str);

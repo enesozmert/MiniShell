@@ -31,7 +31,6 @@ int char_pos(t_rdl *rdl)
 		total_space++;
 		i++;
 	}
-	printf("i: %d\n", i);
 	// printf("keyword: %s\n", keyword);
     // printf("total space : %d\n", total_space);
 	keyword_len = ft_strlen(keyword);

@@ -1,12 +1,13 @@
 #Definition
 CC          =   gcc
-NAME        =   mini_shell
+NAME        =   minishell
 LIBFT		=	./libft/libft.a
 CC			=	gcc
-CFLAGS		=	-Wall -Werror -Wextra -g
+READLINE	=	/Users/eozmert/goinfre/homebrew/opt/readline/lib
+READLINE_INCLUDE	=	/Users/eozmert/goinfre/homebrew/opt/readline/include
+CFLAGS		=	-Wall -Werror -Wextra -g -I $(READLINE_INCLUDE)
 RM			=	rm -f
-#READLINE	=	/Users/eozmert/goinfre/homebrew/opt/readline/lib/libreadline.8.dylib
-READLINE	=	/Users/cyalniz/goinfre/homebrew/opt/readline/lib/libreadline.8.dylib
+
 
 #Directory
 OBJ_DIR		=	obj/
@@ -106,7 +107,7 @@ norm:
 
 
 $(NAME):	$(OBJ)
-			@$(CC) $(OBJ) $(CFLAGS) -lreadline -o $(NAME) $(LIBFT)
+			@$(CC) $(OBJ) $(CFLAGS) -lreadline -L $(READLINE)  -o $(NAME) $(LIBFT) 
 			@echo $(NAME) compiled!
 
 clean:

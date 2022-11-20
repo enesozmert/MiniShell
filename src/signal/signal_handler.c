@@ -15,27 +15,29 @@
 
 void proc_signal_handler(int signo)
 {
-	// pid_t	pid;
-	// int		i;
-	// int		status;
-
-	// i = -1;
-	// pid = waitpid(-1, &status, WNOHANG);
-	// while(rdl->signal_list[i].sig != -1)
-	// {
-	// 	if (rdl->signal_list[i].sig == signo)
-	// 		rdl->signal_list[i].f(rdl->signal_list[i]);
-	// 	i++;
-	// }
 	if (signo == SIGINT)
 	{
 		ft_putstr_fd("\n", 1);
+		rl_replace_line("", 1);
+		rl_on_new_line();
+		rl_redisplay();
 		signal(SIGINT, proc_signal_handler);
 	}
 }
 
-void set_signal()
+void set_signal(int signo)
 {
-	signal(SIGINT, proc_signal_handler);
-	signal(SIGQUIT, proc_signal_handler);
+	if (signo == SIGINT)
+	{
+		ft_putstr_fd("\n", 1);
+		rl_replace_line("", 1);
+		rl_on_new_line();
+		rl_redisplay();
+		signal(SIGINT, set_signal);
+	}
+	if (signo == SIGQUIT)
+	{
+		signal(SIGINT, set_signal);
+		signal(SIGQUIT, set_signal);
+	}
 }

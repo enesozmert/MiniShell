@@ -207,7 +207,6 @@ int				keyword_trim_len(char *str);
 int				token_arg_count(t_token *token);
 int				token_key_count(t_token *token);
 int				token_value_count(t_token *token);
-void			proc_signal_handler(int signo);
 void			ft_free_dbl_str(char **str);
 //history
 int				my_add_history(char *str);
@@ -298,5 +297,6 @@ void			delimiter_list(t_delimiter *delimiter);
 //identifier
 void			identifier_list(t_identifier *identifier);
 //signal
-void			set_signal();
+void			set_signal(int signo);
+void			proc_signal_handler(int signo);
 #endif
