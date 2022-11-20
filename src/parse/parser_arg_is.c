@@ -70,7 +70,6 @@ void parser_arg_isnot(int *k, t_rdl *rdl)
 	if (ft_strlen(rdl->buffer) > 0)
 	{
 		rdl->t_flag = 0;
-		printf("ok1\n");
 		parser_add(rdl, rdl->buffer);
 	}
 	else

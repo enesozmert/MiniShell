@@ -66,6 +66,11 @@ typedef	struct s_redir
 	int	output_count;
 }	t_redir;
 
+typedef	struct s_pipe
+{
+	int	count;
+}	t_pipe;
+
 typedef struct s_token_type_prop
 {
 	int		opr_flag;
@@ -79,7 +84,6 @@ typedef struct s_rdl
 {
 	int						len;
 	int						word_count;
-	int						pipe_count;
 	int						t_flag;
 	char					*main_str;
 	char					*buffer;
@@ -87,6 +91,7 @@ typedef struct s_rdl
 	t_quote_prop			*quote_prop;
 	t_token_type_prop		*token_type_prop;
 	t_redir					*redir;
+	t_pipe					*pipe;
 	t_token					*token;
 	struct s_keyword		*keyword_list;
 	struct s_operator		*operator_list;
@@ -232,6 +237,7 @@ int				keyword_quoute_syntax(t_rdl *rdl);
 int				quote_syntax(t_rdl *rdl);
 void			operator_list(t_operator *operator);
 int				redir_syntax(t_rdl *rdl);
+int				pipe_syntax(t_rdl *rdl);
 int				export_syntax(t_rdl *rdl);
 //quoet
 int				single_quote(t_rdl *rdl);
@@ -286,7 +292,6 @@ int				env_delete(char *key);
 int				env_asc(char **env);
 int				env_dsc(char **env);
 //new
-void			find_pipe_count(t_rdl *rdl);
 int				option_count(t_token *token);
 //delimiter
 void			delimiter_list(t_delimiter *delimiter);

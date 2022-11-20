@@ -25,7 +25,6 @@ void routine()
 			lexical_analizer(rdl);
 			if(syntax(rdl) != -1)
 				command(rdl);
-			find_pipe_count(rdl);
 			my_add_history(rdl->main_str);
 			keywords_clear(rdl->keyword_list);
 			token_clear(&rdl->token);

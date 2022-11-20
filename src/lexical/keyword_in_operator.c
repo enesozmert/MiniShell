@@ -12,7 +12,8 @@ int keyword_in_operator(t_rdl *rdl, char *str, char operator)
     i = -1;
 	operator_id = -1;
     keyword = find_keyword(rdl, str);
-
+    if (!keyword.operators_id)
+        return (0);
     operators_id = ft_split(keyword.operators_id, ',');
     if (!operators_id)
         return (0);
