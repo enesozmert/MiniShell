@@ -24,7 +24,7 @@ void parser_arg_is(int c, int *k, t_rdl *rdl)
 		return ;
 	}
 	if (ft_strlen(rdl->buffer) > 0)
-	{∏∏
+	{
 		rdl->t_flag = 0;
 		j = -1;
 		while (rdl->buffer[++j])

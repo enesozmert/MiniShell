@@ -15,6 +15,14 @@ int export_start(t_command command)
     tmp_value = ft_strdup("");
     identifier = ft_strdup("");
     size = token_size(command.tokens);
+    if (size == 0)
+    {
+        while (g_env.env[++i])
+        {
+            printf("declare -x %s\n", g_env.env[i]);
+        }
+    }
+    i = -1;
     while (++i < size)
     {
         if (command.tokens->type_id == 4)
