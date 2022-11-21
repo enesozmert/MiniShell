@@ -14,7 +14,8 @@ static int echo_key(t_command command)
 
 static int echo_string(t_command command)
 {
-	printf("%s", command.tokens->context);
+	if (command.tokens->id != 1 && ft_strncmp(command.tokens->context, "-n", 2) != 0)
+		printf("%s", command.tokens->context);
 	return (0);
 }
 
@@ -22,18 +23,25 @@ int echo_start(t_command command)
 {
 	int i;
 	int size;
+	int	n_flag;
 
 	i = -1;
+	n_flag = 0;
 	size = token_size(command.tokens);
 	while (++i < size)
 	{
 		if (command.tokens->type_id == 6)
 			echo_key(command);
 		if (command.tokens->type_id == 8)
+		{
+			if (command.tokens->id == 0 && ft_strncmp(command.tokens->context, "-n", 2) == 0)
+				n_flag = 1;
 			echo_string(command);
+		}
 		get_next_token(&command.tokens);
 	}
-	printf("\n");
+	if (n_flag == 0)
+		printf("\n");
 	return (0);
 }
 
