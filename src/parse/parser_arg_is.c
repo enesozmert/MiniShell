@@ -27,9 +27,10 @@ void parser_arg_is(int c, int *k, t_rdl *rdl)
 		j = -1;
 		while (rdl->buffer[++j])
 		{
-			if (is_operator(rdl, rdl->buffer[j]) && is_quote(rdl, rdl->buffer[j + 1]) == 0)
+			if (is_operator(rdl, rdl->buffer[j]) && is_quote(rdl, rdl->buffer[i - (ft_strlen(rdl->buffer) - j) + 1]) == 0)
 			{
-				*k = i - (ft_strlen(rdl->buffer) - j);
+				parser_add_operator(rdl, rdl->buffer[j]);
+				*k = i - (ft_strlen(rdl->buffer) - j) + 1;
 				rdl->quote_prop->flag = 1;
 				return ;
 			}
