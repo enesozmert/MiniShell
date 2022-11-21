@@ -11,6 +11,7 @@ int command_run(t_rdl *rdl)
 	{
 		if (rdl->command_list[i].count > 0)
 			handle_code = rdl->command_list[i].f(rdl->command_list[i]);
+		env_add("?", ft_itoa(handle_code));
         if (handle_code == -1)
             return (-1);
 		i++;

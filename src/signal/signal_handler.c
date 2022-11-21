@@ -37,6 +37,7 @@ void set_signal(int signo)
 	}
 	if (signo == SIGQUIT)
 	{
+		printf("enes\n");
 		signal(SIGINT, set_signal);
 		signal(SIGQUIT, set_signal);
 	}

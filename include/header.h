@@ -75,6 +75,7 @@ typedef struct s_token_type_prop
 {
 	int		opr_flag;
 	int		key_flag;
+	int		quote_flag;
 	char	*keyword;
 	char	*new_trim;
 	struct	s_token	*token;
@@ -133,6 +134,7 @@ typedef struct s_token_type
 typedef struct s_exception
 {
 	int				error_code;
+	char			*exit_status;
 	char			*message;
 	int				(*f)(t_rdl *);
 }	t_exception;

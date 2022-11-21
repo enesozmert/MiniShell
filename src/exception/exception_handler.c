@@ -20,19 +20,21 @@ int	exception_handler(t_rdl *rdl)
 
 	i = 0;
 	handle_code = 0;
-	exception[0] = (t_exception){100, "quote", keyword_quoute_syntax};
-	exception[1] = (t_exception){101, "command not found", keyword_syntax};
-	exception[2] = (t_exception){102, "quote", quote_syntax};
-	exception[3] = (t_exception){103, "parse error near", redir_syntax};
-	exception[4] = (t_exception){104, "export : not a valid identifier", export_syntax};
-	exception[5] = (t_exception){105, "export : syntax error near unexpected token", pipe_syntax};
-	exception[6] = (t_exception){-1, NULL, NULL};
+	exception[0] = (t_exception){100, "0", "quote", keyword_quoute_syntax};
+	exception[1] = (t_exception){101, "127", "command not found", keyword_syntax};
+	exception[2] = (t_exception){102, "0", "quote", quote_syntax};
+	exception[3] = (t_exception){103, "258", "parse error near", redir_syntax};
+	exception[4] = (t_exception){104, "1", "export : not a valid identifier", export_syntax};
+	exception[5] = (t_exception){105, "258", "export : syntax error near unexpected token", pipe_syntax};
+	exception[6] = (t_exception){-1, "-1", NULL, NULL};
 	while (exception[i].message != NULL)
 	{
 		handle_code = exception[i].f(rdl);
 		if (handle_code == exception[i].error_code)
 		{
+			env_add("?", exception[i].exit_status);
 			exception_write(rdl, exception[i].message);
+			rl_replace_line("", 1);
 			rl_on_new_line();
 			return (-1);
 		}

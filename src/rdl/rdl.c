@@ -8,7 +8,7 @@ t_rdl *rdl_init(t_rdl *rdl)
 	rdl->len = ft_strlen(rdl->main_str);
 	rdl->buffer = malloc(sizeof(char) * rdl->len);
 	rdl->keyword_list = malloc(sizeof(t_keyword) * 8);
-	rdl->operator_list = malloc(sizeof(t_operator) * 7);
+	rdl->operator_list = malloc(sizeof(t_operator) * 6);
 	rdl->delimiter_list = malloc(sizeof(t_delimiter) * 18);
 	rdl->identifier_list = malloc(sizeof(t_operator) * 11);
 	rdl->command_list = malloc(sizeof(t_command) * 9);
@@ -21,6 +21,7 @@ t_rdl *rdl_init(t_rdl *rdl)
 	rdl->token_type_prop = malloc(sizeof(t_token_type_prop) * 1);
 	rdl->token_type_prop->key_flag = 0;
 	rdl->token_type_prop->opr_flag = 0;
+	rdl->token_type_prop->quote_flag = 0;
 	rdl->token_type_prop->keyword = NULL;
 	rdl->token_type_prop->new_trim = NULL;
 	rdl->redir = malloc(sizeof(t_redir) * 1);

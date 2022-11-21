@@ -20,7 +20,6 @@ void routine()
 	while (1)
 	{
 		signal(SIGINT, set_signal);
-		signal(SIGQUIT, set_signal);
 		rdl = rdl_init(rdl);
 		if (!check_white_space(rdl->main_str))
 		{
