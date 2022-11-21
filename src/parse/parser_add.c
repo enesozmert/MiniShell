@@ -10,19 +10,11 @@ void	parser_add_operator(t_rdl *rdl, char c)
 
 void	parser_add_notoperator(t_rdl *rdl, char c)
 {
-    t_operator	operator;
-    t_token		*token_zero;
-	int is_keyword_in_operator;
-	int	is_operator;
+    char str[2];
 
-	token_zero = get_token_id(rdl->token, 0);
-	is_keyword_in_operator = keyword_in_operator(rdl, token_zero->context, c);
-	if (is_keyword_in_operator == 1)
-		is_operator = 1;
-	else
-		is_operator = 0;
-    operator = find_operator(rdl, c);
-    rdl->token = token_add(rdl->token, ft_strdup(operator.sybl), is_operator);
+    str[0] = c;
+    str[1] = '\0';
+    rdl->token = token_add(rdl->token, ft_strdup(str), 0);
 }
 
 void	parser_add_quote(t_rdl *rdl, char c)
@@ -35,6 +27,13 @@ void	parser_add_quote(t_rdl *rdl, char c)
     else if (c == '\"')
 	    rdl->token = token_add(rdl->token, ft_strdup(quote.sybl), 3);
     
+}
+
+void	parser_add_dollar(t_rdl *rdl, char c)
+{
+    char *dollar = "$";
+    if (is_dollar(c))
+	    rdl->token = token_add(rdl->token, dollar, 4);
 }
 
 void	parser_add(t_rdl *rdl, char *buffer)

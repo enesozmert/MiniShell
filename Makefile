@@ -42,7 +42,7 @@ RDL			=	rdl
 SYNTAX		=	syntax keyword_syntax quote_syntax redir_syntax export_syntax pipe_syntax
 STATIC		=	keyword_list operator_list command_list quote_list delimiter_list identifier_list \
 				token_type_list
-LEXICAL		=	lexical is_keyword is_operator is_quote is_identifier is_delimiter is_token_type\
+LEXICAL		=	lexical is_keyword is_operator is_quote is_dollar is_identifier is_delimiter is_token_type\
 				find_operator find_keyword find_quote \
 				command_in_token_type keyword_in_operator
 CORE		=	white_space count_char quote_count count_matris char_replace free_double_str \

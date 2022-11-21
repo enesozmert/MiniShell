@@ -30,9 +30,9 @@ int echo_start(t_command command)
 	size = token_size(command.tokens);
 	while (++i < size)
 	{
-		if (command.tokens->type_id == 6)
+		if (command.tokens->type_id == 7)
 			echo_key(command);
-		if (command.tokens->type_id == 8)
+		if (command.tokens->type_id == 9)
 		{
 /* 			if (command.tokens->id == 0 && ft_strncmp(command.tokens->context, "-n", 2) == 0)
 				n_flag = 1; */

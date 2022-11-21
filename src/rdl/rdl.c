@@ -12,7 +12,7 @@ t_rdl *rdl_init(t_rdl *rdl)
 	rdl->delimiter_list = malloc(sizeof(t_delimiter) * 18);
 	rdl->identifier_list = malloc(sizeof(t_operator) * 11);
 	rdl->command_list = malloc(sizeof(t_command) * 9);
-	rdl->token_type_list = malloc(sizeof(t_token_type) * 11);
+	rdl->token_type_list = malloc(sizeof(t_token_type) * 12);
 	rdl->quote_list = malloc(sizeof(t_quote) * 3);
 	rdl->quote_prop = malloc(sizeof(t_quote_prop) * 1);
 	rdl->quote_prop->dq = 0;
@@ -22,6 +22,7 @@ t_rdl *rdl_init(t_rdl *rdl)
 	rdl->token_type_prop->key_flag = 0;
 	rdl->token_type_prop->opr_flag = 0;
 	rdl->token_type_prop->quote_flag = 0;
+	rdl->token_type_prop->dollar_flag = 0;
 	rdl->token_type_prop->keyword = NULL;
 	rdl->token_type_prop->new_trim = NULL;
 	rdl->redir = malloc(sizeof(t_redir) * 1);

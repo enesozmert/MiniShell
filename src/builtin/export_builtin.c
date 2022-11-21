@@ -17,16 +17,16 @@ int export_start(t_command command)
     size = token_size(command.tokens);
     while (++i < size)
     {
-        if (command.tokens->type_id == 4)
+        if (command.tokens->type_id == 5)
             identifier = ft_strjoin(identifier, command.tokens->context);
-		if (command.tokens->type_id == 6)
+		if (command.tokens->type_id == 7)
 		{
             key = ft_strdup(command.tokens->context);
 			tmp_value = env_find_value(key);
             if (tmp_value != NULL)
 			    value = ft_strjoin(value, tmp_value);
 		}
-        if (command.tokens->type_id == 7)
+        if (command.tokens->type_id == 8)
         {
             value = ft_strjoin(value, command.tokens->context);
             if (ft_strncmp(value, " ", 1) == 0)
