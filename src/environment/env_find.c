@@ -15,6 +15,7 @@ char	*env_find_value(char *key)
 	{
 		if (ft_strncmp(g_env.env[i], key, key_len) == 0)
 			return (g_env.env[i] + key_len + 1);
+
 	}
 	return (0);
 }

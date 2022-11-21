@@ -3,8 +3,8 @@ CC          =   gcc
 NAME        =   minishell
 LIBFT		=	./libft/libft.a
 CC			=	gcc
-READLINE	=	/Users/eozmert/goinfre/homebrew/opt/readline/lib
-READLINE_INCLUDE	=	/Users/eozmert/goinfre/homebrew/opt/readline/include
+READLINE	=	/Users/cyalniz/goinfre/homebrew/opt/readline/lib
+READLINE_INCLUDE	=	/Users/cyalniz/goinfre/homebrew/opt/readline/include
 CFLAGS		=	-Wall -Werror -Wextra -g -I $(READLINE_INCLUDE)
 RM			=	rm -f
 
