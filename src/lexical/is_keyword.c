@@ -19,7 +19,7 @@ int is_keyword_exec(t_rdl *rdl, char *str)
     char *find_path;
 
     find_path = command_find_path(str);
-    if (find_path != NULL && is_keyword_builtin(rdl, str) == 0)
+    if ((find_path != NULL || access(str, 0) == 0) && is_keyword_builtin(rdl, str) == 0)
     {
         free(find_path);
         return (1);
