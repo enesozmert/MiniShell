@@ -9,8 +9,10 @@ char *command_find_path(char *keyword)
     struct stat s;
 
     i = -1;
-    paths = NULL;
     path = env_find_value("PATH");
+    paths = NULL;
+    if (access(keyword, 0) == 0 && path == NULL)
+        return (ft_strdup(keyword));
     if (path != NULL)
         paths = ft_split(path, ':');
     if (!paths)

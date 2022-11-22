@@ -7,7 +7,7 @@ int command_find(t_rdl *rdl, char *keyword)
 
     i = -1;
     find_path = command_find_path(keyword);
-    if (find_path != NULL && is_keyword_builtin(rdl, keyword) == 0)
+    if ((find_path != NULL || access(keyword, 0) == 0) && is_keyword_builtin(rdl, keyword) == 0)
     {
         rdl->command_list[7].keyword = ft_strdup(keyword);
         return (7);

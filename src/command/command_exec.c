@@ -20,7 +20,7 @@ int command_execv(t_command command)
 	type[0] = ft_strdup(path);
 	while (++i < size)
 	{
-		if (command.tokens->type_id == 9)
+		if (command.tokens->type_id == 10)
 			type[j++] = ft_strdup(command.tokens->context);
 		get_next_token(&command.tokens);
 	}
