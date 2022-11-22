@@ -15,7 +15,6 @@ int parser_arg_is(int *k, t_rdl *rdl)
 	if (ft_strlen(rdl->buffer) > 0)
 	{
 		rdl->buffer[j] = '\0';
-		printf("buffer %s\n", rdl->buffer);
 		parser_add(rdl, rdl->buffer);
 	}
 	*k = i;
