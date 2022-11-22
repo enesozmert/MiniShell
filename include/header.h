@@ -40,10 +40,11 @@ typedef struct s_token
 {
 	int				id;
 	int				len;
-	int				t_flag;
-	char			*type;
 	int				type_id;
+	int				in_quote;
 	char			*context;
+	char			*type;
+	int				t_flag;
 	struct s_token	*next;
 }	t_token;
 
@@ -162,7 +163,7 @@ extern t_env g_env;
 //main
 void			routine();
 //lexcical
-t_token			*token_add(t_token *token, char *ptr, int flag);
+t_token 		*token_add(t_token *token, t_token token_cpy);
 void			token_append(t_token **token, t_token *new);
 t_token			*token_last(t_token *token);
 t_token			*token_new(t_token *get_token);
