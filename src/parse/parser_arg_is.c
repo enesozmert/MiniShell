@@ -15,6 +15,7 @@ int parser_arg_is(int *k, t_rdl *rdl)
 	if (ft_strlen(rdl->buffer) > 0)
 	{
 		rdl->buffer[j] = '\0';
+		printf("buffer %s\n", rdl->buffer);
 		parser_add(rdl, rdl->buffer);
 	}
 	*k = i;
@@ -28,8 +29,7 @@ void parser_arg_isnot(int *k, t_rdl *rdl)
 
 	i = *k;
 	j = 0;
-	// rdl->quote_prop->flag = 0;
-	while (is_quote(rdl, rdl->main_str[i]) == 0 && rdl->main_str[i] > 32 && rdl->main_str[i] != '\0' && is_dollar(rdl->main_str[i]) == 0)
+	while (is_quote(rdl, rdl->main_str[i]) == 0 && rdl->main_str[i] > 32 && rdl->main_str[i] != '\0' && is_dollar(rdl->main_str[i]) == 0 && is_operator(rdl, rdl->main_str[i]) == 0)
 	{
 		rdl->buffer[j++] = rdl->main_str[i++];
 		rdl->index_flag = 1;
