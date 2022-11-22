@@ -12,11 +12,11 @@ int keyword_in_operator(t_rdl *rdl, char *str, char operator)
     i = -1;
 	operator_id = -1;
     keyword = find_keyword(rdl, str);
-    if (!keyword.operators_id)
+    if (keyword.operators_id != NULL)
         return (0);
     operators_id = ft_split(keyword.operators_id, ',');
-    if (!operators_id)
-        return (0);
+    // if (!operators_id[0])
+    //     return (0);
 	while (rdl->operator_list[++operator_id].name != NULL)
 	{
 		if (rdl->operator_list[operator_id].sybl[0] == operator)
