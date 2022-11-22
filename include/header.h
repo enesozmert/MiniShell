@@ -74,11 +74,10 @@ typedef	struct s_pipe
 typedef struct s_token_type_prop
 {
 	int		opr_flag;
-	int		key_flag;
 	int		sq_flag;
 	int		dq_flag;
 	int		dollar_flag;
-	char	*keyword;
+	int		keyword_id;
 	char	*new_trim;
 	struct	s_token	*token;
 }	t_token_type_prop;
@@ -189,7 +188,6 @@ int				token_type_is_value(t_rdl *rdl);
 int				token_type_is_key(t_rdl *rdl);
 int				token_type_is_operator(t_rdl *rdl);
 int				token_type_is_value1(t_rdl *rdl);
-int				token_type_is_value2(t_rdl *rdl);
 int				token_type_is_value(t_rdl *rdl);
 int				token_type_is_arg(t_rdl *rdl);
 int				token_type_is_string(t_rdl *rdl);
@@ -259,9 +257,10 @@ int				is_dollar(char c);
 int				is_delimiter(t_rdl *rdl, char c);
 int				is_identifier(t_rdl *rdl, char *str);
 t_keyword		find_keyword(t_rdl *rdl, char *str);
+int				find_keyword_id(t_rdl *rdl, char *str);
 t_operator		find_operator(t_rdl *rdl, char c);
 t_quote			find_quote(t_rdl *rdl, char c);
-int				keyword_in_operator(t_rdl *rdl, char *str, char operator);
+int				keyword_in_operator(t_rdl *rdl, int keyword_id, char operator);
 int				command_in_token_type(t_rdl *rdl, int command_id, int token_id);
 //exception
 int				exception_handler(t_rdl *rdl);
