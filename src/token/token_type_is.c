@@ -173,5 +173,10 @@ int token_type_is_string(t_rdl *rdl)
             rdl->token_type_prop->dollar_flag = 0;
             return (1);
         }
+    if(rdl->token_type_prop->token->context[0] == ' ')
+    {
+        rdl->token_type_prop->opr_flag = 5;
+        return (1);
+    }
     return (0);
 }
