@@ -15,7 +15,6 @@ int token_type_is_keyword(t_rdl *rdl)
 int token_type_is_operator(t_rdl *rdl)
 {
     if (rdl->token_type_prop->token->len == 1 &&
-        rdl->token->t_flag == 1 &&
         is_operator(rdl, rdl->token_type_prop->token->context[0]) &&
         keyword_in_operator(rdl, rdl->token_type_prop->keyword_id, rdl->token_type_prop->token->context[0]))
     {

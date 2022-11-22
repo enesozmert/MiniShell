@@ -22,14 +22,10 @@ void token_append(t_token **token, t_token *new)
 	}
 }
 
-t_token *token_add(t_token *token, char *ptr, int flag)
+t_token *token_add(t_token *token, t_token token_cpy)
 {
-	t_token	get_token;
-
-	get_token.context = ft_strdup(ptr);
-	get_token.t_flag = flag;
-	get_token.type_id = -1;
-	token_append(&token, token_new(&get_token));
+	token_cpy.type_id = -1;
+	token_append(&token, token_new(&token_cpy));
 	token_add_index(&token);
 	return (token);
 }
