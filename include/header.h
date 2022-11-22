@@ -87,6 +87,7 @@ typedef struct s_rdl
 	int						len;
 	int						word_count;
 	int						t_flag;
+	int						index_flag;
 	char					*main_str;
 	char					*buffer;
 	char					*error_arg;
@@ -224,9 +225,9 @@ void			parser_add_dollar(t_rdl *rdl, char c);
 void			parser_add_buffer(int *j, t_rdl *rdl);
 void			parser_arg(t_rdl *rdl);
 void			parser_arg_isnot(int *k, t_rdl *rdl);
-int				parser_arg_is(int c, int *k, t_rdl *rdl);
+int				parser_arg_is(int *k, t_rdl *rdl);
 void			parser_arg_isoperator(int *k, t_rdl *rdl);
-void			parser_arg_quote(int c, int *k, t_rdl *rdl);
+void			parser_arg_quote(int *k, t_rdl *rdl);
 void			parser_arg_keyword(t_rdl *rdl);
 void			parser_arg_space(int *k, t_rdl *rdl);
 //keywords
