@@ -20,12 +20,10 @@ t_rdl *rdl_init(t_rdl *rdl)
 	rdl->quote_prop->sq = 0;
 	rdl->quote_prop->flag = 0;
 	rdl->token_type_prop = malloc(sizeof(t_token_type_prop) * 1);
-	rdl->token_type_prop->key_flag = 0;
 	rdl->token_type_prop->opr_flag = 0;
 	rdl->token_type_prop->dq_flag = 0;
 	rdl->token_type_prop->sq_flag = 0;
 	rdl->token_type_prop->dollar_flag = 0;
-	rdl->token_type_prop->keyword = NULL;
 	rdl->token_type_prop->new_trim = NULL;
 	rdl->redir = malloc(sizeof(t_redir) * 1);
 	rdl->redir->input_count = 0;
