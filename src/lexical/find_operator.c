@@ -10,5 +10,5 @@ t_operator find_operator(t_rdl *rdl, char c)
         if (rdl->operator_list[i].sybl[0] == c)
             return (rdl->operator_list[i]);
     }
-    return (rdl->operator_list[6]);
+    return (rdl->operator_list[5]);
 }
