@@ -22,7 +22,8 @@ t_rdl *rdl_init(t_rdl *rdl)
 	rdl->token_type_prop = malloc(sizeof(t_token_type_prop) * 1);
 	rdl->token_type_prop->key_flag = 0;
 	rdl->token_type_prop->opr_flag = 0;
-	rdl->token_type_prop->quote_flag = 0;
+	rdl->token_type_prop->dq_flag = 0;
+	rdl->token_type_prop->sq_flag = 0;
 	rdl->token_type_prop->dollar_flag = 0;
 	rdl->token_type_prop->keyword = NULL;
 	rdl->token_type_prop->new_trim = NULL;
