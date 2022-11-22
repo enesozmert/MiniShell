@@ -9,10 +9,12 @@ int print_token(t_token *token)
 	while (token)
 	{
 		ft_putstr_fd((token)->context, 1);
-		ft_putstr_fd(" ", 1);
+		ft_putstr_fd(" \ttoken->type->context ", 1);
 		ft_putstr_fd((token)->type, 1);
-		ft_putstr_fd(" ", 1);
+		ft_putstr_fd(" \t\t\ttoken->type->id ", 1);
 		ft_putnbr_fd((token)->type_id, 1);
+		ft_putstr_fd(" \t\ttoken->t_flag ", 1);
+		ft_putnbr_fd((token)->t_flag, 1);
 		ft_putstr_fd("\n", 1);
 		token = token->next;
 		size++;
