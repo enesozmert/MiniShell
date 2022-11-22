@@ -13,12 +13,6 @@ void parser_arg(t_rdl *rdl)
 			parser_arg_quote(rdl->main_str[i], &i, rdl);
 		else if (is_dollar(rdl->main_str[i]))
 			parser_add_dollar(rdl, rdl->main_str[i]);
-		else if (is_operator(rdl, rdl->main_str[i]) && rdl->main_str[i + 1] != '\0' && is_quote(rdl, rdl->main_str[i + 1]) == 0)
-			parser_add_operator(rdl, rdl->main_str[i]);
-		else if (is_operator(rdl, rdl->main_str[i]) && rdl->main_str[i + 1] == '\0')
-			parser_add(rdl, &rdl->main_str[i]);
-		// else if (is_operator(rdl, rdl->main_str[i]) && is_quote(rdl, rdl->main_str[i + 1]))
-		// 	parser_add_notoperator(rdl, rdl->main_str[i]);
 		else if (rdl->main_str[i] > 32)
 			parser_arg_isnot(&i, rdl);
 		else if(rdl->main_str[i] <= 32)

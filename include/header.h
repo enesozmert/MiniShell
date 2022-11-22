@@ -225,7 +225,6 @@ void			parser_add_buffer(int *j, t_rdl *rdl);
 void			parser_arg(t_rdl *rdl);
 void			parser_arg_isnot(int *k, t_rdl *rdl);
 int				parser_arg_is(int c, int *k, t_rdl *rdl);
-int				parser_arg_is_query(int c, int *k, t_rdl *rdl);
 void			parser_arg_isoperator(int *k, t_rdl *rdl);
 void			parser_arg_quote(int c, int *k, t_rdl *rdl);
 void			parser_arg_keyword(t_rdl *rdl);
