@@ -8,7 +8,7 @@ int is_identifier(t_rdl *rdl, char *str)
     while (rdl->identifier_list[++i].sybl != NULL)
     {
         if (rdl->identifier_list[i].sybl[0] == str[0]
-            || ft_isalnum(str[0]) == 0)
+            || (ft_isalnum(str[0]) == 0))
             return (0);
     }
     return (1);

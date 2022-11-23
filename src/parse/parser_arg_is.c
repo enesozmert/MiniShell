@@ -8,6 +8,15 @@ int parser_arg_is(int *k, t_rdl *rdl)
 	j = 0;
 	i = *k;
 	printf("ok\n");
+	while (rdl->main_str[i] <= 32)
+	{
+		rdl->buffer[j++] = rdl->main_str[i++];
+		rdl->index_flag = 1;
+		rdl->buffer[j] = '\0';
+		parser_add(rdl, rdl->buffer);
+		*k = i;
+		return (0);
+	}
 	while (is_quote(rdl, rdl->main_str[i]) == 0 && is_dollar(rdl->main_str[i]) == 0 && rdl->main_str[i] != '\0')
 	{
 		rdl->buffer[j++] = rdl->main_str[i++];

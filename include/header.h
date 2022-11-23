@@ -77,6 +77,7 @@ typedef struct s_token_type_prop
 	int		opr_flag;
 	int		sq_flag;
 	int		dq_flag;
+	int		space_flag;
 	int		dollar_flag;
 	int		keyword_id;
 	char	*new_trim;
