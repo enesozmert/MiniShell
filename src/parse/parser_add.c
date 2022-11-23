@@ -22,25 +22,32 @@ void	parser_add_notoperator(t_rdl *rdl, char c)
     str[1] = '\0';
 	token.t_flag = 0;
 	token.context = ft_strdup(str);
-	token.in_quote = rdl->quote_prop->flag;
     rdl->token = token_add(rdl->token, token);
 }
 
-void	parser_add_quote(t_rdl *rdl, char c)
+void	parser_add_single_quote(t_rdl *rdl, char c)
 {
 	t_quote		quote;
 	t_token		token;
 
 	quote = find_quote(rdl, c);
 	token.context = ft_strdup(quote.sybl);
-	token.in_quote = rdl->quote_prop->flag;
 	printf("rdl->quote_prop->flag : %d\n", rdl->quote_prop->flag);
     if (c == '\'')
 	{
 		token.t_flag = 2;
 	    rdl->token = token_add(rdl->token, token);
 	}
-    else if (c == '\"')
+}
+
+void	parser_add_double_quote(t_rdl *rdl, char c)
+{
+	t_quote		quote;
+	t_token		token;
+
+	quote = find_quote(rdl, c);
+	token.context = ft_strdup(quote.sybl);
+	if (c == '\"')
 	{
 		token.t_flag = 3;
 	    rdl->token = token_add(rdl->token, token);
@@ -56,7 +63,6 @@ void	parser_add_dollar(t_rdl *rdl, char c)
 	dollar[1] = '\0';
 	token.t_flag = 1;
 	token.context = ft_strdup(dollar);
-	token.in_quote = rdl->quote_prop->flag;
     if (is_dollar(c))
 	    rdl->token = token_add(rdl->token, token);
 }
@@ -67,7 +73,6 @@ void	parser_add(t_rdl *rdl, char *buffer)
 
 	token.t_flag = 0;
 	token.context = ft_strdup(buffer);
-	token.in_quote = rdl->quote_prop->flag;
     if (is_keyword(rdl, buffer) == 1)
     {
         rdl->token = token_add(rdl->token, token);
