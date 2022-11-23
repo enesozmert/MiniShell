@@ -15,11 +15,11 @@ void parser_arg(t_rdl *rdl)
 			parser_add_dollar(rdl, rdl->main_str[i]);
 		else if (is_operator(rdl, rdl->main_str[i]))
 			parser_add_operator(rdl, rdl->main_str[i]);
-		else if (rdl->main_str[i] > 32 && rdl->quote_prop->flag == 0)
+		else if (rdl->main_str[i] > 32)
 			parser_arg_isnot(&i, rdl);
-		else if (rdl->main_str[i] >= 32 && rdl->quote_prop->flag == 1)
+		else if (rdl->main_str[i] >= 32)
 			parser_arg_is(&i, rdl);
-		else if (rdl->main_str[i] <= 32 && rdl->quote_prop->flag == 0)
+		else if (rdl->main_str[i] <= 32)
 			parser_arg_space(&i, rdl);
 		if (rdl->index_flag == 0)
 			i++;
