@@ -33,7 +33,7 @@ int token_type_is_single_quote(t_rdl *rdl)
         (rdl->token_type_prop->token->len) == 1 &&
         rdl->token_type_prop->token->t_flag == 2)
         {
-            rdl->token_type_prop->sq_flag = 1;
+            rdl->token_type_prop->sq_flag = 2;
             rdl->token_type_prop->dollar_flag = 0;
             return (1);
         }
@@ -46,7 +46,7 @@ int token_type_is_double_quote(t_rdl *rdl)
         (rdl->token_type_prop->token->len) == 1 &&
         rdl->token_type_prop->token->t_flag == 3)
         {
-            rdl->token_type_prop->dq_flag = 1;
+            rdl->token_type_prop->dq_flag = 3;
             rdl->token_type_prop->dollar_flag = 0;
             return (1);
         }
