@@ -114,7 +114,8 @@ int token_type_is_key(t_rdl *rdl)
         ((rdl->token_type_prop->dollar_flag == 1 && rdl->token_type_prop->keyword_id == 0) ||
          (rdl->token_type_prop->dollar_flag == 1 && rdl->token_type_prop->keyword_id == 3) ||
          (rdl->token_type_prop->dollar_flag == 1 && rdl->token_type_prop->keyword_id == 1) ||
-         (rdl->token_type_prop->keyword_id == 4)))
+         (rdl->token_type_prop->keyword_id == 4)) &&
+         is_identifier(rdl, rdl->token_type_prop->token->context))
          {
             rdl->token_type_prop->opr_flag = 0;
             return (1);
