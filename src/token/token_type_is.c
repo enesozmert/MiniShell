@@ -68,7 +68,6 @@ int token_type_is_valid_identifier(t_rdl *rdl)
     if ((rdl->token_type_prop->token->len) > 0 &&
         is_identifier(rdl, rdl->token_type_prop->token->context) &&
         rdl->token_type_prop->keyword_id == 3 &&
-        // ((rdl->token_type_prop->dq_flag != 1 && rdl->token_type_prop->sq_flag != 1)) &&
         rdl->token_type_prop->opr_flag != 2)
         return (1);
     return (0);
@@ -79,7 +78,6 @@ int token_type_is_invalid_identifier(t_rdl *rdl)
     if ((rdl->token_type_prop->token->len) > 0 &&
         is_identifier(rdl, rdl->token_type_prop->token->context) == 0 &&
         rdl->token_type_prop->keyword_id == 3 &&
-        // ((rdl->token_type_prop->dq_flag != 1 && rdl->token_type_prop->sq_flag != 1)) &&
         rdl->token_type_prop->opr_flag != 2)
         return (1);
     return (0);

@@ -34,6 +34,7 @@ void	parser_add_quote(t_rdl *rdl, char c)
 	quote = find_quote(rdl, c);
 	token.context = ft_strdup(quote.sybl);
 	token.in_quote = rdl->quote_prop->flag;
+	printf("rdl->quote_prop->flag : %d\n", rdl->quote_prop->flag);
     if (c == '\'')
 	{
 		token.t_flag = 2;
