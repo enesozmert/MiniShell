@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/11/14 23:55:26 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/11/24 19:55:34 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,11 @@ typedef	struct s_redir_prop
 	char    *context;
 }	t_redir_prop;
 
-typedef	struct s_pipe
+
+typedef	struct s_pipe_prop
 {
 	int	count;
-}	t_pipe;
+}	t_pipe_prop;
 
 typedef struct s_token_type_prop
 {
