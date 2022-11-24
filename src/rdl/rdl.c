@@ -11,6 +11,7 @@ t_rdl *rdl_init(t_rdl *rdl)
 	rdl->keyword_list = malloc(sizeof(t_keyword) * 8);
 	rdl->operator_list = malloc(sizeof(t_operator) * 6);
 	rdl->delimiter_list = malloc(sizeof(t_delimiter) * 17);
+	rdl->redir_list = malloc(sizeof(t_redir) * 5);
 	rdl->identifier_list = malloc(sizeof(t_operator) * 11);
 	rdl->command_list = malloc(sizeof(t_command) * 9);
 	rdl->token_type_list = malloc(sizeof(t_token_type) * 12);
@@ -31,8 +32,8 @@ t_rdl *rdl_init(t_rdl *rdl)
 	rdl->redir_prop->output_count = 0;
 	rdl->redir_prop->context = ft_strdup("");
 	rdl->redir_prop->file_name = ft_strdup("");
-	rdl->pipe = malloc(sizeof(t_pipe) * 1);
-	rdl->pipe->count = 0;
+/* 	rdl.pi = malloc(sizeof(t_pipe_prop) * 1);
+	rdl->pipe.c */
 	return (rdl);
 }
 
@@ -43,6 +44,7 @@ void rdl_clear(t_rdl *rdl)
 	free(rdl->delimiter_list);
 	free(rdl->identifier_list);
 	free(rdl->token_type_list);
+	free(rdl->redir_list);
 	free(rdl->quote_list);
 	free(rdl->main_str);
 	free(rdl->buffer);

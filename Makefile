@@ -5,8 +5,8 @@ LIBFT		=	./libft/libft.a
 CC			=	gcc
 USER_NAME1	=	eozmert
 USER_NAME2	=	cyalniz
-READLINE	=	/Users/${USER_NAME1}/goinfre/homebrew/opt/readline/lib
-READLINE_INCLUDE	=	/Users/${USER_NAME1}/goinfre/homebrew/opt/readline/include
+READLINE	=	/Users/${USER_NAME2}/goinfre/homebrew/opt/readline/lib
+READLINE_INCLUDE	=	/Users/${USER_NAME2}/goinfre/homebrew/opt/readline/include
 CFLAGS		=	-Wall -Werror -Wextra -g -I $(READLINE_INCLUDE)
 RM			=	rm -f
 
@@ -45,9 +45,9 @@ PARSE		=	parser parser_arg  parser_arg_quote parser_arg_keyword parser_arg_space
 RDL			=	rdl
 SYNTAX		=	syntax keyword_syntax quote_syntax redir_syntax export_syntax pipe_syntax
 STATIC		=	keyword_list operator_list command_list quote_list delimiter_list identifier_list \
-				token_type_list
+				token_type_list redir_list
 LEXICAL		=	lexical is_keyword is_operator is_quote is_dollar is_identifier is_delimiter is_token_type\
-				find_operator find_keyword find_quote \
+				find_operator find_keyword find_quote is_redir is_pipe\
 				command_in_token_type keyword_in_operator find_keyword_id
 CORE		=	white_space count_char quote_count count_matris char_replace free_double_str \
 				char_pos keyword_trim keyword_trim_len token_arg_count \

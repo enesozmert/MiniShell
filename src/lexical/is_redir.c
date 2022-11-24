@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   redir_list.c                                       :+:      :+:    :+:   */
+/*   is_redir.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/24 19:12:16 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/11/24 20:07:13 by cyalniz          ###   ########.fr       */
+/*   Created: 2022/11/24 19:58:27 by cyalniz           #+#    #+#             */
+/*   Updated: 2022/11/24 20:06:21 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-void	redir_list(t_redir *redir)
+int is_redir(t_rdl *rdl, char *str)
 {
-	redir[0] = (t_redir){">"};
-	redir[1] = (t_redir){">>"};
-	redir[2] = (t_redir){"<"};
-	redir[3] = (t_redir){"<<"};
-	redir[4] = (t_redir){NULL};
+    int i;
+
+    i = -1;
+    while (rdl->redir_list[++i].sybl != NULL)
+    {
+        if (rdl->redir_list[i].sybl[0] == str[0])
+            return (0);
+    }
+    return (1);
 }

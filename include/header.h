@@ -6,7 +6,7 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/11/24 19:55:34 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/11/24 20:02:30 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,11 @@ typedef	struct s_redir_prop
 	char    *context;
 }	t_redir_prop;
 
+typedef struct s_redir
+{
+	char	*sybl;
+}	t_redir;
+
 
 typedef	struct s_pipe_prop
 {
@@ -99,12 +104,13 @@ typedef struct s_rdl
 	t_quote_prop			*quote_prop;
 	t_token_type_prop		*token_type_prop;
 	t_redir_prop			*redir_prop;
-	t_pipe					*pipe;
+	t_token_type_prop		*pipe;
 	t_token					*token;
 	struct s_keyword		*keyword_list;
 	struct s_operator		*operator_list;
 	struct s_delimiter		*delimiter_list;
 	struct s_identifier		*identifier_list;
+	struct s_redir			*redir_list;
 	struct s_command		*command_list;
 	struct s_token_type		*token_type_list;
 	struct s_quote			*quote_list;
