@@ -13,17 +13,20 @@ void parser_arg_is(t_rdl *rdl)
 	{
 		if (is_dollar(rdl->buffer[i]))
 		{
-			parser_add_buffer(rdl, buffer, &j);
+			if (buffer != NULL && ft_strlen(buffer) > 0)
+				parser_add_buffer(rdl, buffer, &j);
 			parser_add_dollar(rdl, rdl->buffer[i]);
 		}
-		else if (!is_delimiter(rdl, rdl->main_str[i]))
+		else if (is_delimiter(rdl, rdl->buffer[i]))
 		{
-			parser_add_buffer(rdl, buffer, &j);
+			if (buffer != NULL && ft_strlen(buffer) > 0)
+				parser_add_buffer(rdl, buffer, &j);
 			parser_add_char(rdl, rdl->buffer[i]);
 		}
 		else if (is_operator(rdl, rdl->buffer[i]))
 		{
-			parser_add_buffer(rdl, buffer, &j);
+			if (buffer != NULL && ft_strlen(buffer) > 0)
+				parser_add_buffer(rdl, buffer, &j);
 			parser_add_operator(rdl, rdl->buffer[i]);
 		}
 		else if (rdl->buffer[i] > 32)

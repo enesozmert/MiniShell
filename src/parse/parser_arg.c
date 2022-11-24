@@ -20,7 +20,7 @@ void parser_arg(t_rdl *rdl)
 			parser_add_dollar(rdl, rdl->main_str[i]);
 		else if (is_operator(rdl, rdl->main_str[i]))
 			parser_add_operator(rdl, rdl->main_str[i]);
-		else if (is_delimiter(rdl, rdl->main_str[i]))
+		else if (is_delimiter(rdl, rdl->main_str[i]) && rdl->main_str[i] > 32)
 			parser_add_char(rdl, rdl->main_str[i]);
 		else if (rdl->main_str[i] <= 32)
 			parser_arg_space(&i, rdl);
