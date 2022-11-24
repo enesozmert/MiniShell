@@ -16,7 +16,7 @@ void parser_arg_is(t_rdl *rdl)
 			parser_add_buffer(rdl, buffer, &j);
 			parser_add_dollar(rdl, rdl->buffer[i]);
 		}
-		else if (ft_isalnum(rdl->buffer[i]) == 0)
+		else if (!is_delimiter(rdl, rdl->main_str[i]))
 		{
 			parser_add_buffer(rdl, buffer, &j);
 			parser_add_char(rdl, rdl->buffer[i]);
