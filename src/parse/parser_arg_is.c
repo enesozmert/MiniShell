@@ -16,33 +16,29 @@ static void parser_arg_is_add_buffer(t_rdl *rdl)
 		{
 			if (buffer != NULL && ft_strlen(buffer) > 0){
 				parser_add(rdl, buffer);
-				buffer = malloc(sizeof(char) * ft_strlen(rdl->buffer));
 			}
 			parser_add_dollar(rdl, rdl->buffer[i]);
 		}
-		else if (ft_isalnum(rdl->buffer[i]) == 0)
+		else if (ft_isalnum(rdl->buffer[i]) == 0 && rdl->buffer[i] > 32)
 		{
 			if (buffer != NULL && ft_strlen(buffer) > 0){
 				parser_add(rdl, buffer);
-				buffer = malloc(sizeof(char) * ft_strlen(rdl->buffer));
 			}
 			parser_add_notoperator(rdl, rdl->buffer[i]);
 		}
-		if (is_operator(rdl, rdl->buffer[i]))
+		else if (is_operator(rdl, rdl->buffer[i]))
 		{
 			if (buffer != NULL && ft_strlen(buffer) > 0){
 				parser_add(rdl, buffer);
-				buffer = malloc(sizeof(char) * ft_strlen(rdl->buffer));
 			}
 			parser_add_operator(rdl, rdl->buffer[i]);
 		}
-		if (rdl->buffer[i] > 32 && !is_dollar(rdl->buffer[i]))
+		else if (rdl->buffer[i] >= 32)
 			buffer[++j] = rdl->buffer[i];
 	}
 	if (buffer != NULL && ft_strlen(buffer) > 0){
-				parser_add(rdl, buffer);
-				buffer = malloc(sizeof(char) * ft_strlen(rdl->buffer));
-			}
+		parser_add(rdl, buffer);
+	}
 }
 
 void parser_arg_is_single_quote(int *k, t_rdl *rdl)

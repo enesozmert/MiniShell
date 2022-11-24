@@ -6,7 +6,6 @@ void parser_arg(t_rdl *rdl)
 
 	parser_arg_keyword(rdl);
 	i = char_pos(rdl);
-	printf("%d", i);
 	while (i < rdl->len && rdl->main_str[i] != '\0')
 	{
 		if (rdl->main_str[i] == '\'')
@@ -27,7 +26,7 @@ void parser_arg(t_rdl *rdl)
 			parser_add_dollar(rdl, rdl->main_str[i]);
 		else if (is_operator(rdl, rdl->main_str[i]))
 			parser_add_operator(rdl, rdl->main_str[i]);
-		else if (ft_isalnum(rdl->main_str[i]))
+		else if (ft_isalnum(rdl->main_str[i]) && rdl->main_str[i] > 32)
 			parser_add_notoperator(rdl, rdl->main_str[i]);
 		else if (rdl->main_str[i] <= 32)
 			parser_arg_space(&i, rdl);
