@@ -25,7 +25,7 @@ int	env_find_id(char *key)
 	while(g_env.env[++i])
 	{
 		key_find = ft_split(g_env.env[i], '=')[0];
-		if (ft_strncmp(key_find, key, ft_strlen(key_find)) == 0)
+		if (ft_strnstr(key_find, key, ft_strlen(key_find)) != NULL)
 		{
 			free(key_find);
 			return (i);

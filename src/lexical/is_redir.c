@@ -17,7 +17,6 @@ int is_redir(t_rdl *rdl, char c)
     int i;
 
     i = -1;
-    printf("redir : %c\n", c);
     while (rdl->redir_list[++i].sybl != NULL)
     {
         if (rdl->redir_list[i].sybl[0] == c)

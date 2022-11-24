@@ -322,6 +322,7 @@ void			identifier_list(t_identifier *identifier);
 void			set_signal(int signo);
 void			proc_signal_handler(int signo);
 //redirection
+void			redir_list(t_redir *redir);
 int 			redir_handler(t_rdl *rdl);
 int				redir_output(t_rdl *rdl);
 int				redir_input(t_rdl *rdl);
