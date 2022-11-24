@@ -17,6 +17,8 @@ int redir_input(t_rdl *rdl)
 static int redir_file_name(t_rdl *rdl)
 {
     // printf("redir_file_name\n");
+    // if (rdl->token->type_id == 0)
+    //     return (-1);
     rdl->redir_prop->file_name = ft_strjoin(rdl->token->context, rdl->redir_prop->file_name);
     return (1);
 }
@@ -24,8 +26,6 @@ static int redir_file_name(t_rdl *rdl)
 static int redir_context(t_rdl *rdl)
 {
     // printf("redir_context\n");
-    if (rdl->token->type_id == 0)
-        return (-1);
     rdl->redir_prop->context = ft_strjoin(rdl->token->context, rdl->redir_prop->context);
     return (1);
 }

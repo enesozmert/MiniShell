@@ -99,7 +99,7 @@ typedef struct s_rdl
 	t_quote_prop			*quote_prop;
 	t_token_type_prop		*token_type_prop;
 	t_redir_prop			*redir_prop;
-	t_pipe					*pipe;
+	t_pipe_prop				*pipe_prop;
 	t_token					*token;
 	struct s_keyword		*keyword_list;
 	struct s_operator		*operator_list;
