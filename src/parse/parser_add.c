@@ -38,7 +38,6 @@ void parser_add_operator(t_rdl *rdl, char c)
 
 void parser_add_redir(t_rdl *rdl, char c)
 {
-	printf("redir\n");
 	t_token token;
 	char redir[2];
 

@@ -44,10 +44,6 @@ int command_execv(t_command command)
 		get_next_token(&command.tokens);
 	}
 	type[j] = NULL;
-	printf("type 0 : %s\n", type[0]);
-	printf("type 1 : %s\n", type[1]);
-	printf("type 2 : %s\n", type[2]);
-	// printf("type 2 : %s\n", type[3]);
 	pid = fork();
 	signal(SIGINT, proc_signal_handler);
 	if (pid == 0)

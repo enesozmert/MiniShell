@@ -23,33 +23,34 @@ static int redir_file_name(t_rdl *rdl)
     return (1);
 }
 
-static int redir_context(t_rdl *rdl)
-{
-    // printf("redir_context\n");
-    if (rdl->token->type_id == 0)
-        return (-1);
-    rdl->redir_prop->context = ft_strjoin(rdl->token->context, rdl->redir_prop->context);
-    return (1);
-}
+// static int redir_context(t_rdl *rdl)
+// {
+//     // printf("redir_context\n");
+//     if (rdl->token->type_id == 0)
+//         return (-1);
+//     rdl->redir_prop->context = ft_strjoin(rdl->token->context, rdl->redir_prop->context);
+//     return (1);
+// }
 
 int redir_handler(t_rdl *rdl)
 {
-    // printf("ok\n");
+    printf("ok\n");
     int i;
     int len;
 
     i = -1;
     len = token_size(rdl->token);
+    printf("token_size : %d\n", len);
     while (++i < len)
     {
-        if (rdl->token->context[0] != '>' && rdl->token->next->context[0] == '>')
-            redir_context(rdl);
+        // if (rdl->token->context[0] != '>' && rdl->token->next->context[0] == '>')
+        //     redir_context(rdl);
         // else if (rdl->token->context[0] != '>' && rdl->token->next->context[0] == '>' && rdl->token->next->next->context[0] == '>')
         //     redir_output(rdl);
-        else if (rdl->token->context[0] != '>' && (rdl->token->next->context[0] != '>' || rdl->token->next->next->context[0] != '>'))
+        if (rdl->token->context[0] != '>' && (rdl->token->next->context[0] != '>' || rdl->token->next->next->context[0] != '>'))
             redir_file_name(rdl);
-        else if (rdl->token->context[0] != '<' && rdl->token->next->context[0] == '<')
-            redir_context(rdl);
+        // else if (rdl->token->context[0] != '<' && rdl->token->next->context[0] == '<')
+        //     redir_context(rdl);
         // else if (rdl->token->context[0] != '<' && rdl->token->next->context[0] == '<' && rdl->token->next->next->context[0] == '<')
         //     redir_input(rdl);
         else if (rdl->token->context[0] == '<' && rdl->token->next->context[0] != '<' && rdl->token->next->next->context[0] != '<')
