@@ -30,5 +30,5 @@ void parser_arg_is(t_rdl *rdl)
 			buffer[++j] = rdl->buffer[i];
 	}
 	if (buffer != NULL && ft_strlen(buffer) > 0)
-		parser_add(rdl, buffer);
+		parser_add_buffer(rdl, buffer, &j + 1);
 }
