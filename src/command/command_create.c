@@ -21,7 +21,8 @@ int command(t_rdl *rdl)
     command_malloc(rdl);
 	while (++i < token_size(rdl->token))
 	{
-        command_create(rdl);
+        if (command_create(rdl) == -1)
+            break ;
 		get_next_token(&rdl->token);
 	}
     command_run(rdl);
@@ -56,5 +57,7 @@ int command_create(t_rdl *rdl)
     is_token_type = command_in_token_type(rdl, command_id, rdl->token->id);
     if (is_token_type == 1)
         rdl->command_list[command_id].tokens = token_add_copy(rdl->command_list[command_id].tokens, rdl->token);
+    if (rdl->token->type_id == 5)
+        return (-1);
     return (0);
 }
