@@ -26,7 +26,7 @@ int char_pos(t_rdl *rdl)
 		i++;
 	}
     keyword[j] = '\0';
-	while (rdl->main_str[i] <= 32)
+	while (rdl->main_str[i] <= 32 && rdl->main_str[i])
 	{
 		total_space++;
 		i++;
