@@ -14,7 +14,6 @@ void parser_arg_keyword(t_rdl *rdl)
 		rdl->buffer[j++] = rdl->main_str[i];
 		i++;
 	}
-	rdl->buffer[j] = '\0';
-	rdl->t_flag = 0;
-	parser_add(rdl, rdl->buffer);
+	if (ft_strlen(rdl->buffer) > 0)
+		rdl->buffer[j] = '\0';
 }
