@@ -7,8 +7,8 @@ void parser_add_char(t_rdl *rdl, char c)
 
 	str[0] = c;
 	str[1] = '\0';
-	token.context = ft_strdup(str);
 	token.t_flag = -1;
+	token.context = ft_strdup(str);
 	rdl->token = token_add(rdl->token, token);
 }
 
@@ -38,15 +38,15 @@ void parser_add_operator(t_rdl *rdl, char c)
 
 void parser_add_redir(t_rdl *rdl, char c)
 {
+	printf("redir\n");
 	t_token token;
-	char dollar[2];
+	char redir[2];
 
-	dollar[0] = c;
-	dollar[1] = '\0';
-	token.context = ft_strdup(dollar);
+	redir[0] = c;
+	redir[1] = '\0';
+	token.context = ft_strdup(redir);
 	token.t_flag = 5;
-	if (is_redir(rdl, c))
-		rdl->token = token_add(rdl->token, token);
+	rdl->token = token_add(rdl->token, token);
 }
 
 void parser_add_quote(t_rdl *rdl, char c)
