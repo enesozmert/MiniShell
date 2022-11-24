@@ -61,11 +61,13 @@ typedef struct s_quote
 	char	*sybl;
 }	t_quote;
 
-typedef	struct s_redir
+typedef	struct s_redir_prop
 {
-	int	input_count;
-	int	output_count;
-}	t_redir;
+	int		input_count;
+	int		output_count;
+	char	*file_name;
+	char    *context;
+}	t_redir_prop;
 
 typedef	struct s_pipe
 {
@@ -95,7 +97,7 @@ typedef struct s_rdl
 	char					*error_arg;
 	t_quote_prop			*quote_prop;
 	t_token_type_prop		*token_type_prop;
-	t_redir					*redir;
+	t_redir_prop			*redir_prop;
 	t_pipe					*pipe;
 	t_token					*token;
 	struct s_keyword		*keyword_list;
@@ -310,4 +312,8 @@ void			identifier_list(t_identifier *identifier);
 //signal
 void			set_signal(int signo);
 void			proc_signal_handler(int signo);
+//redirection
+int 			redir_handler(t_rdl *rdl);
+int				redir_output(t_rdl *rdl);
+int				redir_input(t_rdl *rdl);
 #endif

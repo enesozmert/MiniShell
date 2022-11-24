@@ -5,7 +5,10 @@ void parser_arg(t_rdl *rdl)
 	int i;
 
 	parser_arg_keyword(rdl);
-	parser_add_keyword(rdl, rdl->buffer);
+	if (is_keyword(rdl, rdl->buffer))
+		parser_add_keyword(rdl, rdl->buffer);
+	else
+		parser_add(rdl, rdl->buffer);
 	i = char_pos(rdl);
 	while (i < rdl->len && rdl->main_str[i] != '\0')
 	{

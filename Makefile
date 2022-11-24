@@ -26,6 +26,7 @@ SRC_SYNTAX	=	syntax/
 SRC_LEXICAL	=	lexical/
 SRC_STATIC	=	static/
 SRC_SIGNAL	=	signal/
+SRC_REDIRECTION	=	redirection/
 SRC_CORE	=	core/
 SRC_EXCEPTION	=	exception/
 SRC_COMMAND	=	command/
@@ -57,6 +58,7 @@ COMMAND		=	command_create command_run command_find command_exec command_find_pat
 BUILTIN		=	echo_builtin cd_builtin pwd_builtin exit_builtin env_builtin export_builtin unset_builtin
 ENVIRONMENT =	environment env_find env_len env_update env_add env_exist env_asc env_dsc env_delete
 SIGNAL		=	signal_handler
+REDIRECTION = redir_handler
 #FileCreate
 
 SRC_FILES	+=	$(addprefix $(SRC_COMMON),$(COMMON))
@@ -69,6 +71,7 @@ SRC_FILES	+=	$(addprefix $(SRC_SYNTAX),$(SYNTAX))
 SRC_FILES	+=	$(addprefix $(SRC_LEXICAL),$(LEXICAL))
 SRC_FILES	+=	$(addprefix $(SRC_STATIC),$(STATIC))
 SRC_FILES	+=	$(addprefix $(SRC_SIGNAL),$(SIGNAL))
+SRC_FILES	+=	$(addprefix $(SRC_REDIRECTION),$(REDIRECTION))
 SRC_FILES	+=	$(addprefix $(SRC_CORE),$(CORE))
 SRC_FILES	+=	$(addprefix $(SRC_EXCEPTION),$(EXCEPTION))
 SRC_FILES	+=	$(addprefix $(SRC_COMMAND),$(COMMAND))
@@ -94,6 +97,7 @@ $(OBJF):
 			@mkdir -p $(OBJ_DIR)$(SRC_LEXICAL)
 			@mkdir -p $(OBJ_DIR)$(SRC_STATIC)
 			@mkdir -p $(OBJ_DIR)$(SRC_SIGNAL)
+			@mkdir -p $(OBJ_DIR)$(SRC_REDIRECTION)
 			@mkdir -p $(OBJ_DIR)$(SRC_CORE)
 			@mkdir -p $(OBJ_DIR)$(SRC_EXCEPTION)
 			@mkdir -p $(OBJ_DIR)$(SRC_COMMAND)
