@@ -131,7 +131,8 @@ int token_type_is_arg(t_rdl *rdl)
     if (rdl->token_type_prop->token->len > 0 &&
         rdl->token_type_prop->keyword_id != 0 &&
         rdl->token_type_prop->keyword_id != 3 &&
-        rdl->token_type_prop->keyword_id != 4)
+        rdl->token_type_prop->keyword_id != 4 &&
+        rdl->token_type_prop->keyword_id != -1)
         return (1);
     return (0);
 }

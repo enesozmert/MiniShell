@@ -8,7 +8,9 @@ void parser_arg(t_rdl *rdl)
 	if (is_keyword(rdl, rdl->buffer))
 		parser_add_keyword(rdl, rdl->buffer);
 	else
+	{
 		parser_add(rdl, rdl->buffer);
+	}
 	i = char_pos(rdl);
 	while (i < rdl->len && rdl->main_str[i] != '\0')
 	{
