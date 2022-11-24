@@ -64,9 +64,6 @@ void parser_add(t_rdl *rdl, char *buffer)
 	t_token token;
 
 	token.context = ft_strdup(buffer);
-	if (is_keyword(rdl, buffer) == 0)
-	{
-		rdl->token = token_add(rdl->token, token);
-		ft_bzero(buffer, ft_strlen(buffer));
-	}
+	rdl->token = token_add(rdl->token, token);
+	ft_bzero(buffer, ft_strlen(buffer));
 }
