@@ -24,8 +24,6 @@ void routine()
 		if (!check_white_space(rdl->main_str))
 		{
 			lexical_analizer(rdl);
-			// if(ft_strncmp(rdl->main_str, "<", rdl->len) == 0 || ft_strncmp(rdl->main_str, ">", rdl->len) == 0)
-				redir_handler(rdl);
 			if(syntax(rdl) != -1)
 				command(rdl);
 			my_add_history(rdl->main_str);

@@ -25,16 +25,16 @@ int export_start(t_command command)
     i = -1;
     while (++i < size)
     {
-        if (command.tokens->type_id == 5)
+        if (command.tokens->type_id == 6)
             identifier = ft_strjoin(identifier, command.tokens->context);
-		if (command.tokens->type_id == 7)
+		if (command.tokens->type_id == 8)
 		{
             key = ft_strdup(command.tokens->context);
 			tmp_value = env_find_value(key);
             if (tmp_value != NULL)
 			    value = ft_strjoin(value, tmp_value);
 		}
-        if (command.tokens->type_id == 8)
+        if (command.tokens->type_id == 9)
         {
             value = ft_strjoin(value, command.tokens->context);
             if (ft_strncmp(value, " ", 1) == 0)

@@ -41,7 +41,6 @@ typedef struct s_token
 	int				id;
 	int				len;
 	int				type_id;
-	int				in_quote;
 	char			*context;
 	char			*type;
 	int				t_flag;
@@ -105,7 +104,7 @@ typedef struct s_rdl
 	t_redir_prop			*redir_prop;
 	t_pipe_prop				*pipe_prop;
 	t_token					*token;
-	
+
 	struct s_redir          *redir_list;
 	struct s_keyword		*keyword_list;
 	struct s_operator		*operator_list;
@@ -203,6 +202,7 @@ int				token_type_is_value(t_rdl *rdl);
 int				token_type_is_arg(t_rdl *rdl);
 int				token_type_is_string(t_rdl *rdl);
 int				token_type_is_dollar(t_rdl *rdl);
+int				token_type_is_redir(t_rdl *rdl);
 //rd_line
 char			*ft_read_line(void);
 t_rdl			*rdl_init(t_rdl *rdl);
@@ -229,6 +229,7 @@ int				my_add_history(char *str);
 void			parser(t_rdl *rdl);
 void			parser_add(t_rdl *rdl, char *buffer);
 void			parser_add_operator(t_rdl *rdl, char c);
+void			parser_add_redir(t_rdl *rdl, char c);
 void			parser_add_char(t_rdl *rdl, char c);
 void			parser_add_quote(t_rdl *rdl, char c);
 void			parser_add_dollar(t_rdl *rdl, char c);
@@ -269,6 +270,7 @@ int				is_quote(t_rdl *rdl, char c);
 int				is_dollar(char c);
 int				is_delimiter(t_rdl *rdl, char c);
 int				is_identifier(t_rdl *rdl, char *str);
+int 			is_redir(t_rdl *rdl, char c);
 t_keyword		find_keyword(t_rdl *rdl, char *str);
 int				find_keyword_id(t_rdl *rdl, char *str);
 t_operator		find_operator(t_rdl *rdl, char c);

@@ -9,12 +9,12 @@ t_rdl *rdl_init(t_rdl *rdl)
 	rdl->index_flag = 0;
 	rdl->buffer = malloc(sizeof(char) * rdl->len);
 	rdl->keyword_list = malloc(sizeof(t_keyword) * 8);
-	rdl->operator_list = malloc(sizeof(t_operator) * 6);
+	rdl->operator_list = malloc(sizeof(t_operator) * 4);
 	rdl->delimiter_list = malloc(sizeof(t_delimiter) * 17);
 	rdl->identifier_list = malloc(sizeof(t_operator) * 11);
 	rdl->command_list = malloc(sizeof(t_command) * 9);
-	rdl->token_type_list = malloc(sizeof(t_token_type) * 12);
-	rdl->redir_list = malloc(sizeof(t_redir) * 5);
+	rdl->token_type_list = malloc(sizeof(t_token_type) * 13);
+	rdl->redir_list = malloc(sizeof(t_redir) * 3);
 	rdl->quote_list = malloc(sizeof(t_quote) * 3);
 	rdl->quote_prop = malloc(sizeof(t_quote_prop) * 1);
 	rdl->quote_prop->dq = 0;

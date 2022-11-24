@@ -9,7 +9,7 @@ int unset_start(t_command command)
 	size = token_size(command.tokens);
 	while (++i < size)
 	{
-		if (command.tokens->type_id == 7)
+		if (command.tokens->type_id == 8)
 			env_delete(command.tokens->context);
 		get_next_token(&command.tokens);
 	}

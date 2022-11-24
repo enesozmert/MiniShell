@@ -15,8 +15,6 @@
 void	redir_list(t_redir *redir)
 {
 	redir[0] = (t_redir){">"};
-	redir[1] = (t_redir){">>"};
-	redir[2] = (t_redir){"<"};
-	redir[3] = (t_redir){"<<"};
-	redir[4] = (t_redir){NULL};
+	redir[1] = (t_redir){"<"};
+	redir[2] = (t_redir){NULL};
 }

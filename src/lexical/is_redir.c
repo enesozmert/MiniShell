@@ -12,15 +12,15 @@
 
 #include "../../include/header.h"
 
-int is_redir(t_rdl *rdl, char *str)
+int is_redir(t_rdl *rdl, char c)
 {
     int i;
 
     i = -1;
     while (rdl->redir_list[++i].sybl != NULL)
     {
-        if (rdl->redir_list[i].sybl[0] == str[0])
-            return (0);
+        if (rdl->redir_list[i].sybl[0] == c)
+            return (1);
     }
-    return (1);
+    return (0);
 }

@@ -66,7 +66,7 @@ int cd_start(t_command command)
     {
         if (command.tokens->type_id == 8)
             error = cd_key(command);
-        if (command.tokens->type_id == 10)
+        if (command.tokens->type_id == 11)
             error = cd_arg(command);
         get_next_token(&command.tokens);
     }

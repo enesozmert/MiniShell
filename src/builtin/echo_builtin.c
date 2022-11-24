@@ -1,7 +1,7 @@
 #include "../../include/header.h"
 static int echo_dollar(t_command command)
 {
-	if (command.tokens->next->type_id != 7)
+	if (command.tokens->next->type_id != 8)
 		printf("%s", command.tokens->context);
 	return (0);
 }
@@ -33,9 +33,9 @@ int echo_start(t_command command)
 	{
 		if (command.tokens->type_id == 3)
 			echo_dollar(command);
-		if (command.tokens->type_id == 7)
+		if (command.tokens->type_id == 8)
 			echo_key(command);
-		if (command.tokens->type_id == 9)
+		if (command.tokens->type_id == 10)
 			echo_string(command);
 		get_next_token(&command.tokens);
 	}

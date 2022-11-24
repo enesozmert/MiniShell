@@ -8,7 +8,6 @@ t_token *token_new(t_token *get_token)
 	tmp->context = ft_strdup(get_token->context);
 	tmp->len = ft_strlen(get_token->context);
 	tmp->type = NULL;
-	tmp->in_quote = get_token->in_quote;
 	tmp->type_id = get_token->type_id;
 	tmp->t_flag = get_token->t_flag;
 	tmp->next = NULL;
