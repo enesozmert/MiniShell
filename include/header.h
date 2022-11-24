@@ -61,19 +61,23 @@ typedef struct s_quote
 	char	*sybl;
 }	t_quote;
 
-typedef	struct s_redir_prop
-{
-	int		input_count;
-	int		output_count;
-	char	*file_name;
-	char    *context;
-}	t_redir_prop;
-
-
 typedef	struct s_pipe_prop
 {
 	int	count;
 }	t_pipe_prop;
+
+typedef struct s_redir_prop
+{
+    int     input_count;
+    int     output_count;
+    char    *file_name;
+    char    *context;
+}   t_redir_prop;
+
+typedef struct s_redir
+{
+    char    *sybl;
+}   t_redir;
 
 typedef struct s_token_type_prop
 {
@@ -102,6 +106,7 @@ typedef struct s_rdl
 	t_pipe_prop				*pipe_prop;
 	t_token					*token;
 	
+	struct s_redir          *redir_list;
 	struct s_keyword		*keyword_list;
 	struct s_operator		*operator_list;
 	struct s_delimiter		*delimiter_list;
