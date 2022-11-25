@@ -6,6 +6,8 @@ int token_type_is_keyword(t_rdl *rdl)
         rdl->token_type_prop->new_trim = keyword_trim(rdl->token_type_prop->token->context);
     if (rdl->token_type_prop->token->id == 0 && is_keyword(rdl, rdl->token_type_prop->new_trim))
     {
+        // rdl->token_type_prop->token->context = to_lower_str(rdl->token_type_prop->new_trim);
+        rdl->token_type_prop->new_trim = to_lower_str(rdl->token_type_prop->new_trim);
         rdl->token_type_prop->keyword_id = find_keyword_id(rdl, rdl->token_type_prop->new_trim);
         return (1);
     }
