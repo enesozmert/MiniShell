@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   keyword_trim_len.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/25 10:44:35 by cyalniz           #+#    #+#             */
+/*   Updated: 2022/11/25 10:45:46 by cyalniz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/header.h"
 
 int keyword_trim_len(char *str)
@@ -17,7 +29,7 @@ int keyword_trim_len(char *str)
 		if(str[i] == '\'')
 		{
 			i++;
-			while(str[i] != '\'')
+			while(str[i] != '\'' && str[i])
 			{
 				i++;
 				j++;
@@ -30,7 +42,7 @@ int keyword_trim_len(char *str)
 		else if(str[i] == '\"')
 		{
 			i++;
-			while( str[i] != '\"')
+			while( str[i] != '\"' && str[i])
 			{
 				i++;
 				j++;

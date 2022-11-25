@@ -21,7 +21,7 @@ char *keyword_trim(char *str)
 		if(str[i] == '\'')
 		{
 			i++;
-			while(str[i] != '\'')
+			while(str[i] != '\'' && str[i])
 			{
 				dest[j] = str[i];
 				i++;
@@ -35,7 +35,7 @@ char *keyword_trim(char *str)
 		else if(str[i] == '\"')
 		{
 			i++;
-			while(str[i] != '\"')
+			while(str[i] != '\"' && str[i])
 			{
 				dest[j] = str[i];
 				i++;
