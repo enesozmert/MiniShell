@@ -36,6 +36,7 @@
         "initializer_list": "c",
         "utility": "c",
         "__functional_base_03": "c",
-        "__tuple": "c"
+        "__tuple": "c",
+        "libft.h": "c"
     }
 }

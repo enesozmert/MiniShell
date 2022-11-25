@@ -10,7 +10,7 @@ int keyword_syntax(t_rdl *rdl)
 		return (0);
 	token = get_token_id(rdl->token, 0);
 	while (token->context[++i])
-		ft_tolower(token->context[i]);
+		token->context[i] = ft_tolower(token->context[i]);
 	token->context = keyword_trim(token->context);
 	if (is_keyword(rdl, token->context) == 1)
 	{

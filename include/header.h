@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/11/24 19:55:34 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/11/25 10:14:32 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,6 +223,7 @@ int				token_arg_count(t_token *token);
 int				token_key_count(t_token *token);
 int				token_value_count(t_token *token);
 void			ft_free_dbl_str(char **str);
+char			*to_lower_str(char *str);
 //history
 int				my_add_history(char *str);
 //parser
