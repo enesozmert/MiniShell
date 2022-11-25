@@ -5,7 +5,7 @@ void	keyword_list(t_keyword *keyword)
 	keyword[0] = (t_keyword){"echo", NULL};
 	keyword[1] = (t_keyword){"cd", NULL};
 	keyword[2] = (t_keyword){"pwd", NULL};
-	keyword[3] = (t_keyword){"export", "2"};
+	keyword[3] = (t_keyword){"export", "1"};
 	keyword[4] = (t_keyword){"unset", NULL};
 	keyword[5] = (t_keyword){"env", NULL};
 	keyword[6] = (t_keyword){"exit", NULL};

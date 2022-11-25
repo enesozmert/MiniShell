@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:22:50 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/10/27 13:55:33 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/11/25 10:54:29 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 void routine()
 {
 	t_rdl *rdl;
-	
+	int	i;
+
+	i = 0;
 	rdl = NULL;
 	while (1)
 	{
@@ -25,8 +27,17 @@ void routine()
 		{
 			lexical_analizer(rdl);
 			// redir_handler(rdl);
+			
 			if(syntax(rdl) != -1)
+			{
+				pipe_handler(rdl);
+				// while (rdl->pipe_str[++i])
+				// {
+				// 	rdl->main_str = ft_strdup(rdl->pipe_str[i]);
+				// 	rdl->len = ft_strlen(rdl->pipe_str[i]);
+				// }
 				command(rdl);
+			}
 			my_add_history(rdl->main_str);
 			keywords_clear(rdl->keyword_list);
 			token_clear(&rdl->token);

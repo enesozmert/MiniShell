@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_create.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:48:35 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/11/14 23:47:05 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/11/25 11:20:19 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int command_create(t_rdl *rdl)
     is_token_type = command_in_token_type(rdl, command_id, rdl->token->id);
     if (is_token_type == 1)
         rdl->command_list[command_id].tokens = token_add_copy(rdl->command_list[command_id].tokens, rdl->token);
-    if (rdl->token->type_id == 5)
+    if (rdl->token->type_id == 6)
         return (-1);
     return (0);
 }

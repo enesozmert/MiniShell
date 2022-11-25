@@ -33,9 +33,9 @@ int echo_start(t_command command)
 	{
 		if (command.tokens->type_id == 3)
 			echo_dollar(command);
-		if (command.tokens->type_id == 8)
+		if (command.tokens->type_id == 9)
 			echo_key(command);
-		if (command.tokens->type_id == 10)
+		if (command.tokens->type_id == 11)
 			echo_string(command);
 		get_next_token(&command.tokens);
 	}

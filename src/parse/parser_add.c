@@ -38,14 +38,28 @@ void parser_add_operator(t_rdl *rdl, char c)
 
 void parser_add_redir(t_rdl *rdl, char c)
 {
-	t_token token;
 	char redir[2];
+	t_token token;
 
 	redir[0] = c;
 	redir[1] = '\0';
 	token.context = ft_strdup(redir);
 	token.t_flag = 5;
-	rdl->token = token_add(rdl->token, token);
+	if (is_redir(rdl, redir[0]))
+		rdl->token = token_add(rdl->token, token);
+}
+
+void parser_add_pipe(t_rdl *rdl, char c)
+{
+	char pipe[2];
+	t_token token;
+
+	pipe[0] = c;
+	pipe[1] = '\0';
+	token.context = ft_strdup(pipe);
+	token.t_flag = 6;
+	if (is_pipe(token.context[0]))
+		rdl->token = token_add(rdl->token, token);
 }
 
 void parser_add_quote(t_rdl *rdl, char c)

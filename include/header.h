@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/11/25 10:14:32 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/11/25 11:03:45 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ typedef struct s_rdl
 	int						index_flag;
 	char					*main_str;
 	char					*buffer;
+	char					**pipe_str;
 	char					*error_arg;
 	t_quote_prop			*quote_prop;
 	t_token_type_prop		*token_type_prop;
@@ -203,6 +204,7 @@ int				token_type_is_arg(t_rdl *rdl);
 int				token_type_is_string(t_rdl *rdl);
 int				token_type_is_dollar(t_rdl *rdl);
 int				token_type_is_redir(t_rdl *rdl);
+int				token_type_is_pipe(t_rdl *rdl);
 //rd_line
 char			*ft_read_line(void);
 t_rdl			*rdl_init(t_rdl *rdl);
@@ -231,6 +233,7 @@ void			parser(t_rdl *rdl);
 void			parser_add(t_rdl *rdl, char *buffer);
 void			parser_add_operator(t_rdl *rdl, char c);
 void			parser_add_redir(t_rdl *rdl, char c);
+void			parser_add_pipe(t_rdl *rdl, char c);
 void			parser_add_char(t_rdl *rdl, char c);
 void			parser_add_quote(t_rdl *rdl, char c);
 void			parser_add_dollar(t_rdl *rdl, char c);
@@ -272,6 +275,7 @@ int				is_dollar(char c);
 int				is_delimiter(t_rdl *rdl, char c);
 int				is_identifier(t_rdl *rdl, char *str);
 int 			is_redir(t_rdl *rdl, char c);
+int				is_pipe(char c);
 t_keyword		find_keyword(t_rdl *rdl, char *str);
 int				find_keyword_id(t_rdl *rdl, char *str);
 t_operator		find_operator(t_rdl *rdl, char c);
@@ -327,4 +331,6 @@ void			redir_list(t_redir *redir);
 int 			redir_handler(t_rdl *rdl);
 int				redir_output(t_rdl *rdl);
 int				redir_input(t_rdl *rdl);
+//pipe
+int				pipe_handler(t_rdl *rdl);
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd_builtin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:32:33 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/11/19 12:28:53 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/11/25 11:11:51 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ int cd_start(t_command command)
         cd_home(command);
     while (++i < size)
     {
-        if (command.tokens->type_id == 8)
+        if (command.tokens->type_id == 9)
             error = cd_key(command);
-        if (command.tokens->type_id == 11)
+        if (command.tokens->type_id == 12)
             error = cd_arg(command);
         get_next_token(&command.tokens);
     }
