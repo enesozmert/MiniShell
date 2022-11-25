@@ -1,7 +1,7 @@
 #include "../../include/header.h"
 static int echo_dollar(t_command command)
 {
-	if (command.tokens->next->type_id != 8)
+	if (command.tokens->next->type_id != 9)
 		printf("%s", command.tokens->context);
 	return (0);
 }
