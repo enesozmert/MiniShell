@@ -1,11 +1,11 @@
 #include "../../include/header.h"
 
-void parser_arg_keyword(t_rdl *rdl)
+void parser_arg_keyword(int *k, t_rdl *rdl)
 {
 	int i;
 	int j;
 
-	i = 0;
+	i = *k;
 	j = 0;
 	while (rdl->main_str[i] <= 32)
 		i++;
@@ -16,4 +16,5 @@ void parser_arg_keyword(t_rdl *rdl)
 	}
 	if (ft_strlen(rdl->buffer) > 0)
 		rdl->buffer[j] = '\0';
+	*k = i;
 }
