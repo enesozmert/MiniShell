@@ -2,9 +2,9 @@
 
 int token_type_is_keyword(t_rdl *rdl)
 {
-    if (rdl->token_type_prop->token->id == 0)
+    if (rdl->token_type_prop->token->t_flag == 0)
         rdl->token_type_prop->new_trim = keyword_trim(rdl->token_type_prop->token->context);
-    if (rdl->token_type_prop->token->id == 0 && is_keyword(rdl, rdl->token_type_prop->new_trim))
+    if (rdl->token_type_prop->token->t_flag == 0 && is_keyword(rdl, rdl->token_type_prop->new_trim))
     {
         // rdl->token_type_prop->token->context = to_lower_str(rdl->token_type_prop->new_trim);
         rdl->token_type_prop->new_trim = to_lower_str(rdl->token_type_prop->new_trim);

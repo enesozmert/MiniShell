@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/11/26 14:56:58 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/11/26 18:16:59 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,10 @@ typedef struct s_rdl
 	int						word_count;
 	int						t_flag;
 	int						index_flag;
+	int						*fd;
 	char					*main_str;
-	char					*buffer;
 	char					**pipe_str;
+	char					*buffer;
 	char					*error_arg;
 	t_quote_prop			*quote_prop;
 	t_token_type_prop		*token_type_prop;
@@ -187,6 +188,7 @@ void			token_add_type(t_rdl *rdl, t_token **token);
 int				token_add_type_handler(t_rdl *rdl);
 int				print_token(t_token *token);
 t_token			*get_token_id(t_token *token, int id);
+t_token			*get_token_type_id(t_token *token, int type_id);
 void			get_next_token(t_token **token);
 int				is_token_type(t_rdl *rdl, char *str);
 void			token_type_list(t_token_type *token_type);
@@ -219,7 +221,7 @@ int				quote_count_right(char *str);
 int				quote_count(char *str, int c);
 int				count_matris(void **matris);
 char			*char_replace(char *str, char find, char replace);
-int				char_pos(t_rdl *rdl);
+void 			char_pos(int *k, t_rdl *rdl);
 char			*keyword_trim(char *str);
 int				keyword_trim_len(char *str);
 int				token_arg_count(t_token *token);

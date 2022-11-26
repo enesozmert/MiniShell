@@ -37,6 +37,8 @@ int echo_start(t_command command)
 			echo_key(command);
 		if (command.tokens->type_id == 11)
 			echo_string(command);
+		if (i != size - 1)
+			printf(" ");
 		get_next_token(&command.tokens);
 	}
 		printf("\n");

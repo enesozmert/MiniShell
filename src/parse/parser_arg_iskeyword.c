@@ -13,6 +13,5 @@ void parser_arg_iskeyword(int *k, t_rdl *rdl)
 		parser_add(rdl, rdl->buffer);
 		parser_add(rdl, ft_strdup(" "));
 	}
-	i = char_pos(rdl);
     *k = i;
 }

@@ -8,7 +8,7 @@ int keyword_syntax(t_rdl *rdl)
 	i = -1;
 	if (rdl->token->id != 0)
 		return (0);
-	token = get_token_id(rdl->token, 0);
+	token = get_token_type_id(rdl->token, 0);
 	while (token->context[++i])
 		token->context[i] = ft_tolower(token->context[i]);
 	token->context = keyword_trim(token->context);

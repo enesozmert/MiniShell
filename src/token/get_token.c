@@ -29,3 +29,17 @@ t_token	*get_token_id(t_token *token, int id)
 	}
 	return (NULL);
 }
+
+t_token	*get_token_type_id(t_token *token, int type_id)
+{
+	t_token	*token_cpy;
+
+	token_cpy = token;
+	while (token_cpy)
+	{
+		if (token_cpy->type_id == type_id)
+			return (token_cpy);
+		(token_cpy) = (token_cpy)->next;
+	}
+	return (NULL);
+}
