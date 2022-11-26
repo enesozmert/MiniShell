@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/11/25 11:03:45 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/11/25 12:22:44 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,7 @@ typedef struct s_command
 	t_token	*tokens;
 	int		(*f)(struct s_command);
 	int		count;
+	int		*fd;
 }	t_command;
 
 typedef	struct s_env
