@@ -4,15 +4,8 @@ void parser_arg(t_rdl *rdl)
 {
 	int i;
 
-	parser_arg_keyword(rdl);
-	if (is_keyword(rdl, rdl->buffer))
-		parser_add_keyword(rdl, rdl->buffer);
-	else
-	{
-		parser_add(rdl, rdl->buffer);
-		parser_add(rdl, ft_strdup(" "));
-	}
-	i = char_pos(rdl);
+	i = 0;
+	parser_arg_iskeyword(&i, rdl);
 	while (i < rdl->len && rdl->main_str[i] != '\0')
 	{
 		if (is_quote(rdl, rdl->main_str[i]))
@@ -26,7 +19,11 @@ void parser_arg(t_rdl *rdl)
 		else if (is_redir(rdl, rdl->main_str[i]))
 			parser_add_redir(rdl, rdl->main_str[i]);
 		else if (is_pipe(rdl->main_str[i]))
+		{
 			parser_add_pipe(rdl, rdl->main_str[i]);
+			i++;
+			parser_arg_iskeyword(&i, rdl);
+		}
 		else if (is_delimiter(rdl, rdl->main_str[i]) && rdl->main_str[i] > 32)
 			parser_add_char(rdl, rdl->main_str[i]);
 		else if (rdl->main_str[i] <= 32)

@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:22:50 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/11/25 12:37:22 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/11/26 14:47:29 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,15 @@ void routine()
 		if (!check_white_space(rdl->main_str))
 		{
 			lexical_analizer(rdl);
-			// redir_handler(rdl);
-			
-			if(syntax(rdl) != -1)
+			parser(rdl);
+			pipe_count(rdl);
+			if (rdl->pipe_prop->count == 0)
 			{
-				pipe_handler(rdl);
-				while (rdl->pipe_str[++i])
-				{
-					rdl->main_str = ft_strdup(rdl->pipe_str[i]);
-					rdl->len = ft_strlen(rdl->pipe_str[i]);
+				if(syntax(rdl) != -1)
 					command(rdl);
-				}
-				command(rdl);
 			}
+			// else
+			// 	pipe_handler(rdl);
 			my_add_history(rdl->main_str);
 			keywords_clear(rdl->keyword_list);
 			token_clear(&rdl->token);

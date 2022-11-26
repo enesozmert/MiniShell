@@ -5,19 +5,25 @@ int pipe_handler(t_rdl *rdl)
     printf("ok\n");
     int i;
     int len;
-    int pipe_count;
+    int count;
 
     i = -1;
     len = token_size(rdl->token);
-    pipe_count = 0;
-    while (++i < len)
-    {
-        if (ft_strncmp(rdl->token->context, "|", rdl->token->len) == 0)
-            pipe_count++;
-        get_next_token(&rdl->token);
-    }
-    if (pipe_count < 1)
-        return (0);
+    count = pipe_count(rdl);
+    if (count < 1)
+        return (-1);
     rdl->pipe_str = ft_split(rdl->main_str, '|');
+    token_clear(&rdl->token);
+    while (rdl->pipe_str[++i])
+    {
+        rdl->main_str = ft_strdup(rdl->pipe_str[i]);
+        rdl->len = ft_strlen(rdl->pipe_str[i]);
+        parser(rdl);
+        command(rdl);
+        free(rdl->main_str);
+        rdl->len = 0;
+        token_clear(&rdl->token);
+        printf("*****************\n");
+    }
     return (1);
 }

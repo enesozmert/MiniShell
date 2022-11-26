@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/11/25 12:22:44 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/11/26 14:48:54 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,6 +245,7 @@ void			parser_arg_is_quote(int c, int *k, t_rdl *rdl);
 void 			parser_arg_isnot(int *k, t_rdl *rdl);
 void			parser_arg_is(t_rdl *rdl);
 void			parser_arg_isoperator(int *k, t_rdl *rdl);
+void			parser_arg_iskeyword(int *k, t_rdl *rdl);
 void			parser_arg_quote(int *k, t_rdl *rdl);
 void			parser_arg_keyword(t_rdl *rdl);
 void			parser_arg_space(int *k, t_rdl *rdl);
@@ -334,4 +335,5 @@ int				redir_output(t_rdl *rdl);
 int				redir_input(t_rdl *rdl);
 //pipe
 int				pipe_handler(t_rdl *rdl);
+int				pipe_count(t_rdl *rdl);
 #endif
