@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/11/27 13:52:50 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/11/27 22:57:05 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ typedef struct s_command
 	t_token	*tokens;
 	int		(*f)(struct s_command);
 	int		count;
-	int		*fd;
+	int		fd[2];
 }	t_command;
 
 typedef	struct s_env
@@ -299,7 +299,7 @@ int				command_clear(t_rdl *rdl);
 int				command_create(t_rdl *rdl);
 void			command_list(t_command *command);
 int				command_run(t_rdl *rdl);
-int				command_execv(t_command command);
+int				command_exec(t_command command);
 char			*command_find_path(char *keyword);
 int				command_find(t_rdl *rdl, char *keyword);
 int				command_fork();
@@ -340,4 +340,5 @@ int				redir_input(t_rdl *rdl);
 //pipe
 int				pipe_handler(t_rdl *rdl);
 int				pipe_count(t_rdl *rdl);
+int				pipe_exec(t_command command);
 #endif

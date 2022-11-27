@@ -1,6 +1,6 @@
 #include "../../include/header.h"
 
-int command_execv(t_command command)
+int command_exec(t_command command)
 {
 	int 	i;
 	int		j;
@@ -32,10 +32,7 @@ int command_execv(t_command command)
 	while (++i < size)
 	{
 		if (command.tokens->type_id == 13 || command.tokens->type_id == 7)
-		{
 			arg = ft_strjoin(arg, command.tokens->context);
-			printf("arg : %s\n", arg);
-		}
 		if (command.tokens->type_id == 12 || size - 1 == command.tokens->id)
 		{
 			type[j++] = ft_strdup(arg);

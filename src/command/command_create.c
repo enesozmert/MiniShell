@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:48:35 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/11/26 17:10:16 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/11/27 19:27:15 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int command_malloc(t_rdl *rdl)
     {
         command_id = command_find(rdl, rdl->token->context);
         rdl->command_list[command_id].count++;
-        if (!rdl->command_list[command_id].fd)
-            rdl->command_list[command_id].fd = malloc(sizeof(int) * 2);
+        // if (!rdl->command_list[command_id].fd)
+        //     rdl->command_list[command_id].fd = malloc(sizeof(int) * 2);
     }
     return (0);
 }

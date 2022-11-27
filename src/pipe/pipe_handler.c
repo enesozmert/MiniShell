@@ -2,7 +2,7 @@
 
 int pipe_handler(t_rdl *rdl)
 {
-    printf("ok\n");
+    // printf("ok\n");
     int i;
     int len;
     int count;

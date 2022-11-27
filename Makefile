@@ -60,7 +60,7 @@ BUILTIN		=	echo_builtin cd_builtin pwd_builtin exit_builtin env_builtin export_b
 ENVIRONMENT =	environment env_find env_len env_update env_add env_exist env_asc env_dsc env_delete
 SIGNAL		=	signal_handler
 REDIRECTION = redir_handler
-PIPE		= pipe_handler pipe_count
+PIPE		= pipe_handler pipe_count pipe_exec
 #FileCreate
 
 SRC_FILES	+=	$(addprefix $(SRC_COMMON),$(COMMON))
