@@ -21,7 +21,7 @@ int command_execv(t_command command)
 	arg = ft_strdup("");
 	while (++i < size)
 	{
-		if (command.tokens->type_id == 11)
+		if (command.tokens->type_id == 12)
 			type_size++;
 		get_next_token(&command.tokens);
 	}
@@ -31,12 +31,12 @@ int command_execv(t_command command)
 	type[0] = ft_strdup(path);
 	while (++i < size)
 	{
-		if (command.tokens->type_id == 12)
+		if (command.tokens->type_id == 13 || command.tokens->type_id == 7)
 		{
 			arg = ft_strjoin(arg, command.tokens->context);
 			printf("arg : %s\n", arg);
 		}
-		if (command.tokens->type_id == 11 || size - 1 == command.tokens->id)
+		if (command.tokens->type_id == 12 || size - 1 == command.tokens->id)
 		{
 			type[j++] = ft_strdup(arg);
 			arg = ft_strdup("");

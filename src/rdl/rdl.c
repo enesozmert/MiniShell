@@ -13,7 +13,7 @@ t_rdl *rdl_init(t_rdl *rdl)
 	rdl->delimiter_list = malloc(sizeof(t_delimiter) * 17);
 	rdl->identifier_list = malloc(sizeof(t_operator) * 11);
 	rdl->command_list = malloc(sizeof(t_command) * 9);
-	rdl->token_type_list = malloc(sizeof(t_token_type) * 14);
+	rdl->token_type_list = malloc(sizeof(t_token_type) * 15);
 	rdl->redir_list = malloc(sizeof(t_redir) * 3);
 	rdl->quote_list = malloc(sizeof(t_quote) * 3);
 	rdl->quote_prop = malloc(sizeof(t_quote_prop) * 1);
@@ -45,7 +45,7 @@ void rdl_clear(t_rdl *rdl)
 	free(rdl->identifier_list);
 	free(rdl->token_type_list);
 	free(rdl->quote_list);
-	free(rdl->main_str);
+	// free(rdl->main_str);
 	free(rdl->buffer);
 	free(rdl->token);
 	free(rdl->quote_prop);

@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/11/26 18:16:59 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/11/27 13:52:50 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ typedef struct s_rdl
 	int						word_count;
 	int						t_flag;
 	int						index_flag;
-	int						*fd;
 	char					*main_str;
 	char					**pipe_str;
 	char					*buffer;
@@ -207,6 +206,7 @@ int				token_type_is_arg(t_rdl *rdl);
 int				token_type_is_string(t_rdl *rdl);
 int				token_type_is_dollar(t_rdl *rdl);
 int				token_type_is_redir(t_rdl *rdl);
+int				token_type_is_option(t_rdl *rdl);
 int				token_type_is_pipe(t_rdl *rdl);
 //rd_line
 char			*ft_read_line(void);
@@ -236,6 +236,7 @@ void			parser(t_rdl *rdl);
 void			parser_add(t_rdl *rdl, char *buffer);
 void			parser_add_operator(t_rdl *rdl, char c);
 void			parser_add_redir(t_rdl *rdl, char c);
+void			parser_add_option(t_rdl *rdl, char c);
 void			parser_add_pipe(t_rdl *rdl, char c);
 void			parser_add_char(t_rdl *rdl, char c);
 void			parser_add_quote(t_rdl *rdl, char c);
@@ -276,6 +277,7 @@ int				is_keyword_builtin(t_rdl *rdl, char *str);
 int				is_operator(t_rdl *rdl, char c);
 int				is_quote(t_rdl *rdl, char c);
 int				is_dollar(char c);
+int				is_option(char c);
 int				is_delimiter(t_rdl *rdl, char c);
 int				is_identifier(t_rdl *rdl, char *str);
 int 			is_redir(t_rdl *rdl, char c);

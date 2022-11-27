@@ -49,6 +49,19 @@ void parser_add_redir(t_rdl *rdl, char c)
 		rdl->token = token_add(rdl->token, token);
 }
 
+void parser_add_option(t_rdl *rdl, char c)
+{
+	char option[2];
+	t_token token;
+
+	option[0] = c;
+	option[1] = '\0';
+	token.context = ft_strdup(option);
+	token.t_flag = 5;
+	if (is_option(option[0]))
+		rdl->token = token_add(rdl->token, token);
+}
+
 void parser_add_pipe(t_rdl *rdl, char c)
 {
 	char pipe[2];

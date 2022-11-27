@@ -12,6 +12,7 @@ int pipe_handler(t_rdl *rdl)
     count = pipe_count(rdl);
     if (count < 1)
         return (-1);
+    my_add_history(rdl->main_str);
     rdl->pipe_str = ft_split(rdl->main_str, '|');
     token_clear(&rdl->token);
     while (rdl->pipe_str[++i])
@@ -23,7 +24,7 @@ int pipe_handler(t_rdl *rdl)
         free(rdl->main_str);
         rdl->len = 0;
         token_clear(&rdl->token);
-        printf("*****************\n");
+        // printf("*****************\n");
     }
     return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:22:50 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/11/26 18:20:00 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/11/27 12:51:22 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,11 @@ void routine()
 			{
 				if(syntax(rdl) != -1)
 					command(rdl);
+				my_add_history(rdl->main_str);
+				free(rdl->main_str);
 			}
 			else
 				pipe_handler(rdl);
-			my_add_history(rdl->main_str);
 			keywords_clear(rdl->keyword_list);
 			token_clear(&rdl->token);
 			rdl_clear(rdl);

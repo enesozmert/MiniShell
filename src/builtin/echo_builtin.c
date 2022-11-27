@@ -33,15 +33,15 @@ int echo_start(t_command command)
 	{
 		if (command.tokens->type_id == 3)
 			echo_dollar(command);
-		if (command.tokens->type_id == 9)
+		if (command.tokens->type_id == 10)
 			echo_key(command);
-		if (command.tokens->type_id == 11)
+		if (command.tokens->type_id == 12)
 			echo_string(command);
-		if (i != size - 1)
-			printf(" ");
+		// if (i != size - 1)
+		// 	printf(" ");
 		get_next_token(&command.tokens);
 	}
-		printf("\n");
+	printf("\n");
 	return (0);
 }
 
