@@ -9,6 +9,12 @@ int keyword_syntax(t_rdl *rdl)
 	if (rdl->token->id != 0)
 		return (0);
 	token = get_token_type_id(rdl->token, 0);
+	if (token == NULL)
+	{
+		token = get_token_id(rdl->token,0);
+		rdl->error_arg = ft_strdup(token->context);
+		return (101);
+	}
 	while (token->context[++i])
 		token->context[i] = ft_tolower(token->context[i]);
 	token->context = keyword_trim(token->context);
