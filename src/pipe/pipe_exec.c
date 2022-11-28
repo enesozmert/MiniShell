@@ -51,7 +51,6 @@ int pipe_exec(t_command command)
 	printf("pipe_exec command count %d\n", command.count);
 	int i;
 	int j;
-	int fd[2];
 	int type_size;
 	int size;
 	int result;
@@ -66,7 +65,7 @@ int pipe_exec(t_command command)
 	size = token_size(command.tokens);
 	type_size = 0;
 	arg = ft_strdup("");
-	if (pipe(fd) == -1)
+	if (pipe(command.fd) == -1)
 		ft_fatality();
 	while (++i < size)
 	{
@@ -99,23 +98,20 @@ int pipe_exec(t_command command)
 		printf("type : %s\n", type[j]);
 	}
 	pid = fork();
-	signal(SIGINT, proc_signal_handler);
+	// signal(SIGINT, proc_signal_handler);
 	if (pid < 0)
 		return (-1);
 	if (pid == 0)
 	{
-		if (command.count == command.pipe_count)
-			ft_openpipes(fd);
-		// printf("path %s\n", path);
-		// fflush(stdout);
+		ft_openpipes(command.fd);
 		result = execve(path, type, g_env.env);
-		// kill(getpid(), SIGTERM);
 	}
 	else
-		ft_closepipes(fd);
+		ft_closepipes(command.fd);
+	// wait(&pid);
+
 	if (result == -1)
 		return (1);
-	wait(&pid);
 	free(arg);
 	ft_free_dbl_str(type);
 	free(path);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exception_handler.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:52:59 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/11/11 20:56:33 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/11/28 21:40:55 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int	exception_handler(t_rdl *rdl)
 		{
 			env_add("?", exception[i].exit_status);
 			exception_write(rdl, exception[i].message);
-			rl_replace_line("", 1);
-			rl_on_new_line();
+			// rl_replace_line("", 1);
+			// rl_on_new_line();
 			return (-1);
 		}
 		i++;

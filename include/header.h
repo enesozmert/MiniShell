@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/11/28 11:06:26 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/11/28 22:05:17 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,7 @@ typedef struct s_command
 	int		(*f)(struct s_command);
 	int		count;
 	int		pipe_count;
+	int		fd[2];
 }	t_command;
 
 typedef	struct s_env
@@ -338,7 +339,7 @@ int 			redir_handler(t_rdl *rdl);
 int				redir_output(t_rdl *rdl);
 int				redir_input(t_rdl *rdl);
 //pipe
-int				pipe_handler(t_rdl *rdl);
+void			pipe_handler(t_rdl *rdl);
 int				pipe_count(t_rdl *rdl);
 int				pipe_exec(t_command command);
 #endif

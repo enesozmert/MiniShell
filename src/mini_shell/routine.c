@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:22:50 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/11/28 12:21:23 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/11/28 22:10:05 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void routine()
 {
 	t_rdl *rdl;
-	int	i;
+	int i;
 
 	i = 0;
 	rdl = NULL;
@@ -30,14 +30,13 @@ void routine()
 			pipe_count(rdl);
 			if (rdl->pipe_prop->count == 0)
 			{
-				if(syntax(rdl) != -1)
+				if (syntax(rdl) != -1)
 					command(rdl);
 				my_add_history(rdl->main_str);
-				free(rdl->main_str);
 			}
 			else
 				pipe_handler(rdl);
-			keywords_clear(rdl->keyword_list);
+			// keywords_clear(rdl->keyword_list);
 			token_clear(&rdl->token);
 			rdl_clear(rdl);
 		}
