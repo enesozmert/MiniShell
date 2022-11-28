@@ -1,14 +1,57 @@
 #include "../../include/header.h"
 
+#define READ 0
+#define WRITE 1
+
+int haspipe = 1;
+
+static void ft_fatality(void)
+{
+	ft_putstr_fd("error: fatal\n", 2);
+	exit(1);
+}
+
+// static void	ft_exec_error(char *str)
+// {
+// 	ft_putstr_fd("error: cannot execute ", 2);
+// 	ft_putstr_fd(str, 2);
+// 	ft_putstr_fd("\n", 2);
+// 	exit(1);
+// }
+
+static void ft_openpipes(int fd[2])
+{
+	if (haspipe == 1)
+	{
+		if (close(fd[READ]) == -1)
+			ft_fatality();
+		if (dup2(fd[WRITE], STDOUT_FILENO) == -1)
+			ft_fatality();
+		if (close(fd[WRITE]) == -1)
+			ft_fatality();
+	}
+}
+
+static void ft_closepipes(int fd[2])
+{
+	if (haspipe == 1)
+	{
+		if (dup2(fd[READ], STDIN_FILENO) == -1)
+			ft_fatality();
+		if (close(fd[READ]) == -1)
+			ft_fatality();
+		if (close(fd[WRITE]) == -1)
+			ft_fatality();
+	}
+}
+
 int pipe_exec(t_command command)
 {
-	// printf("pipe_exec\n");
-	// printf("pipe_exec command count %d\n", command.count);
+	printf("pipe_exec\n");
+	printf("pipe_exec command count %d\n", command.count);
 	int i;
 	int j;
-	int in = 0;
-	int out = 1;
-	static int fd[2];
+	int fd[2];
 	int type_size;
 	int size;
 	int result;
@@ -23,8 +66,8 @@ int pipe_exec(t_command command)
 	size = token_size(command.tokens);
 	type_size = 0;
 	arg = ft_strdup("");
-	if (pipe(command.fd) == -1)
-		return -1;
+	if (pipe(fd) == -1)
+		ft_fatality();
 	while (++i < size)
 	{
 		if (command.tokens->type_id == 12)
@@ -55,30 +98,23 @@ int pipe_exec(t_command command)
 	{
 		printf("type : %s\n", type[j]);
 	}
-	if (command.count % 2 == 1)
-	{
-		in = 1;
-		out = 0;
-	}
-	if (command.count % 2 == 0 || command.count == 1)
-	{
-		in = 0;
-		out = 1;
-	}
 	pid = fork();
+	signal(SIGINT, proc_signal_handler);
+	if (pid < 0)
+		return (-1);
 	if (pid == 0)
 	{
-		dup2(fd[in], in);
-		close(fd[out]);
-		close(fd[in]);
+		if (command.count == command.pipe_count)
+			ft_openpipes(fd);
+		// printf("path %s\n", path);
+		// fflush(stdout);
 		result = execve(path, type, g_env.env);
+		// kill(getpid(), SIGTERM);
 	}
-	else if (pid < 0)
-		return (-1);
+	else
+		ft_closepipes(fd);
 	if (result == -1)
-        return (1);
-	close(fd[0]);
-	close(fd[1]);
+		return (1);
 	wait(&pid);
 	free(arg);
 	ft_free_dbl_str(type);

@@ -17,10 +17,10 @@ void proc_signal_handler(int signo)
 {
 	if (signo == SIGINT)
 	{
-		ft_putstr_fd("\n", 1);
-		rl_replace_line("", 1);
-		rl_on_new_line();
-		rl_redisplay();
+		// ft_putstr_fd("\n", 1);
+		// rl_replace_line("", 1);
+		// rl_on_new_line();
+		// rl_redisplay();
 		signal(SIGINT, proc_signal_handler);
 	}
 }

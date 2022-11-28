@@ -6,10 +6,12 @@ int pipe_handler(t_rdl *rdl)
     int i;
     int len;
     int count;
+    int nproc;
 
     i = -1;
+    nproc = 0;
     len = token_size(rdl->token);
-    count = pipe_count(rdl);
+    count = rdl->pipe_prop->count;
     if (count < 1)
         return (-1);
     my_add_history(rdl->main_str);
@@ -24,7 +26,10 @@ int pipe_handler(t_rdl *rdl)
         free(rdl->main_str);
         rdl->len = 0;
         token_clear(&rdl->token);
-        // printf("*****************\n");
+        printf("*****************\n");
     }
+
+    // while (nproc++ < count + 1)
+    //     waitpid(0, 0 , 0);
     return (1);
 }
