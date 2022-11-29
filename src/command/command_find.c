@@ -7,7 +7,7 @@ int command_find(t_rdl *rdl, char *keyword)
 
     i = -1;
     find_path = command_find_path(keyword);
-    if (is_keyword_exec(rdl, keyword) && rdl->pipe_prop->count > 0)
+    if (rdl->pipe_prop->count > 0)
     {
         rdl->command_list[8].keyword = ft_strdup(keyword);
         return (8);

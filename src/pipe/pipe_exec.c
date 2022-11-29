@@ -17,20 +17,24 @@ static void ft_fatality(void)
 // 	exit(1);
 // }
 
-static void ft_openpipes(int fd[2])
+static void ft_openpipes(t_command command, int fd[2])
 {
-	if (close(fd[READ]) == -1)
-		ft_fatality();
-	if (dup2(fd[WRITE], STDOUT_FILENO) == -1)
-		ft_fatality();
-	if (close(fd[WRITE]) == -1)
-		ft_fatality();
+	// if (command.count > 1)
+	// {
+	// 	if (dup2(fd[0], command.fd[1]) == -1)
+	// 		ft_fatality();
+	// }
+	dup2(command.fd[0], 0);
+	if (command.count != command.pipe_count + 1)
+	{
+		close(command.fd[0]);
+		if (dup2(fd[1], STDOUT_FILENO) == -1)
+			ft_fatality();
+	}
 }
 
 static void ft_closepipes(int fd[2])
 {
-	if (dup2(fd[READ], STDIN_FILENO) == -1)
-		ft_fatality();
 	if (close(fd[READ]) == -1)
 		ft_fatality();
 	if (close(fd[WRITE]) == -1)
@@ -43,13 +47,13 @@ int pipe_exec(t_command command)
 	printf("pipe_exec command count %d\n", command.count);
 	int i;
 	int j;
-	int fd[2];
 	int type_size;
 	int size;
 	int result;
 	char *arg;
 	char *path;
 	char **type;
+	int fd[2];
 	pid_t pid;
 
 	i = -1;
@@ -58,8 +62,6 @@ int pipe_exec(t_command command)
 	size = token_size(command.tokens);
 	type_size = 0;
 	arg = ft_strdup("");
-	fd[0] = command.fd[0];
-
 	if (pipe(fd) == -1)
 		ft_fatality();
 	while (++i < size)
@@ -98,18 +100,24 @@ int pipe_exec(t_command command)
 		return (-1);
 	if (pid == 0)
 	{
-		if (command.count != command.pipe_count + 1)
-			ft_openpipes(fd);
+		ft_openpipes(command, fd);
+		ft_closepipes(fd);
 		result = execve(path, type, g_env.env);
 	}
 	else
 	{
+		if (command.count != command.pipe_count + 1)
+		{
+			dup2(fd[0], command.fd[0]);
 			ft_closepipes(fd);
-		// waitpid(pid, 0, 0);
+		}
+		else
+		{
+			dup2(0, command.fd[0]);
+		}
 	}
-
-	// waitpid(pid, 0, 0);
-	// command.fd[1] = fd[1];
+	// ft_closepipes(fd);
+	waitpid(pid, 0, 0);
 	free(arg);
 	ft_free_dbl_str(type);
 	free(path);

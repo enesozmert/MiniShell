@@ -24,6 +24,7 @@ void pipe_handler(t_rdl *rdl)
         command(rdl);
         token_clear(&rdl->token);
         free(rdl->main_str);
+        rdl->len = 0;
         printf("*****************\n");
     }
     while (nproc-- > 0)
