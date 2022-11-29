@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/11/29 02:26:46 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/11/29 15:14:46 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <sys/stat.h>
-#include <assert.h>
 # include "../libft/libft.h"
 
 # define KNRM  "\x1B[0m"
@@ -36,6 +35,9 @@
 # define KMAG  "\x1B[35m"
 # define KCYN  "\x1B[36m"
 # define KWHT  "\x1B[37m"
+
+# define READ 0
+# define WRITE 1
 
 typedef struct s_token
 {
@@ -162,7 +164,7 @@ typedef struct s_command
 	int		(*f)(struct s_command);
 	int		count;
 	int		pipe_count;
-	int		fd[2];
+	int		tmp_fd;
 }	t_command;
 
 typedef	struct s_env
@@ -343,4 +345,6 @@ int				redir_input(t_rdl *rdl);
 void			pipe_handler(t_rdl *rdl);
 int				pipe_count(t_rdl *rdl);
 int				pipe_exec(t_command command);
+void			ft_openpipes(t_command command, int fd[2]);
+void 			ft_closepipes(int fd[2]);
 #endif

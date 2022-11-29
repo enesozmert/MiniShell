@@ -1,46 +1,5 @@
 #include "../../include/header.h"
 
-#define READ 0
-#define WRITE 1
-
-static void ft_fatality(void)
-{
-	ft_putstr_fd("error: fatal\n", 2);
-	exit(1);
-}
-
-// static void	ft_exec_error(char *str)
-// {
-// 	ft_putstr_fd("error: cannot execute ", 2);
-// 	ft_putstr_fd(str, 2);
-// 	ft_putstr_fd("\n", 2);
-// 	exit(1);
-// }
-
-static void ft_openpipes(t_command command, int fd[2])
-{
-	// if (command.count > 1)
-	// {
-	// 	if (dup2(fd[0], command.fd[1]) == -1)
-	// 		ft_fatality();
-	// }
-	dup2(command.fd[0], 0);
-	if (command.count != command.pipe_count + 1)
-	{
-		close(command.fd[0]);
-		if (dup2(fd[1], STDOUT_FILENO) == -1)
-			ft_fatality();
-	}
-}
-
-static void ft_closepipes(int fd[2])
-{
-	if (close(fd[READ]) == -1)
-		ft_fatality();
-	if (close(fd[WRITE]) == -1)
-		ft_fatality();
-}
-
 int pipe_exec(t_command command)
 {
 	printf("pipe_exec\n");
@@ -62,8 +21,7 @@ int pipe_exec(t_command command)
 	size = token_size(command.tokens);
 	type_size = 0;
 	arg = ft_strdup("");
-	if (pipe(fd) == -1)
-		ft_fatality();
+	pipe(fd);
 	while (++i < size)
 	{
 		if (command.tokens->type_id == 12)
@@ -95,7 +53,6 @@ int pipe_exec(t_command command)
 		printf("type : %s\n", type[j]);
 	}
 	pid = fork();
-	// signal(SIGINT, proc_signal_handler);
 	if (pid < 0)
 		return (-1);
 	if (pid == 0)
@@ -108,15 +65,12 @@ int pipe_exec(t_command command)
 	{
 		if (command.count != command.pipe_count + 1)
 		{
-			dup2(fd[0], command.fd[0]);
+			dup2(fd[0], command.tmp_fd);
 			ft_closepipes(fd);
 		}
 		else
-		{
-			dup2(0, command.fd[0]);
-		}
+			dup2(0, command.tmp_fd);
 	}
-	// ft_closepipes(fd);
 	waitpid(pid, 0, 0);
 	free(arg);
 	ft_free_dbl_str(type);

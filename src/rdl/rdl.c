@@ -40,13 +40,13 @@ t_rdl *rdl_init(t_rdl *rdl)
 void rdl_clear(t_rdl *rdl)
 {
 	free(rdl->keyword_list);
-	// free(rdl->command_list);
+	free(rdl->command_list);
 	free(rdl->operator_list);
 	free(rdl->delimiter_list);
 	free(rdl->identifier_list);
 	free(rdl->token_type_list);
 	free(rdl->quote_list);
-	// free(rdl->main_str);
+	free(rdl->main_str);
 	free(rdl->buffer);
 	free(rdl->token);
 	free(rdl->quote_prop);
