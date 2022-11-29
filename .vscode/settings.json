@@ -38,6 +38,7 @@
         "__functional_base_03": "c",
         "__tuple": "c",
         "libft.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "cassert": "c"
     }
 }

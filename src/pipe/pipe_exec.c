@@ -3,8 +3,6 @@
 #define READ 0
 #define WRITE 1
 
-int haspipe = 1;
-
 static void ft_fatality(void)
 {
 	ft_putstr_fd("error: fatal\n", 2);
@@ -21,28 +19,22 @@ static void ft_fatality(void)
 
 static void ft_openpipes(int fd[2])
 {
-	if (haspipe == 1)
-	{
-		if (close(fd[READ]) == -1)
-			ft_fatality();
-		if (dup2(fd[WRITE], STDOUT_FILENO) == -1)
-			ft_fatality();
-		if (close(fd[WRITE]) == -1)
-			ft_fatality();
-	}
+	if (close(fd[READ]) == -1)
+		ft_fatality();
+	if (dup2(fd[WRITE], STDOUT_FILENO) == -1)
+		ft_fatality();
+	if (close(fd[WRITE]) == -1)
+		ft_fatality();
 }
 
 static void ft_closepipes(int fd[2])
 {
-	if (haspipe == 1)
-	{
-		if (dup2(fd[READ], STDIN_FILENO) == -1)
-			ft_fatality();
-		if (close(fd[READ]) == -1)
-			ft_fatality();
-		if (close(fd[WRITE]) == -1)
-			ft_fatality();
-	}
+	if (dup2(fd[READ], STDIN_FILENO) == -1)
+		ft_fatality();
+	if (close(fd[READ]) == -1)
+		ft_fatality();
+	if (close(fd[WRITE]) == -1)
+		ft_fatality();
 }
 
 int pipe_exec(t_command command)
@@ -51,6 +43,7 @@ int pipe_exec(t_command command)
 	printf("pipe_exec command count %d\n", command.count);
 	int i;
 	int j;
+	int fd[2];
 	int type_size;
 	int size;
 	int result;
@@ -65,7 +58,9 @@ int pipe_exec(t_command command)
 	size = token_size(command.tokens);
 	type_size = 0;
 	arg = ft_strdup("");
-	if (pipe(command.fd) == -1)
+	fd[0] = command.fd[0];
+
+	if (pipe(fd) == -1)
 		ft_fatality();
 	while (++i < size)
 	{
@@ -103,15 +98,18 @@ int pipe_exec(t_command command)
 		return (-1);
 	if (pid == 0)
 	{
-		ft_openpipes(command.fd);
+		if (command.count != command.pipe_count + 1)
+			ft_openpipes(fd);
 		result = execve(path, type, g_env.env);
 	}
 	else
-		ft_closepipes(command.fd);
-	// wait(&pid);
+	{
+			ft_closepipes(fd);
+		// waitpid(pid, 0, 0);
+	}
 
-	if (result == -1)
-		return (1);
+	// waitpid(pid, 0, 0);
+	// command.fd[1] = fd[1];
 	free(arg);
 	ft_free_dbl_str(type);
 	free(path);

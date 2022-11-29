@@ -12,7 +12,7 @@ void pipe_handler(t_rdl *rdl)
     len = token_size(rdl->token);
     count = rdl->pipe_prop->count;
     if (count < 1)
-        return ;
+        return;
     my_add_history(rdl->main_str);
     rdl->pipe_str = ft_split(rdl->main_str, '|');
     token_clear(&rdl->token);
@@ -26,8 +26,6 @@ void pipe_handler(t_rdl *rdl)
         free(rdl->main_str);
         printf("*****************\n");
     }
-    // if (close(rdl->command_list[8].fd[0]) == -1)
-    //     printf("error");
     while (nproc-- > 0)
-        waitpid(-1, 0 , 0);
+        waitpid(-1, 0, 0);
 }

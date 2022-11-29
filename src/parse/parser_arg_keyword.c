@@ -18,5 +18,6 @@ void parser_arg_keyword(int *k, t_rdl *rdl)
 		i++;
 	if (ft_strlen(rdl->buffer) > 0)
 		rdl->buffer[j] = '\0';
+	// i--;
 	*k = i;
 }

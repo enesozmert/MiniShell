@@ -6,7 +6,5 @@ int pipe_syntax(t_rdl *rdl)
         return (0);
     if (rdl->pipe_prop->count > 2)
         return (105);
-    if (rdl->token->next->context[0] != '|')
-        rdl->pipe_prop->count = 0;
     return (0);
 }
