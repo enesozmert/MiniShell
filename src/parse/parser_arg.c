@@ -23,8 +23,7 @@ void parser_arg(t_rdl *rdl)
 		else if (is_pipe(rdl->main_str[i]) && is_pipe(rdl->main_str[i + 1]) == 0)
 		{
 			parser_add_pipe(rdl, rdl->main_str[i]);
-			i++;
-			parser_arg_iskeyword(&i, rdl);
+			i+=1;
 		}
 		else if (is_delimiter(rdl, rdl->main_str[i]) && rdl->main_str[i] > 32)
 			parser_add_char(rdl, rdl->main_str[i]);
