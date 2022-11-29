@@ -10,7 +10,7 @@ void parser_arg(t_rdl *rdl)
 	{
 		if (is_quote(rdl, rdl->main_str[i]))
 			parser_arg_quote(&i, rdl);
-		else if (rdl->main_str[i] > 32 && is_delimiter(rdl, rdl->main_str[i]))
+		else if (rdl->main_str[i] > 32 && ft_isalnum(rdl->main_str[i]))
 			parser_arg_isnot(&i, rdl);
 		else if (is_dollar(rdl->main_str[i]))
 			parser_add_dollar(rdl, rdl->main_str[i]);
