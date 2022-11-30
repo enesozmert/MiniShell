@@ -6,7 +6,7 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:18:58 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/11/30 15:20:13 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/11/30 18:04:40 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	is_keyword_builtin(t_rdl *rdl, char *str)
 	while (rdl->keyword_list[++i].type != NULL)
 	{
 		if (ft_strncmp(rdl->keyword_list[i].type, str,
-				ft_strlen(rdl->keyword_list[i].type)) == 0)
+				ft_strlen(rdl->keyword_list[i].type)) == 0 && ft_strlen(rdl->keyword_list[i].type) == ft_strlen(str))
 			return (1);
 	}
 	return (0);
