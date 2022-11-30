@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:22:50 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/11/29 15:20:49 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/11/30 12:41:47 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-void routine()
+void	routine(void)
 {
-	t_rdl *rdl;
-	int i;
+	t_rdl	*rdl;
+	int		i;
 
 	i = 0;
 	rdl = NULL;

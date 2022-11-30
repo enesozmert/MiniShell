@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   count_matris.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/30 13:05:46 by cyalniz           #+#    #+#             */
+/*   Updated: 2022/11/30 13:06:07 by cyalniz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/header.h"
 
-int count_matris(void **matris)
+int	count_matris(void **matris)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (matris[i])

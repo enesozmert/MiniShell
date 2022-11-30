@@ -6,7 +6,7 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 10:44:35 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/11/25 10:45:46 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/11/30 13:06:56 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ int keyword_trim_len(char *str)
 	i = 0;
 	j = 0;
     flag = 0;
-	// if (ft_strncmp(str, "\'", ft_strlen(str)) != 0 && ft_strncmp(str, "\"", ft_strlen(str)) != 0)
-	// 	return (ft_strlen(str));
 	while(str[i])
 	{
 	    flag = 0;

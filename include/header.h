@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/11/29 15:14:46 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/11/30 12:42:11 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,7 +176,7 @@ t_env g_env;
 extern t_env g_env;
 
 //main
-void			routine();
+void			routine(void);
 //lexcical
 t_token 		*token_add(t_token *token, t_token token_cpy);
 void			token_append(t_token **token, t_token *new);
