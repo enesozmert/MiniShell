@@ -45,3 +45,12 @@ void token_add_index(t_token **token)
 	}
 	token_cpy = *token;
 }
+
+void token_add_end(t_token *token)
+{
+	t_token	token_cpy;
+	token_cpy.context = ft_strdup("");
+	token_cpy.type_id = -2;
+	token_cpy.t_flag = -2;
+	token = token_add(token, token_cpy);
+}

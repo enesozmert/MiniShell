@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/11/30 16:58:41 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/01 00:15:25 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ typedef struct s_rdl
 	int						t_flag;
 	int						index_flag;
 	char					*main_str;
-	char					**pipe_str;
+	int						*keywords_id;
 	char					*buffer;
 	char					*error_arg;
 	t_quote_prop			*quote_prop;
@@ -190,6 +190,7 @@ int				token_size(t_token *token);
 void			token_add_index(t_token **token);
 void			token_add_type(t_rdl *rdl, t_token **token);
 int				token_add_type_handler(t_rdl *rdl);
+void			token_add_end(t_token *token);
 int				print_token(t_token *token);
 t_token			*get_token_id(t_token *token, int id);
 t_token			*get_token_type_id(t_token *token, int type_id);
@@ -276,6 +277,7 @@ int				export_syntax(t_rdl *rdl);
 int				single_quote(t_rdl *rdl);
 void			quote_list(t_quote *quote);
 //lexical
+void			keywords_id(t_rdl *rdl);
 void			lexical_analizer(t_rdl *rdl);
 int				is_keyword(t_rdl *rdl, char *str);
 int				is_keyword_exec(t_rdl *rdl, char *str);
@@ -307,7 +309,7 @@ void			command_list(t_command *command);
 int				command_run(t_rdl *rdl);
 int				command_exec(t_command command);
 char			*command_find_path(char *keyword);
-int				command_find(t_rdl *rdl, char *keyword);
+int				command_find(t_rdl *rdl, int token_id);
 int				command_fork();
 //builtin
 int				echo_start(t_command command);

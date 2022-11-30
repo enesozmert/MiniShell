@@ -7,6 +7,7 @@ t_rdl *rdl_init(t_rdl *rdl)
 	rdl->main_str = ft_read_line();
 	rdl->len = ft_strlen(rdl->main_str);
 	rdl->index_flag = 0;
+	rdl->keywords_id = NULL;
 	rdl->buffer = malloc(sizeof(char) * rdl->len);
 	rdl->keyword_list = malloc(sizeof(t_keyword) * 8);
 	rdl->operator_list = malloc(sizeof(t_operator) * 3);
