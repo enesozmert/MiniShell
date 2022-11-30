@@ -6,11 +6,19 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:58:44 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/11/30 17:11:51 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/11/30 17:46:31 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
+
+int static pass_index(int i, char c, char *str)
+{
+	i++;
+	while(str[i] != c && str[i] != '\0')
+		i++;
+	return (i);
+}
 
 int keyword_quoute_syntax(t_rdl *rdl)
 {
@@ -30,18 +38,14 @@ int keyword_quoute_syntax(t_rdl *rdl)
 	    if(token->context[i] == '\"' )
 	    {
 	        d_q++;
-	        i++;
-	        while(token->context[i] != '\"' && token->context[i] != '\0')
-				i++;
+	        i += pass_index(i, '\"', token->context);
 	        if(token->context[i] == '\"')
 	            d_q++;
 	    }
 	    else if(token->context[i] == '\'')
 	    {
 	        s_q++;
-	        i++;
-	        while(token->context[i] != '\'' && token->context[i] != '\0')
-				i++;
+	        i +=pass_index(i, '\'', token->context);
 	        if(token->context[i] == '\'')
 	            s_q++;
 	    }
