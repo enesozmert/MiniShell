@@ -6,36 +6,36 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:48:35 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/11/30 20:06:54 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/11/30 22:02:56 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
+// t_rdl *find_next_command(t_rdl *rdl, int i)
+// {
+//     int k = 0;
+//     while (k < i)
+//     {
+//         rdl->token = rdl->token->next;
+//     }
+//     return rdl;
+// }
+
 int command(t_rdl *rdl)
 {
     int i;
-    int len;
     int result;
 
     i = -1;
     result = 0;
-    len = token_size(rdl->token);
-    if (rdl->pipe_prop->count > 0)
-        i = rdl->pipe_prop->index;
     command_malloc(rdl);
-    while (++i < len && rdl->token)
+    while (++i < token_size(rdl->token))
     {
         result = command_create(rdl);
         if (result == -1)
-        {
-            rdl->token = rdl->token->next;
-            i++;
-            rdl->pipe_prop->index = i;
-            break ;
-        }
-        else
-            rdl->token = rdl->token->next;
+            break;
+        get_next_token(&rdl->token);
     }
     command_run(rdl);
     token_clear(&rdl->command_list[8].tokens);
@@ -72,9 +72,7 @@ int command_create(t_rdl *rdl)
     token->context = keyword_trim(token->context);
     command_id = command_find(rdl, token->context);
     if (rdl->token->type_id == 0)
-    {
         command_id = command_find(rdl, token->context);
-    }
     is_token_type = command_in_token_type(rdl, command_id, rdl->token->id);
     if (is_token_type == 1)
         rdl->command_list[command_id].tokens = token_add_copy(rdl->command_list[command_id].tokens, rdl->token);

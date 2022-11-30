@@ -8,7 +8,9 @@ int syntax(t_rdl *rdl)
 	while (++i < token_size(rdl->token))
 	{
 		if (exception_handler(rdl) == -1)
+		{
 			return (-1);
+		}
 		get_next_token(&rdl->token);
 	}
 	    
