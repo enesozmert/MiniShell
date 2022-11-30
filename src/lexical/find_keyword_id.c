@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   find_keyword_id.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/30 15:13:47 by cyalniz           #+#    #+#             */
+/*   Updated: 2022/11/30 15:15:04 by cyalniz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/header.h"
 
-int find_keyword_id(t_rdl *rdl, char *str)
+int	find_keyword_id(t_rdl *rdl, char *str)
 {
-    int i;
+	int	i;
 
-    i = -1;
-    while (rdl->keyword_list[++i].type != NULL)
-    {
-        if (ft_strnstr(rdl->keyword_list[i].type, str,
-        ft_strlen(rdl->keyword_list[i].type)))
-            return (i);
-    }
-    return (-1);
+	i = -1;
+	while (rdl->keyword_list[++i].type != NULL)
+	{
+		if (ft_strnstr(rdl->keyword_list[i].type, str,
+				ft_strlen(rdl->keyword_list[i].type)))
+			return (i);
+	}
+	return (-1);
 }

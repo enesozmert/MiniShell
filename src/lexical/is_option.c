@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   is_option.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 13:46:53 by eozmert           #+#    #+#             */
-/*   Updated: 2022/11/27 13:51:55 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/11/30 15:21:07 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-int is_option(char c)
+int	is_option(char c)
 {
-    if (c == '-')
-        return (1);
-    return (0);
+	if (c == '-')
+		return (1);
+	return (0);
 }

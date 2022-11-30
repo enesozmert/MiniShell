@@ -22,30 +22,17 @@ char *keyword_trim(char *str)
 		{
 			i++;
 			while(str[i] != '\'' && str[i])
-			{
-				dest[j] = str[i];
-				i++;
-				j++;
-			}
-			if(str[i] == '\''){
+				dest[j++] = str[i++];
+			if(str[i++] == '\'')
 			    flag = 1;
-			    i++;
-			}
 		}
 		else if(str[i] == '\"')
 		{
 			i++;
 			while(str[i] != '\"' && str[i])
-			{
-				dest[j] = str[i];
-				i++;
-				j++;
-			}
-			if(str[i] == '\"')
-			{
+				dest[j++] = str[i++];
+			if(str[i++] == '\"')
 			    flag = 1;
-			    i++;
-			}
 		}
 		else
 		{

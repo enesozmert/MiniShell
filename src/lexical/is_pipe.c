@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   is_pipe.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 20:08:09 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/11/25 10:56:40 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/11/30 15:21:39 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-int is_pipe(char c)
+int	is_pipe(char c)
 {
-    if (c == '|')
-        return (1);
-    return (0);
+	if (c == '|')
+		return (1);
+	return (0);
 }
