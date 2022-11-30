@@ -34,6 +34,7 @@ t_rdl *rdl_init(t_rdl *rdl)
 	rdl->redir_prop->file_name = ft_strdup("");
 	rdl->pipe_prop = malloc(sizeof(t_pipe_prop) * 1);
 	rdl->pipe_prop->count = 0;
+	rdl->pipe_prop->index = -1;
 	return (rdl);
 }
 

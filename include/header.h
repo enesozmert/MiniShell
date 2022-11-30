@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/11/30 12:42:11 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/11/30 16:58:41 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_quote
 typedef	struct s_pipe_prop
 {
 	int	count;
+	int index;
 }	t_pipe_prop;
 
 typedef struct s_redir_prop
@@ -193,6 +194,7 @@ int				print_token(t_token *token);
 t_token			*get_token_id(t_token *token, int id);
 t_token			*get_token_type_id(t_token *token, int type_id);
 void			get_next_token(t_token **token);
+void			get_next_token_rra(t_token **token);
 int				is_token_type(t_rdl *rdl, char *str);
 void			token_type_list(t_token_type *token_type);
 //lexcical->token_type_is
