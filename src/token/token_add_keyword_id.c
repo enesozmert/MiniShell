@@ -1,42 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine.c                                          :+:      :+:    :+:   */
+/*   token_add_keyword_id.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/04 10:22:50 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/01 01:24:34 by eozmert          ###   ########.fr       */
+/*   Created: 2022/12/01 00:40:26 by eozmert           #+#    #+#             */
+/*   Updated: 2022/12/01 00:53:05 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-void routine(void)
+void token_add_keyword_id(t_rdl *rdl, t_token **token)
 {
-	t_rdl *rdl;
-	int i;
+    int		i;
+    int     keyword_id;
+	t_token	*token_cpy;
 
 	i = -1;
-	rdl = NULL;
-	while (1)
+    keyword_id = 0;
+	token_cpy = *token;
+	while (++i < token_size(token_cpy))
 	{
-		signal(SIGINT, set_signal);
-		rdl = rdl_init(rdl);
-		if (!check_white_space(rdl->main_str))
-		{
-			lexical_analizer(rdl);
-			parser(rdl);
-			pipe_count(rdl);
-			pipe_handler(rdl);
-			if (rdl->pipe_prop->count == 0)
-			{
-				if (syntax(rdl) != -1)
-            		command(rdl);
-			}
-			my_add_history(rdl->main_str);
-			token_clear(&rdl->token);
-			rdl_clear(rdl);
-		}
+        if (token_cpy->type_id == 0)
+            keyword_id++;
+        token_cpy->keyword_id = rdl->keywords_id[keyword_id - 1];
+        get_next_token(&token_cpy);
 	}
+	token_cpy = *token;
 }

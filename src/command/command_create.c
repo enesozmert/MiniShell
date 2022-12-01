@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:48:35 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/01 00:21:42 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/01 09:27:50 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int command(t_rdl *rdl)
         if (result == -1)
         {
             get_next_token(&rdl->token);
-            rdl->pipe_prop->index = i + 1;
+            ++i;
+            rdl->pipe_prop->index = i;
             break;
         }
         get_next_token(&rdl->token);
@@ -43,14 +44,13 @@ int command_malloc(t_rdl *rdl)
     int command_id;
 
     rdl->token->context = keyword_trim(rdl->token->context);
-    command_id = command_find(rdl, rdl->token->id);
+    command_id = command_find(rdl, rdl->token->keyword_id);
     if (rdl->token->type_id == 0)
     {
-        command_id = command_find(rdl, rdl->token->id);
+        command_id = command_find(rdl, rdl->token->keyword_id);
         if (rdl->command_list[command_id].count == 0)
             rdl->command_list[command_id].tmp_fd = dup(0);
         rdl->command_list[command_id].count++;
-        printf("rdl->command_list[command_id].count %d\n", rdl->command_list[command_id].count);
         rdl->command_list[command_id].pipe_count = rdl->pipe_prop->count;
     }
     return (0);
@@ -61,15 +61,11 @@ int command_create(t_rdl *rdl)
     t_token *token;
     int is_token_type;
     int command_id;
-    int count;
-
+    
     if (rdl->token->type_id == 6)
         return (-1);
-    if (rdl->token->next->type_id == 0 && rdl->token->t_flag == -2)
-        return (0);
-    command_id = command_find(rdl, rdl->token->id);
-    count = rdl->command_list[command_id].count;
-    token = get_token_type_id(rdl->token, rdl->keywords_id[count - 1]);
+    command_id = command_find(rdl, rdl->token->keyword_id);
+    token = get_token_id(rdl->token, rdl->token->keyword_id);
     token->context = keyword_trim(token->context);
     if (rdl->token->type_id == 0)
         command_id = command_find(rdl, rdl->token->id);

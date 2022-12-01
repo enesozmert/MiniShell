@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/01 00:15:25 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/01 00:46:58 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_token
 	char			*context;
 	char			*type;
 	int				t_flag;
+	int				keyword_id;
 	struct s_token	*next;
 }	t_token;
 
@@ -215,6 +216,7 @@ int				token_type_is_dollar(t_rdl *rdl);
 int				token_type_is_redir(t_rdl *rdl);
 int				token_type_is_option(t_rdl *rdl);
 int				token_type_is_pipe(t_rdl *rdl);
+void			token_add_keyword_id(t_rdl *rdl, t_token **token);
 //rd_line
 char			*ft_read_line(void);
 t_rdl			*rdl_init(t_rdl *rdl);
