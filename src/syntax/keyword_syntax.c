@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   keyword_syntax.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/01 09:48:11 by cyalniz           #+#    #+#             */
+/*   Updated: 2022/12/01 09:49:27 by cyalniz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/header.h"
 
-int keyword_syntax(t_rdl *rdl)
+int	keyword_syntax(t_rdl *rdl)
 {
 	int		i;
 	t_token	*token;
@@ -19,11 +31,7 @@ int keyword_syntax(t_rdl *rdl)
 		token->context[i] = ft_tolower(token->context[i]);
 	token->context = keyword_trim(token->context);
 	if (is_keyword(rdl, token->context) == 1)
-	{
-		// rdl->error_arg = malloc(sizeof(char) * ft_strlen(token->context));
-		// rdl->error_arg = NULL;
 		return (0);
-	}
 	else
 	{
 		rdl->error_arg = ft_strdup(token->context);

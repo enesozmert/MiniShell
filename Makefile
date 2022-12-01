@@ -44,7 +44,7 @@ PARSE		=	parser parser_arg  parser_arg_quote parser_arg_keyword parser_arg_space
 				parser_arg_is parser_arg_isnot parser_arg_isquote parser_arg_iskeyword\
 				parser_add parser_add_buffer
 RDL			=	rdl
-SYNTAX		=	syntax keyword_syntax quote_syntax redir_syntax export_syntax pipe_syntax
+SYNTAX		=	syntax keyword_syntax quote_syntax redir_syntax export_syntax pipe_syntax keyword_quote_syntax
 STATIC		=	keyword_list operator_list command_list quote_list delimiter_list identifier_list \
 				token_type_list redir_list
 LEXICAL		=	lexical is_keyword is_operator is_quote is_dollar is_identifier is_delimiter is_token_type\

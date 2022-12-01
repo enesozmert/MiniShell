@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   syntax.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/01 10:08:49 by cyalniz           #+#    #+#             */
+/*   Updated: 2022/12/01 10:09:21 by cyalniz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/header.h"
 
-int syntax(t_rdl *rdl)
+int	syntax(t_rdl *rdl)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < token_size(rdl->token))
@@ -13,7 +25,6 @@ int syntax(t_rdl *rdl)
 		}
 		get_next_token(&rdl->token);
 	}
-	    
 	return (0);
 }
 
