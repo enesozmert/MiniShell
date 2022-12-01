@@ -36,10 +36,13 @@ void parser_add_operator(t_rdl *rdl, char c)
 	rdl->token = token_add(rdl->token, token);
 }
 
-void parser_add_redir(t_rdl *rdl, char c)
+void parser_add_redir(int *k, t_rdl *rdl, char c)
 {
 	char redir[2];
 	t_token token;
+	int i;
+
+	i = *k;
 
 	redir[0] = c;
 	redir[1] = '\0';
@@ -47,6 +50,10 @@ void parser_add_redir(t_rdl *rdl, char c)
 	token.t_flag = 5;
 	if (is_redir(rdl, redir[0]))
 		rdl->token = token_add(rdl->token, token);
+	i++;
+	while (rdl->main_str[i++] <= 32);
+	i -= 2;
+	*k = i;
 }
 
 void parser_add_option(t_rdl *rdl, char c)
