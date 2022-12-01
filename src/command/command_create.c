@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:48:35 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/01 09:19:22 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/01 09:27:50 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int command_create(t_rdl *rdl)
     int is_token_type;
     int command_id;
     
-    if (rdl->token->type_id == 6 && rdl->token->next->type_id == 0)
+    if (rdl->token->type_id == 6)
         return (-1);
     command_id = command_find(rdl, rdl->token->keyword_id);
     token = get_token_id(rdl->token, rdl->token->keyword_id);
