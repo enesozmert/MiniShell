@@ -5,7 +5,6 @@ void parser_arg(t_rdl *rdl)
 	int i;
 
 	i = 0;
-	// parser_arg_iskeyword(&i, rdl);
 	while (i < rdl->len && rdl->main_str[i] != '\0')
 	{
 		if (rdl->main_str[i] > 32 && ft_isalnum(rdl->main_str[i]))
