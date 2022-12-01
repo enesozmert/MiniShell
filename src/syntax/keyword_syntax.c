@@ -8,10 +8,10 @@ int keyword_syntax(t_rdl *rdl)
 	i = -1;
 	if (rdl->token->id != 0)
 		return (0);
-	token = get_token_type_id(rdl->token, 0);
+	token = get_token_type_id(rdl->token, rdl->token->keyword_id);
 	if (token == NULL)
 	{
-		token = get_token_id(rdl->token,0);
+		token = get_token_id(rdl->token, 0);
 		rdl->error_arg = ft_strdup(token->context);
 		return (101);
 	}

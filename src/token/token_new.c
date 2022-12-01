@@ -10,6 +10,7 @@ t_token *token_new(t_token *get_token)
 	tmp->type = NULL;
 	tmp->type_id = get_token->type_id;
 	tmp->t_flag = get_token->t_flag;
+	tmp->keyword_id = 0;
 	tmp->next = NULL;
 	return (tmp);
 }

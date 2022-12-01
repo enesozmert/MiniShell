@@ -38,7 +38,7 @@ SRC_ENVIRONMENT = environment/
 COMMON		= 	main reader routine
 KEYWORDS	=	keywords keywords_size
 TOKEN		=	get_token token_clear token_delone token_add_copy token_add token_new token_size token_add_type \
-				token_type_is token_print 
+				token_type_is token_add_keyword_id token_print 
 HISTORY		=	history
 PARSE		=	parser parser_arg  parser_arg_quote parser_arg_keyword parser_arg_space \
 				parser_arg_is parser_arg_isnot parser_arg_isquote parser_arg_iskeyword\

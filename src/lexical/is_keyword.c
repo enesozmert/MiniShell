@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_keyword.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:18:58 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/11/30 18:04:40 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/01 01:36:19 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ int	is_keyword_builtin(t_rdl *rdl, char *str)
 	{
 		if (ft_strncmp(rdl->keyword_list[i].type, str,
 				ft_strlen(rdl->keyword_list[i].type)) == 0 && ft_strlen(rdl->keyword_list[i].type) == ft_strlen(str))
+		{
 			return (1);
+		}
 	}
 	return (0);
 }
