@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:48:35 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/01 09:27:50 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/01 09:47:02 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int command(t_rdl *rdl)
     if (rdl->pipe_prop->count > 0)
         i = rdl->pipe_prop->index;
     command_malloc(rdl);
-    while (++i < token_size(rdl->token))
+    while (++i < token_size(rdl->token) + rdl->pipe_prop->count)
     {
         result = command_create(rdl);
         if (result == -1)
