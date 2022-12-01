@@ -39,10 +39,9 @@ int token_type_is_redir(t_rdl *rdl)
 
 int token_type_is_option(t_rdl *rdl)
 {
-    (void)rdl;
-    // if (rdl->token_type_prop->token->len == 1 &&
-    //     is_option(rdl->token_type_prop->token->context[0]))
-    //     return (1);
+    if (rdl->token_type_prop->token->len == 1 &&
+        is_option(rdl->token_type_prop->token->context[0]))
+        return (1);
     return (0);
 }
 

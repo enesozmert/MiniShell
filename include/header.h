@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/01 00:46:58 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/01 09:37:48 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ typedef struct s_token_type_prop
 typedef struct s_rdl
 {
 	int						len;
+	int						token_len;
 	int						word_count;
 	int						t_flag;
 	int						index_flag;
