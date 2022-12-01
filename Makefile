@@ -42,7 +42,7 @@ TOKEN		=	get_token token_clear token_delone token_add_copy token_add token_new t
 HISTORY		=	history
 PARSE		=	parser parser_arg  parser_arg_quote parser_arg_keyword parser_arg_space \
 				parser_arg_is parser_arg_isnot parser_arg_isquote parser_arg_iskeyword\
-				parser_add parser_add_buffer parser_arg_pipe
+				parser_add parser_add_buffer parser_arg_pipe parser_arg_redir
 RDL			=	rdl
 SYNTAX		=	syntax keyword_syntax quote_syntax redir_syntax export_syntax pipe_syntax keyword_quote_syntax
 STATIC		=	keyword_list operator_list command_list quote_list delimiter_list identifier_list \

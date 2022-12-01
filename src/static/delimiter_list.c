@@ -18,6 +18,6 @@ void	delimiter_list(t_delimiter *delimiter)
 	delimiter[13] = (t_delimiter){"]"};
 	delimiter[14] = (t_delimiter){"{"};
 	delimiter[15] = (t_delimiter){"}"};
-	delimiter[16] = (t_delimiter){"|"};
+	delimiter[16] = (t_delimiter){"$"};
 	delimiter[17] = (t_delimiter){NULL};
 }

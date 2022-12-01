@@ -7,7 +7,7 @@ void parser_arg(t_rdl *rdl)
 	i = 0;
 	while (i < rdl->len && rdl->main_str[i] != '\0')
 	{
-		if (rdl->main_str[i] > 32)
+		if (rdl->main_str[i] > 32 && ft_isalnum(rdl->main_str[i]))
 			parser_arg_iskeyword(&i, rdl);
 		else if (is_quote(rdl, rdl->main_str[i]))
 			parser_arg_quote(&i, rdl);
@@ -18,7 +18,7 @@ void parser_arg(t_rdl *rdl)
 		else if (is_operator(rdl, rdl->main_str[i]))
 			parser_add_operator(rdl, rdl->main_str[i]);
 		else if (is_redir(rdl, rdl->main_str[i]))
-			parser_add_redir(&i, rdl, rdl->main_str[i]);
+			parser_arg_redir(&i, rdl);
 		else if (is_option(rdl->main_str[i]) && rdl->main_str[i - 1] > 32 && rdl->main_str[i + 1] > 32)
 			parser_add_option(rdl, rdl->main_str[i]);
 		else if (is_pipe(rdl->main_str[i]) && is_pipe(rdl->main_str[i + 1]) == 0)
