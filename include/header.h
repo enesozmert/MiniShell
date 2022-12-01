@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/01 11:34:06 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/01 12:15:41 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,7 +245,7 @@ int				my_add_history(char *str);
 void			parser(t_rdl *rdl);
 void			parser_add(t_rdl *rdl, char *buffer);
 void			parser_add_operator(t_rdl *rdl, char c);
-void			parser_add_redir(t_rdl *rdl, char c);
+void 			parser_add_redir(int *k, t_rdl *rdl, char c);
 void			parser_add_option(t_rdl *rdl, char c);
 void			parser_add_pipe(t_rdl *rdl, char c);
 void			parser_add_char(t_rdl *rdl, char c);

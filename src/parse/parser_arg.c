@@ -18,7 +18,7 @@ void parser_arg(t_rdl *rdl)
 		else if (is_operator(rdl, rdl->main_str[i]))
 			parser_add_operator(rdl, rdl->main_str[i]);
 		else if (is_redir(rdl, rdl->main_str[i]))
-			parser_add_redir(rdl, rdl->main_str[i]);
+			parser_add_redir(&i, rdl, rdl->main_str[i]);
 		else if (is_option(rdl->main_str[i]) && rdl->main_str[i - 1] > 32 && rdl->main_str[i + 1] > 32)
 			parser_add_option(rdl, rdl->main_str[i]);
 		else if (is_pipe(rdl->main_str[i]) && is_pipe(rdl->main_str[i + 1]) == 0)
