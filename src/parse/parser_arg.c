@@ -5,11 +5,12 @@ void parser_arg(t_rdl *rdl)
 	int i;
 
 	i = 0;
+	parser_arg_iskeyword(&i, rdl);
 	while (i < rdl->len && rdl->main_str[i] != '\0')
 	{
-		if (rdl->main_str[i] > 32 && ft_isalnum(rdl->main_str[i]))
-			parser_arg_iskeyword(&i, rdl);
-		else if (is_quote(rdl, rdl->main_str[i]))
+		// if (rdl->main_str[i] > 32 && ft_isalnum(rdl->main_str[i]))
+			
+		if (is_quote(rdl, rdl->main_str[i]))
 			parser_arg_quote(&i, rdl);
 		else if (rdl->main_str[i] > 32 && ft_isalnum(rdl->main_str[i]))
 			parser_arg_isnot(&i, rdl);

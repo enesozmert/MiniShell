@@ -7,7 +7,8 @@ void parser_arg_pipe(int *k, t_rdl *rdl)
 	i = *k;
 	parser_add_pipe(rdl, rdl->main_str[i]);
 	i++;
-	while (rdl->main_str[i++] <= 32);
+	if (rdl->main_str[i] <= 32)
+		while (rdl->main_str[i++] <= 32);
 	i -= 2;
     *k = i;
 }

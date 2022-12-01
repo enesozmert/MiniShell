@@ -3,16 +3,20 @@
 void parser_arg_isnot(int *k, t_rdl *rdl)
 {
 	int i;
+	int tmp_i;
 	int j;
 
 	i = *k;
+	tmp_i = *k;
 	j = 0;
 	while (rdl->main_str[i] > 32 && ft_isalnum(rdl->main_str[i]))
 		rdl->buffer[j++] = rdl->main_str[i++];
-	if (ft_strlen(rdl->buffer) > 0)
+	rdl->buffer[j] = '\0';
+	if (is_keyword(rdl, rdl->buffer))
 	{
-		rdl->buffer[j] = '\0';
-		parser_add(rdl, rdl->buffer);
+		parser_arg_iskeyword(&tmp_i, rdl);
 	}
+	else
+		parser_add(rdl, rdl->buffer);
 	*k = i;
 }

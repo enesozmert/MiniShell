@@ -15,7 +15,8 @@ void parser_arg_iskeyword(int *k, t_rdl *rdl)
 	else
 	{
 		i = tmp_i;
-		parser_arg_isnot(&i, rdl);
+		// i--;
+		return ;
 	}
 	i--;
     *k = i;
