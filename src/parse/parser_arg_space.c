@@ -7,7 +7,8 @@ void parser_arg_space(int *k, t_rdl *rdl)
 	i = *k; 
 	while(rdl->main_str[i] <= 32)
 		i++;
+	if(is_pipe(rdl->main_str[i]) == 0)
+		parser_add(rdl, ft_strdup(" "));
 	i--;
-	parser_add(rdl, ft_strdup(" "));
 	*k = i;
 }
