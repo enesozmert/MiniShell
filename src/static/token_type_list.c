@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   token_type_list.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/01 09:45:23 by cyalniz           #+#    #+#             */
+/*   Updated: 2022/12/01 09:47:04 by cyalniz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/header.h"
 
 void	token_type_list(t_token_type *token_type)
@@ -10,8 +22,10 @@ void	token_type_list(t_token_type *token_type)
 	token_type[5] = (t_token_type){"redir", token_type_is_redir};
 	token_type[6] = (t_token_type){"pipe", token_type_is_pipe};
 	token_type[7] = (t_token_type){"option", token_type_is_option};
-	token_type[8] = (t_token_type){"valid_identifier", token_type_is_valid_identifier};
-	token_type[9] = (t_token_type){"invalid_identifier", token_type_is_invalid_identifier};
+	token_type[8] = (t_token_type){"valid_identifier",
+		token_type_is_valid_identifier};
+	token_type[9] = (t_token_type){"invalid_identifier",
+		token_type_is_invalid_identifier};
 	token_type[10] = (t_token_type){"key", token_type_is_key};
 	token_type[11] = (t_token_type){"value", token_type_is_value};
 	token_type[12] = (t_token_type){"string", token_type_is_string};
