@@ -24,6 +24,8 @@ void parser_arg(t_rdl *rdl)
 			parser_add_pipe(rdl, rdl->main_str[i]);
 		else if (ft_isalnum(rdl->main_str[i]) == 0 && rdl->main_str[i] > 32)
 			parser_add_char(rdl, rdl->main_str[i]);
+		else if (is_pipe(rdl->main_str[i + 1]) == 0 || rdl->main_str[i] <= 32)
+			parser_arg_space(&i, rdl);
 		i++;
 	}
 }
