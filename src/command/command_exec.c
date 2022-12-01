@@ -29,7 +29,7 @@ static char** command_exec_create_type(t_command command)
 	int type_size;
 
 	i = -1;
-	j = 0;
+	j = 1;
 	arg = ft_strdup("");
 	size = token_size(command.tokens);
 	type_size = command_exec_type_size(command);
@@ -40,7 +40,7 @@ static char** command_exec_create_type(t_command command)
 	{
 		if (command.tokens->type_id == 13 || command.tokens->type_id == 7)
 			arg = ft_strjoin(arg, command.tokens->context);
-		if (command.tokens->type_id == 12 && command.tokens->next->type_id == 7)
+		if (command.tokens->type_id == 12 || size - 1 == command.tokens->id)
 		{
 			type[j++] = ft_strdup(arg);
 			arg = ft_strdup("");
@@ -48,12 +48,13 @@ static char** command_exec_create_type(t_command command)
 		get_next_token(&command.tokens);
 	}
 	type[j] = NULL;
-	i = -1;
-	while (type[++i])
-	{
-		printf("type : %s\n", type[i]);
-	}
-	
+	// i = -1;
+	// while (type[++i])
+	// {
+	// 	printf("type : %s\n", type[i]);
+	// }
+	free(path);
+	free(arg);
 	return (type);
 }
 
@@ -76,7 +77,7 @@ int command_exec(t_command command)
 	if (result == -1)
 		return (1);
 	wait(&pid);
-	// free(type[0]);
+	ft_free_dbl_str(type);
 	free(path);
 	return (0);
 }

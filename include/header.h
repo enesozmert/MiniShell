@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/01 09:37:48 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/01 11:34:06 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -262,6 +262,7 @@ void			parser_arg_iskeyword(int *k, t_rdl *rdl);
 void			parser_arg_quote(int *k, t_rdl *rdl);
 void 			parser_arg_keyword(int *k, t_rdl *rdl);
 void			parser_arg_space(int *k, t_rdl *rdl);
+void			parser_arg_pipe(int *k, t_rdl *rdl);
 //keywords
 void			keyword_list(t_keyword *keyword);
 int				keywords_clear(t_keyword *keyword);

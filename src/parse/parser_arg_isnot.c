@@ -12,13 +12,7 @@ void parser_arg_isnot(int *k, t_rdl *rdl)
 	if (ft_strlen(rdl->buffer) > 0)
 	{
 		rdl->buffer[j] = '\0';
-		if (is_keyword(rdl, rdl->buffer))
-		{
-			parser_add_keyword(rdl, rdl->buffer);
-		}
-		else
-			parser_add(rdl, rdl->buffer);
-		i--;
+		parser_add(rdl, rdl->buffer);
 	}
 	*k = i;
 }
