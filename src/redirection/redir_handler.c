@@ -1,63 +1,23 @@
 #include "../../include/header.h"
 
-int redir_output(t_rdl *rdl)
+void pipe_handler(t_rdl *rdl)
 {
-    printf("redir_output\n");
-    (void)rdl;
-    return (1);
-}
-
-int redir_input(t_rdl *rdl)
-{
-    printf("redir_output\n");
-    (void)rdl;
-    return (1);
-}
-
-static int redir_file_name(t_rdl *rdl)
-{
-    // printf("redir_file_name\n");
-    // if (rdl->token->type_id == 0)
-    //     return (-1);
-    rdl->redir_prop->file_name = ft_strjoin(rdl->token->context, rdl->redir_prop->file_name);
-    return (1);
-}
-
-// static int redir_context(t_rdl *rdl)
-// {
-//     // printf("redir_context\n");
-//     if (rdl->token->type_id == 0)
-//         return (-1);
-//     rdl->redir_prop->context = ft_strjoin(rdl->token->context, rdl->redir_prop->context);
-//     return (1);
-// }
-
-int redir_handler(t_rdl *rdl)
-{
-    printf("ok\n");
     int i;
     int len;
+    int count;
+    int nproc;
 
     i = -1;
+    count = rdl->redir_prop->count;
+    nproc = count + 1;
     len = token_size(rdl->token);
-    printf("token_size : %d\n", len);
-    while (++i < len)
+    if (count < 1)
+        return;
+    while (++i < count + 1)
     {
-        // if (rdl->token->context[0] != '>' && rdl->token->next->context[0] == '>')
-        //     redir_context(rdl);
-        // else if (rdl->token->context[0] != '>' && rdl->token->next->context[0] == '>' && rdl->token->next->next->context[0] == '>')
-        //     redir_output(rdl);
-        if (rdl->token->context[0] != '>' && (rdl->token->next->context[0] != '>' || rdl->token->next->next->context[0] != '>'))
-            redir_file_name(rdl);
-        // else if (rdl->token->context[0] != '<' && rdl->token->next->context[0] == '<')
-        //     redir_context(rdl);
-        // else if (rdl->token->context[0] != '<' && rdl->token->next->context[0] == '<' && rdl->token->next->next->context[0] == '<')
-        //     redir_input(rdl);
-        else if (rdl->token->context[0] == '<' && rdl->token->next->context[0] != '<' && rdl->token->next->next->context[0] != '<')
-            redir_file_name(rdl);
-        get_next_token(&rdl->token);
+        if (syntax(rdl) != -1)
+            command(rdl);
     }
-    // printf("context : %s\n", rdl->redir_prop->context);
-    // printf("file name : %s\n", rdl->redir_prop->file_name);
-    return (1);
+    while (nproc-- > 0)
+        waitpid(-1, 0, 0);
 }
