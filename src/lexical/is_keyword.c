@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:18:58 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/01 12:28:32 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/02 17:33:42 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ int	is_keyword_exec(t_rdl *rdl, char *str)
 	char	*find_path;
 
 	find_path = command_find_path(str);
-	if ((find_path != NULL || access(str, 0) == 0)
-		&& is_keyword_builtin(rdl, str) == 0)
+	if (find_path != NULL && is_keyword_builtin(rdl, str) == 0)
 	{
 		free(find_path);
 		return (1);
@@ -44,8 +43,11 @@ int	is_keyword_exec(t_rdl *rdl, char *str)
 
 int	is_keyword(t_rdl *rdl, char *str)
 {
-	if (is_keyword_builtin(rdl, str) == 1
-		|| is_keyword_exec(rdl, str) == 1)
+	char *keyword;
+
+	keyword = keyword_trim(str);
+	if (is_keyword_builtin(rdl, keyword) == 1
+		|| is_keyword_exec(rdl, keyword) == 1)
 		return (1);
 	return (0);
 }
