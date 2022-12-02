@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/02 19:12:48 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/02 20:00:56 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,8 @@ typedef	struct s_pipe_prop
 
 typedef struct s_redir_prop
 {
-    int     input_count;
-    int     output_count;
-    char    *file_name;
-    char    *context;
+	int	count;
+	int index;
 }   t_redir_prop;
 
 typedef struct s_redir

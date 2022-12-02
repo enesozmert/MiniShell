@@ -1,90 +1,89 @@
 #Definition
-CC          =   gcc
-NAME        =   minishell
-LIBFT		=	./libft/libft.a
-CC			=	gcc
-USER_NAME1	=	eozmert
-USER_NAME2	=	cyalniz
-READLINE	=	/goinfre/homebrew/opt/readline/lib
-READLINE_INCLUDE	= /goinfre/homebrew/opt/readline/include
-CFLAGS		=	-Wall -Werror -Wextra -g -I $(READLINE_INCLUDE)
-RM			=	rm -f
+CC          	=   gcc
+NAME        	=   minishell
+LIBFT			=	./libft/libft.a
+CC				=	gcc
+USER_NAME1		=	eozmert
+USER_NAME2		=	cyalniz
+READLINE		=	/goinfre/homebrew/opt/readline/lib
+CFLAGS			=	-Wall -Werror -Wextra -g -I $(READLINE)
+RM				=	rm -f
 
 
 #Directory
-OBJ_DIR		=	obj/
-SRC_DIR		= 	src/
+OBJ_DIR			=	obj/
+SRC_DIR			= 	src/
 
-SRC_COMMON	= 	mini_shell/
-SRC_KEYWORDS=	keywords/
-SRC_TOKEN	= 	token/
-SRC_HISTORY	= 	history/
-SRC_PARSE	= 	parse/
-SRC_LIBFT	=	libft/
-SRC_RDL		=	rdl/
-SRC_SYNTAX	=	syntax/
-SRC_LEXICAL	=	lexical/
-SRC_STATIC	=	static/
-SRC_SIGNAL	=	signal/
+SRC_COMMON		= 	mini_shell/
+SRC_KEYWORDS	=	keywords/
+SRC_TOKEN		= 	token/
+SRC_HISTORY		= 	history/
+SRC_PARSE		= 	parse/
+SRC_LIBFT		=	libft/
+SRC_RDL			=	rdl/
+SRC_SYNTAX		=	syntax/
+SRC_LEXICAL		=	lexical/
+SRC_STATIC		=	static/
+SRC_SIGNAL		=	signal/
 SRC_REDIRECTION	=	redirection/
-SRC_PIPE	=	pipe/
-SRC_CORE	=	core/
+SRC_PIPE		=	pipeline/
+SRC_CORE		=	core/
 SRC_EXCEPTION	=	exception/
-SRC_COMMAND	=	command/
-SRC_BUILTIN =	builtin/
-SRC_ENVIRONMENT = environment/
+SRC_COMMAND		=	command/
+SRC_BUILTIN 	=	builtin/
+SRC_ENVIRONMENT = 	environment/
 
 #Files
-COMMON		= 	main reader routine
-KEYWORDS	=	keywords keywords_size
-TOKEN		=	get_token token_clear token_delone token_add_copy token_add token_new token_size token_add_type \
-				token_type_is token_add_keyword_id token_print 
-HISTORY		=	history
-PARSE		=	parser parser_arg  parser_arg_quote parser_arg_keyword parser_arg_space \
-				parser_arg_is parser_arg_isnot parser_arg_isquote parser_arg_iskeyword\
-				parser_add parser_add_buffer parser_arg_pipe parser_arg_redir
-RDL			=	rdl
-SYNTAX		=	syntax keyword_syntax quote_syntax redir_syntax export_syntax pipe_syntax keyword_quote_syntax
-STATIC		=	keyword_list operator_list command_list quote_list delimiter_list identifier_list \
-				token_type_list redir_list
-LEXICAL		=	lexical is_keyword is_operator is_quote is_dollar is_identifier is_delimiter is_token_type\
-				find_operator find_keyword find_quote is_redir is_pipe is_option\
-				command_in_token_type keyword_in_operator find_keyword_id keywords_id
-CORE		=	white_space count_char quote_count count_matris char_replace free_double_str \
-				char_pos keyword_trim keyword_trim_len token_arg_count to_lower_str \
-				token_key_count token_value_count
-EXCEPTION   =	exception_handler exception_write
-COMMAND		=	command_create command_run command_find command_exec command_find_path \
-				command_clear command_fork command 
-BUILTIN		=	echo_builtin cd_builtin pwd_builtin exit_builtin env_builtin export_builtin unset_builtin
-ENVIRONMENT =	environment env_find env_len env_update env_add env_exist env_asc env_dsc env_delete
-SIGNAL		=	signal_handler
-REDIRECTION = redir_handler
-PIPE		= pipe_handler pipe_count pipe_exec pipe_open pipe_close
+COMMON			= 	main reader routine
+KEYWORDS		=	keywords keywords_size
+TOKEN			=	get_token token_clear token_delone token_add_copy token_add token_new token_size token_add_type \
+					token_type_is token_add_keyword_id token_print 
+HISTORY			=	history
+PARSE			=	parser parser_arg  parser_arg_quote parser_arg_keyword parser_arg_space \
+					parser_arg_is parser_arg_isnot parser_arg_isquote parser_arg_iskeyword\
+					parser_add parser_add_buffer parser_arg_pipe parser_arg_redir
+RDL				=		rdl
+SYNTAX			=	syntax keyword_syntax quote_syntax redir_syntax export_syntax pipe_syntax keyword_quote_syntax
+STATIC			=	keyword_list operator_list command_list quote_list delimiter_list identifier_list \
+					token_type_list redir_list
+LEXICAL			=	lexical is_keyword is_operator is_quote is_dollar is_identifier is_delimiter is_token_type\
+					find_operator find_keyword find_quote is_redir is_pipe is_option\
+					command_in_token_type keyword_in_operator find_keyword_id keywords_id
+CORE			=	white_space count_char quote_count count_matris char_replace free_double_str \
+					char_pos keyword_trim keyword_trim_len token_arg_count to_lower_str \
+					token_key_count token_value_count
+EXCEPTION   	=	exception_handler exception_write
+COMMAND			=	command_create command_run command_find command_exec command_find_path \
+					command_clear command_fork command 
+BUILTIN			=	echo_builtin cd_builtin pwd_builtin exit_builtin env_builtin export_builtin unset_builtin
+ENVIRONMENT 	=	environment env_find env_len env_update env_add env_exist env_asc env_dsc env_delete
+SIGNAL			=	signal_handler
+REDIRECTION 	= redir_handler
+PIPE			= pipe_handler pipe_count pipe_exec pipe_open pipe_close
 #FileCreate
 
-SRC_FILES	+=	$(addprefix $(SRC_COMMON),$(COMMON))
-SRC_FILES	+=	$(addprefix $(SRC_KEYWORDS),$(KEYWORDS))
-SRC_FILES	+=	$(addprefix $(SRC_TOKEN),$(TOKEN))
-SRC_FILES	+=	$(addprefix $(SRC_HISTORY),$(HISTORY))
-SRC_FILES	+=	$(addprefix $(SRC_PARSE),$(PARSE))
-SRC_FILES	+=	$(addprefix $(SRC_RDL),$(RDL))
-SRC_FILES	+=	$(addprefix $(SRC_SYNTAX),$(SYNTAX))
-SRC_FILES	+=	$(addprefix $(SRC_LEXICAL),$(LEXICAL))
-SRC_FILES	+=	$(addprefix $(SRC_STATIC),$(STATIC))
-SRC_FILES	+=	$(addprefix $(SRC_SIGNAL),$(SIGNAL))
-SRC_FILES	+=	$(addprefix $(SRC_REDIRECTION),$(REDIRECTION))
-SRC_FILES	+=	$(addprefix $(SRC_PIPE),$(PIPE))
-SRC_FILES	+=	$(addprefix $(SRC_CORE),$(CORE))
-SRC_FILES	+=	$(addprefix $(SRC_EXCEPTION),$(EXCEPTION))
-SRC_FILES	+=	$(addprefix $(SRC_COMMAND),$(COMMAND))
-SRC_FILES	+=	$(addprefix $(SRC_BUILTIN),$(BUILTIN))
-SRC_FILES	+=	$(addprefix $(SRC_ENVIRONMENT),$(ENVIRONMENT))
+SRC_FILES		+=	$(addprefix $(SRC_COMMON),$(COMMON))
+SRC_FILES		+=	$(addprefix $(SRC_KEYWORDS),$(KEYWORDS))
+SRC_FILES		+=	$(addprefix $(SRC_TOKEN),$(TOKEN))
+SRC_FILES		+=	$(addprefix $(SRC_HISTORY),$(HISTORY))
+SRC_FILES		+=	$(addprefix $(SRC_PARSE),$(PARSE))
+SRC_FILES		+=	$(addprefix $(SRC_RDL),$(RDL))
+SRC_FILES		+=	$(addprefix $(SRC_SYNTAX),$(SYNTAX))
+SRC_FILES		+=	$(addprefix $(SRC_LEXICAL),$(LEXICAL))
+SRC_FILES		+=	$(addprefix $(SRC_STATIC),$(STATIC))
+SRC_FILES		+=	$(addprefix $(SRC_SIGNAL),$(SIGNAL))
+SRC_FILES		+=	$(addprefix $(SRC_REDIRECTION),$(REDIRECTION))
+SRC_FILES		+=	$(addprefix $(SRC_PIPE),$(PIPE))
+SRC_FILES		+=	$(addprefix $(SRC_CORE),$(CORE))
+SRC_FILES		+=	$(addprefix $(SRC_EXCEPTION),$(EXCEPTION))
+SRC_FILES		+=	$(addprefix $(SRC_COMMAND),$(COMMAND))
+SRC_FILES		+=	$(addprefix $(SRC_BUILTIN),$(BUILTIN))
+SRC_FILES		+=	$(addprefix $(SRC_ENVIRONMENT),$(ENVIRONMENT))
 
-SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
-OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
+SRC 			= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
+OBJ 			= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
-OBJF		=	.cache_exists
+OBJF			=	.cache_exists
 
 all:		welcome $(NAME)
 
