@@ -6,7 +6,8 @@ CC				=	gcc
 USER_NAME1		=	eozmert
 USER_NAME2		=	cyalniz
 READLINE		=	/goinfre/homebrew/opt/readline/lib
-CFLAGS			=	-Wall -Werror -Wextra -g -I $(READLINE)
+READLINE_INC	=	/goinfre/homebrew/opt/readline/include
+CFLAGS			=	-Wall -Werror -Wextra -g -I $(READLINE_INC)
 RM				=	rm -f
 
 
@@ -42,7 +43,7 @@ HISTORY			=	history
 PARSE			=	parser parser_arg  parser_arg_quote parser_arg_keyword parser_arg_space \
 					parser_arg_is parser_arg_isnot parser_arg_isquote parser_arg_iskeyword\
 					parser_add parser_add_buffer parser_arg_pipe parser_arg_redir
-RDL				=		rdl
+RDL				=	rdl
 SYNTAX			=	syntax keyword_syntax quote_syntax redir_syntax export_syntax pipe_syntax keyword_quote_syntax
 STATIC			=	keyword_list operator_list command_list quote_list delimiter_list identifier_list \
 					token_type_list redir_list
@@ -58,8 +59,8 @@ COMMAND			=	command_create command_run command_find command_exec command_find_pa
 BUILTIN			=	echo_builtin cd_builtin pwd_builtin exit_builtin env_builtin export_builtin unset_builtin
 ENVIRONMENT 	=	environment env_find env_len env_update env_add env_exist env_asc env_dsc env_delete
 SIGNAL			=	signal_handler
-REDIRECTION 	= redir_handler
-PIPE			= pipe_handler pipe_count pipe_exec pipe_open pipe_close
+REDIRECTION 	= 	redir_handler
+PIPE			=	pipe_handler pipe_count pipe_exec pipe_open pipe_close
 #FileCreate
 
 SRC_FILES		+=	$(addprefix $(SRC_COMMON),$(COMMON))

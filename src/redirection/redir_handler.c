@@ -1,6 +1,6 @@
 #include "../../include/header.h"
 
-void pipe_handler(t_rdl *rdl)
+void redir_handler(t_rdl *rdl)
 {
     int i;
     int len;

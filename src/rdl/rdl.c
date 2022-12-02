@@ -32,8 +32,8 @@ t_rdl *rdl_init(t_rdl *rdl)
 	rdl->redir_prop = malloc(sizeof(t_redir_prop) * 1);
 	rdl->redir_prop->input_count = 0;
 	rdl->redir_prop->output_count = 0;
-	rdl->redir_prop->context = ft_strdup("");
-	rdl->redir_prop->file_name = ft_strdup("");
+	rdl->redir_prop->count = 0;
+	rdl->redir_prop->index = -1;
 	rdl->pipe_prop = malloc(sizeof(t_pipe_prop) * 1);
 	rdl->pipe_prop->count = 0;
 	rdl->pipe_prop->index = -1;

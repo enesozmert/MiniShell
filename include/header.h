@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/02 20:00:56 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/02 20:12:06 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ typedef	struct s_pipe_prop
 
 typedef struct s_redir_prop
 {
+	int input_count;
+	int output_count;
 	int	count;
 	int index;
 }   t_redir_prop;
@@ -346,7 +348,7 @@ void			set_signal(int signo);
 void			proc_signal_handler(int signo);
 //redirection
 void			redir_list(t_redir *redir);
-int 			redir_handler(t_rdl *rdl);
+void 			redir_handler(t_rdl *rdl);
 int				redir_output(t_rdl *rdl);
 int				redir_input(t_rdl *rdl);
 //pipe
