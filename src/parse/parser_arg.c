@@ -1,37 +1,5 @@
 #include "../../include/header.h"
 
-/* static int is_keyw(int *k, t_rdl *rdl)
-{
-	int i;
-	int tmp_i;
-
-    i = *k;
-	tmp_i = *k;
-	printf("is_keyw: %c\n", rdl->main_str[i]);
-	parser_arg_keyword(&i, rdl);
-	if (ft_strlen(rdl->buffer) > 0)
-		rdl->buffer = keyword_trim(rdl->buffer);
-	if (is_keyword(rdl, rdl->buffer) && ft_strlen(rdl->buffer) > 0)
-	{
-		i = *k;
-
-		*k = i;
-		printf("keyword: %s\n", rdl->buffer);
-		return (1);
-	}
-	else
-	{
-		i = tmp_i;
-		// i--;
-		return 0;
-	}
-	i--;
-	i = *k;
-
-	*k = i;
-	return (0);
-} */
-
 void parser_arg(t_rdl *rdl)
 {
 	int i;
@@ -50,7 +18,7 @@ void parser_arg(t_rdl *rdl)
 		}
 		else if (is_quote(rdl, rdl->main_str[i]))
 			parser_arg_quote(&i, rdl);
-		else if (rdl->main_str[i] > 32 && ft_isalnum(rdl->main_str[i]))
+		else if (ft_isalnum(rdl->main_str[i]))
 			parser_arg_isnot(&i, rdl);
 		else if (is_dollar(rdl->main_str[i]))
 			parser_add_dollar(rdl, rdl->main_str[i]);
