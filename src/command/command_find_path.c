@@ -11,7 +11,7 @@ char *command_find_path(char *keyword)
     i = -1;
     path = env_find_value("PATH");
     paths = NULL;
-    if (access(keyword, 0) == 0)
+    if (access(keyword, 0) == 0 && ft_strchr(keyword, '/'))
         return (ft_strdup(keyword));
     if (path != NULL)
         paths = ft_split(path, ':');
