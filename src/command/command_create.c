@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:48:35 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/01 12:11:32 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/02 19:37:00 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ int command_create(t_rdl *rdl)
     is_token_type = command_in_token_type(rdl, command_id, rdl->token->id);
     if (is_token_type == 1)
         rdl->command_list[command_id].tokens = token_add_copy(rdl->command_list[command_id].tokens, rdl->token);
+    rdl->command_list[command_id].token_size = token_size(rdl->command_list[command_id].tokens);
     return (0);
 }

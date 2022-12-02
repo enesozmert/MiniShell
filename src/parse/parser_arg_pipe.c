@@ -10,6 +10,5 @@ void parser_arg_pipe(int *k, t_rdl *rdl)
 	if (rdl->main_str[i] <= 32)
 		while (rdl->main_str[i++] <= 32);
 	i -= 2;
-	printf("c: %c\n", rdl->main_str[i]);
     *k = i;
 }

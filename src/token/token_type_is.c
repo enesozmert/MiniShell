@@ -30,8 +30,8 @@ int token_type_is_operator(t_rdl *rdl)
 
 int token_type_is_redir(t_rdl *rdl)
 {
-    if (rdl->token_type_prop->token->len == 1 &&
-        is_redir(rdl, rdl->token_type_prop->token->context[0]))
+    if (rdl->token_type_prop->token->len < 3 &&
+        is_redir(rdl, rdl->token_type_prop->token->context))
         return (1);
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/01 15:06:02 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/02 19:12:48 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,7 @@ typedef struct s_command
 	int		(*f)(struct s_command);
 	int		count;
 	int		pipe_count;
+	int		token_size;
 	int		tmp_fd;
 }	t_command;
 
@@ -245,7 +246,7 @@ int				my_add_history(char *str);
 void			parser(t_rdl *rdl);
 void			parser_add(t_rdl *rdl, char *buffer);
 void			parser_add_operator(t_rdl *rdl, char c);
-void 			parser_add_redir(t_rdl *rdl, char c);
+void 			parser_add_redir(t_rdl *rdl, char *buffer);
 void			parser_add_option(t_rdl *rdl, char c);
 void			parser_add_pipe(t_rdl *rdl, char c);
 void			parser_add_char(t_rdl *rdl, char c);
@@ -293,7 +294,7 @@ int				is_dollar(char c);
 int				is_option(char c);
 int				is_delimiter(t_rdl *rdl, char c);
 int				is_identifier(t_rdl *rdl, char *str);
-int 			is_redir(t_rdl *rdl, char c);
+int				is_redir(t_rdl *rdl, char *str);
 int				is_pipe(char c);
 t_keyword		find_keyword(t_rdl *rdl, char *str);
 int				find_keyword_id(t_rdl *rdl, char *str);

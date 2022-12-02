@@ -1,8 +1,18 @@
-#include "../../include/header.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipe_exec.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/02 19:49:07 by eozmert           #+#    #+#             */
+/*   Updated: 2022/12/02 19:55:28 by eozmert          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../../include/header.h"
 
-static int pipe_exec_type_size(t_command command)
+static int type_size(t_command command)
 {
 	int i;
 	int size;
@@ -20,29 +30,23 @@ static int pipe_exec_type_size(t_command command)
 	return (type_size);
 }
 
-static char** pipe_exec_create_type(t_command command)
+static char **create_type(t_command command, char *path)
 {
 	int i;
 	int j;
-	int size;
 	char *arg;
-	char *path;
 	char **type;
-	int type_size;
 
 	i = -1;
 	j = 1;
 	arg = ft_strdup("");
-	size = token_size(command.tokens);
-	type_size = pipe_exec_type_size(command);
-	type = (char **)malloc(sizeof(char *) * ((type_size + 1) + 2));
-	path = command_find_path(command.keyword);
+	type = (char **)malloc(sizeof(char *) * ((type_size(command) + 1) + 2));
 	type[0] = ft_strdup(path);
-	while (++i < size)
+	while (++i < command.token_size)
 	{
 		if (command.tokens->type_id == 13 || command.tokens->type_id == 7)
 			arg = ft_strjoin(arg, command.tokens->context);
-		if (command.tokens->type_id == 12 || size - 1 == command.tokens->id)
+		if (command.tokens->type_id == 12 || command.token_size - 1 == command.tokens->id)
 		{
 			type[j++] = ft_strdup(arg);
 			arg = ft_strdup("");
@@ -50,14 +54,18 @@ static char** pipe_exec_create_type(t_command command)
 		get_next_token(&command.tokens);
 	}
 	type[j] = NULL;
-	// i = -1;
-	// while (type[++i])
-	// {
-	// 	printf("type : %s\n", type[i]);
-	// }
-	free(path);
-	free(arg);
 	return (type);
+}
+
+static void pipe_fork_process(t_command command, int *fd)
+{
+	if (command.count != command.pipe_count + 1)
+	{
+		dup2(fd[0], command.tmp_fd);
+		ft_closepipes(fd);
+	}
+	else
+		dup2(0, command.tmp_fd);
 }
 
 int pipe_exec(t_command command)
@@ -70,7 +78,7 @@ int pipe_exec(t_command command)
 
 	result = 0;
 	path = command_find_path(command.keyword);
-	type = pipe_exec_create_type(command);
+	type = create_type(command, path);
 	pipe(fd);
 	pid = fork();
 	signal(SIGINT, proc_signal_handler);
@@ -83,15 +91,9 @@ int pipe_exec(t_command command)
 		result = execve(path, type, g_env.env);
 	}
 	else
-	{
-		if (command.count != command.pipe_count + 1)
-		{
-			dup2(fd[0], command.tmp_fd);
-			ft_closepipes(fd);
-		}
-		else
-			dup2(0, command.tmp_fd);
-	}
+		pipe_fork_process(command, fd);
+	if (result == -1)
+		return (1);
 	wait(&pid);
 	ft_free_dbl_str(type);
 	free(path);

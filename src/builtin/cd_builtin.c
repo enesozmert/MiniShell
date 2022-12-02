@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:32:33 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/11/27 13:56:32 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/02 19:27:59 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,13 @@ static int cd_arg(t_command command)
 {
     char    *new_dir;
 
+    new_dir = malloc(sizeof(char));
     if (ft_strncmp(command.tokens->context, "~", ft_strlen(command.tokens->context)) == 0)
     {
         cd_home(command);
         return (0);
     }
-    new_dir = ft_strdup(command.tokens->context);
+    new_dir = ft_strjoin(new_dir, command.tokens->context);
     if (chdir(new_dir) == -1)
         return (205);
     getcwd(new_dir, sizeof(new_dir));

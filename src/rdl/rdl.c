@@ -16,7 +16,7 @@ t_rdl *rdl_init(t_rdl *rdl)
 	rdl->identifier_list = malloc(sizeof(t_operator) * 11);
 	rdl->command_list = malloc(sizeof(t_command) * 10);
 	rdl->token_type_list = malloc(sizeof(t_token_type) * 15);
-	rdl->redir_list = malloc(sizeof(t_redir) * 3);
+	rdl->redir_list = malloc(sizeof(t_redir) * 5);
 	rdl->quote_list = malloc(sizeof(t_quote) * 3);
 	rdl->quote_prop = malloc(sizeof(t_quote_prop) * 1);
 	rdl->quote_prop->dq = 0;

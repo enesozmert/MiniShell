@@ -39,6 +39,7 @@
         "__tuple": "c",
         "libft.h": "c",
         "stdlib.h": "c",
-        "cassert": "c"
+        "cassert": "c",
+        "complex": "c"
     }
 }

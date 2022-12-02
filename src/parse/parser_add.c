@@ -36,17 +36,14 @@ void parser_add_operator(t_rdl *rdl, char c)
 	rdl->token = token_add(rdl->token, token);
 }
 
-void parser_add_redir(t_rdl *rdl, char c)
+void parser_add_redir(t_rdl *rdl, char *buffer)
 {
-	char redir[2];
 	t_token token;
 
-	redir[0] = c;
-	redir[1] = '\0';
-	token.context = ft_strdup(redir);
+	token.context = ft_strdup(buffer);
 	token.t_flag = 5;
-	if (is_redir(rdl, redir[0]))
-		rdl->token = token_add(rdl->token, token);
+	rdl->token = token_add(rdl->token, token);
+	ft_bzero(buffer, ft_strlen(buffer));
 }
 
 void parser_add_option(t_rdl *rdl, char c)
@@ -57,7 +54,7 @@ void parser_add_option(t_rdl *rdl, char c)
 	option[0] = c;
 	option[1] = '\0';
 	token.context = ft_strdup(option);
-	token.t_flag = 5;
+	token.t_flag = 7;
 	if (is_option(option[0]))
 		rdl->token = token_add(rdl->token, token);
 }
