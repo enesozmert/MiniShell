@@ -97,14 +97,17 @@ void parser_add_quote(t_rdl *rdl, char c)
 void parser_add_keyword(t_rdl *rdl, char *buffer)
 {
 	t_token token;
+	char	*keyword;
 
 	token.context = ft_strdup(buffer);
 	token.t_flag = 0;
-	if (is_keyword(rdl, buffer))
+	keyword = keyword_trim(rdl->buffer);
+	if (is_keyword(rdl, keyword))
 	{
 		rdl->token = token_add(rdl->token, token);
 		ft_bzero(buffer, ft_strlen(buffer));
 	}
+	free(keyword);
 }
 
 void parser_add(t_rdl *rdl, char *buffer)
