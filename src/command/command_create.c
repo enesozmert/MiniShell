@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:48:35 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/02 19:37:00 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/03 15:44:38 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@ int command(t_rdl *rdl)
 
     i = -1;
     result = 0;
+    if (rdl->redir_prop->count > 0)
+        i = rdl->redir_prop->index;
     if (rdl->pipe_prop->count > 0)
         i = rdl->pipe_prop->index;
     command_malloc(rdl);
-    while (++i < token_size(rdl->token) + rdl->pipe_prop->count)
+    while (++i < token_size(rdl->token) + rdl->pipe_prop->count + rdl->redir_prop->count)
     {
         result = command_create(rdl);
         if (result == -1)
@@ -62,7 +64,7 @@ int command_create(t_rdl *rdl)
     int is_token_type;
     int command_id;
     
-    if (rdl->token->type_id == 6)
+    if (rdl->token->type_id == 6 || rdl->token->type_id == 5)
         return (-1);
     command_id = command_find(rdl, rdl->token->keyword_id);
     token = get_token_id(rdl->token, rdl->token->keyword_id);

@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:22:50 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/02 19:36:51 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/03 15:42:40 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void routine(void)
 		{
 			lexical_analizer(rdl);
 			parser(rdl);
+			redir_count(rdl);
+			redir_handler(rdl);
 			pipe_count(rdl);
 			pipe_handler(rdl);
 			if (rdl->pipe_prop->count == 0)

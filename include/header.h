@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/03 14:01:21 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/03 16:37:53 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,6 +169,7 @@ typedef struct s_command
 	int		pipe_count;
 	int		token_size;
 	int		tmp_fd;
+	int		token_sub_type_id;
 }	t_command;
 
 typedef	struct s_env
@@ -350,12 +351,13 @@ void			proc_signal_handler(int signo);
 //redirection
 void			redir_list(t_redir *redir);
 void 			redir_handler(t_rdl *rdl);
-int				redir_output(t_rdl *rdl);
-int				redir_input(t_rdl *rdl);
+int 			redir_count(t_rdl *rdl);
+int 			redir_exec(t_command command);
 //pipe
 void			pipe_handler(t_rdl *rdl);
 int				pipe_count(t_rdl *rdl);
 int				pipe_exec(t_command command);
+//pipe crud
 void			ft_openpipes(t_command command, int fd[2]);
 void 			ft_closepipes(int fd[2]);
 #endif
