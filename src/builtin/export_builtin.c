@@ -17,6 +17,7 @@ int export_start(t_command command)
     size = token_size(command.tokens);
     if (size == 0)
     {
+        env_asc(g_env.env);
         while (g_env.env[++i])
         {
             printf("declare -x %s\n", g_env.env[i]);

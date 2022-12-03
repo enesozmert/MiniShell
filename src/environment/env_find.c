@@ -36,7 +36,8 @@ int	env_find_id(char *key)
 	while(g_env.env[++i])
 	{
 		key_find = ft_split(g_env.env[i], '=')[0];
-		if (ft_strncmp(key_find, key, ft_strlen(key)) == 0)
+		if (ft_strncmp(key_find, key, ft_strlen(key_find)) == 0 &&
+			key_len == (int)ft_strlen(key_find))
 		{
 			free(key_find);
 			return (i);

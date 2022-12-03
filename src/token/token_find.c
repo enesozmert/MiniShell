@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token_clear.c                                      :+:      :+:    :+:   */
+/*   token_find.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/03 13:57:47 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/03 13:57:48 by eozmert          ###   ########.fr       */
+/*   Created: 2022/12/03 13:57:42 by eozmert           #+#    #+#             */
+/*   Updated: 2022/12/03 14:07:49 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-void token_clear(t_token **token)
+int token_find_count(t_token *token, char *context)
 {
-	t_token	*current;
-	t_token	*next;
+    int i;
+    int count;
 
-	if (!token)
-		return ;
-	current = *token;
-	while (current)
-	{
-		next = current->next;
-		token_delone(current);
-		current = next;
-	}
-	*token = NULL;
+    count = 0;
+    i = -1;
+    while (++i < token_size(token))
+    {
+        if (strncmp(token->context, context, token->len) == 0)
+            count++;
+        get_next_token(&token);
+    }
+    return (count);
 }
