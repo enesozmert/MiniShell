@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/03 14:01:21 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/03 16:09:38 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -296,6 +296,7 @@ int				is_option(char c);
 int				is_delimiter(t_rdl *rdl, char c);
 int				is_identifier(t_rdl *rdl, char *str);
 int				is_redir(t_rdl *rdl, char *str);
+int				is_next_redir(int k, char *str);
 int				is_pipe(char c);
 t_keyword		find_keyword(t_rdl *rdl, char *str);
 int				find_keyword_id(t_rdl *rdl, char *str);

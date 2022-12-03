@@ -39,7 +39,10 @@ void parser_arg(t_rdl *rdl)
 		else if (ft_isalnum(rdl->main_str[i]) == 0 && rdl->main_str[i] > 32)
 			parser_add_char(rdl, rdl->main_str[i]);
 		else if (rdl->main_str[i] <= 32)
-			parser_arg_space(&i, rdl);
+		{
+			if (is_next_redir(i, rdl->main_str) == 0)
+				parser_arg_space(&i, rdl);
+		}
 		i++;
 	}
 }
