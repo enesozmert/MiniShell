@@ -6,11 +6,31 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:48:35 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/03 15:44:38 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/03 20:32:17 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
+
+static int command_sub_type(t_rdl *rdl)
+{
+    t_token *token;
+    int is_token_type;
+    int command_id;
+    
+    command_id = command_find(rdl, rdl->token->keyword_id);
+    token = get_token_id(rdl->token, rdl->token->keyword_id);
+    token->context = keyword_trim(token->context);
+    if (rdl->token->type_id == 0)
+        command_id = command_find(rdl, rdl->token->id);
+    is_token_type = command_in_token_type(rdl, command_id, rdl->token->id);
+    if (is_token_type == 1)
+    {
+        if (rdl->token->type_id == 5)
+            rdl->command_list[command_id].token_sub_types_id = find_redir_id(rdl, rdl->token->context);
+    }
+    return (0);
+}
 
 int command(t_rdl *rdl)
 {
@@ -24,20 +44,23 @@ int command(t_rdl *rdl)
     if (rdl->pipe_prop->count > 0)
         i = rdl->pipe_prop->index;
     command_malloc(rdl);
-    while (++i < token_size(rdl->token) + rdl->pipe_prop->count + rdl->redir_prop->count)
+    while (++i < token_size(rdl->token) + rdl->pipe_prop->count)
     {
         result = command_create(rdl);
+        command_sub_type(rdl);
         if (result == -1)
         {
             get_next_token(&rdl->token);
             ++i;
             rdl->pipe_prop->index = i;
+            rdl->redir_prop->index = i;
             break;
         }
         get_next_token(&rdl->token);
     }
     command_run(rdl);
-    token_clear(&rdl->command_list[8].tokens);
+    // token_clear(&rdl->command_list[8].tokens);
+    // token_clear(&rdl->command_list[9].tokens);
     return (0);
 }
 
@@ -69,8 +92,8 @@ int command_create(t_rdl *rdl)
     command_id = command_find(rdl, rdl->token->keyword_id);
     token = get_token_id(rdl->token, rdl->token->keyword_id);
     token->context = keyword_trim(token->context);
-    if (rdl->token->type_id == 0)
-        command_id = command_find(rdl, rdl->token->id);
+    // if (rdl->token->type_id == 0)
+    //     command_id = command_find(rdl, rdl->token->id);
     is_token_type = command_in_token_type(rdl, command_id, rdl->token->id);
     if (is_token_type == 1)
         rdl->command_list[command_id].tokens = token_add_copy(rdl->command_list[command_id].tokens, rdl->token);
