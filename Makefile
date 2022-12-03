@@ -49,7 +49,7 @@ SYNTAX			=	syntax keyword_syntax quote_syntax redir_syntax export_syntax pipe_sy
 STATIC			=	keyword_list operator_list command_list quote_list delimiter_list identifier_list \
 					token_type_list redir_list
 LEXICAL			=	lexical is_keyword is_operator is_quote is_dollar is_identifier is_delimiter is_token_type\
-					find_operator find_keyword find_quote is_redir is_pipe is_option\
+					find_operator find_keyword find_quote is_redir is_pipe is_option is_next_redir\
 					command_in_token_type keyword_in_operator find_keyword_id keywords_id
 CORE			=	white_space count_char quote_count count_matris char_replace free_double_str \
 					char_pos keyword_trim keyword_trim_len token_arg_count to_lower_str \
