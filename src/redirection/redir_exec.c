@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_exec.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:39:48 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/05 11:32:41 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/05 11:56:55 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ static void redir_in_exec(t_command command)
 	if (command.count == 2)
 	{
 		file_name = ft_strdup("");
-		printf("token size : %d\n", command.token_size);
 		while (++i < command.token_size)
 		{
 			if (command.tokens->type_id == 12)
@@ -86,7 +85,6 @@ static void redir_in_exec(t_command command)
 			get_next_token(&command.tokens);
 		}
 	}
-	printf("file_name %s\n", file_name);
 }
 
 static void get_sub_type(t_command command)
@@ -99,7 +97,6 @@ static void get_sub_type(t_command command)
 
 int redir_exec(t_command command)
 {
-	printf("command_count %d\n", command.count);
 	get_sub_type(command);
 	return (0);
 	// pid_t pid;
