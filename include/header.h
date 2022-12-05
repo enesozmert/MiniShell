@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/05 14:56:22 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/05 18:11:05 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -369,6 +369,6 @@ int				pipe_exec(t_command command);
 void			ft_openpipes(t_command command, int fd[2]);
 void 			ft_closepipes(int fd[2]);
 //redir crud
+void 			ft_openredir(t_command command, int fd[2]);
 void 			ft_closeredir(int fd[2]);
-void			ft_openredir(t_command command, int fd[2]);
 #endif
