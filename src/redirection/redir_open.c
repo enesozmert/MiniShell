@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   redir_file_create.c                                :+:      :+:    :+:   */
+/*   redir_open.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/05 12:03:17 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/05 15:04:05 by eozmert          ###   ########.fr       */
+/*   Created: 2022/12/05 14:32:46 by eozmert           #+#    #+#             */
+/*   Updated: 2022/12/05 14:56:24 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-int redir_file_create(t_command command, char *name)
+void ft_openredir(t_command command, int fd[2])
 {
-    int fd;
-
-    fd = 0;
-    if (command.token_sub_type_id == 0)
-        fd = open(name, O_CREAT | O_TRUNC | O_RDWR, 0777);
-    if (command.token_sub_type_id == 2)
-        fd = open(name, O_RDONLY | O_RDWR, 0777);
-    return (fd);
+	dup2(command.tmp_fd, 0);
+	if (command.count != command.redir_count + 1)
+	{
+		close(command.tmp_fd);
+		dup2(fd[1], STDOUT_FILENO);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:39:48 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/05 14:30:58 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/05 15:04:17 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,46 +57,49 @@ static char **create_type(t_command command, char *path)
 	return (type);
 }
 
-static void redir_out_exec(t_command command)
+static void redir_out_exec(t_command command, int *fd)
 {
 	char *file_name;
-	int fd;
+	int fd_file;
 	printf("redir out create\n");
 	
-	printf("file_name %s\n", redir_file_name(command));
-	if (command.count < command.redir_count + 1)
+	// printf("file_name %s\n", redir_file_name(command));
+	if (command.count < command.redir_count + 1 && command.count > 1)
 	{
 		file_name = redir_file_name(command);
-		fd = redir_file_create(command, file_name);
-		close(fd);
+		printf("file name : %s\n", file_name);
+		fd_file = redir_file_create(command, file_name);
+		close(fd_file);
 	}
 	if (command.count == command.redir_count + 1)
 	{
 		file_name = redir_file_name(command);
 		printf("file name : %s\n", file_name);
-		fd = redir_file_create(command, file_name);
-		dup2(fd, command.tmp_fd);
-		close(fd);
+		fd_file = redir_file_create(command, file_name);
+		dup2(fd_file, fd[0]);
+		ft_closeredir(fd);
 	}
 }
 
-static void redir_in_exec(t_command command)
+static void redir_in_exec(t_command command, int *fd)
 {
+	(void)fd;
 	printf("redir in create\n");
 	printf("file_name %s\n", redir_file_name(command));
 }
 
-static void get_sub_type(t_command command)
+static void get_sub_type(t_command command, int *fd)
 {
 	if (command.token_sub_type_id == 2)
-		redir_in_exec(command);
+		redir_in_exec(command, fd);
 	if (command.token_sub_type_id == 0)
-		redir_out_exec(command);
+		redir_out_exec(command, fd);
 }
 
 int redir_exec(t_command command)
 {
 	printf("command_count %d\n", command.count);
+	int fd[2];
 	pid_t pid;
 	int result;
 	char *path;
@@ -112,11 +115,12 @@ int redir_exec(t_command command)
 		return (-1);
 	if (pid == 0)
 	{
-		dup2(command.tmp_fd, STDOUT_FILENO);
+		ft_openredir(command, fd);
+		ft_closeredir(fd);
 		result = execve(path, type, g_env.env);
+		get_sub_type(command, fd);
 	}
-	else
-		get_sub_type(command);
+		
 	if (result == -1)
 		return (1);
 	wait(&pid);
