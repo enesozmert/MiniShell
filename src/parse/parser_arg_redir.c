@@ -14,7 +14,6 @@ void parser_arg_redir(int *k, t_rdl *rdl)
 	}
 	rdl->buffer[j] = '\0';
 	parser_add_redir(rdl, rdl->buffer);
-	printf("who: %c\n", rdl->main_str[i]);
 	if (rdl->main_str[i] <= 32 && rdl->main_str[i])
 	{
 		while (rdl->main_str[i] <= 32)
