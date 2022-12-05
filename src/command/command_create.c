@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:48:35 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/05 11:28:21 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/05 11:32:46 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int command(t_rdl *rdl)
     while (++i < token_size(rdl->token) + rdl->redir_prop->count + rdl->pipe_prop->count)
     {
         result = command_create(rdl);
-        // command_sub_type(rdl);
+        command_sub_type(rdl);
         if (result == -1)
         {
             get_next_token(&rdl->token);
