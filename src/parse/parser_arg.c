@@ -40,7 +40,7 @@ void parser_arg(t_rdl *rdl)
 			parser_add_char(rdl, rdl->main_str[i]);
 		else if (rdl->main_str[i] <= 32)
 		{
-			if (is_next_redir(i, rdl->main_str) == 0)
+			if (is_next_redir(i, rdl->main_str) == 0 && is_next_pipe(i, rdl->main_str) == 0)
 				parser_arg_space(&i, rdl);
 		}
 		i++;

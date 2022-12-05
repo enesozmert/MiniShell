@@ -6,7 +6,7 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 16:08:55 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/03 16:10:32 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/05 10:36:22 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,24 @@ int is_next_redir(int k, char *str)
 	{
 		if (str[k] == '>' || str[k] == '<')
 			return (1);
-		k++;
+		else if (str[k] <= 32)
+			k++;
+		else 
+			return (0);
+	}
+	return (0);
+}
+
+int	is_next_pipe(int k, char *str)
+{
+	while (str[k])
+	{
+		if (is_pipe(str[k]))
+			return (1);
+		else if (str[k] <= 32)
+			k++;
+		else
+			return (0);
 	}
 	return (0);
 }

@@ -16,7 +16,7 @@ void parser_arg_redir(int *k, t_rdl *rdl)
 	parser_add_redir(rdl, rdl->buffer);
 	if (rdl->main_str[i] <= 32 && rdl->main_str[i])
 	{
-		while (rdl->main_str[i] <= 32)
+		while (rdl->main_str[i] <= 32 && rdl->main_str[i])
 			i++;
 	}
 	i -= 1;
