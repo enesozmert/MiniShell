@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_exec.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:39:48 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/03 20:32:28 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/05 10:20:51 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ static void redir_in_exec(t_command command)
 	char	*file_name;
 
 	file_name = malloc(sizeof(char));
+
 	if (redirx_count == 2)
 	{	
 		if (command.tokens->type_id == 12)
