@@ -6,13 +6,11 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:39:48 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/03 20:32:28 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/05 11:31:40 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
-
-static int redirx_count;
 
 // static int type_size(t_command command)
 // {
@@ -72,22 +70,27 @@ static int redirx_count;
 
 static void redir_in_exec(t_command command)
 {
-	char	*file_name;
+	int i;
+	char *file_name;
 
-	file_name = malloc(sizeof(char));
-	if (redirx_count == 2)
-	{	
-		if (command.tokens->type_id == 12)
-			file_name = ft_strjoin(file_name, command.tokens->context);
-		printf("file_name %s\n", file_name);
+	i = -1;
+	file_name = NULL;
+	if (command.count == 2)
+	{
+		file_name = ft_strdup("");
+		printf("token size : %d\n", command.token_size);
+		while (++i < command.token_size)
+		{
+			if (command.tokens->type_id == 12)
+				file_name = ft_strjoin(file_name, command.tokens->context);
+			get_next_token(&command.tokens);
+		}
 	}
+	printf("file_name %s\n", file_name);
 }
 
 static void get_sub_type(t_command command)
 {
-	int i;
-
-	i = -1;
 	if (command.token_sub_types_id == 0)
 	{
 		redir_in_exec(command);
@@ -96,10 +99,9 @@ static void get_sub_type(t_command command)
 
 int redir_exec(t_command command)
 {
-	redirx_count++;
-	printf("redirx_count %d\n", redirx_count);
-    get_sub_type(command);
-    return (0);
+	printf("command_count %d\n", command.count);
+	get_sub_type(command);
+	return (0);
 	// pid_t pid;
 	// int fd[2];
 	// int result;
@@ -108,7 +110,7 @@ int redir_exec(t_command command)
 
 	// result = 0;
 	// path = command_find_path(command.keyword);
-    // if (command.count == 1)
+	// if (command.count == 1)
 	//     type = create_type(command, path);
 	// pipe(fd);
 	// pid = fork();
