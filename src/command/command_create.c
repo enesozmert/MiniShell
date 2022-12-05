@@ -6,31 +6,31 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:48:35 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/05 11:32:46 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/05 11:33:33 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-// static int command_sub_type(t_rdl *rdl)
-// {
-//     t_token *token;
-//     int is_token_type;
-//     int command_id;
+static int command_sub_type(t_rdl *rdl)
+{
+    t_token *token;
+    int is_token_type;
+    int command_id;
 
-//     command_id = command_find(rdl, rdl->token->keyword_id);
-//     token = get_token_id(rdl->token, rdl->token->keyword_id);
-//     token->context = keyword_trim(token->context);
-//     if (rdl->token->type_id == 0)
-//         command_id = command_find(rdl, rdl->token->id);
-//     is_token_type = command_in_token_type(rdl, command_id, rdl->token->id);
-//     if (is_token_type == 1)
-//     {
-//         if (rdl->token->type_id == 5)
-//             rdl->command_list[command_id].token_sub_types_id = find_redir_id(rdl, rdl->token->context);
-//     }
-//     return (0);
-// }
+    command_id = command_find(rdl, rdl->token->keyword_id);
+    token = get_token_id(rdl->token, rdl->token->keyword_id);
+    token->context = keyword_trim(token->context);
+    if (rdl->token->type_id == 0)
+        command_id = command_find(rdl, rdl->token->id);
+    is_token_type = command_in_token_type(rdl, command_id, rdl->token->id);
+    if (is_token_type == 1)
+    {
+        if (rdl->token->type_id == 5)
+            rdl->command_list[command_id].token_sub_types_id = find_redir_id(rdl, rdl->token->context);
+    }
+    return (0);
+}
 
 int command(t_rdl *rdl)
 {
