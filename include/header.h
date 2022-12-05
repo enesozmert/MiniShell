@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/05 11:33:06 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/05 12:48:57 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,9 +169,10 @@ typedef struct s_command
 	int		(*f)(struct s_command);
 	int		count;
 	int		pipe_count;
+	int		redir_count;
 	int		token_size;
+	int		token_sub_type_id;
 	int		tmp_fd;
-	int		token_sub_types_id;
 }	t_command;
 
 typedef	struct s_env
@@ -358,6 +359,8 @@ void			redir_list(t_redir *redir);
 void 			redir_handler(t_rdl *rdl);
 int 			redir_count(t_rdl *rdl);
 int 			redir_exec(t_command command);
+char			*redir_file_name(t_command command);
+int 			redir_file_create(t_command command, char *name);
 //pipe
 void			pipe_handler(t_rdl *rdl);
 int				pipe_count(t_rdl *rdl);

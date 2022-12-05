@@ -61,7 +61,7 @@ COMMAND			=	command_create command_run command_find command_exec command_find_pa
 BUILTIN			=	echo_builtin cd_builtin pwd_builtin exit_builtin env_builtin export_builtin unset_builtin
 ENVIRONMENT 	=	environment env_find env_len env_update env_add env_exist env_asc env_dsc env_delete
 SIGNAL			=	signal_handler
-REDIRECTION 	= 	redir_handler redir_count redir_exec
+REDIRECTION 	= 	redir_handler redir_count redir_exec redir_file_name redir_file_create
 PIPE			=	pipe_handler pipe_count pipe_exec pipe_open pipe_close
 #FileCreate
 
