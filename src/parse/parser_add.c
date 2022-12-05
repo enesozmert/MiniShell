@@ -1,5 +1,15 @@
 #include "../../include/header.h"
 
+/* token.t_flag = -1 ---> parser_add ||| parser_add_char
+token.t_flag =  0 ---> parser_add_keyword
+token.t_flag =	1 ---> parser_add_quote '\''
+token.t_flag =	2 ---> parser_add_quote '\"'
+token.t_flag =	3 ---> parser_add_dollar
+token.t_flag =	4 ---> parser_add_operator
+token.t_flag =	5 ---> parser_add_redir
+token.t_flag =	6 ---> parser_add_pipe
+token.t_flag =	7 ---> parser_add_option */
+
 void parser_add_char(t_rdl *rdl, char c)
 {
 	char str[2];

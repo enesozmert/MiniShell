@@ -3,37 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   redir_syntax.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 10:07:31 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/05 10:58:44 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/05 12:36:01 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
+static int redir_syntax_first_single_next(t_rdl *rdl)
+{
+	if (rdl->token->next->t_flag == 5 
+		&& (rdl->token->context[0] != rdl->token->next->context[0]))
+			return (103);
+	else 
+		return (0);
+}
+
+static int redir_syntax_first_plural_next(t_rdl *rdl)
+{
+	if (rdl->token->next->t_flag == 5 
+		&& (rdl->token->context[1] != rdl->token->next->context[0]))
+			return (103);
+	else 
+		return (0);
+}
+
 int	redir_syntax(t_rdl *rdl)
 {
-	(void)rdl;
-	// if (rdl->token->id == 0)
-	// 	return (0);
-	// if (rdl->token->len == 1)
-	// {
-	// 	if (rdl->token->context[0] == '>')
-	// 		rdl->redir_prop->output_count++;
-	// 	else if (rdl->token->context[0] == '<')
-	// 		rdl->redir_prop->input_count++;
-	// 	if ((rdl->token->context[0] == '>'
-	// 			&& rdl->token->next->context[0] == '<')
-	// 		|| (rdl->token->context[0] == '<'
-	// 			&& rdl->token->next->context[0] == '>'))
-	// 		return (103);
-	// }
-	// if (rdl->redir_prop->input_count > 2 || rdl->redir_prop->output_count > 2)
-	// 	return (103);
-	// if (rdl->token->next->context[0] != '>')
-	// 	rdl->redir_prop->output_count = 0;
-	// else if (rdl->token->next->context[0] != '<')
-	// 	rdl->redir_prop->input_count = 0;
+	if (rdl->token->type_id == 0)
+		return (0);
+	if (rdl->token->t_flag == 5)
+	{
+		if (ft_strlen(rdl->token->context) == 1)
+			return (redir_syntax_first_single_next(rdl));
+		if (ft_strlen(rdl->token->context) > 2)
+			return (103);
+		else if (ft_strlen(rdl->token->context) == 2)
+			return (redir_syntax_first_plural_next(rdl));
+	}
 	return (0);
 }
