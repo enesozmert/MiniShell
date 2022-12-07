@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:39:48 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/07 13:20:31 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/07 16:03:22 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,13 @@ static char **create_type(t_command command, char *path)
 	return (type);
 }
 
-static void redir_out_exec(t_command command)
+static int redir_out_exec(t_command command)
 {
 	int fd_file;
 	char *file_name;
-	
+
 	printf("redir out create\n");
+	fd_file = 0;
 	if (command.count < command.redir_count + 1 && command.count > 1)
 	{
 		file_name = redir_file_name(command);
@@ -75,18 +76,8 @@ static void redir_out_exec(t_command command)
 		file_name = redir_file_name(command);
 		printf("file name : %s\n", file_name);
 		fd_file = redir_file_create(command, file_name);
-		command.file_fd = dup(fd_file);
 	}
-}
-
-static void redir_fork_process(t_command command)
-{
-	if (command.count == command.redir_count + 1)
-	{
-		dup2(command.file_fd, command.tmp_fd);
-		close(command.tmp_fd);
-		close(command.file_fd);
-	}
+	return (fd_file);
 }
 
 static int redir_in_exec(t_command command)
@@ -96,12 +87,16 @@ static int redir_in_exec(t_command command)
 	return (0);
 }
 
-static void get_sub_type(t_command command)
+static int get_sub_type(t_command command)
 {
+	int fd;
+
+	fd = 0;
 	if (command.token_sub_type_id == 2)
-		redir_in_exec(command);
+		fd = redir_in_exec(command);
 	if (command.token_sub_type_id == 0)
-		redir_out_exec(command);
+		fd = redir_out_exec(command);
+	return (fd);
 }
 
 int redir_exec(t_command command)
@@ -115,27 +110,25 @@ int redir_exec(t_command command)
 	result = 0;
 	path = command_find_path(command.keyword);
 	if (command.count == 1)
-	{
-		signal(SIGINT, proc_signal_handler);
 		type = create_type(command, path);
-		pid = fork();
-		if (pid < 0)
-			return (-1);
-		if (pid == 0)
-		{
-			ft_openredir(command);
+	signal(SIGINT, proc_signal_handler);
+	pid = fork();
+	if (pid < 0)
+		return (-1);
+	if (pid == 0)
+	{
+
+			dup2(command.tmp_fd, STDOUT_FILENO);
 			close(command.tmp_fd);
 			result = execve(path, type, g_env.env);
-			if (result == -1)
-				perror("error\n");
-		}
-		wait(&pid);
+			int fd = 0;
+			dup2(fd, command.tmp_fd);
+			fd = get_sub_type(command);
+			close(fd);
 	}
-	if (command.count > 1)
-	{
-		get_sub_type(command);
-		redir_fork_process(command);
-	}
+	if (result == -1)
+		perror("error\n");
+	wait(&pid);
 	free(path);
 	return (0);
 }
