@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:39:48 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/07 16:03:22 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/07 17:45:32 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,16 +118,37 @@ int redir_exec(t_command command)
 	if (pid == 0)
 	{
 
-			dup2(command.tmp_fd, STDOUT_FILENO);
-			close(command.tmp_fd);
-			result = execve(path, type, g_env.env);
+		dup2(command.tmp_fd, STDOUT_FILENO);
+		close(command.tmp_fd);
+		if (command.count > 1)
+		{
 			int fd = 0;
 			dup2(fd, command.tmp_fd);
 			fd = get_sub_type(command);
 			close(fd);
+		}
+		result = execve(path, type, g_env.env);
+		if (result == -1)
+			perror("error\n");
 	}
-	if (result == -1)
-		perror("error\n");
+	else
+	{
+		int wstatus;
+		wait(&wstatus);
+
+		if (WIFEXITED(wstatus))
+		{
+			int statusCode = WEXITSTATUS(wstatus);
+			if (statusCode == 0)
+			{
+				printf("Success\n");
+			}
+			else
+			{
+				printf("Failure with status code %d\n", statusCode);
+			}
+		}
+	}
 	wait(&pid);
 	free(path);
 	return (0);
