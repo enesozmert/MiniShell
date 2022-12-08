@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_exec.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:39:48 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/08 12:32:11 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/08 20:32:31 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,30 @@ static char **create_type(t_command command, char *path)
 	return (type);
 }
 
+static int redir_dbl_out_exec(t_command command)
+{
+	int fd_file;
+	char *file_name;
+
+	printf("redir out create\n");
+	fd_file = 0;
+	if (command.count < command.redir_count + 1 && command.count > 1)
+	{
+		file_name = redir_file_name(command);
+		printf("file name : %s\n", file_name);
+		fd_file = redir_file_create(command, file_name);
+		close(fd_file);
+	}
+	else if (command.count == command.redir_count + 1 && command.count > 1)
+	{
+		file_name = redir_file_name(command);
+		printf("file name : %s\n", file_name);
+		fd_file = redir_file_create(command, file_name);
+	}
+	return (fd_file);
+}
+
+
 static int redir_out_exec(t_command command)
 {
 	int fd_file;
@@ -95,6 +119,8 @@ static int get_sub_type(t_command command)
 		redir_in_exec(command);
 	if (command.token_sub_type_id == 0)
 		fd_file = redir_out_exec(command);
+	if (command.token_sub_type_id == 1)
+		fd_file = redir_dbl_out_exec(command);
 	return (fd_file);
 }
 
@@ -106,13 +132,10 @@ int redir_exec(t_command command)
 	char *path;
 	char **type;
 	t_rdl	*rdl;
-	t_keyword *keyword;
 	static int file_fd;
 
 	result = 0;
 	rdl = malloc(sizeof(t_rdl) * 1);
-	rdl->keyword_list = keyword;
-	keyword_list(keyword);
 	path = command_find_path(command.keyword);
 	if (command.count == 1)
 		return (0);
