@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:39:48 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/07 17:45:32 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/08 12:32:11 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,10 @@ int redir_exec(t_command command)
 	int result;
 	char *path;
 	char **type;
+	int file_fd;
 
 	result = 0;
+	file_fd = 0;
 	path = command_find_path(command.keyword);
 	if (command.count == 1)
 		type = create_type(command, path);
@@ -117,39 +119,26 @@ int redir_exec(t_command command)
 		return (-1);
 	if (pid == 0)
 	{
-
-		dup2(command.tmp_fd, STDOUT_FILENO);
-		close(command.tmp_fd);
-		if (command.count > 1)
+		if (command.count == 1)
 		{
-			int fd = 0;
-			dup2(fd, command.tmp_fd);
-			fd = get_sub_type(command);
+			int fd = open("tmp.txt", O_CREAT | O_TRUNC | O_RDWR, 0777);
+			dup2(fd, STDOUT_FILENO);
+			dup2(command.file_fd, fd);
+			// close(command.file_fd);
 			close(fd);
-		}
-		result = execve(path, type, g_env.env);
-		if (result == -1)
-			perror("error\n");
-	}
-	else
-	{
-		int wstatus;
-		wait(&wstatus);
-
-		if (WIFEXITED(wstatus))
-		{
-			int statusCode = WEXITSTATUS(wstatus);
-			if (statusCode == 0)
-			{
-				printf("Success\n");
-			}
-			else
-			{
-				printf("Failure with status code %d\n", statusCode);
-			}
+			result = execve(path, type, g_env.env);
+			if (result == -1)
+				perror("error\n");
 		}
 	}
 	wait(&pid);
+	if (command.count > 1)
+	{
+		file_fd = get_sub_type(command);
+		dup2(file_fd, command.file_fd);
+		close(file_fd);
+		close(command.file_fd);
+	}
 	free(path);
 	return (0);
 }
