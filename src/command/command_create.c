@@ -72,10 +72,7 @@ int command_malloc(t_rdl *rdl)
 
     command_id = command_find(rdl, rdl->token->keyword_id);
     if (rdl->command_list[command_id].count == 0)
-    {
         rdl->command_list[command_id].tmp_fd = dup(0);
-        rdl->command_list[command_id].file_fd = dup(0);
-    }
     rdl->command_list[command_id].count++;
     rdl->command_list[command_id].pipe_count = rdl->pipe_prop->count;
     rdl->command_list[command_id].redir_count = rdl->redir_prop->count;

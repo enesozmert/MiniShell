@@ -18,10 +18,7 @@ int redir_file_create(t_command command, char *name)
 
     fd = 0;
     if (command.token_sub_type_id == 0)
-    {
-        //fd = open(name, O_CREAT | O_WRONLY | O_APPEND, 0666);
         fd = open(name, O_CREAT | O_TRUNC | O_RDWR, 0777);
-    }
     if (command.token_sub_type_id == 2)
         fd = open(name, O_RDONLY | O_RDWR, 0777);
     return (fd);

@@ -25,7 +25,7 @@ void redir_handler(t_rdl *rdl)
     len = token_size(rdl->token);
     if (count < 1)
         return;
-    while (++i < count + 1)
+    while (++i < count + 2)
     {
         if (syntax(rdl) != -1)
             command(rdl);

@@ -71,7 +71,7 @@ static int redir_out_exec(t_command command)
 		fd_file = redir_file_create(command, file_name);
 		close(fd_file);
 	}
-	else if (command.count == command.redir_count + 1)
+	else if (command.count == command.redir_count + 1 && command.count > 1)
 	{
 		file_name = redir_file_name(command);
 		printf("file name : %s\n", file_name);
@@ -80,23 +80,22 @@ static int redir_out_exec(t_command command)
 	return (fd_file);
 }
 
-static int redir_in_exec(t_command command)
+static void redir_in_exec(t_command command)
 {
 	printf("redir in create\n");
 	printf("file_name %s\n", redir_file_name(command));
-	return (0);
 }
 
 static int get_sub_type(t_command command)
 {
-	int fd;
+	int fd_file;
 
-	fd = 0;
+	fd_file = 0;
 	if (command.token_sub_type_id == 2)
-		fd = redir_in_exec(command);
+		redir_in_exec(command);
 	if (command.token_sub_type_id == 0)
-		fd = redir_out_exec(command);
-	return (fd);
+		fd_file = redir_out_exec(command);
+	return (fd_file);
 }
 
 int redir_exec(t_command command)
@@ -106,38 +105,35 @@ int redir_exec(t_command command)
 	int result;
 	char *path;
 	char **type;
-	int file_fd;
+	t_rdl	*rdl;
+	t_keyword *keyword;
+	static int file_fd;
 
 	result = 0;
-	file_fd = 0;
+	rdl = malloc(sizeof(t_rdl) * 1);
+	rdl->keyword_list = keyword;
+	keyword_list(keyword);
 	path = command_find_path(command.keyword);
 	if (command.count == 1)
-		type = create_type(command, path);
-	signal(SIGINT, proc_signal_handler);
-	pid = fork();
-	if (pid < 0)
-		return (-1);
-	if (pid == 0)
+		return (0);
+	if (command.count > 1 && command.count != command.redir_count + 2)
+		file_fd = get_sub_type(command);
+	if (command.count == command.redir_count + 2)
 	{
-		if (command.count == 1)
+		type = create_type(command, path);
+		signal(SIGINT, proc_signal_handler);
+		pid = fork();
+		if (pid < 0)
+			return (-1);
+		if (pid == 0)
 		{
-			int fd = open("tmp.txt", O_CREAT | O_TRUNC | O_RDWR, 0777);
-			dup2(fd, STDOUT_FILENO);
-			dup2(command.file_fd, fd);
-			// close(command.file_fd);
-			close(fd);
+			dup2(file_fd, STDOUT_FILENO);
+			close(file_fd);
 			result = execve(path, type, g_env.env);
 			if (result == -1)
 				perror("error\n");
 		}
-	}
-	wait(&pid);
-	if (command.count > 1)
-	{
-		file_fd = get_sub_type(command);
-		dup2(file_fd, command.file_fd);
-		close(file_fd);
-		close(command.file_fd);
+		wait(&pid);
 	}
 	free(path);
 	return (0);
