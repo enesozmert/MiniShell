@@ -1,0 +1,16 @@
+total 328
+drwxr-xr-x  15 eozmert  2021_kocaeli     510  9 Ara 13:41 .
+drwxr-xr-x  16 eozmert  2021_kocaeli     544  7 Ara 16:03 ..
+-rw-r--r--@  1 eozmert  2021_kocaeli    8196 21 Kas 09:47 .DS_Store
+-rw-------   1 eozmert  2021_kocaeli   12288 21 Kas 15:42 .T.swp
+drwxr-xr-x  15 eozmert  2021_kocaeli     510  9 Ara 11:21 .git
+-rw-r--r--   1 eozmert  2021_kocaeli       8 18 Kas 15:01 .gitignore
+drwxr-xr-x   5 eozmert  2021_kocaeli     170 18 Kas 15:01 .vscode
+-rw-r--r--   1 eozmert  2021_kocaeli    4990  5 Ara 14:38 Makefile
+-rwxr-xr-x   1 eozmert  2021_kocaeli       5  9 Ara 13:38 a.txt
+-rwxr-xr-x   1 eozmert  2021_kocaeli       0  9 Ara 13:41 abc.txt
+drwxr-xr-x   3 eozmert  2021_kocaeli     102  6 Ara 17:51 include
+drwxr-xr-x  89 eozmert  2021_kocaeli    3026 25 Kas 11:21 libft
+-rwxr-xr-x   1 eozmert  2021_kocaeli  125384  9 Ara 13:41 minishell
+drwxr-xr-x  19 eozmert  2021_kocaeli     646  9 Ara 13:38 obj
+drwxr-xr-x  19 eozmert  2021_kocaeli     646  2 Ara 19:57 src

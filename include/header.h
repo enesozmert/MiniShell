@@ -6,7 +6,15 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/12/09 13:46:26 by cyalniz          ###   ########.fr       */
+=======
+<<<<<<< HEAD
+/*   Updated: 2022/12/09 11:25:14 by eozmert          ###   ########.fr       */
+=======
+/*   Updated: 2022/12/09 11:29:36 by cyalniz          ###   ########.fr       */
+>>>>>>> 0ad9b735a00df7adafa6e15dca353eec71e477c8
+>>>>>>> 419e26cbaf1c976ee7e7ff6f2838ff78e4510d35
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +100,7 @@ typedef struct s_token_type_prop
 	int		dq_flag;
 	int		space_flag;
 	int		dollar_flag;
+	int		redir_flag;
 	int		keyword_id;
 	char	*new_trim;
 	struct	s_token	*token;
