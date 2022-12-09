@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 09:48:11 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/03 18:37:06 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/09 14:30:32 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	keyword_syntax(t_rdl *rdl)
 	while (token->context[++i])
 		token->context[i] = ft_tolower(token->context[i]);
 	token->context = keyword_trim(token->context);
-	if (is_keyword(rdl, token->context) == 1)
+	if (is_keyword(rdl->keyword_list, token->context) == 1)
 		return (0);
 	else
 	{

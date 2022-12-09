@@ -109,7 +109,7 @@ void parser_add_keyword(t_rdl *rdl, char *buffer)
 	token.context = ft_strdup(buffer);
 	token.t_flag = 0;
 	keyword = keyword_trim(rdl->buffer);
-	if (is_keyword(rdl, keyword))
+	if (is_keyword(rdl->keyword_list, keyword))
 	{
 		rdl->token = token_add(rdl->token, token);
 		ft_bzero(buffer, ft_strlen(buffer));

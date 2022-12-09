@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/09 14:17:47 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/09 14:41:59 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -294,9 +294,9 @@ void			quote_list(t_quote *quote);
 //lexical
 void			keywords_id(t_rdl *rdl);
 void			lexical_analizer(t_rdl *rdl);
-int				is_keyword(t_rdl *rdl, char *str);
-int				is_keyword_exec(t_rdl *rdl, char *str);
-int				is_keyword_builtin(t_rdl *rdl, char *str);
+int 			is_keyword(t_keyword *keyword_list, char *str);
+int 			is_keyword_exec(t_keyword *keyword_list, char *str);
+int 			is_keyword_builtin(t_keyword *keyword_list, char *str);
 int				is_operator(t_operator *operator_list, char c);
 int				is_quote(t_quote *quote_list, char c);
 int				is_dollar(char c);
@@ -321,10 +321,10 @@ void			exception_write(t_rdl *rdl, char *message);
 int				command(t_rdl *rdl);
 int				command_init();
 int				command_malloc(t_rdl *rdl);
-int				command_clear(t_rdl *rdl);
+int 			command_clear(t_command *command_list);
 int				command_create(t_rdl *rdl);
 void			command_list(t_command *command);
-int				command_run(t_rdl *rdl);
+int 			command_run(t_command *command_list);
 int				command_exec(t_command *command);
 char			*command_find_path(char *keyword);
 int				command_find(t_rdl *rdl, int token_id);
