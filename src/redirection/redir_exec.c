@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:39:48 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/09 13:49:44 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/09 14:09:08 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static char **create_type(t_command command, char *path)
 	type[0] = ft_strdup(path);
 	while (++i < command.token_size)
 	{
-		if (command.tokens->type_id == 12 || command.tokens->type_id == 13 || command.tokens->type_id == 7)
+		if (command.tokens->type_id == 13 || command.tokens->type_id == 7)
 			arg = ft_strjoin(arg, command.tokens->context);
 		if (command.tokens->type_id == 12 || command.token_size - 1 == command.tokens->id)
 		{
@@ -57,59 +57,6 @@ static char **create_type(t_command command, char *path)
 	return (type);
 }
 
-static int redir_dbl_out_exec(t_command command)
-{
-	int fd_file;
-	char *file_name;
-
-	printf("redir out create\n");
-	fd_file = 0;
-	if (command.count < command.redir_count + 1 && command.count > 1)
-	{
-		file_name = redir_file_name(command);
-		printf("file name : %s\n", file_name);
-		fd_file = redir_file_create(command, file_name);
-		close(fd_file);
-	}
-	else if (command.count == command.redir_count + 1 && command.count > 1)
-	{
-		file_name = redir_file_name(command);
-		printf("file name : %s\n", file_name);
-		fd_file = redir_file_create(command, file_name);
-	}
-	return (fd_file);
-}
-
-
-static int redir_out_exec(t_command command)
-{
-	int fd_file;
-	char *file_name;
-
-	printf("redir out create\n");
-	fd_file = 0;
-	if (command.count < command.redir_count + 1 && command.count > 1)
-	{
-		file_name = redir_file_name(command);
-		printf("file name : %s\n", file_name);
-		fd_file = redir_file_create(command, file_name);
-		close(fd_file);
-	}
-	else if (command.count == command.redir_count + 1 && command.count > 1)
-	{
-		file_name = redir_file_name(command);
-		printf("file name : %s\n", file_name);
-		fd_file = redir_file_create(command, file_name);
-	}
-	return (fd_file);
-}
-
-static void redir_in_exec(t_command command)
-{
-	printf("redir in create\n");
-	printf("file_name %s\n", redir_file_name(command));
-}
-
 static int get_sub_type(t_command command)
 {
 	int fd_file;
@@ -120,7 +67,7 @@ static int get_sub_type(t_command command)
 	if (command.token_sub_type_id == 0)
 		fd_file = redir_out_exec(command);
 	if (command.token_sub_type_id == 1)
-		fd_file = redir_dbl_out_exec(command);
+		fd_file = redir_here_out_exec(command);
 	return (fd_file);
 }
 
