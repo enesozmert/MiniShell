@@ -93,7 +93,7 @@ int token_type_is_valid_identifier(t_rdl *rdl)
 {
 	if (rdl->token_type_prop->token->context[0] == ' ')
 		return (0);
-	if (rdl->token->next->context[0] != '=' &&
+	if (rdl->token->next && rdl->token->next->context[0] != '=' &&
 		rdl->token_type_prop->keyword_id == 3 &&
 		token_find_count(rdl->token, "=") > 0)
 		return (0);
@@ -108,7 +108,7 @@ int token_type_is_invalid_identifier(t_rdl *rdl)
 {
 	if (rdl->token_type_prop->token->context[0] == ' ')
 		return (0);
-	if (rdl->token->next->context[0] != '=' &&
+	if (rdl->token->next && rdl->token->next->context[0] != '=' &&
 		rdl->token_type_prop->keyword_id == 3 &&
 		token_find_count(rdl->token, "=") > 0)
 		return (0);
@@ -127,6 +127,7 @@ int token_type_is_value1(t_rdl *rdl)
 		return (0);
 	if (rdl->token_type_prop->token->len > 0 &&
 		rdl->token_type_prop->keyword_id == 3 &&
+		rdl->token->next &&
 		rdl->token->next->context[0] == '=')
 		return (0);
 	if (rdl->token_type_prop->token->len > 0 &&
