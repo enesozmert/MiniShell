@@ -1,10 +1,0 @@
-[?2004h->ttt
-[?2004l-------------------
-0 	token->id ttt 	token->type->context string 			token->type->id 12 		token->t_flag -1 		token->keyword_id 0
--------------------
-bash: ttt: command not found
-[?2004h->
-[?2004l[?2004h->
-[?2004l[?2004h->
-[?2004l[?2004h->^C[?2004l
-->[?2004h^Z[?2004l

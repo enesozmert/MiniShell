@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:32:07 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/05 10:32:37 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/09 17:15:05 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void redir_handler(t_rdl *rdl)
         return;
     while (++i < count + 2)
     {
+		if (i == count + 1)
+			rdl->redir_prop->count = -1;
         if (syntax(rdl) != -1)
             command(rdl);
     }

@@ -2,7 +2,6 @@
 
 int command_run(t_command *command_list)
 {
-	printf("enesç\n");
     int		i;
 	int		handle_code;
 	

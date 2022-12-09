@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 19:18:17 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/09 11:12:26 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/09 16:52:03 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,19 @@ int command_exec(t_command *command)
 	pid = fork();
 	signal(SIGINT, proc_signal_handler);
 	if (pid == 0)
+	{
+		if (command->redir_count == -1)
+		{
+			dup2(command->file_fd, STDOUT_FILENO);
+			close(command->file_fd);
+			result = execve(path, type, g_env.env);
+		}
 		result = execve(path, type, g_env.env);
+		if (result == -1)
+			return (1);
+	}
 	else if (pid < 0)
 		return (-1);
-	if (result == -1)
-		return (1);
 	wait(&pid);
 	ft_free_dbl_str(type);
 	free(path);
