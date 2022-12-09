@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 19:49:07 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/05 18:10:14 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/09 11:13:27 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static void pipe_fork_process(t_command command, int *fd)
 		dup2(0, command.tmp_fd);
 }
 
-int pipe_exec(t_command command)
+int pipe_exec(t_command *command)
 {
 	pid_t pid;
 	int fd[2];
@@ -77,8 +77,8 @@ int pipe_exec(t_command command)
 	char **type;
 
 	result = 0;
-	path = command_find_path(command.keyword);
-	type = create_type(command, path);
+	path = command_find_path(command->keyword);
+	type = create_type(*command, path);
 	pipe(fd);
 	pid = fork();
 	signal(SIGINT, proc_signal_handler);
@@ -86,12 +86,12 @@ int pipe_exec(t_command command)
 		return (-1);
 	if (pid == 0)
 	{
-		ft_openpipes(command, fd);
+		ft_openpipes(*command, fd);
 		ft_closepipes(fd);
 		result = execve(path, type, g_env.env);
 	}
 	else
-		pipe_fork_process(command, fd);
+		pipe_fork_process(*command, fd);
 	if (result == -1)
 		return (1);
 	wait(&pid);

@@ -22,7 +22,7 @@ void parser_arg(t_rdl *rdl)
 			parser_arg_isnot(&i, rdl);
 		else if (is_dollar(rdl->main_str[i]))
 			parser_add_dollar(rdl, rdl->main_str[i]);
-		else if (is_operator(rdl, rdl->main_str[i]))
+		else if (is_operator(rdl->operator_list, rdl->main_str[i]))
 			parser_add_operator(rdl, rdl->main_str[i]);
 		else if (is_option(rdl->main_str[i]) && rdl->main_str[i - 1] > 32 && rdl->main_str[i + 1] > 32)
 			parser_add_option(rdl, rdl->main_str[i]);

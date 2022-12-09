@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 19:18:17 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/05 13:01:53 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/09 11:12:26 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static char **create_type(t_command command, char *path)
 	return (type);
 }
 
-int command_exec(t_command command)
+int command_exec(t_command *command)
 {
 	pid_t pid;
 	int result;
@@ -65,8 +65,8 @@ int command_exec(t_command command)
 	char **type;
 
 	result = 0;
-	path = command_find_path(command.keyword);
-	type = create_type(command, path);
+	path = command_find_path(command->keyword);
+	type = create_type(*command, path);
 	pid = fork();
 	signal(SIGINT, proc_signal_handler);
 	if (pid == 0)

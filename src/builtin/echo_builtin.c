@@ -22,22 +22,22 @@ static int echo_string(t_command command)
 	return (0);
 }
 
-int echo_start(t_command command)
+int echo_start(t_command *command)
 {
 	int i;
 	int size;
 
 	i = -1;
-	size = token_size(command.tokens);
+	size = token_size(command->tokens);
 	while (++i < size)
 	{
-		if (command.tokens->type_id == 3)
-			echo_dollar(command);
-		if (command.tokens->type_id == 10)
-			echo_key(command);
-		if (command.tokens->type_id == 12)
-			echo_string(command);
-		get_next_token(&command.tokens);
+		if (command->tokens->type_id == 3)
+			echo_dollar(*command);
+		if (command->tokens->type_id == 10)
+			echo_key(*command);
+		if (command->tokens->type_id == 12)
+			echo_string(*command);
+		get_next_token(&command->tokens);
 	}
 	printf("\n");
 	return (0);

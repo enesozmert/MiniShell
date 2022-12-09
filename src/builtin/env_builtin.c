@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_builtin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 16:10:05 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/11/14 23:30:05 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/12/09 11:10:08 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void env_print(char **env)
         printf("%s\n", env[i]);
 }
 
-int env_start(t_command command)
+int env_start(t_command *command)
 {
     (void)command;
     env_print(g_env.env);

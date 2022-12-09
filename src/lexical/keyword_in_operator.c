@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyword_in_operator.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:59:12 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/11/30 16:00:43 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/09 11:18:50 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	keyword_in_operator(t_rdl *rdl, int keyword_id, char operator)
 	int			operator_id;
 	char		**operators_id;
 
-	if (is_operator(rdl, operator) == 0)
+	if (is_operator(rdl->operator_list, operator) == 0)
 		return (0);
 	i = -1;
 	operator_id = -1;

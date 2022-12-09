@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:32:33 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/02 19:27:59 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/09 11:08:54 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int cd_arg(t_command command)
     return (0);
 }
 
-int cd_start(t_command command)
+int cd_start(t_command *command)
 {
     int i;
     int size;
@@ -60,16 +60,16 @@ int cd_start(t_command command)
 
     error = 0;
     i = -1;
-    size = token_size(command.tokens);
+    size = token_size(command->tokens);
     if (size == 0)
-        cd_home(command);
+        cd_home(*command);
     while (++i < size)
     {
-        if (command.tokens->type_id == 10)
-            error = cd_key(command);
-        if (command.tokens->type_id == 13)
-            error = cd_arg(command);
-        get_next_token(&command.tokens);
+        if (command->tokens->type_id == 10)
+            error = cd_key(*command);
+        if (command->tokens->type_id == 13)
+            error = cd_arg(*command);
+        get_next_token(&command->tokens);
     }
 
     if (error == 205)

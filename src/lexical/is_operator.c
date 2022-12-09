@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   is_operator.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:20:18 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/11/30 15:20:46 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/09 11:18:16 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-int	is_operator(t_rdl *rdl, char c)
+int	is_operator(t_operator *operator_list, char c)
 {
 	int	i;
 
 	i = -1;
-	while (rdl->operator_list[++i].sybl != NULL)
+	while (operator_list[++i].sybl != NULL)
 	{
-		if (rdl->operator_list[i].sybl[0] == c)
+		if (operator_list[i].sybl[0] == c)
 			return (1);
 	}
 	return (0);

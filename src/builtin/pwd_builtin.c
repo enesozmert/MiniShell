@@ -1,6 +1,6 @@
 #include "../../include/header.h"
 
-int pwd_start(t_command command)
+int pwd_start(t_command *command)
 {
 	(void)command;
     char	*cwd;

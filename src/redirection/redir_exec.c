@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_exec.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:39:48 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/08 20:32:31 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/09 11:14:15 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,34 +124,31 @@ static int get_sub_type(t_command command)
 	return (fd_file);
 }
 
-int redir_exec(t_command command)
+int redir_exec(t_command *command)
 {
-	printf("command_count %d\n", command.count);
+	printf("command_count %d\n", command->count);
 	pid_t pid;
 	int result;
 	char *path;
 	char **type;
-	t_rdl	*rdl;
-	static int file_fd;
 
 	result = 0;
-	rdl = malloc(sizeof(t_rdl) * 1);
-	path = command_find_path(command.keyword);
-	if (command.count == 1)
+	path = command_find_path(command->keyword);
+	if (command->count == 1)
 		return (0);
-	if (command.count > 1 && command.count != command.redir_count + 2)
-		file_fd = get_sub_type(command);
-	if (command.count == command.redir_count + 2)
+	if (command->count > 1 && command->count != command->redir_count + 2)
+		command->file_fd = get_sub_type(*command);
+	if (command->count == command->redir_count + 2)
 	{
-		type = create_type(command, path);
+		type = create_type(*command, path);
 		signal(SIGINT, proc_signal_handler);
 		pid = fork();
 		if (pid < 0)
 			return (-1);
 		if (pid == 0)
 		{
-			dup2(file_fd, STDOUT_FILENO);
-			close(file_fd);
+			dup2(command->file_fd, STDOUT_FILENO);
+			close(command->file_fd);
 			result = execve(path, type, g_env.env);
 			if (result == -1)
 				perror("error\n");

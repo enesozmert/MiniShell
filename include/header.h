@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/08 11:02:47 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/09 11:18:38 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,7 @@ typedef struct s_command
 	char	*keyword;
 	char	*token_types_id;
 	t_token	*tokens;
-	int		(*f)(struct s_command);
+	int		(*f)(struct s_command *);
 	int		count;
 	int		pipe_count;
 	int		redir_count;
@@ -294,7 +294,7 @@ void			lexical_analizer(t_rdl *rdl);
 int				is_keyword(t_rdl *rdl, char *str);
 int				is_keyword_exec(t_rdl *rdl, char *str);
 int				is_keyword_builtin(t_rdl *rdl, char *str);
-int				is_operator(t_rdl *rdl, char c);
+int				is_operator(t_operator *operator_list, char c);
 int				is_quote(t_rdl *rdl, char c);
 int				is_dollar(char c);
 int				is_option(char c);
@@ -322,18 +322,18 @@ int				command_clear(t_rdl *rdl);
 int				command_create(t_rdl *rdl);
 void			command_list(t_command *command);
 int				command_run(t_rdl *rdl);
-int				command_exec(t_command command);
+int				command_exec(t_command *command);
 char			*command_find_path(char *keyword);
 int				command_find(t_rdl *rdl, int token_id);
 int				command_fork();
 //builtin
-int				echo_start(t_command command);
-int				cd_start(t_command command);
-int				pwd_start(t_command command);
-int				exit_start(t_command command);
-int				env_start(t_command command);
-int				export_start(t_command command);
-int				unset_start(t_command command);
+int				echo_start(t_command *command);
+int				cd_start(t_command *command);
+int				pwd_start(t_command *command);
+int				exit_start(t_command *command);
+int				env_start(t_command *command);
+int				export_start(t_command *command);
+int				unset_start(t_command *command);
 //env
 int				env_init(char **env);
 int				env_len(char **env);
@@ -359,13 +359,13 @@ void			proc_signal_handler(int signo);
 void			redir_list(t_redir *redir);
 void 			redir_handler(t_rdl *rdl);
 int 			redir_count(t_rdl *rdl);
-int 			redir_exec(t_command command);
+int 			redir_exec(t_command *command);
 char			*redir_file_name(t_command command);
 int 			redir_file_create(t_command command, char *name);
 //pipe
 void			pipe_handler(t_rdl *rdl);
 int				pipe_count(t_rdl *rdl);
-int				pipe_exec(t_command command);
+int				pipe_exec(t_command *command);
 //pipe crud
 void			ft_openpipes(t_command command, int fd[2]);
 void 			ft_closepipes(int fd[2]);
