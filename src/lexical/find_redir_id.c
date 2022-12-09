@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   find_redir_id.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 17:31:33 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/03 17:32:33 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/09 11:33:04 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../../include/header.h"
 
-int	find_redir_id(t_rdl *rdl, char *str)
+int	find_redir_id(t_redir *redir_list, char *str)
 {
 	int	i;
 
 	i = -1;
-	while (rdl->redir_list[++i].sybl != NULL)
+	while (redir_list[++i].sybl != NULL)
 	{
-		if (ft_strnstr(rdl->redir_list[i].sybl, str,
-				ft_strlen(rdl->redir_list[i].sybl)))
+		if (ft_strnstr(redir_list[i].sybl, str,
+				ft_strlen(redir_list[i].sybl)))
 			return (i);
 	}
 	return (-1);

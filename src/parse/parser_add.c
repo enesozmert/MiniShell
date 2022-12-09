@@ -87,7 +87,7 @@ void parser_add_quote(t_rdl *rdl, char c)
 	t_quote quote;
 	t_token token;
 
-	quote = find_quote(rdl, c);
+	quote = find_quote(rdl->quote_list, c);
 	token.context = ft_strdup(quote.sybl);
 	if (c == '\'')
 	{
