@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/09 14:04:30 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/09 14:17:47 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,7 +207,7 @@ t_token			*get_token_id(t_token *token, int id);
 t_token			*get_token_type_id(t_token *token, int type_id);
 void			get_next_token(t_token **token);
 void			get_next_token_rra(t_token **token);
-int				is_token_type(t_rdl *rdl, char *str);
+int				is_token_type(t_token_type *token_type_list, char *str);
 void			token_type_list(t_token_type *token_type);
 //lexcical->token_type_is
 int				token_type_is_keyword(t_rdl *rdl);
@@ -298,19 +298,19 @@ int				is_keyword(t_rdl *rdl, char *str);
 int				is_keyword_exec(t_rdl *rdl, char *str);
 int				is_keyword_builtin(t_rdl *rdl, char *str);
 int				is_operator(t_operator *operator_list, char c);
-int				is_quote(t_rdl *rdl, char c);
+int				is_quote(t_quote *quote_list, char c);
 int				is_dollar(char c);
 int				is_option(char c);
 int				is_delimiter(t_delimiter *delimiter_list , char c);
 int				is_identifier(t_identifier *identifier_list, char *str);
-int				is_redir(t_rdl *rdl, char *str);
+int				is_redir(t_redir *redir_list, char *str);
 int				find_redir_id(t_redir *redir_list, char *str);
 int				is_next_redir(int k, char *str);
 int				is_next_pipe(int k, char *str);
 int				is_pipe(char c);
-t_keyword		find_keyword(t_rdl *rdl, char *str);
-int				find_keyword_id(t_rdl *rdl, char *str);
-t_operator		find_operator(t_rdl *rdl, char c);
+t_keyword		find_keyword(t_keyword *keyword_list, char *str);
+int				find_keyword_id(t_keyword *keyword_list, char *str);
+t_operator		find_operator(t_operator *operator_list, char c);
 t_quote			find_quote(t_quote *quote_list, char c);
 int				keyword_in_operator(t_rdl *rdl, int keyword_id, char operator);
 int				command_in_token_type(t_rdl *rdl, int command_id, int token_id);
