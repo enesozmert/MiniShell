@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/09 11:18:38 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/09 11:25:14 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ typedef struct s_token_type_prop
 	int		dq_flag;
 	int		space_flag;
 	int		dollar_flag;
+	int		redir_flag;
 	int		keyword_id;
 	char	*new_trim;
 	struct	s_token	*token;
