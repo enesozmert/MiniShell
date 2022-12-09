@@ -6,20 +6,20 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:17:22 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/11/30 15:17:42 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/09 13:41:47 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-int	is_delimiter(t_rdl *rdl, char c)
+int	is_delimiter(t_delimiter *delimiter_list , char c)
 {
 	int	i;
 
 	i = -1;
-	while (rdl->delimiter_list[++i].sybl != NULL)
+	while (delimiter_list[++i].sybl != NULL)
 	{
-		if (rdl->delimiter_list[i].sybl[0] == c)
+		if (delimiter_list[i].sybl[0] == c)
 			return (1);
 	}
 	return (0);

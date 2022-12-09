@@ -6,7 +6,23 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/12/09 13:55:44 by eozmert          ###   ########.fr       */
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*   Updated: 2022/12/09 13:46:26 by cyalniz          ###   ########.fr       */
+=======
+<<<<<<< HEAD
+/*   Updated: 2022/12/09 11:25:14 by eozmert          ###   ########.fr       */
+=======
+/*   Updated: 2022/12/09 11:29:36 by cyalniz          ###   ########.fr       */
+>>>>>>> 0ad9b735a00df7adafa6e15dca353eec71e477c8
+>>>>>>> 419e26cbaf1c976ee7e7ff6f2838ff78e4510d35
+=======
+/*   Updated: 2022/12/09 13:49:09 by eozmert          ###   ########.fr       */
+>>>>>>> 3ffa8934c34aef8c8a0cf02f7a94f2eb50ada992
+>>>>>>> ed314c60efe1c68190b0495548d0ca34ef0326b3
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -299,8 +315,8 @@ int				is_operator(t_operator *operator_list, char c);
 int				is_quote(t_rdl *rdl, char c);
 int				is_dollar(char c);
 int				is_option(char c);
-int				is_delimiter(t_rdl *rdl, char c);
-int				is_identifier(t_rdl *rdl, char *str);
+int				is_delimiter(t_delimiter *delimiter_list , char c);
+int				is_identifier(t_identifier *identifier_list, char *str);
 int				is_redir(t_rdl *rdl, char *str);
 int				find_redir_id(t_redir *redir_list, char *str);
 int				is_next_redir(int k, char *str);
