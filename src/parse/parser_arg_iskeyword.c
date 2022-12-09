@@ -13,7 +13,9 @@ void parser_arg_iskeyword(int *k, t_rdl *rdl)
 		parser_add_keyword(rdl, rdl->buffer);
 	else if	(is_keyword(rdl->keyword_list, rdl->buffer) == 0)
 	{
-		i = tmp_i;
+		parser_add_buffer(rdl, rdl->buffer, &i);
+		i--;
+		*k = i;
 		return ;
 	}
 	i--;
