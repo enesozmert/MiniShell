@@ -6,7 +6,7 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 12:42:39 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/11/30 12:43:11 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/09 10:53:40 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	char_pos(int *k, t_rdl *rdl)
 	int	i;
 
 	i = *k;
-	while (rdl->main_str[i] <= 32)
+	while (rdl->main_str[i] <= 32 && rdl->main_str[i] != '\0')
 		i++;
 	*k = i;
 }
