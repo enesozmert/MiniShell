@@ -56,8 +56,6 @@ int token_type_is_option(t_rdl *rdl)
 
 int token_type_is_pipe(t_rdl *rdl)
 {
-	if (rdl->token_type_prop->redir_flag == 1)
-		rdl->token_type_prop->redir_flag = 0;
 	if (rdl->token_type_prop->token->len == 1 &&
 		is_pipe(rdl->token_type_prop->token->context[0]))
 		return (1);
