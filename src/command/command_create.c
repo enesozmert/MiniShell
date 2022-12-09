@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_create.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:48:35 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/09 10:46:59 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/09 11:34:44 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int command_sub_type(t_rdl *rdl)
     if (is_token_type == 1)
     {
         if (rdl->token->type_id == 5)
-            rdl->command_list[command_id].token_sub_type_id = find_redir_id(rdl, rdl->token->context);
+            rdl->command_list[command_id].token_sub_type_id = find_redir_id(rdl->redir_list, rdl->token->context);
     }
     return (0);
 }
