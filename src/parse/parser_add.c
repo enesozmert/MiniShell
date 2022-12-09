@@ -40,7 +40,7 @@ void parser_add_operator(t_rdl *rdl, char c)
 	t_token token;
 	t_operator operator;
 
-	operator= find_operator(rdl, c);
+	operator= find_operator(rdl->operator_list, c);
 	token.context = ft_strdup(operator.sybl);
 	token.t_flag = 4;
 	rdl->token = token_add(rdl->token, token);
