@@ -98,7 +98,7 @@ int token_type_is_valid_identifier(t_rdl *rdl)
 		token_find_count(rdl->token, "=") > 0)
 		return (0);
 	if ((rdl->token_type_prop->token->len) > 0 &&
-		is_identifier(rdl, rdl->token_type_prop->token->context) &&
+		is_identifier(rdl->identifier_list, rdl->token_type_prop->token->context) &&
 		rdl->token_type_prop->keyword_id == 3)
 		return (1);
 	return (0);
@@ -113,7 +113,7 @@ int token_type_is_invalid_identifier(t_rdl *rdl)
 		token_find_count(rdl->token, "=") > 0)
 		return (0);
 	if ((rdl->token_type_prop->token->len) > 0 &&
-		is_identifier(rdl, rdl->token_type_prop->token->context) == 0 &&
+		is_identifier(rdl->identifier_list, rdl->token_type_prop->token->context) == 0 &&
 		rdl->token_type_prop->keyword_id == 3)
 		return (1);
 	return (0);
@@ -152,7 +152,7 @@ int token_type_is_value(t_rdl *rdl)
 
 int token_type_is_key(t_rdl *rdl)
 {
-	if (is_identifier(rdl, rdl->token_type_prop->token->context) == 0)
+	if (is_identifier(rdl->identifier_list, rdl->token_type_prop->token->context) == 0)
 	{
 		rdl->token_type_prop->dollar_flag = 0;
 		return (0);

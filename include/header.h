@@ -6,7 +6,7 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/09 11:29:36 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/09 13:46:26 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -298,8 +298,8 @@ int				is_operator(t_operator *operator_list, char c);
 int				is_quote(t_rdl *rdl, char c);
 int				is_dollar(char c);
 int				is_option(char c);
-int				is_delimiter(t_rdl *rdl, char c);
-int				is_identifier(t_rdl *rdl, char *str);
+int				is_delimiter(t_delimiter *delimiter_list , char c);
+int				is_identifier(t_identifier *identifier_list, char *str);
 int				is_redir(t_rdl *rdl, char *str);
 int				find_redir_id(t_redir *redir_list, char *str);
 int				is_next_redir(int k, char *str);
