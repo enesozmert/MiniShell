@@ -7,7 +7,7 @@ void parser_arg_quote(int *k, t_rdl *rdl)
 	i = *k;
 	parser_add_quote(rdl, rdl->main_str[i]);
 	parser_arg_is_quote(rdl->main_str[i], &i, rdl);
-	if (is_quote(rdl, rdl->main_str[i]))
+	if (is_quote(rdl->quote_list, rdl->main_str[i]))
 		parser_add_quote(rdl, rdl->main_str[i]);
 	*k = i;
 }

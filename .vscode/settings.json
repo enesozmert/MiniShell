@@ -41,6 +41,7 @@
         "stdlib.h": "c",
         "cassert": "c",
         "complex": "c",
-        "ostream": "c"
+        "ostream": "c",
+        "typeinfo": "c"
     }
 }

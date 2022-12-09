@@ -9,7 +9,7 @@ int token_type_is_keyword(t_rdl *rdl)
 	if (rdl->token_type_prop->token->t_flag == 0 && is_keyword(rdl, rdl->token_type_prop->new_trim))
 	{
 		rdl->token_type_prop->new_trim = to_lower_str(rdl->token_type_prop->new_trim);
-		rdl->token_type_prop->keyword_id = find_keyword_id(rdl, rdl->token_type_prop->new_trim);
+		rdl->token_type_prop->keyword_id = find_keyword_id(rdl->keyword_list, rdl->token_type_prop->new_trim);
 		return (1);
 	}
 	return (0);
@@ -35,7 +35,7 @@ int token_type_is_operator(t_rdl *rdl)
 int token_type_is_redir(t_rdl *rdl)
 {
 	if (rdl->token_type_prop->token->len < 3 &&
-		is_redir(rdl, rdl->token_type_prop->token->context))
+		is_redir(rdl->redir_list, rdl->token_type_prop->token->context))
 	{
 		rdl->token_type_prop->redir_flag = 1;
 		return (1);
@@ -66,7 +66,7 @@ int token_type_is_single_quote(t_rdl *rdl)
 {
 	if (rdl->token_type_prop->redir_flag == 1)
 		return (0);
-	if (is_quote(rdl, rdl->token_type_prop->token->context[0]) &&
+	if (is_quote(rdl->quote_list, rdl->token_type_prop->token->context[0]) &&
 		(rdl->token_type_prop->token->len) == 1 &&
 		rdl->token_type_prop->token->t_flag == 1)
 	{
@@ -81,7 +81,7 @@ int token_type_is_double_quote(t_rdl *rdl)
 {
 	if (rdl->token_type_prop->redir_flag == 1)
 		return (0);
-	if (is_quote(rdl, rdl->token_type_prop->token->context[0]) &&
+	if (is_quote(rdl->quote_list, rdl->token_type_prop->token->context[0]) &&
 		(rdl->token_type_prop->token->len) == 1 &&
 		rdl->token_type_prop->token->t_flag == 2)
 	{

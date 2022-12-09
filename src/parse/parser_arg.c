@@ -16,7 +16,7 @@ void parser_arg(t_rdl *rdl)
 			i--;
 			key_flag = 0;
 		}
-		else if (is_quote(rdl, rdl->main_str[i]))
+		else if (is_quote(rdl->quote_list, rdl->main_str[i]))
 			parser_arg_quote(&i, rdl);
 		else if (ft_isalnum(rdl->main_str[i]))
 			parser_arg_isnot(&i, rdl);
