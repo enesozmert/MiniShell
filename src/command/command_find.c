@@ -12,7 +12,7 @@ int command_find(t_rdl *rdl, int token_id)
         rdl->command_list[8].keyword = ft_strdup(token->context);
         return (8);
     }
-    else if (rdl->redir_prop->count > 0)
+    else if (rdl->redir_prop->count > 0 && is_keyword_exec(rdl->keyword_list, token->context))
     {
         rdl->command_list[9].keyword = ft_strdup(token->context);
         return (9);

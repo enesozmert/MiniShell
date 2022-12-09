@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:48:35 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/09 14:42:47 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/09 16:03:56 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,6 @@ int command(t_rdl *rdl)
         get_next_token(&rdl->token);
     }
     command_run(rdl->command_list);
-    if (rdl->pipe_prop->count > 0)
-        token_clear(&rdl->command_list[8].tokens);
-    if (rdl->redir_prop->count > 0)
-        token_clear(&rdl->command_list[9].tokens);
     return (0);
 }
 
@@ -74,7 +70,7 @@ int command_malloc(t_rdl *rdl)
     if (rdl->command_list[command_id].count == 0)
     {
         rdl->command_list[command_id].tmp_fd = dup(0);
-        rdl->command_list[command_id].file_fd = dup(0);
+        rdl->command_list[command_id].file_fd = rdl->command_list[9].file_fd;
     }
     rdl->command_list[command_id].count++;
     rdl->command_list[command_id].pipe_count = rdl->pipe_prop->count;
