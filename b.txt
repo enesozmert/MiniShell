@@ -1,8 +1,0 @@
-Makefile
-a.txt
-b.txt
-include
-libft
-minishell
-obj
-src

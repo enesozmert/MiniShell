@@ -24,7 +24,7 @@ int command_find(t_rdl *rdl, int token_id)
     }
     while (rdl->command_list[++i].keyword != NULL)
     {
-        if (ft_strncmp(rdl->command_list[i].keyword, token->context, ft_strlen(token->context)) == 0)
+        if (ft_strncmp(rdl->command_list[i].keyword, token->context, ft_strlen(token->context)) == 0 && rdl->pipe_prop->count <= 0 && rdl->redir_prop->count <= 0)
             return (i);
     }
     return (0);
