@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:22:50 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/10 15:10:26 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/10 17:29:34 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void routine(void)
 			pipe_handler(rdl);
 			if (rdl->pipe_prop->count == 0 && rdl->redir_prop->count <= 0)
 			{
-				printf("ok\n");
 				if (syntax(rdl) != -1)
 					command(rdl);
 			}

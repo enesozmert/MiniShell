@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:02:14 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/10 16:48:32 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/10 17:30:00 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,5 @@ int redir_out_exec(t_command command)
 		printf("file name2 : %s\n", file_name);
 		fd_file = redir_file_create(command, file_name);
 	}
-	printf("fd_file ONEMLI%d\n", fd_file);
 	return (fd_file);
 }
