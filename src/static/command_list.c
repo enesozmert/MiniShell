@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 16:31:36 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/09 13:44:34 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/10 11:00:08 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	command_list(t_command *command)
 	command[5] = (t_command){"builtin", "env", "", NULL, env_start, 0, 0, 0, 0, -1, 0, 1};
 	command[6] = (t_command){"builtin", "exit", "", NULL, exit_start, 0, 0, 0, 0, -1, 0, 1};
 	command[7] = (t_command){"exec", "none", "5,6,7,12,13", NULL, command_exec, 0, 0, 0, 0, -1, 0, 1};
-	command[8] = (t_command){"exec", "none", "5,6,7,12,13", NULL, pipe_exec, 0, 0, 0, 0, -1, 0, 1};
-	command[9] = (t_command){"exec", "none", "5,6,7,12,13", NULL, redir_exec, 0, 0, 0, 0, -1, 0, 1};
+	command[8] = (t_command){"exec", "none", "6,7,12,13", NULL, pipe_exec, 0, 0, 0, 0, -1, 0, 1};
+	command[9] = (t_command){"exec", "none", "5,12", NULL, redir_exec, 0, 0, 0, 0, -1, 0, 1};
 	command[10] = (t_command){NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, -1, 0, 1};
 }

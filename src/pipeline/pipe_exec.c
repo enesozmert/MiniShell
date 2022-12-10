@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 19:49:07 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/09 11:13:27 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/10 12:38:47 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,16 @@ static void pipe_fork_process(t_command command, int *fd)
 		ft_closepipes(fd);
 	}
 	else
-		dup2(0, command.tmp_fd);
+	{
+		printf("command.redir_count %d\n", command.redir_count);
+		if (command.redir_count == -1)
+		{
+			dup2(command.file_fd, command.tmp_fd);
+			close(command.file_fd);
+		}
+		else
+			dup2(0, command.tmp_fd);
+	}
 }
 
 int pipe_exec(t_command *command)
