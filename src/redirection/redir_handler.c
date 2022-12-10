@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:32:07 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/10 16:16:34 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/10 17:16:17 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void redir_handler(t_rdl *rdl)
         }
         if (syntax(rdl) != -1)
             command(rdl);
+        else
+            break;
     }
     // while (nproc-- > 0)
     //     waitpid(-1, 0, 0);
