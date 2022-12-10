@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 19:49:07 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/10 12:38:47 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/10 17:13:42 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,7 @@ static void pipe_fork_process(t_command command, int *fd)
 	}
 	else
 	{
-		printf("command.redir_count %d\n", command.redir_count);
-		if (command.redir_count == -1)
-		{
-			dup2(command.file_fd, command.tmp_fd);
-			close(command.file_fd);
-		}
-		else
-			dup2(0, command.tmp_fd);
+		dup2(0, command.tmp_fd);
 	}
 }
 
@@ -86,6 +79,7 @@ int pipe_exec(t_command *command)
 	char **type;
 
 	result = 0;
+	// printf("command keyword %s\n", command->keyword);
 	path = command_find_path(command->keyword);
 	type = create_type(*command, path);
 	pipe(fd);
@@ -95,12 +89,22 @@ int pipe_exec(t_command *command)
 		return (-1);
 	if (pid == 0)
 	{
+		// ft_putstr_fd("child\n", 1);
 		ft_openpipes(*command, fd);
 		ft_closepipes(fd);
 		result = execve(path, type, g_env.env);
 	}
 	else
+	{
+		// ft_putstr_fd("parent\n", 1);
 		pipe_fork_process(*command, fd);
+		if (command->redir_count == -1)
+		{
+			dup2(command->file_fd, STDOUT_FILENO);
+			close(command->file_fd);
+			dup2(0, command->file_fd);
+		}
+	}
 	if (result == -1)
 		return (1);
 	wait(&pid);

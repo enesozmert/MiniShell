@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:32:07 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/10 12:39:16 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/10 16:16:34 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,24 @@ void redir_handler(t_rdl *rdl)
     int i;
     int len;
     int count;
-    int nproc;
+    // int nproc;
     
     i = -1;
     count = rdl->redir_prop->count;
-    nproc = count + 1;
+    // nproc = count + 1;
     len = token_size(rdl->token);
     if (count < 1)
         return;
-    while (++i < count + 2)
+    if (rdl->pipe_prop->count > 0)
+        count = rdl->pipe_prop->count + rdl->redir_prop->count + 2;
+    else
+        count += 2;
+    while (++i < count)
     {
-		if (i == count + 1)
+		if (i == count - 1)
         {
+            rdl->pipe_prop->index = -1;
+            rdl->redir_prop->index = -1;
 			rdl->redir_prop->count = -1;
             return ;
         }
