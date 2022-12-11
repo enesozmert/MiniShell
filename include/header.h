@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/09 14:41:59 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/11 14:09:20 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,6 +226,7 @@ int				token_type_is_dollar(t_rdl *rdl);
 int				token_type_is_redir(t_rdl *rdl);
 int				token_type_is_option(t_rdl *rdl);
 int				token_type_is_pipe(t_rdl *rdl);
+int				token_type_is_unknown(t_rdl *rdl);
 void			token_add_keyword_id(t_rdl *rdl, t_token **token);
 int				token_find_count(t_token *token, char *context);
 //rd_line
