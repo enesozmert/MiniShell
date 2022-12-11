@@ -1,0 +1,16 @@
+total 692
+drwxrwxrwx 1 efyaz efyaz   4096 Dec 11 13:24 .
+drwxrwxrwx 1 efyaz efyaz   4096 Dec  7 16:14 ..
+-rwxrwxrwx 1 efyaz efyaz   8196 Dec 11 13:11 .DS_Store
+-rwxrwxrwx 1 efyaz efyaz  12288 Nov 21 22:12 .T.swp
+drwxrwxrwx 1 efyaz efyaz   4096 Dec 11 13:11 .git
+-rwxrwxrwx 1 efyaz efyaz      8 Sep 18 00:18 .gitignore
+drwxrwxrwx 1 efyaz efyaz   4096 Dec 11 13:11 .vscode
+-rwxrwxrwx 1 efyaz efyaz   5022 Dec 11 13:24 Makefile
+-rwxrwxrwx 1 efyaz efyaz      0 Dec 11 13:24 a.txt
+drwxrwxrwx 1 efyaz efyaz   4096 Dec 11 13:11 include
+drwxrwxrwx 1 efyaz efyaz   4096 Dec 11 13:19 libft
+-rwxrwxrwx 1 efyaz efyaz 672888 Dec 11 13:23 minishell
+drwxrwxrwx 1 efyaz efyaz   4096 Dec 11 13:22 obj
+drwxrwxrwx 1 efyaz efyaz   4096 Dec  7 16:12 src
+enes /home/efyaz
