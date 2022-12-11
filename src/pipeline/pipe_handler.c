@@ -3,14 +3,12 @@
 void pipe_handler(t_rdl *rdl)
 {
     int i;
-    int len;
     int count;
     int nproc;
 
     i = -1;
     count = rdl->pipe_prop->count;
     nproc = count + 1;
-    len = token_size(rdl->token);
     if (count < 1)
         return;
     while (++i < count + 1)
