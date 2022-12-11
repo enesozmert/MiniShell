@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_out.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:02:14 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/10 17:30:00 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/11 13:22:33 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int redir_out_exec(t_command command)
 		jump_token = 1;
 		take_token = command.redir_count + 1;
 	}
-	printf("jt %d tt %d cc %d\n", jump_token, take_token, command.count);
 	if (command.count < take_token && command.count > jump_token)
 	{
 		file_name = redir_file_name(command);
