@@ -6,7 +6,7 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 16:46:48 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/12 10:03:33 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/12 11:50:22 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 int	exit_start(t_command *command)
 {
+	(void)command;
 	exit(0);
 }

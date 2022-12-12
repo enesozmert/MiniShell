@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   command_run.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/12 11:20:30 by cyalniz           #+#    #+#             */
+/*   Updated: 2022/12/12 11:21:11 by cyalniz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/header.h"
 
-int command_run(t_command *command_list)
+int	command_run(t_command *command_list)
 {
-    int		i;
-	int		handle_code;
-	
+	int	i;
+	int	handle_code;
+
 	i = 0;
 	handle_code = 0;
 	while (command_list[i].keyword != NULL)
@@ -12,8 +24,8 @@ int command_run(t_command *command_list)
 		if (command_list[i].count > 0)
 			handle_code = command_list[i].f(&command_list[i]);
 		env_add("?", ft_itoa(handle_code));
-        if (handle_code == -1)
-            return (-1);
+		if (handle_code == -1)
+			return (-1);
 		i++;
 	}
 	command_clear(command_list);
