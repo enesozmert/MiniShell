@@ -1,14 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   echo_builtin.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/12 10:00:48 by cyalniz           #+#    #+#             */
+/*   Updated: 2022/12/12 10:01:42 by cyalniz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/header.h"
-static int echo_dollar(t_command command)
+
+static int	echo_dollar(t_command command)
 {
 	if (command.tokens->next->type_id != 10)
 		ft_putstr_fd(command.tokens->context, command.file_fd);
 	return (0);
 }
 
-static int echo_key(t_command command)
+static int	echo_key(t_command command)
 {
-	char *env_value;
+	char	*env_value;
 
 	env_value = env_find_value(command.tokens->context);
 	if (env_value != NULL)
@@ -16,16 +29,16 @@ static int echo_key(t_command command)
 	return (0);
 }
 
-static int echo_string(t_command command)
+static int	echo_string(t_command command)
 {
 	ft_putstr_fd(command.tokens->context, command.file_fd);
 	return (0);
 }
 
-int echo_start(t_command *command)
+int	echo_start(t_command *command)
 {
-	int i;
-	int size;
+	int	i;
+	int	size;
 
 	i = -1;
 	size = token_size(command->tokens);
@@ -42,9 +55,3 @@ int echo_start(t_command *command)
 	ft_putstr_fd("\n", command->file_fd);
 	return (0);
 }
-
-// key
-// value
-// end
-// exception
-// re

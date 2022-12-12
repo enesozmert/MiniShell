@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   exit_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 16:46:48 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/09 11:10:15 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/12 10:03:33 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-int exit_start(t_command *command)
+int	exit_start(t_command *command)
 {
-    (void)command;
-    exit(0);
+	exit(0);
 }

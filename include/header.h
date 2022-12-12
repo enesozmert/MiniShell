@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/11 14:09:20 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/12/12 10:41:58 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -343,7 +343,6 @@ int				env_init(char **env);
 int				env_len(char **env);
 int				env_exist(char *key);
 int				env_find_id(char *key);
-void			env_print(char **env);
 char			*env_find_value(char *key);
 int				env_add(char *key, char *value);
 int				env_update(char *key, char *value);

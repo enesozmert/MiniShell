@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   command_exec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 19:18:17 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/10 16:27:59 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/12 10:56:57 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-static int type_size(t_command command)
+static int	type_size(t_command command)
 {
-	int i;
-	int size;
-	int type_size;
+	int	i;
+	int	size;
+	int	type_size;
 
 	i = -1;
 	type_size = 0;
@@ -30,12 +30,12 @@ static int type_size(t_command command)
 	return (type_size);
 }
 
-static char **create_type(t_command command, char *path)
+static char	**create_type(t_command command, char *path)
 {
-	int i;
-	int j;
-	char *arg;
-	char **type;
+	int		i;
+	int		j;
+	char	*arg;
+	char	**type;
 
 	i = -1;
 	j = 1;
@@ -46,7 +46,8 @@ static char **create_type(t_command command, char *path)
 	{
 		if (command.tokens->type_id == 13 || command.tokens->type_id == 7)
 			arg = ft_strjoin(arg, command.tokens->context);
-		if (command.tokens->type_id == 12 || command.token_size - 1 == command.tokens->id)
+		if (command.tokens->type_id == 12
+			|| command.token_size - 1 == command.tokens->id)
 		{
 			type[j++] = ft_strdup(arg);
 			arg = ft_strdup("");
@@ -57,12 +58,12 @@ static char **create_type(t_command command, char *path)
 	return (type);
 }
 
-int command_exec(t_command *command)
+int	command_exec(t_command *command)
 {
-	pid_t pid;
-	int result;
-	char *path;
-	char **type;
+	pid_t	pid;
+	int		result;
+	char	*path;
+	char	**type;
 
 	result = 0;
 	path = command_find_path(command->keyword);
