@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 19:49:07 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/12 23:20:50 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/12 23:41:10 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ int pipe_exec(t_command *command)
 	char **type;
 
 	result = 0;
-	printf("command keyword %s\n", command->keyword);
 	path = command_find_path(command->keyword);
 	type = create_type(*command, path);
 	pipe(fd);

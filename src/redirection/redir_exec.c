@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:39:48 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/12 23:18:17 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/12 23:41:12 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int redir_exec(t_command *command)
 		if (command->count == command->redir_count + command->pipe_count + 1)
 			command->count = 0;
 	}
-	else if (command->token_type_pre_id == 5 && command->redir_count != -1)
+	else if (command->token_type_pre_id == 5)
 	{
 		if (command->count == 1)
 			return (0);

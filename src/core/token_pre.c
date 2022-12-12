@@ -3,15 +3,17 @@
 void	token_pre(t_rdl *rdl)
 {
 	int i;
+	t_token *token_cpy;
 
 	i = -1;
-	while (++i < token_size(rdl->token))
+	token_cpy = rdl->token;
+	while (token_cpy)
 	{
-		if (rdl->token->type_id == 5 || rdl->token->type_id == 6)
+		if (token_cpy->type_id == 5 || token_cpy->type_id == 6)
         {
-			rdl->token_type_pre_id = rdl->token->type_id;
+			rdl->token_type_pre_id = token_cpy->type_id;
             break ;
         }
-		get_next_token(&rdl->token);
+		token_cpy = token_cpy->next;
 	}
 }
