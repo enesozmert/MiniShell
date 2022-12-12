@@ -19,6 +19,7 @@ t_rdl *rdl_init(t_rdl *rdl)
 	rdl->redir_list = malloc(sizeof(t_redir) * 5);
 	rdl->quote_list = malloc(sizeof(t_quote) * 3);
 	rdl->quote_prop = malloc(sizeof(t_quote_prop) * 1);
+	rdl->token_type_pre_id = -1;
 	rdl->quote_prop->dq = 0;
 	rdl->quote_prop->sq = 0;
 	rdl->quote_prop->flag = 0;

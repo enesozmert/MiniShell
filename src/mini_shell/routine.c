@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:22:50 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/12 17:11:44 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/12 21:41:01 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void routine(void)
 		{
 			lexical_analizer(rdl);
 			parser(rdl);
+			token_pre(rdl);
 			redir_count(rdl);
 			pipe_count(rdl);
 			redir_handler(rdl);

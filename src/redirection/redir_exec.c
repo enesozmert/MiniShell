@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:39:48 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/12 17:43:49 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/12 23:18:17 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,30 @@ static int get_sub_type(t_command command)
 
 int redir_exec(t_command *command)
 {
-	// printf("command_count %d\n", command->count);
-	if (command->pipe_count > 0)
+	printf("pre : %d\n", command->token_type_pre_id);
+	if (command->token_type_pre_id == 6)
 	{
-		// printf("command->pipe_count %d\n", command->pipe_count);
 		if (command->count < command->pipe_count + 2)
-		{
-			// printf("pipe olarak atladı\n");
 			return (0);
-		}
-		if ((command->count > command->pipe_count + 1) && command->count != command->redir_count + command->pipe_count + 2)
+		if ((command->count > command->pipe_count + 1) &&
+			command->count != command->redir_count + command->pipe_count + 2)
 			command->file_fd = get_sub_type(*command);
 		if (command->count == command->redir_count + command->pipe_count + 1)
 			command->count = 0;
 	}
-	else if (command->pipe_count == 0)
+	else if (command->token_type_pre_id == 5 && command->redir_count != -1)
 	{
 		if (command->count == 1)
-		{
-			// printf("pipe olmadan atladı\n");
 			return (0);
-		}
+		if ((command->count > 1) && command->count != command->redir_count + 2)
+			command->file_fd = get_sub_type(*command);
+		if (command->count == command->redir_count + 1)
+			command->count = 0;
+	}
+	if (command->pipe_count == 0)
+	{
+		if (command->count == 1)
+			return (0);
 		if ((command->count > 1) && command->count != command->redir_count + 2)
 			command->file_fd = get_sub_type(*command);
 		if (command->count == command->redir_count + 1)

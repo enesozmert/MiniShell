@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/12 15:13:47 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/12 21:43:27 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ typedef struct s_rdl
 	int						*keywords_id;
 	char					*buffer;
 	char					*error_arg;
+	int						token_type_pre_id;
 	t_quote_prop			*quote_prop;
 	t_token_type_prop		*token_type_prop;
 	t_redir_prop			*redir_prop;
@@ -175,6 +176,7 @@ typedef struct s_command
 	int		redir_count;
 	int		token_size;
 	int		token_sub_type_id;
+	int		token_type_pre_id;
 	int		tmp_fd;
 	int		file_fd;
 }	t_command;
@@ -250,6 +252,7 @@ int				token_key_count(t_token *token);
 int				token_value_count(t_token *token);
 void			ft_free_dbl_str(char **str);
 char			*to_lower_str(char *str);
+void			token_pre(t_rdl *rdl);
 //history
 int				my_add_history(char *str);
 //parser

@@ -54,7 +54,7 @@ LEXICAL			=	lexical is_keyword is_operator is_quote is_dollar is_identifier is_d
 					 
 CORE			=	white_space count_char quote_count count_matris char_replace free_double_str \
 					char_pos keyword_trim keyword_trim_len token_arg_count to_lower_str \
-					token_key_count token_value_count
+					token_key_count token_value_count token_pre
 EXCEPTION   	=	exception_handler exception_write
 COMMAND			=	command_create command_run command_find command_exec command_find_path \
 					command_clear command_fork command 

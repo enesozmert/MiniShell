@@ -1,1 +1,10 @@
-/Users/eozmert/Desktop/MiniShell
+Makefile
+a.txt
+b.txt
+deneme.txt
+include
+libft
+minishell
+obj
+src
+wc.txt
