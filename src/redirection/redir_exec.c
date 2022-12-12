@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:39:48 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/10 17:30:06 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/12 17:43:49 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@ static int get_sub_type(t_command command)
 	int fd_file;
 
 	fd_file = 0;
-	if (command.token_sub_type_id == 2)
-		redir_in_exec(command);
 	if (command.token_sub_type_id == 0)
 		fd_file = redir_out_exec(command);
 	if (command.token_sub_type_id == 1)
 		fd_file = redir_here_out_exec(command);
+	if (command.token_sub_type_id == 2)
+		fd_file = redir_in_exec(command);
+	if (command.token_sub_type_id == 3)
+		fd_file = redir_here_in_exec(command);
 	return (fd_file);
 }
 

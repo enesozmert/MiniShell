@@ -42,6 +42,7 @@
         "cassert": "c",
         "complex": "c",
         "ostream": "c",
-        "typeinfo": "c"
+        "typeinfo": "c",
+        "cstdint": "c"
     }
 }

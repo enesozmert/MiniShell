@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd_builtin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:32:33 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/12 11:50:07 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/12 16:41:56 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ static int	cd_arg(t_command command)
 	char	*new_dir;
 
 	new_dir = malloc(sizeof(char));
+	if (command.tokens->type_id == 12)
+		ft_bzero(new_dir, ft_strlen(new_dir));
 	if (ft_strncmp(command.tokens->context, "~",
 			ft_strlen(command.tokens->context)) == 0)
 	{
@@ -68,7 +70,7 @@ int	cd_start(t_command *command)
 	{
 		if (command->tokens->type_id == 10)
 			error = cd_key(*command);
-		if (command->tokens->type_id == 13)
+		if (command->tokens->type_id == 13 || command->tokens->type_id == 12)
 			error = cd_arg(*command);
 		get_next_token(&command->tokens);
 	}
