@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_exec.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 19:18:17 by eozmert           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/12/12 15:03:20 by cyalniz          ###   ########.fr       */
-=======
-/*   Updated: 2022/12/12 17:51:23 by eozmert          ###   ########.fr       */
->>>>>>> cce4020b91c435763e22d44f55df6b77edf9ac41
+/*   Updated: 2022/12/12 17:55:23 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,22 +57,7 @@ static char **create_type(t_command command, char *path)
 	return (type);
 }
 
-<<<<<<< HEAD
-static int	command_dup_close(t_command *command, char *path, char **type)
-{
-	int	result;
-
-	result = 0;
-	dup2(command->file_fd, STDOUT_FILENO);
-	close(command->file_fd);
-	result = execve(path, type, g_env.env);
-	return (result);
-}
-
-int	command_exec(t_command *command)
-=======
 int command_exec(t_command *command)
->>>>>>> cce4020b91c435763e22d44f55df6b77edf9ac41
 {
 	pid_t pid;
 	int result;
@@ -91,9 +72,6 @@ int command_exec(t_command *command)
 	if (pid == 0)
 	{
 		if (command->redir_count == -1)
-<<<<<<< HEAD
-			result = command_dup_close(command, path, type);
-=======
 		{
 			if (command->token_sub_type_id == 0 || command->token_sub_type_id == 1)
 			{
@@ -108,7 +86,6 @@ int command_exec(t_command *command)
 				result = execve(path, type, g_env.env);
 			}
 		}
->>>>>>> cce4020b91c435763e22d44f55df6b77edf9ac41
 		result = execve(path, type, g_env.env);
 		if (result == -1)
 			return (1);

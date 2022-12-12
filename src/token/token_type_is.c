@@ -50,7 +50,7 @@ int token_type_is_option(t_rdl *rdl)
 		return (0);
 	if (rdl->token_type_prop->token->len == 1 &&
 		is_option(rdl->token_type_prop->token->context[0]) &&
-		rdl->token_type_prop->keyword_id > 7)
+		rdl->token_type_prop->keyword_id == 0)
 		return (1);
 	return (0);
 }
@@ -182,8 +182,7 @@ int token_type_is_key(t_rdl *rdl)
 	if (is_identifier(rdl->identifier_list, rdl->token_type_prop->token->context) == 0)
 		if (rdl->token_type_prop->redir_flag == 1)
 			return (0);
-	if (is_identifier(rdl->identifier_list, rdl->token_type_prop->token->context) == 0 
-		&& rdl->token_type_prop->token->context[0] != '?')
+	if (is_identifier(rdl->identifier_list, rdl->token_type_prop->token->context) == 0 && rdl->token_type_prop->token->context[0] != '?')
 	{
 		rdl->token_type_prop->dollar_flag = 0;
 		return (0);

@@ -29,6 +29,7 @@ t_rdl *rdl_init(t_rdl *rdl)
 	rdl->token_type_prop->dollar_flag = 0;
 	rdl->token_type_prop->redir_flag = 0;
 	rdl->token_type_prop->space_flag = 0;
+	rdl->token_type_prop->redir_flag = 0;
 	rdl->token_type_prop->new_trim = NULL;
 	rdl->redir_prop = malloc(sizeof(t_redir_prop) * 1);
 	rdl->redir_prop->input_count = 0;
