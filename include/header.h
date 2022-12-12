@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/12 10:41:58 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/12 15:13:47 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -358,6 +358,7 @@ void			identifier_list(t_identifier *identifier);
 //signal
 void			set_signal(int signo);
 void			proc_signal_handler(int signo);
+void			interrupt_here_document(int signo);
 //redirection
 void			redir_list(t_redir *redir);
 void 			redir_handler(t_rdl *rdl);

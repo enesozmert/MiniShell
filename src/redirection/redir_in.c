@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:03:29 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/09 14:11:28 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/12 17:41:36 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 int redir_in_exec(t_command command)
 {
-    (void)command;
-    return (0);
+    int fd_file;
+
+    fd_file = redir_out_exec(command);
+    printf("file_fd %d\n", fd_file);
+    return (fd_file);
 }

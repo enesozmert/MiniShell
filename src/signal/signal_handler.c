@@ -1,18 +1,5 @@
 #include "../../include/header.h"
 
-// typedef struct s_signal
-// {
-// 	int sig;
-// 	int (*f)(t_signal *);
-// } t_signal;
-
-// static void	signal_list(t_signal *signo)
-// {
-// 	signo[0] = (t_signal){2, f_sig_int};
-// 	signo[1] = (t_signal){3, f_sig_quit};
-// 	signo[2] = (t_signal){-1, NULL};
-// }
-
 void proc_signal_handler(int signo)
 {
 	if (signo == SIGINT)
@@ -23,6 +10,13 @@ void proc_signal_handler(int signo)
 		// rl_redisplay();
 		signal(SIGINT, proc_signal_handler);
 	}
+}
+
+void	interrupt_here_document(int signo)
+{
+	(void)signo;
+	write(1, "\n", 1);
+	exit(130);
 }
 
 void set_signal(int signo)
