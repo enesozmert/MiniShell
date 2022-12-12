@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   env_exist.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/12 15:54:32 by cyalniz           #+#    #+#             */
+/*   Updated: 2022/12/12 15:54:46 by cyalniz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/header.h"
 
-int env_exist(char *key)
+int	env_exist(char *key)
 {
-    if (env_find_id(key) == -1)
-        return (0);
-    return (1);
+	if (env_find_id(key) == -1)
+		return (0);
+	return (1);
 }

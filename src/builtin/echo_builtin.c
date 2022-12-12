@@ -6,7 +6,7 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:00:48 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/12 10:01:42 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/12 21:10:02 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ static int	echo_key(t_command command)
 	return (0);
 }
 
-static int	echo_string(t_command command)
+static int	echo_string(t_command command, int n_flag)
 {
+	if (n_flag == 1 && command.tokens->context[0] == 'n')
+	return (0);
 	ft_putstr_fd(command.tokens->context, command.file_fd);
 	return (0);
 }
@@ -39,19 +41,26 @@ int	echo_start(t_command *command)
 {
 	int	i;
 	int	size;
-
+	int	n_flag;
+	
 	i = -1;
 	size = token_size(command->tokens);
+	n_flag = 0;
 	while (++i < size)
 	{
 		if (command->tokens->type_id == 3)
 			echo_dollar(*command);
+		if (command->tokens->type_id == 7)
+			n_flag = 1;
 		if (command->tokens->type_id == 10)
 			echo_key(*command);
 		if (command->tokens->type_id == 12)
-			echo_string(*command);
+			echo_string(*command, n_flag);
+		if (n_flag == 1 && command->tokens->context[0] == 'n')
+			get_next_token(&command->tokens);
 		get_next_token(&command->tokens);
 	}
-	ft_putstr_fd("\n", command->file_fd);
+	if (n_flag == 0)
+		ft_putstr_fd("\n", command->file_fd);
 	return (0);
 }

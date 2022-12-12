@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/04 15:08:38 by eozmert           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/12/12 21:43:27 by eozmert          ###   ########.fr       */
+=======
+/*   Updated: 2022/12/12 20:35:12 by cyalniz          ###   ########.fr       */
+>>>>>>> 06bb02d02c69ad0680e9da1750e5c4df830037a6
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +99,7 @@ typedef struct s_token_type_prop
 	int		space_flag;
 	int		dollar_flag;
 	int		redir_flag;
+	int		option_flag;
 	int		keyword_id;
 	char	*new_trim;
 	struct	s_token	*token;
