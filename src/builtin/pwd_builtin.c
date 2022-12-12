@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pwd_builtin.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/12 14:47:30 by cyalniz           #+#    #+#             */
+/*   Updated: 2022/12/12 14:48:24 by cyalniz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/header.h"
 
-int pwd_start(t_command *command)
+int	pwd_start(t_command *command)
 {
-	(void)command;
-    char	*cwd;
+	char	*cwd;
 
 	cwd = getcwd(NULL, 0);
 	if (cwd == NULL)

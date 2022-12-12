@@ -6,7 +6,7 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 19:18:17 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/12 10:56:57 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/12 15:03:20 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,17 @@ static char	**create_type(t_command command, char *path)
 	return (type);
 }
 
+static int	command_dup_close(t_command *command, char *path, char **type)
+{
+	int	result;
+
+	result = 0;
+	dup2(command->file_fd, STDOUT_FILENO);
+	close(command->file_fd);
+	result = execve(path, type, g_env.env);
+	return (result);
+}
+
 int	command_exec(t_command *command)
 {
 	pid_t	pid;
@@ -73,11 +84,7 @@ int	command_exec(t_command *command)
 	if (pid == 0)
 	{
 		if (command->redir_count == -1)
-		{
-			dup2(command->file_fd, STDOUT_FILENO);
-			close(command->file_fd);
-			result = execve(path, type, g_env.env);
-		}
+			result = command_dup_close(command, path, type);
 		result = execve(path, type, g_env.env);
 		if (result == -1)
 			return (1);
