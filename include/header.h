@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 23:29:03 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/12 23:29:06 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/13 10:29:41 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,7 @@ typedef struct s_command
 typedef	struct s_env
 {
 	char	**env;
+	int		exit_status;
 }	t_env;
 
 t_env g_env;

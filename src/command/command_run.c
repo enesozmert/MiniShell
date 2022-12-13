@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_run.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:20:30 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/12 11:21:11 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/13 10:32:59 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	command_run(t_command *command_list)
 	{
 		if (command_list[i].count > 0)
 			handle_code = command_list[i].f(&command_list[i]);
-		env_add("?", ft_itoa(handle_code));
+		g_env.exit_status = handle_code;
 		if (handle_code == -1)
 			return (-1);
 		i++;

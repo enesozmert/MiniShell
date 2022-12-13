@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exception_handler.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:52:59 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/11/30 17:51:38 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/13 10:32:17 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,8 @@ int	exception_handler(t_rdl *rdl)
 		handle_code = exception[i].f(rdl);
 		if (handle_code == exception[i].error_code)
 		{
-			env_add("?", exception[i].exit_status);
+			g_env.exit_status = ft_atoi(exception[i].exit_status);
 			exception_write(rdl, exception[i].message);
-			// rl_replace_line("", 1);
-			// rl_on_new_line();
 			return (-1);
 		}
 		i++;
