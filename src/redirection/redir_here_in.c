@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_here_in.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:04:17 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/12 17:44:48 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/13 22:43:22 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,9 @@ static int redir_here_in_file(t_command command)
 static void redir_here_in_input(t_command command)
 {
 	printf("redir_here_in_exec\n");
-	int i;
 	char *end;
 	char *input;
 
-	i = -1;
 	input = NULL;
 	end = redir_file_name(command);
 	while (1)

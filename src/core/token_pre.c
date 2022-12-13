@@ -2,10 +2,8 @@
 
 void	token_pre(t_rdl *rdl)
 {
-	int i;
 	t_token *token_cpy;
 
-	i = -1;
 	token_cpy = rdl->token;
 	while (token_cpy)
 	{
