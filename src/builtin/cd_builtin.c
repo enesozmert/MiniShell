@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd_builtin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:32:33 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/12 16:41:56 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/13 23:09:29 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static int	cd_arg(t_command command)
 		return (0);
 	}
 	new_dir = ft_strjoin(new_dir, command.tokens->context);
+	printf("new_dir : %s\n", new_dir);
 	if (chdir(new_dir) == -1)
 		return (205);
 	getcwd(new_dir, sizeof(new_dir));

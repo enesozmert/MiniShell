@@ -237,7 +237,8 @@ int token_type_is_string(t_rdl *rdl)
 
 int token_type_is_unknown(t_rdl *rdl)
 {
-	if (rdl->token->type_id == -1)
-		return (1);
+	(void)rdl;
+	// if (rdl->token->type_id == -1)
+	// 	return (1);
 	return (0);
 }

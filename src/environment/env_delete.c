@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_delete.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:53:08 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/12 15:54:23 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/13 23:17:53 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	env_delete(char *key)
 
 	i = -1;
 	j = 0;
+	new_env = NULL;
 	count = env_len(g_env.env);
 	del_env_id = env_find_id(key);
 	if (env_exist(key) == 1)
@@ -32,7 +33,6 @@ int	env_delete(char *key)
 			if (del_env_id != i)
 				new_env[j++] = g_env.env[i];
 		}
-		new_env[i + 1] = NULL;
 		g_env.env = new_env;
 	}
 	return (0);

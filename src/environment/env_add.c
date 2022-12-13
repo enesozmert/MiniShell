@@ -6,7 +6,7 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:40:42 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/13 22:50:51 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/12/13 23:18:23 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,11 @@ int	env_add(char *key, char *value)
 	count = env_len(g_env.env);
 	if (env_exist(key) == 0)
 	{
-		new_env = (char **)malloc(sizeof(char *) * (count) + 2);
+		new_env = (char **)malloc(sizeof(char *) * (count) + 1);
 		while (g_env.env[++i])
 			new_env[i] = g_env.env[i];
 		new_env[i] = ft_strjoin(key, "=");
 		new_env[i] = ft_strjoin(new_env[i], value);
-		new_env[i + 1] = NULL;
 		g_env.env = new_env;
 	}
 	else
