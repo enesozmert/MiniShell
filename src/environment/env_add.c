@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_add.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:40:42 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/13 14:44:00 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/13 22:50:51 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	env_add(char *key, char *value)
 {
-	printf("enes\n");
 	int		i;
 	int		count;
 	char	**new_env;
