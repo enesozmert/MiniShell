@@ -1,47 +1,47 @@
-Process:         minishell [15346]
+Process:         minishell [19437]
 Path:            /Volumes/VOLUME/*/minishell
-Load Address:    0x100f04000
+Load Address:    0x106858000
 Identifier:      minishell
 Version:         ???
 Code Type:       X86-64
 Parent Process:  zsh [4565]
 
-Date/Time:       2022-12-13 14:49:36.946 +0300
-Launch Time:     2022-12-13 14:49:35.406 +0300
+Date/Time:       2022-12-13 15:09:27.375 +0300
+Launch Time:     2022-12-13 15:09:25.947 +0300
 OS Version:      Mac OS X 10.15.7 (19H15)
 Report Version:  7
 Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
 Analysis Tool Version:  Xcode 12.3 (12C33)
 
-Physical footprint:         712K
-Physical footprint (peak):  712K
+Physical footprint:         700K
+Physical footprint (peak):  700K
 ----
 
 leaks Report Version: 4.0
-Process 15346: 441 nodes malloced for 335 KB
-Process 15346: 16 leaks for 608 total leaked bytes.
+Process 19437: 441 nodes malloced for 335 KB
+Process 19437: 16 leaks for 608 total leaked bytes.
 
     16 (608 bytes) << TOTAL >>
 
-      3 (192 bytes) ROOT LEAK: 0x7f81e0e04870 [32]
-         1 (144 bytes) 0x7f81e0e048a0 [144]  length: 133  "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Users/eozmert/goinf..."
-         1 (16 bytes) 0x7f81e0e04890 [16]  length: 4  "USER"
+      3 (192 bytes) ROOT LEAK: 0x7f9a2ec07b20 [32]
+         1 (144 bytes) 0x7f9a2ec07b50 [144]  length: 133  "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Users/eozmert/goinf..."
+         1 (16 bytes) 0x7f9a2ec07b40 [16]  length: 4  "USER"
 
-      2 (176 bytes) ROOT LEAK: 0x7f81e0e049a0 [32]
-         1 (144 bytes) 0x7f81e0e049d0 [144]  length: 133  "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Users/eozmert/goinf..."
+      2 (176 bytes) ROOT LEAK: 0x7f9a2ec07c50 [32]
+         1 (144 bytes) 0x7f9a2ec07c80 [144]  length: 133  "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Users/eozmert/goinf..."
 
-      3 (64 bytes) ROOT LEAK: 0x7f81e0e047f0 [32]
-         1 (16 bytes) 0x7f81e0e04810 [16]  length: 4  "USER"
-         1 (16 bytes) 0x7f81e0e04820 [16]  length: 7  "eozmert"
+      3 (64 bytes) ROOT LEAK: 0x7f9a2ec07aa0 [32]
+         1 (16 bytes) 0x7f9a2ec07ac0 [16]  length: 4  "USER"
+         1 (16 bytes) 0x7f9a2ec07ad0 [16]  length: 7  "eozmert"
 
-      3 (64 bytes) ROOT LEAK: 0x7f81e0e04830 [32]
-         1 (16 bytes) 0x7f81e0e04850 [16]  length: 14  "MallocNanoZone"
-         1 (16 bytes) 0x7f81e0e04860 [16]  length: 1  "0"
+      3 (64 bytes) ROOT LEAK: 0x7f9a2ec07ae0 [32]
+         1 (16 bytes) 0x7f9a2ec07b00 [16]  length: 14  "MallocNanoZone"
+         1 (16 bytes) 0x7f9a2ec07b10 [16]  length: 1  "0"
 
-      3 (64 bytes) ROOT LEAK: 0x7f81e0e04960 [32]
-         1 (16 bytes) 0x7f81e0e04980 [16]  length: 14  "MallocNanoZone"
-         1 (16 bytes) 0x7f81e0e04990 [16]  length: 1  "0"
+      3 (64 bytes) ROOT LEAK: 0x7f9a2ec07c10 [32]
+         1 (16 bytes) 0x7f9a2ec07c30 [16]  length: 14  "MallocNanoZone"
+         1 (16 bytes) 0x7f9a2ec07c40 [16]  length: 1  "0"
 
-      2 (48 bytes) ROOT LEAK: 0x7f81e0e04930 [32]
-         1 (16 bytes) 0x7f81e0e04950 [16]  length: 7  "eozmert"
+      2 (48 bytes) ROOT LEAK: 0x7f9a2ec07be0 [32]
+         1 (16 bytes) 0x7f9a2ec07c00 [16]  length: 7  "eozmert"
 
