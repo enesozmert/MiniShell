@@ -114,7 +114,6 @@ void parser_add_keyword(t_rdl *rdl, char *buffer)
 		rdl->token = token_add(rdl->token, token);
 		free(buffer);
 		rdl->buffer = malloc(sizeof(char) * rdl->len);
-		// ft_bzero(buffer, ft_strlen(buffer));
 	}
 	free(token.context);
 	free(keyword);
@@ -130,5 +129,4 @@ void parser_add(t_rdl *rdl, char *buffer)
 	free(buffer);
 	rdl->buffer = malloc(sizeof(char) * rdl->len);
 	free(token.context);
-	// ft_bzero(buffer, ft_strlen(buffer));
 }

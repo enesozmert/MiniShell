@@ -8,7 +8,7 @@ void parser_arg(t_rdl *rdl)
 	i = 0;
 	key_flag = 0;
 	parser_arg_iskeyword(&i, rdl);
-	while (i < rdl->len && rdl->main_str[i] != '\0')
+	while (i < rdl->len)
 	{
 		if (key_flag == 1)
 		{
