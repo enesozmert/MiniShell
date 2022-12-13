@@ -27,10 +27,7 @@ void parser_arg(t_rdl *rdl)
 		else if (is_option(rdl->main_str[i]) && rdl->main_str[i - 1] > 32 && rdl->main_str[i + 1] > 32)
 			parser_add_option(rdl, rdl->main_str[i]);
 		else if ((rdl->main_str[i] == '>') || (rdl->main_str[i] == '<'))
-		{
 			parser_arg_redir(&i, rdl);
-			// key_flag = 1;
-		}
 		else if (is_pipe(rdl->main_str[i]) && is_pipe(rdl->main_str[i + 1]) == 0)
 		{
 			parser_arg_pipe(&i, rdl);

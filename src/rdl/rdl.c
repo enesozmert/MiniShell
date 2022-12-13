@@ -57,8 +57,6 @@ void rdl_clear(t_rdl *rdl)
 	free(rdl->token);
 	free(rdl->quote_prop);
 	free(rdl->token_type_prop);
-	free(rdl->redir_prop);
-	free(rdl->pipe_prop);
 	// free(rdl->error_arg);
 	// if (rdl != NULL)
 	// 	free(rdl);
