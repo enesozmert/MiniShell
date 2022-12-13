@@ -8,3 +8,7 @@ minishell
 obj
 src
 wc.txt
+extension
+selam
+selam1
+selam2

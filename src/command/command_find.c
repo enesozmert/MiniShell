@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_find.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:16:34 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/12 11:20:20 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/13 21:29:06 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,8 @@ static int	keyword_not_null(t_rdl *rdl, t_token *token)
 
 int	command_find(t_rdl *rdl, int token_id)
 {
-	int		i;
 	t_token	*token;
 
-	i = -1;
 	token = get_token_id(rdl->token, token_id);
 	if (rdl->redir_prop->count > 0)
 	{

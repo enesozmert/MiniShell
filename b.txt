@@ -1,1 +1,14 @@
-enes
+Makefile
+a.txt
+b.txt
+deneme.txt
+include
+libft
+minishell
+obj
+src
+wc.txt
+extension
+selam
+selam1
+selam2
