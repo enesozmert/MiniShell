@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   keyword_trim.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:04:53 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/12 15:40:15 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/13 11:02:08 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-void	str_to_dest(char *str, char *dest, int *k, int *l)
+static void	str_to_dest(char *str, char *dest, int *k, int *l)
 {
 	int		i;
 	int		j;
@@ -28,7 +28,7 @@ void	str_to_dest(char *str, char *dest, int *k, int *l)
 	*l = j;
 }
 
-char	*keyword_trim_dest(char *str, char *dest, int i, int j)
+static char	*keyword_trim_dest(char *str, char *dest, int i, int j)
 {
 	while (str[i])
 	{
@@ -60,13 +60,12 @@ char	*keyword_trim(char *str)
 	int		i;
 	int		j;
 	int		len;
-	char	*tmp;
 	char	*dest;
 
 	i = 0;
 	j = 0;
 	len = keyword_trim_len(str);
-	tmp = malloc(sizeof(char ) * len);
-	dest = keyword_trim_dest(str, tmp, i, j);
+	dest = malloc(sizeof(char) * len);
+	dest = keyword_trim_dest(str, dest, i, j);
 	return (dest);
 }

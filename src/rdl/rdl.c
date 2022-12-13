@@ -46,6 +46,7 @@ t_rdl *rdl_init(t_rdl *rdl)
 void rdl_clear(t_rdl *rdl)
 {
 	free(rdl->keyword_list);
+	free(rdl->keyword_list);
 	free(rdl->command_list);
 	free(rdl->operator_list);
 	free(rdl->delimiter_list);
@@ -57,6 +58,8 @@ void rdl_clear(t_rdl *rdl)
 	free(rdl->token);
 	free(rdl->quote_prop);
 	free(rdl->token_type_prop);
+	free(rdl->redir_prop);
+	free(rdl->pipe_prop);
 	// free(rdl->error_arg);
 	// if (rdl != NULL)
 	// 	free(rdl);

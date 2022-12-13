@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_double_str.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 14:48:24 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/11/30 13:06:19 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/13 11:11:41 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,4 @@ void	ft_free_dbl_str(char **str)
 	while (str[++i])
 		free(str[i]);
 	free(str);
-	str = NULL;
 }

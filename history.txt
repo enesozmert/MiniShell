@@ -1,0 +1,16 @@
+ 1082  make
+ 1083  ./minishell
+ 1084  make
+ 1085  make
+ 1086  make
+ 1087  ./minishell
+ 1088  make
+ 1089  ./minishell
+ 1090  make
+ 1091  ./minishell
+ 1092  make
+ 1093  make
+ 1094  ./minishell
+ 1095  make
+ 1096  ./minishell
+ 1097  history

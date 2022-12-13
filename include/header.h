@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 23:29:03 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/13 10:29:41 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/13 12:21:40 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_token
 	int				len;
 	int				type_id;
 	char			*context;
-	char			*type;
+	// char			*type;
 	int				t_flag;
 	int				keyword_id;
 	struct s_token	*next;

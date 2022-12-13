@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyword_trim_len.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 10:44:35 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/12 12:12:21 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/13 11:29:49 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ int	keyword_trim_len(char *str)
 		if (flag == 0)
 			i++;
 	}
+	free(str);
 	return (j);
 }

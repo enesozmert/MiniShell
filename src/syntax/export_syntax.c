@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_syntax.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:56:46 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/12 16:30:06 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/13 12:24:49 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,12 @@ int	export_syntax(t_rdl *rdl)
 	if (ft_strncmp(rdl->token->context, "export",
 			rdl->token->len) == 0)
 		return (0);
-	if (ft_strncmp(rdl->token->type, "invalid_identifier",
-			ft_strlen(rdl->token->type)) == 0)
+	if (rdl->token->type_id == 9)
 	{
 		error_arg = ft_strjoin("`", rdl->token->context);
 		error_arg = ft_strjoin(error_arg, "'");
 		rdl->error_arg = ft_strdup(error_arg);
 		return (104);
 	}
-/* 	if (rdl->token->type_id == 12)
-	{
-		error_arg = ft_strjoin("`", rdl->token->context);
-		error_arg = ft_strjoin(error_arg, "'");
-		rdl->error_arg = ft_strdup(error_arg);
-		return (104);
-	} */
 	return (0);
 }

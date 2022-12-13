@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_key_count.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 20:52:00 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/11/30 13:12:13 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/13 12:26:15 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ int	token_key_count(t_token *token)
 	tkn_cpy = token;
 	while (++i < token_size(token))
 	{
-		if (tkn_cpy->type
-			&& ft_strncmp(tkn_cpy->type, "key", ft_strlen(tkn_cpy->type)) == 0)
+		if (tkn_cpy->type_id == 10)
 			count++;
 		tkn_cpy = tkn_cpy->next;
 	}

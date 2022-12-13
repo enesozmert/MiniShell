@@ -1,1 +1,60 @@
-      10      10      71
+[?2004h->eed
+[?2004l0 	token->id eed 	token->type->context string 			token->type->id 12 		token->t_flag -1 		token->keyword_id 0
+-------------------
+-------------------
+bash: eed: command not found
+[?2004h->
+[?2004l[?2004h->d
+[?2004l0 	token->id d 	token->type->context string 			token->type->id 12 		token->t_flag -1 		token->keyword_id 0
+-------------------
+-------------------
+bash: d: command not found
+[?2004h->d
+[?2004l0 	token->id d 	token->type->context string 			token->type->id 12 		token->t_flag -1 		token->keyword_id 0
+-------------------
+-------------------
+bash: d: command not found
+[?2004h->
+[?2004l[?2004h->
+[?2004l[?2004h->
+[?2004l[?2004h->
+[?2004l[?2004h->^C[?2004l
+->[?2004h
+[?2004l[?2004h->^C[?2004l
+->[?2004h
+[?2004l[?2004h->
+[?2004l[?2004h->
+[?2004l[?2004h->ewiew
+[?2004l0 	token->id ewiew 	token->type->context string 			token->type->id 12 		token->t_flag -1 		token->keyword_id 0
+-------------------
+-------------------
+bash: ewiew: command not found
+[?2004h->
+[?2004l[?2004h->
+[?2004l[?2004h->
+[?2004l[?2004h->
+[?2004l[?2004h->
+[?2004l[?2004h->jewurweojafkpğegrlpü
+[?2004l0 	token->id jewurweojafkp 	token->type->context string 			token->type->id 12 		token->t_flag -1 		token->keyword_id 0
+-------------------
+-------------------
+bash: jewurweojafkp: command not found
+[?2004h->
+[?2004l[?2004h->
+[?2004l[?2004h->
+[?2004l[?2004h->
+[?2004l[?2004h->
+[?2004l[?2004h->
+[?2004l[?2004h->
+[?2004l[?2004h->^C[?2004l
+->[?2004h^C[?2004l
+->[?2004h^Z[?2004l[?2004h[C[C^C[?2004l
+->[?2004h^Z[?2004l[?2004h^Z[?2004l[?2004h^Z[?2004l[?2004h
+[?2004l[?2004h->^Z[?2004l[?2004h^Z[?2004l[?2004h^Z[?2004l[?2004h
+[?2004l[?2004h->
+[?2004l[?2004h->^C[?2004l
+->[?2004h
+[?2004l[?2004h->^C[?2004l
+->[?2004h
+[?2004l[?2004h->
+[?2004l[?2004h->[?2004l
