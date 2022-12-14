@@ -1,1 +1,19 @@
-     11      11      92
+total 716
+drwxrwxrwx 1 efyaz efyaz   4096 Dec 15 00:15 .
+drwxrwxrwx 1 efyaz efyaz   4096 Dec 13 21:20 ..
+-rwxrwxrwx 1 efyaz efyaz   8196 Dec 13 21:20 .DS_Store
+-rwxrwxrwx 1 efyaz efyaz  12288 Dec 13 21:20 .T.swp
+drwxrwxrwx 1 efyaz efyaz   4096 Dec 15 00:15 .git
+-rwxrwxrwx 1 efyaz efyaz      8 Dec 13 21:20 .gitignore
+drwxrwxrwx 1 efyaz efyaz   4096 Dec 14 14:54 .vscode
+-rwxrwxrwx 1 efyaz efyaz   5071 Dec 15 00:14 Makefile
+-rwxrwxrwx 1 efyaz efyaz      0 Dec 15 00:15 a.txt
+-rwxrwxrwx 1 efyaz efyaz     71 Dec 13 22:14 deneme.txt
+drwxrwxrwx 1 efyaz efyaz   4096 Dec 14 23:25 include
+-rwxrwxrwx 1 efyaz efyaz   2306 Dec 14 23:25 leaks.txt
+drwxrwxrwx 1 efyaz efyaz   4096 Dec 14 23:26 libft
+-rwxrwxrwx 1 efyaz efyaz 694112 Dec 15 00:15 minishell
+drwxrwxrwx 1 efyaz efyaz   4096 Dec 13 22:14 minishell.dSYM
+drwxrwxrwx 1 efyaz efyaz   4096 Dec 15 00:15 obj
+drwxrwxrwx 1 efyaz efyaz   4096 Dec 14 23:25 src
+-rwxrwxrwx 1 efyaz efyaz      5 Dec 14 23:25 text.txt

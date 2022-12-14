@@ -6,7 +6,7 @@
 /*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:59:12 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/14 23:57:10 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/12/15 00:16:19 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ char	*command_find_path(char *keyword)
 	i = -1;
 	path = env_find_value("PATH");
 	paths = NULL;
+	new_path = NULL;
 	if (access(keyword, 0) == 0 && ft_strchr(keyword, '/'))
 		return (ft_strdup(keyword));
 	if (path != NULL)
