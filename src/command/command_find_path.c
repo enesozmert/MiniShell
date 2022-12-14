@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:59:12 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/13 10:29:43 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/14 18:07:51 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,16 @@ char	*command_find_path(char *keyword)
 	{
 		path = ft_strjoin("/", keyword);
 		new_path = ft_strjoin(paths[i], path);
-		free(path);
 		if (stat(new_path, &s) == 0)
 		{
-			ft_free_dbl_str(paths);
+			// ft_free_dbl_str(paths);
+			// free(path);
 			return (new_path);
 		}
-		free(new_path);
+		// free(path);
+		// free(new_path);
 	}
-	ft_free_dbl_str(paths);
+	// ft_free_dbl_str(paths);
+	// free(path);
 	return (NULL);
 }
