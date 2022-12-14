@@ -44,7 +44,7 @@ TOKEN			=	get_token token_clear token_delone token_add_copy token_add token_new 
 HISTORY			=	history
 PARSE			=	parser_arg_is parser_arg_isnot parser_arg_isquote parser_arg_iskeyword \
 					parser_add parser_add_buffer parser parser_arg \
-					parser_handler parser_arg_query parser_add_query
+					parser_handler parser_arg_query parser_add_query parser_add_operator
 RDL				=	rdl_init rdl_clear
 SYNTAX			=	syntax keyword_syntax quote_syntax redir_syntax export_syntax pipe_syntax keyword_quote_syntax
 STATIC			=	keyword_list operator_list command_list quote_list delimiter_list identifier_list \

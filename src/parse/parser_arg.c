@@ -4,11 +4,9 @@ void parser_arg_keyword(int *k, t_rdl *rdl)
 {
 	int i;
 	int j;
-	char c;
 
 	i = *k;
 	j = 0;
-	c = 0;
 	if (rdl->main_str[i] <= 32)
 		while (rdl->main_str[i++] <= 32 && rdl->main_str[i]);
 	while (rdl->main_str[i] > 32 && rdl->main_str[i])
