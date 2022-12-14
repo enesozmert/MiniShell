@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 12:42:59 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/14 12:43:36 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/14 16:53:03 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void rdl_clear(t_rdl *rdl)
 {
+	free(rdl->parser_list);
 	free(rdl->keyword_list);
 	free(rdl->command_list);
 	free(rdl->operator_list);

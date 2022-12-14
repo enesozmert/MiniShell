@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 23:29:03 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/14 13:44:40 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/14 16:46:33 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ typedef struct s_token
 	int				len;
 	int				type_id;
 	char			*context;
-	// char			*type;
 	int				t_flag;
 	int				keyword_id;
 	struct s_token	*next;
@@ -100,10 +99,11 @@ typedef struct s_token_type_prop
 
 typedef struct s_rdl
 {
+	int						i;
 	int						len;
 	int						word_count;
 	int						t_flag;
-	int						index_flag;
+	int						key_flag;
 	char					*main_str;
 	int						*keywords_id;
 	char					*buffer;
@@ -115,6 +115,7 @@ typedef struct s_rdl
 	t_pipe_prop				*pipe_prop;
 	t_token					*token;
 
+	struct s_parser			*parser_list;
 	struct s_redir          *redir_list;
 	struct s_keyword		*keyword_list;
 	struct s_operator		*operator_list;
@@ -124,6 +125,11 @@ typedef struct s_rdl
 	struct s_token_type		*token_type_list;
 	struct s_quote			*quote_list;
 }	t_rdl;
+
+typedef struct s_parser
+{
+	int		(*f)(struct s_rdl *);
+} t_parser;
 
 typedef struct s_keyword
 {
@@ -265,7 +271,7 @@ void			parser_add_quote(t_rdl *rdl, char c);
 void			parser_add_dollar(t_rdl *rdl, char c);
 void 			parser_add_buffer(t_rdl *rdl, char *buffer, int *k);
 void			parser_add_keyword(t_rdl *rdl, char *buffer);
-void			parser_arg(t_rdl *rdl);
+void 			parser_create(t_rdl *rdl);
 void			parser_arg_is_quote(int c, int *k, t_rdl *rdl);
 void 			parser_arg_isnot(int *k, t_rdl *rdl);
 void			parser_arg_is(t_rdl *rdl);
@@ -276,6 +282,20 @@ void 			parser_arg_keyword(int *k, t_rdl *rdl);
 void			parser_arg_space(int *k, t_rdl *rdl);
 void			parser_arg_pipe(int *k, t_rdl *rdl);
 void			parser_arg_redir(int *k, t_rdl *rdl);
+//parser_handler
+int 			parser_arg_iskeyword_q(t_rdl *rdl);
+int 			parser_arg_quote_q(t_rdl *rdl);
+int 			parser_arg_isnot_q(t_rdl *rdl);
+int 			parser_arg_redir_q(t_rdl *rdl);
+int 			parser_arg_pipe_q(t_rdl *rdl);
+int 			parser_arg_space_q(t_rdl *rdl);
+int 			parser_add_dollar_q(t_rdl *rdl);
+int 			parser_add_operator_q(t_rdl *rdl);
+int 			parser_add_option_q(t_rdl *rdl);
+int 			parser_add_char_q(t_rdl *rdl);
+void			parser_list(t_parser *parser);
+void 			parser_handler(t_rdl *rdl);
+
 //keywords
 void			keyword_list(t_keyword *keyword);
 int				keywords_clear(t_keyword *keyword);

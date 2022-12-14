@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_add.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:40:42 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/13 23:19:28 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/12/14 15:23:27 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	env_add(char *key, char *value)
 			new_env[i] = g_env.env[i];
 		new_env[i] = ft_strjoin(key, "=");
 		new_env[i] = ft_strjoin(new_env[i], value);
+		new_env[i + 1] = NULL;
 		g_env.env = new_env;
 	}
 	else

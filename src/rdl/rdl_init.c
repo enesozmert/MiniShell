@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rdl.c                                              :+:      :+:    :+:   */
+/*   rdl_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 12:36:59 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/14 12:42:27 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/14 16:50:08 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static void rdl_init_list(t_rdl *rdl)
 {
+	rdl->parser_list = malloc(sizeof(t_parser) * 11);
 	rdl->keyword_list = malloc(sizeof(t_keyword) * 8);
 	rdl->operator_list = malloc(sizeof(t_operator) * 3);
 	rdl->delimiter_list = malloc(sizeof(t_delimiter) * 18);
@@ -62,7 +63,8 @@ t_rdl *rdl_init(t_rdl *rdl)
 		rdl = malloc(sizeof(t_rdl) * 1);
 	rdl->main_str = ft_read_line();
 	rdl->len = ft_strlen(rdl->main_str);
-	rdl->index_flag = 0;
+	rdl->i = 0;
+	rdl->key_flag = 0;
 	rdl->keywords_id = NULL;
 	rdl->buffer = malloc(sizeof(char) * rdl->len);
 	rdl->token_type_pre_id = -1;

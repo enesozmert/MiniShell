@@ -41,13 +41,13 @@ TOKEN			=	get_token token_clear token_delone token_add_copy token_add token_new 
 					token_type_is token_add_keyword_id token_print \
 					token_find 
 HISTORY			=	history
-PARSE			=	parser parser_arg  parser_arg_quote parser_arg_keyword parser_arg_space \
-					parser_arg_is parser_arg_isnot parser_arg_isquote parser_arg_iskeyword\
-					parser_add parser_add_buffer parser_arg_pipe parser_arg_redir
+PARSE			=	parser_arg_is parser_arg_isnot parser_arg_isquote parser_arg_iskeyword \
+					parser_add parser_add_buffer parser parser_arg \
+					parser_handler parser_arg_query parser_add_query
 RDL				=	rdl_init rdl_clear
 SYNTAX			=	syntax keyword_syntax quote_syntax redir_syntax export_syntax pipe_syntax keyword_quote_syntax
 STATIC			=	keyword_list operator_list command_list quote_list delimiter_list identifier_list \
-					token_type_list redir_list
+					token_type_list redir_list parser_list
 LEXICAL			=	lexical is_keyword is_operator is_quote is_dollar is_identifier is_delimiter is_token_type\
 					find_operator find_keyword find_quote is_redir is_pipe is_option is_next_redir\
 					command_in_token_type keyword_in_operator find_keyword_id keywords_id find_redir_id \

@@ -1,43 +1,90 @@
 #include "../../include/header.h"
 
-void parser_arg(t_rdl *rdl)
+void parser_arg_keyword(int *k, t_rdl *rdl)
 {
 	int i;
-	int	key_flag;
+	int j;
+	char c;
 
-	i = 0;
-	key_flag = 0;
-	parser_arg_iskeyword(&i, rdl);
-	while (i < rdl->len)
+	i = *k;
+	j = 0;
+	c = 0;
+	if (rdl->main_str[i] <= 32)
+		while (rdl->main_str[i++] <= 32 && rdl->main_str[i]);
+	while (rdl->main_str[i] > 32 && rdl->main_str[i])
 	{
-		if (key_flag == 1)
-		{
-			parser_arg_iskeyword(&i, rdl);
-			key_flag = 0;
-		}
-		else if (is_quote(rdl->quote_list, rdl->main_str[i]))
-			parser_arg_quote(&i, rdl);
-		else if (ft_isalnum(rdl->main_str[i]))
-			parser_arg_isnot(&i, rdl);
-		else if (is_dollar(rdl->main_str[i]))
-			parser_add_dollar(rdl, rdl->main_str[i]);
-		else if (is_operator(rdl->operator_list, rdl->main_str[i]))
-			parser_add_operator(rdl, rdl->main_str[i]);
-		else if (is_option(rdl->main_str[i]) && rdl->main_str[i - 1] > 32 && rdl->main_str[i + 1] > 32)
-			parser_add_option(rdl, rdl->main_str[i]);
-		else if ((rdl->main_str[i] == '>') || (rdl->main_str[i] == '<'))
-			parser_arg_redir(&i, rdl);
-		else if (is_pipe(rdl->main_str[i]) && is_pipe(rdl->main_str[i + 1]) == 0)
-		{
-			parser_arg_pipe(&i, rdl);
-			key_flag = 1;
-		}
-		else if (ft_isalnum(rdl->main_str[i]) == 0 && rdl->main_str[i] > 32)
-			parser_add_char(rdl, rdl->main_str[i]);
-		else if (rdl->main_str[i] <= 32)
-		{
-				parser_arg_space(&i, rdl);
-		}
+		rdl->buffer[j++] = rdl->main_str[i];
 		i++;
 	}
+	if (rdl->main_str[i] <= 32)
+		while (rdl->main_str[i++] <= 32 && rdl->main_str[i]);
+	if (ft_strlen(rdl->buffer) > 0)
+		rdl->buffer[j] = '\0';
+	*k = i;
+}
+
+void parser_arg_pipe(int *k, t_rdl *rdl)
+{
+	int i;
+
+	i = *k;
+	parser_add_pipe(rdl, rdl->main_str[i]);
+	i++;
+	if (rdl->main_str[i] <= 32 && rdl->main_str[i])
+	{
+		while (rdl->main_str[i] <= 32 && rdl->main_str[i])
+			i++;
+	}
+	i -= 1;
+    *k = i;
+}
+
+void parser_arg_quote(int *k, t_rdl *rdl)
+{
+	int i;
+
+	i = *k;
+	parser_add_quote(rdl, rdl->main_str[i]);
+	parser_arg_is_quote(rdl->main_str[i], &i, rdl);
+	if (is_quote(rdl->quote_list, rdl->main_str[i]))
+		parser_add_quote(rdl, rdl->main_str[i]);
+	*k = i;
+}
+
+void parser_arg_redir(int *k, t_rdl *rdl)
+{
+	int		i;
+	int		j;
+	char	c;
+
+	i = *k;
+	j = 0;
+	c = rdl->main_str[i];
+	while (rdl->main_str[i] == c)
+	{
+		rdl->buffer[j++] = rdl->main_str[i];
+		i++;
+	}
+	rdl->buffer[j] = '\0';
+	parser_add_redir(rdl, rdl->buffer);
+	if (rdl->main_str[i] <= 32 && rdl->main_str[i])
+	{
+		while (rdl->main_str[i] <= 32 && rdl->main_str[i])
+			i++;
+	}
+	i -= 1;
+	*k = i;
+}
+
+void parser_arg_space(int *k, t_rdl *rdl)
+{
+	int i;
+    
+	i = *k; 
+	while(rdl->main_str[i] <= 32 && rdl->main_str[i] != '\0')
+		i++;
+	if (rdl->main_str[i])
+		parser_add(rdl, ft_strdup(" "));
+	i--;
+	*k = i;
 }

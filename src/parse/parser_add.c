@@ -104,7 +104,7 @@ void parser_add_quote(t_rdl *rdl, char c)
 void parser_add_keyword(t_rdl *rdl, char *buffer)
 {
 	t_token token;
-	char *keyword;
+	char	*keyword;
 
 	token.context = ft_strdup(buffer);
 	token.t_flag = 0;
@@ -112,10 +112,8 @@ void parser_add_keyword(t_rdl *rdl, char *buffer)
 	if (is_keyword(rdl->keyword_list, keyword))
 	{
 		rdl->token = token_add(rdl->token, token);
-		free(buffer);
-		rdl->buffer = malloc(sizeof(char) * rdl->len);
+		ft_bzero(buffer, ft_strlen(buffer));
 	}
-	free(token.context);
 	free(keyword);
 }
 
@@ -126,7 +124,5 @@ void parser_add(t_rdl *rdl, char *buffer)
 	token.t_flag = -1;
 	token.context = ft_strdup(buffer);
 	rdl->token = token_add(rdl->token, token);
-	free(buffer);
-	rdl->buffer = malloc(sizeof(char) * rdl->len);
-	free(token.context);
+	ft_bzero(buffer, ft_strlen(buffer));
 }

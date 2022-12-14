@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:00:49 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/14 12:45:37 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/14 16:33:12 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	lexical_analizer(t_rdl *rdl)
 {
+	parser_list(rdl->parser_list);
 	keyword_list(rdl->keyword_list);
 	operator_list(rdl->operator_list);
 	quote_list(rdl->quote_list);
