@@ -104,7 +104,7 @@ void parser_add_quote(t_rdl *rdl, char c)
 void parser_add_keyword(t_rdl *rdl, char *buffer)
 {
 	t_token token;
-	char	*keyword;
+	char *keyword;
 
 	token.context = ft_strdup(buffer);
 	token.t_flag = 0;

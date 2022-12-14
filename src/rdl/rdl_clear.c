@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexical.c                                          :+:      :+:    :+:   */
+/*   rdl_clear.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/30 16:00:49 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/14 12:45:37 by eozmert          ###   ########.fr       */
+/*   Created: 2022/12/14 12:42:59 by eozmert           #+#    #+#             */
+/*   Updated: 2022/12/14 12:43:36 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-void	lexical_analizer(t_rdl *rdl)
+void rdl_clear(t_rdl *rdl)
 {
-	keyword_list(rdl->keyword_list);
-	operator_list(rdl->operator_list);
-	quote_list(rdl->quote_list);
-	redir_list(rdl->redir_list);
-	command_list(rdl->command_list);
-	delimiter_list(rdl->delimiter_list);
-	identifier_list(rdl->identifier_list);
-	token_type_list(rdl->token_type_list);
+	free(rdl->keyword_list);
+	free(rdl->command_list);
+	free(rdl->operator_list);
+	free(rdl->delimiter_list);
+	free(rdl->identifier_list);
+	free(rdl->token_type_list);
+	free(rdl->quote_list);
+	free(rdl->main_str);
+	free(rdl->buffer);
+	free(rdl->token);
+	free(rdl->quote_prop);
+	free(rdl->token_type_prop);
 }

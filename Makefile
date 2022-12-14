@@ -44,7 +44,7 @@ HISTORY			=	history
 PARSE			=	parser parser_arg  parser_arg_quote parser_arg_keyword parser_arg_space \
 					parser_arg_is parser_arg_isnot parser_arg_isquote parser_arg_iskeyword\
 					parser_add parser_add_buffer parser_arg_pipe parser_arg_redir
-RDL				=	rdl
+RDL				=	rdl_init rdl_clear
 SYNTAX			=	syntax keyword_syntax quote_syntax redir_syntax export_syntax pipe_syntax keyword_quote_syntax
 STATIC			=	keyword_list operator_list command_list quote_list delimiter_list identifier_list \
 					token_type_list redir_list
