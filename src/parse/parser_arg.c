@@ -13,7 +13,6 @@ void parser_arg(t_rdl *rdl)
 		if (key_flag == 1)
 		{
 			parser_arg_iskeyword(&i, rdl);
-			i--;
 			key_flag = 0;
 		}
 		else if (is_quote(rdl->quote_list, rdl->main_str[i]))
@@ -37,7 +36,6 @@ void parser_arg(t_rdl *rdl)
 			parser_add_char(rdl, rdl->main_str[i]);
 		else if (rdl->main_str[i] <= 32)
 		{
-			if (is_next_redir(i, rdl->main_str) == 0 && is_next_pipe(i, rdl->main_str) == 0)
 				parser_arg_space(&i, rdl);
 		}
 		i++;
