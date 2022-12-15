@@ -1,15 +1,1 @@
-Makefile
-a
-a.txt
-deneme.txt
-include
-leaks.txt
-leaks1.txt
-leaks2.txt
-libft
-minishell
-minishell.dSYM
-obj
-redir.txt
-src
-text.txt
+      16

@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 19:49:07 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/12 23:41:10 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/16 01:01:05 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ static char **create_type(t_command command, char *path)
 		get_next_token(&command.tokens);
 	}
 	type[j] = NULL;
+	free(arg);
 	return (type);
 }
 
@@ -68,17 +69,21 @@ static void pipe_fork_process(t_command command, int *fd)
 	{
 		dup2(0, command.tmp_fd);
 	}
+	if (command.redir_count == -1)
+	{
+		dup2(command.file_fd, STDOUT_FILENO);
+		close(command.file_fd);
+		dup2(0, command.file_fd);
+	}
 }
 
 int pipe_exec(t_command *command)
 {
 	pid_t pid;
 	int fd[2];
-	int result;
 	char *path;
 	char **type;
 
-	result = 0;
 	path = command_find_path(command->keyword);
 	type = create_type(*command, path);
 	pipe(fd);
@@ -90,19 +95,12 @@ int pipe_exec(t_command *command)
 	{
 		ft_openpipes(*command, fd);
 		ft_closepipes(fd);
-		result = execve(path, type, g_env.env);
-		if (result == -1)
+		if (execve(path, type, g_env.env) == -1)
 			return (1);
 	}
 	else
 	{
 		pipe_fork_process(*command, fd);
-		if (command->redir_count == -1)
-		{
-			dup2(command->file_fd, STDOUT_FILENO);
-			close(command->file_fd);
-			dup2(0, command->file_fd);
-		}
 	}
 	wait(&pid);
 	ft_free_dbl_str(type);
