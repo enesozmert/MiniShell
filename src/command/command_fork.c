@@ -1,7 +1,8 @@
 #include "../../include/header.h"
 
-int command_fork()
+int command_fork(t_command *command)
 {
+    (void)command;
     // pid_t   pid;
     // int     handle_code;
 

@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:16:34 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/15 15:38:56 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/15 23:33:31 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,17 @@ int command_find(t_rdl *rdl, int token_id)
 	token = get_token_id(rdl->token, token_id);
 	if (rdl->redir_prop->count > 0)
 	{
-		rdl->command_list[9].keyword = ft_strdup(token->context);
+		rdl->command_list[9].keyword = token->context;
 		return (9);
 	}
 	else if (rdl->pipe_prop->count > 0)
 	{
-		rdl->command_list[8].keyword = ft_strdup(token->context);
+		rdl->command_list[8].keyword = token->context;
 		return (8);
 	}
 	else if (is_keyword_exec(rdl->keyword_list, token->context) && rdl->pipe_prop->count <= 0 && rdl->redir_prop->count <= 0)
 	{
-		rdl->command_list[7].keyword = ft_strdup(token->context);
+		rdl->command_list[7].keyword = token->context;
 		return (7);
 	}
 	return (keyword_not_null(rdl, token));

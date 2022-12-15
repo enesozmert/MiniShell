@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/19 14:48:35 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/15 18:03:03 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/15 23:22:53 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ static int	command_sub_type(t_rdl *rdl)
 	int		command_id;
 
 	command_id = command_find(rdl, rdl->token->keyword_id);
-	if (rdl->token->type_id == 0)
-		command_id = command_find(rdl, rdl->token->id);
 	is_token_type = command_in_token_type(rdl, command_id, rdl->token->id);
 	if (is_token_type == 1)
 	{
@@ -94,8 +92,6 @@ int	command_create(t_rdl *rdl)
 	if (rdl->token->type_id == 6 || rdl->token->type_id == 5)
 		return (-1);
 	command_id = command_find(rdl, rdl->token->keyword_id);
-	if (rdl->token->type_id == 0)
-		command_id = command_find(rdl, rdl->token->id);
 	is_token_type = command_in_token_type(rdl, command_id, rdl->token->id);
 	if (is_token_type == 1)
 		rdl->command_list[command_id].tokens

@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 23:29:03 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/15 22:03:59 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/15 23:39:14 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -350,7 +350,7 @@ int 			command_run(t_command *command_list);
 int				command_exec(t_command *command);
 char			*command_find_path(char *keyword);
 int				command_find(t_rdl *rdl, int token_id);
-int				command_fork();
+int 			command_fork(t_command *command);
 //builtin
 int				echo_start(t_command *command);
 int				cd_start(t_command *command);
