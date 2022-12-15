@@ -1,0 +1,80 @@
+Process:         minishell [65630]
+Path:            /Volumes/VOLUME/*/minishell
+Load Address:    0x107c95000
+Identifier:      minishell
+Version:         ???
+Code Type:       X86-64
+Parent Process:  zsh [45434]
+
+Date/Time:       2022-12-15 17:14:59.497 +0300
+Launch Time:     2022-12-15 17:14:54.067 +0300
+OS Version:      Mac OS X 10.15.7 (19H15)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 12.3 (12C33)
+
+Physical footprint:         736K
+Physical footprint (peak):  736K
+----
+
+leaks Report Version: 4.0
+Process 65630: 462 nodes malloced for 335 KB
+Process 65630: 52 leaks for 2384 total leaked bytes.
+
+    52 (2.33K) << TOTAL >>
+
+      30 (1.98K) ROOT LEAK: 0x7f9248c05870 [240]
+         1 (224 bytes) 0x7f9248c05d40 [224]  length: 222  "VSCODE_GIT_ASKPASS_NODE=/private/var/folders/zz/zyxvpxvq6csfxvn_n000cf040033h1/T/A..."
+         1 (224 bytes) 0x7f9248c05e60 [224]  length: 218  "VSCODE_GIT_ASKPASS_MAIN=/private/var/folders/zz/zyxvpxvq6csfxvn_n000cf040033h1/T/A..."
+         1 (208 bytes) 0x7f9248c05c70 [208]  length: 201  "GIT_ASKPASS=/private/var/folders/zz/zyxvpxvq6csfxvn_n000cf040033h1/T/AppTranslocat..."
+         1 (144 bytes) 0x7f9248c05990 [144]  length: 138  "PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Users/eozmert/..."
+         1 (112 bytes) 0x7f9248c05f40 [112]  length: 97  "VSCODE_GIT_IPC_HANDLE=/var/folders/zz/zyxvpxvq6csfxvn_n000cf040033h1/T/vscode-git-c..."
+         1 (80 bytes) 0x7f9248c05a30 [80]  length: 65  "SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.Zs1PziyUB7/Listeners"
+         1 (64 bytes) 0x7f9248c05ae0 [64]  length: 56  "TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n000cf040033h1/T/"
+         1 (64 bytes) 0x7f9248c05e20 [64]  length: 62  "VSCODE_GIT_ASKPASS_EXTRA_ARGS=--ms-enable-electron-run-as-node"
+         1 (48 bytes) 0x7f9248c05ab0 [48]  length: 35  "__CF_USER_TEXT_ENCODING=0x18E01:0:0"
+         1 (48 bytes) 0x7f9248c05b50 [48]  length: 38  "ORIGINAL_XDG_CURRENT_DESKTOP=undefined"
+         1 (48 bytes) 0x7f9248c05b90 [48]  length: 36  "PWD=/Users/eozmert/Desktop/MiniShell"
+         1 (48 bytes) 0x7f9248c05bc0 [48]  length: 39  "OLDPWD=/Users/eozmert/Desktop/MiniShell"
+         1 (48 bytes) 0x7f9248c06030 [48]  length: 46  "_=/Users/eozmert/Desktop/MiniShell/./minishell"
+         1 (32 bytes) 0x7f9248c05970 [32]  length: 16  "MallocNanoZone=0"
+         1 (32 bytes) 0x7f9248c05a80 [32]  length: 19  "HOME=/Users/eozmert"
+         1 (32 bytes) 0x7f9248c05b20 [32]  length: 18  "XPC_SERVICE_NAME=0"
+         1 (32 bytes) 0x7f9248c05bf0 [32]  length: 19  "TERM_PROGRAM=vscode"
+         1 (32 bytes) 0x7f9248c05c10 [32]  length: 27  "TERM_PROGRAM_VERSION=1.73.1"
+         1 (32 bytes) 0x7f9248c05c30 [32]  length: 16  "LANG=tr_TR.UTF-8"
+         1 (32 bytes) 0x7f9248c05c50 [32]  length: 19  "COLORTERM=truecolor"
+         1 (32 bytes) 0x7f9248c05fb0 [32]  length: 18  "VSCODE_INJECTION=1"
+         1 (32 bytes) 0x7f9248c05fd0 [32]  length: 22  "ZDOTDIR=/Users/eozmert"
+         1 (32 bytes) 0x7f9248c05ff0 [32]  length: 27  "USER_ZDOTDIR=/Users/eozmert"
+         1 (32 bytes) 0x7f9248c06010 [32]  length: 19  "TERM=xterm-256color"
+         1 (16 bytes) 0x7f9248c05960 [16]  length: 12  "USER=eozmert"
+         1 (16 bytes) 0x7f9248c05a20 [16]  length: 15  "LOGNAME=eozmert"
+         1 (16 bytes) 0x7f9248c05aa0 [16]  length: 14  "SHELL=/bin/zsh"
+         1 (16 bytes) 0x7f9248c05b40 [16]  length: 13  "XPC_FLAGS=0x0"
+         1 (16 bytes) 0x7f9248c05b80 [16]  length: 7  "SHLVL=1"
+
+      2 (32 bytes) ROOT LEAK: 0x7f9248f04950 [16]
+         1 (16 bytes) 0x7f9248f04960 [16]  length: 1  "1"
+
+      1 (16 bytes) ROOT LEAK: 0x7f9248f047c0 [16]  length: 6  "export"
+      1 (16 bytes) ROOT LEAK: 0x7f9248f047d0 [16]  length: 6  "export"
+      1 (16 bytes) ROOT LEAK: 0x7f9248f047e0 [16]  length: 6  "export"
+      1 (16 bytes) ROOT LEAK: 0x7f9248f047f0 [16]  length: 6  "export"
+      1 (16 bytes) ROOT LEAK: 0x7f9248f04830 [16]  length: 6  "export"
+      1 (16 bytes) ROOT LEAK: 0x7f9248f04840 [16]  length: 1  "a"
+      1 (16 bytes) ROOT LEAK: 0x7f9248f04890 [16]  length: 1  "="
+      1 (16 bytes) ROOT LEAK: 0x7f9248f048e0 [16]  length: 1  "b"
+      1 (16 bytes) ROOT LEAK: 0x7f9248f04940 [16]  length: 6  "export"
+      1 (16 bytes) ROOT LEAK: 0x7f9248f04980 [16]  length: 6  "export"
+      1 (16 bytes) ROOT LEAK: 0x7f9248f04990 [16]  length: 6  "export"
+      1 (16 bytes) ROOT LEAK: 0x7f9248f049e0 [16]  length: 6  "export"
+      1 (16 bytes) ROOT LEAK: 0x7f9248f049f0 [16]  length: 6  "export"
+      1 (16 bytes) ROOT LEAK: 0x7f9248f04a00 [16]  length: 6  "export"
+      1 (16 bytes) ROOT LEAK: 0x7f9248f04a10 [16]  length: 6  "export"
+      1 (16 bytes) ROOT LEAK: 0x7f9248f04a20 [16]  length: 6  "export"
+      1 (16 bytes) ROOT LEAK: 0x7f9248f04a80 [16]  length: 6  "export"
+      1 (16 bytes) ROOT LEAK: 0x7f9248f04a90 [16]  length: 6  "export"
+      1 (16 bytes) ROOT LEAK: 0x7f9248f04af0 [16]
+      1 (16 bytes) ROOT LEAK: 0x7f9249804180 [16]  length: 3  "a=b"
+

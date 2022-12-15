@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_keyword.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:18:58 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/15 00:09:08 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/12/15 18:24:25 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ int is_keyword(t_keyword *keyword_list, char *str)
 
 	keyword = keyword_trim(str);
 	if (is_keyword_builtin(keyword_list, keyword) == 1 || is_keyword_exec(keyword_list, keyword) == 1)
+	{
+		free(keyword);
 		return (1);
+	}
+	free(keyword);
 	return (0);
 }

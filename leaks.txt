@@ -1,55 +1,23 @@
-Process:         minishell [95213]
+Process:         minishell [84918]
 Path:            /Volumes/VOLUME/*/minishell
-Load Address:    0x1058dc000
+Load Address:    0x10e5b5000
 Identifier:      minishell
 Version:         ???
 Code Type:       X86-64
-Parent Process:  zsh [87522]
+Parent Process:  zsh [45434]
 
-Date/Time:       2022-12-14 17:36:27.807 +0300
-Launch Time:     2022-12-14 17:36:26.204 +0300
+Date/Time:       2022-12-15 17:52:17.136 +0300
+Launch Time:     2022-12-15 17:52:15.539 +0300
 OS Version:      Mac OS X 10.15.7 (19H15)
 Report Version:  7
 Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
 Analysis Tool Version:  Xcode 12.3 (12C33)
 
-Physical footprint:         724K
-Physical footprint (peak):  724K
+Physical footprint:         712K
+Physical footprint (peak):  712K
 ----
 
 leaks Report Version: 4.0
-Process 95213: 452 nodes malloced for 335 KB
-Process 95213: 23 leaks for 720 total leaked bytes.
-
-    23 (720 bytes) << TOTAL >>
-
-      3 (192 bytes) ROOT LEAK: 0x7fc567f04950 [32]
-         1 (144 bytes) 0x7fc567f04980 [144]  length: 133  "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Users/eozmert/goinf..."
-         1 (16 bytes) 0x7fc567f04970 [16]  length: 4  "USER"
-
-      2 (176 bytes) ROOT LEAK: 0x7fc567f04a80 [32]
-         1 (144 bytes) 0x7fc567f04ab0 [144]  length: 133  "/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Users/eozmert/goinf..."
-
-      3 (64 bytes) ROOT LEAK: 0x7fc567f048d0 [32]
-         1 (16 bytes) 0x7fc567f048f0 [16]  length: 4  "USER"
-         1 (16 bytes) 0x7fc567f04900 [16]  length: 7  "eozmert"
-
-      3 (64 bytes) ROOT LEAK: 0x7fc567f04910 [32]
-         1 (16 bytes) 0x7fc567f04930 [16]  length: 14  "MallocNanoZone"
-         1 (16 bytes) 0x7fc567f04940 [16]  length: 1  "0"
-
-      3 (64 bytes) ROOT LEAK: 0x7fc567f04a40 [32]
-         1 (16 bytes) 0x7fc567f04a60 [16]  length: 14  "MallocNanoZone"
-         1 (16 bytes) 0x7fc567f04a70 [16]  length: 1  "0"
-
-      2 (48 bytes) ROOT LEAK: 0x7fc567f04a10 [32]
-         1 (16 bytes) 0x7fc567f04a30 [16]  length: 7  "eozmert"
-
-      1 (16 bytes) ROOT LEAK: 0x7fc567f047c0 [16]  length: 4  "echo"
-      1 (16 bytes) ROOT LEAK: 0x7fc567f047d0 [16]  length: 4  "echo"
-      1 (16 bytes) ROOT LEAK: 0x7fc567f047e0 [16]  length: 4  "enes"
-      1 (16 bytes) ROOT LEAK: 0x7fc567f047f0 [16]  length: 4  "echo"
-      1 (16 bytes) ROOT LEAK: 0x7fc567f04830 [16]  length: 4  "echo"
-      1 (16 bytes) ROOT LEAK: 0x7fc567f04890 [16]  length: 4  "echo"
-      1 (16 bytes) ROOT LEAK: 0x7fc567f048c0 [16]  length: 4  "echo"
+Process 84918: 423 nodes malloced for 335 KB
+Process 84918: 0 leaks for 0 total leaked bytes.
 

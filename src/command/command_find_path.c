@@ -3,22 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   command_find_path.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:59:12 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/15 00:16:19 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/12/15 16:13:43 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-char	*command_find_path(char *keyword)
+char *command_find_path(char *keyword)
 {
-	int			i;
-	char		*path;
-	char		**paths;
-	char		*new_path;
-	struct stat	s;
+	int i;
+	char *path;
+	char	*tmp;
+	char **paths;
+	char *new_path;
+	struct stat s;
 
 	i = -1;
 	path = env_find_value("PATH");
@@ -32,15 +33,16 @@ char	*command_find_path(char *keyword)
 		return (NULL);
 	while (paths[++i])
 	{
-		path = ft_strjoin("/", keyword);
-		new_path = ft_strjoin(paths[i], path);
-
+		tmp = ft_strjoin("/", keyword);
+		new_path = ft_strjoin(paths[i], tmp);
+		free(tmp);
 		if (stat(new_path, &s) == 0)
 		{
-			free(path);
 			ft_free_dbl_str(paths);
 			return (new_path);
 		}
+		else
+			free(new_path);
 	}
 	ft_free_dbl_str(paths);
 	return (NULL);

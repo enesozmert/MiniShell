@@ -3,33 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   command_find.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:16:34 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/14 23:50:47 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/12/15 15:38:56 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-static int	keyword_not_null(t_rdl *rdl, t_token *token)
+static int keyword_not_null(t_rdl *rdl, t_token *token)
 {
-	int	i;
+	int i;
 
 	i = -1;
 	while (rdl->command_list[++i].keyword != NULL)
 	{
 		if (ft_strncmp(rdl->command_list[i].keyword, token->context,
-				ft_strlen(token->context)) == 0 && rdl->pipe_prop->count <= 0
-			&& rdl->redir_prop->count <= 0)
+					   ft_strlen(token->context)) == 0 &&
+			rdl->pipe_prop->count <= 0 && rdl->redir_prop->count <= 0)
+		{
 			return (i);
+		}
 	}
-	return (0);
+	return (10);
 }
 
-int	command_find(t_rdl *rdl, int token_id)
+int command_find(t_rdl *rdl, int token_id)
 {
-	t_token	*token;
+	t_token *token;
 
 	token = get_token_id(rdl->token, token_id);
 	if (rdl->redir_prop->count > 0)
@@ -42,8 +44,7 @@ int	command_find(t_rdl *rdl, int token_id)
 		rdl->command_list[8].keyword = ft_strdup(token->context);
 		return (8);
 	}
-	else if (is_keyword_exec(rdl->keyword_list, token->context)
-		&& rdl->pipe_prop->count <= 0 && rdl->redir_prop->count <= 0)
+	else if (is_keyword_exec(rdl->keyword_list, token->context) && rdl->pipe_prop->count <= 0 && rdl->redir_prop->count <= 0)
 	{
 		rdl->command_list[7].keyword = ft_strdup(token->context);
 		return (7);
