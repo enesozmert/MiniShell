@@ -4,6 +4,6 @@ void	token_delone(t_token *token)
 {
 	if (!token)
 		return ;
-	free((void *)token->context);
+	free(token->context);
 	free(token);
 }

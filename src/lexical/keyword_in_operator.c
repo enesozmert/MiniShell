@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:59:12 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/09 11:18:50 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/15 21:43:00 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ int	keyword_in_operator(t_rdl *rdl, int keyword_id, char operator)
 		if (operator_id == ft_atoi(operators_id[i]))
 			return (1);
 	}
+	ft_free_dbl_str(operators_id);
 	return (0);
 }

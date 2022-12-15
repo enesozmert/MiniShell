@@ -7,8 +7,8 @@ USER_NAME1		=	eozmert
 USER_NAME2		=	cyalniz
 READLINE		=	/goinfre/homebrew/opt/readline/lib
 READLINE_INC	=	/goinfre/homebrew/opt/readline/include
-CFLAGS			=	-Wall -Werror -Wextra -g -I $(READLINE_INC) 
 LEAKS			=	-fsanitize=address
+CFLAGS			=	-Wall -Werror -Wextra -g -I $(READLINE_INC)
 RM				=	rm -f
 
 

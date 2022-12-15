@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:03:43 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/15 20:30:48 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/15 21:47:28 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static char *export_key(t_command command, char *value)
 		}
 	}
 	free(join_value);
-	return (join_value);
+	return (value);
 }
 
 static char *export_value(t_command command, char *value)
@@ -46,7 +46,7 @@ static char *export_value(t_command command, char *value)
 	return (value);
 }
 
-static char *export_identifer(t_command command, char *identifier)
+static char *export_identifier(t_command command, char *identifier)
 {
 	if (command.tokens->type_id == 8)
 		identifier = ft_strdup(command.tokens->context);
@@ -61,8 +61,8 @@ int export_start(t_command *command)
 	char *identifier;
 
 	i = -1;
-	value = ft_strdup(value);
 	identifier = NULL;
+	value = ft_strdup("");
 	size = token_size(command->tokens);
 	if (size == 0)
 	{
@@ -73,20 +73,18 @@ int export_start(t_command *command)
 	i = -1;
 	while (++i < size)
 	{
-		identifier = export_identifer(*command, identifier);
+		identifier = export_identifier(*command, identifier);
 		value = export_key(*command, value);
 		value = export_value(*command, value);
 		if (command->tokens->type_id == 12 || size == i + 1)
 		{
-			printf("iden : %s\n", identifier);
-			printf("value : %s\n", value);
 			env_add(identifier, value);
 			free(value);
+			free(identifier);
 			value = ft_strdup("");
 		}
 		get_next_token(&command->tokens);
 	}
 	free(value);
-	free(identifier);
 	return (0);
 }

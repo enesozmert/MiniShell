@@ -28,6 +28,7 @@ void parser_add_keyword(t_rdl *rdl, char *buffer)
 		ft_bzero(buffer, ft_strlen(buffer));
 	}
 	free(keyword);
+	free(token.context);
 }
 
 void parser_add(t_rdl *rdl, char *buffer)
@@ -38,4 +39,5 @@ void parser_add(t_rdl *rdl, char *buffer)
 	token.context = ft_strdup(buffer);
 	rdl->token = token_add(rdl->token, token);
 	ft_bzero(buffer, ft_strlen(buffer));
+	free(token.context);
 }

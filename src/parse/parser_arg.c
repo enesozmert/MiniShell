@@ -76,13 +76,16 @@ void parser_arg_redir(int *k, t_rdl *rdl)
 
 void parser_arg_space(int *k, t_rdl *rdl)
 {
-	int i;
+	int		i;
+	char	*space;
     
-	i = *k; 
+	i = *k;
+	space = ft_strdup(" ");
 	while(rdl->main_str[i] <= 32 && rdl->main_str[i] != '\0')
 		i++;
 	if (rdl->main_str[i])
-		parser_add(rdl, ft_strdup(" "));
+		parser_add(rdl, space);
+	free(space);
 	i--;
 	*k = i;
 }

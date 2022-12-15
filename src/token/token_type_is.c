@@ -2,16 +2,21 @@
 
 int token_type_is_keyword(t_rdl *rdl)
 {
+	char *keyword;
+
+	keyword = NULL;
 	if (rdl->token_type_prop->redir_flag == 1)
 		return (0);
 	if (rdl->token_type_prop->token->t_flag == 0)
-		rdl->token_type_prop->new_trim = keyword_trim(rdl->token_type_prop->token->context);
-	if (rdl->token_type_prop->token->t_flag == 0 && is_keyword(rdl->keyword_list, rdl->token_type_prop->new_trim))
+		keyword = keyword_trim(rdl->token_type_prop->token->context);
+	if (rdl->token_type_prop->token->t_flag == 0 && is_keyword(rdl->keyword_list, keyword))
 	{
-		rdl->token_type_prop->new_trim = to_lower_str(rdl->token_type_prop->new_trim);
+		rdl->token_type_prop->new_trim = to_lower_str(keyword);
 		rdl->token_type_prop->keyword_id = find_keyword_id(rdl->keyword_list, rdl->token_type_prop->new_trim);
+		free(keyword);
 		return (1);
 	}
+	free(keyword);
 	return (0);
 }
 

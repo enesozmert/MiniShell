@@ -20,6 +20,7 @@ void parser_add_char(t_rdl *rdl, char c)
 	token.t_flag = -1;
 	token.context = ft_strdup(str);
 	rdl->token = token_add(rdl->token, token);
+	free(token.context);
 }
 
 void parser_add_quote(t_rdl *rdl, char c)
@@ -39,4 +40,5 @@ void parser_add_quote(t_rdl *rdl, char c)
 		token.t_flag = 2;
 		rdl->token = token_add(rdl->token, token);
 	}
+	free(token.context);
 }

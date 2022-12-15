@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:22:50 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/15 18:09:49 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/15 22:26:54 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void routine(void)
 			}
 			my_add_history(rdl->main_str);
 			token_clear(&rdl->token);
+			rdl_clear(rdl);
 		}
-		rdl_clear(rdl);
 	}
 }

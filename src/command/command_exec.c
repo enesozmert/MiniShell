@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 19:18:17 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/12 23:28:34 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/15 22:57:19 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static char **create_type(t_command command, char *path)
 		get_next_token(&command.tokens);
 	}
 	type[j] = NULL;
+	free(arg);
 	return (type);
 }
 

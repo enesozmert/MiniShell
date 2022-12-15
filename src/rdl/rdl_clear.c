@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 12:42:59 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/15 18:20:37 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/15 22:17:34 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void rdl_clear(t_rdl *rdl)
 	free(rdl->quote_list);
 	free(rdl->main_str);
 	free(rdl->buffer);
-	free(rdl->token);
 	free(rdl->quote_prop);
 	free(rdl->token_type_prop);
 }
