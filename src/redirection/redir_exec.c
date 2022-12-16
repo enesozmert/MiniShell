@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_exec.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:39:48 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/16 02:20:33 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/16 12:45:31 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static int get_sub_type(t_command *command)
 
 int redir_exec(t_command *command)
 {
-	printf("pre : %d\n", command->token_type_pre_id);
 	if (command->token_type_pre_id == 6)
 	{
 		if (command->count < command->pipe_count + 2)
