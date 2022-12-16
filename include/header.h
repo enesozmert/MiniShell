@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 23:29:03 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/15 23:39:14 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/16 02:18:43 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -385,12 +385,12 @@ void			redir_list(t_redir *redir);
 void 			redir_handler(t_rdl *rdl);
 int 			redir_count(t_rdl *rdl);
 int 			redir_exec(t_command *command);
-char			*redir_file_name(t_command command);
-int 			redir_file_create(t_command command, char *name);
-int				redir_out_exec(t_command command);
-int				redir_in_exec(t_command command);
-int				redir_here_out_exec(t_command command);
-int				redir_here_in_exec(t_command command);
+char			*redir_file_name(t_command *command);
+int 			redir_file_create(t_command *command, char *name);
+int				redir_out_exec(t_command *command);
+int				redir_in_exec(t_command *command);
+int				redir_here_out_exec(t_command *command);
+int				redir_here_in_exec(t_command *command);
 //pipe
 void			pipe_handler(t_rdl *rdl);
 int				pipe_count(t_rdl *rdl);

@@ -1,6 +1,6 @@
 #include "../../include/header.h"
 
-int redir_here_out_exec(t_command command)
+int redir_here_out_exec(t_command *command)
 {
     int fd_file;
     char *file_name;

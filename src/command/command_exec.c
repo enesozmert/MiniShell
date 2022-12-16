@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 19:18:17 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/16 01:25:23 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/16 01:48:49 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static char *abc(t_command command, char *arg)
 	char *join_arg;
 
 	join_arg = ft_strdup(arg);
-	if (command.tokens->type_id == 13 || command.tokens->type_id == 7)
+	if (command.tokens->type_id == 13)
 		arg = ft_strjoin(join_arg, command.tokens->context);
 	free(join_arg);
 	return (arg);
@@ -58,7 +58,6 @@ static char **create_type(t_command command, char *path)
 		arg = abc(command, arg);
 		if (command.tokens->type_id == 12 || command.token_size - 1 == command.tokens->id)
 		{
-			printf("arg %s\n", arg);
 			type[j++] = ft_strdup(arg);
 			free(arg);
 			arg = ft_strdup("");
@@ -66,7 +65,6 @@ static char **create_type(t_command command, char *path)
 		get_next_token(&command.tokens);
 	}
 	type[j] = NULL;
-	system("leaks minishell");
 	free(arg);
 	return (type);
 }
@@ -107,7 +105,7 @@ int command_exec(t_command *command)
 	else if (pid < 0)
 		return (-1);
 	wait(&pid);
-	ft_free_dbl_str(type);
 	free(path);
+	ft_free_dbl_str(type);
 	return (0);
 }

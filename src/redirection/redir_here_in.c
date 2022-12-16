@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_here_in.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:04:17 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/13 22:43:22 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/12/16 02:19:25 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@ static void	redir_here_in_file_clear(void)
 	close(tmp_fd);
 }
 
-static void	redir_here_in_file_run(t_command command)
+static void	redir_here_in_file_run(t_command *command)
 {
 	int		tmp_fd;
 
 	tmp_fd = open("here_in.txt", O_RDONLY);
 	unlink("here_in.txt");
-	dup2(tmp_fd, command.file_fd);
+	dup2(tmp_fd, command->file_fd);
 	close(tmp_fd);
 }
 
-static int redir_here_in_file(t_command command)
+static int redir_here_in_file(t_command *command)
 {
 	int fd_file;
 	int jump_token;
@@ -38,23 +38,23 @@ static int redir_here_in_file(t_command command)
 
 	printf("redir_here_in_file\n");
 	fd_file = 0;
-	if (command.pipe_count > 0)
+	if (command->pipe_count > 0)
 	{
-		jump_token = command.pipe_count + 1;
-		take_token = command.redir_count + command.pipe_count + 1;
+		jump_token = command->pipe_count + 1;
+		take_token = command->redir_count + command->pipe_count + 1;
 	}
 	else
 	{
 		jump_token = 1;
-		take_token = command.redir_count + 1;
+		take_token = command->redir_count + 1;
 	}
-	if (command.count < take_token && command.count > jump_token)
+	if (command->count < take_token && command->count > jump_token)
 	{
 		printf("file name1 : %s\n", "here_in.txt");
 		fd_file = redir_file_create(command, "here_in.txt");
 		close(fd_file);
 	}
-	else if (command.count == take_token && command.count > jump_token)
+	else if (command->count == take_token && command->count > jump_token)
 	{
 		printf("file name2 : %s\n", "here_in.txt");
 		fd_file = redir_file_create(command, "here_in.txt");
@@ -62,7 +62,7 @@ static int redir_here_in_file(t_command command)
 	return (fd_file);
 }
 
-static void redir_here_in_input(t_command command)
+static void redir_here_in_input(t_command *command)
 {
 	printf("redir_here_in_exec\n");
 	char *end;
@@ -75,12 +75,12 @@ static void redir_here_in_input(t_command command)
 		input = readline("> ");
 		if (!input)
 		{
-			close(command.file_fd);
+			close(command->file_fd);
 			exit(0);
 		}
 		if (ft_strncmp(input, end, ft_strlen(input)))
 		{
-			ft_putendl_fd(input, command.file_fd);
+			ft_putendl_fd(input, command->file_fd);
 		}
 		else
 		{
@@ -92,7 +92,7 @@ static void redir_here_in_input(t_command command)
 	exit(0);
 }
 
-int redir_here_in_exec(t_command command)
+int redir_here_in_exec(t_command *command)
 {
 	pid_t pid;
 	int status;
@@ -100,7 +100,7 @@ int redir_here_in_exec(t_command command)
 
 	status = 0;
 	fd_file = redir_here_in_file(command);
-	command.file_fd = fd_file;
+	command->file_fd = fd_file;
 	signal(SIGINT, SIG_IGN);
 	pid = fork();
 	if (pid == 0)

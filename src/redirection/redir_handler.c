@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:32:07 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/11 13:21:11 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/12/16 02:30:33 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void redir_handler(t_rdl *rdl)
             rdl->pipe_prop->index = -1;
             rdl->redir_prop->index = -1;
 			rdl->redir_prop->count = -1;
+            token_clear(&rdl->command_list[9].tokens);
             return ;
         }
         if (syntax(rdl) != -1)

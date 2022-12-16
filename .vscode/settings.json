@@ -43,6 +43,7 @@
         "complex": "c",
         "ostream": "c",
         "typeinfo": "c",
-        "cstdint": "c"
+        "cstdint": "c",
+        "cstring": "c"
     }
 }

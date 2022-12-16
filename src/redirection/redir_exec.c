@@ -6,24 +6,24 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:39:48 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/12 23:41:12 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/16 02:20:33 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-static int get_sub_type(t_command command)
+static int get_sub_type(t_command *command)
 {
 	int fd_file;
 
 	fd_file = 0;
-	if (command.token_sub_type_id == 0)
+	if (command->token_sub_type_id == 0)
 		fd_file = redir_out_exec(command);
-	if (command.token_sub_type_id == 1)
+	if (command->token_sub_type_id == 1)
 		fd_file = redir_here_out_exec(command);
-	if (command.token_sub_type_id == 2)
+	if (command->token_sub_type_id == 2)
 		fd_file = redir_in_exec(command);
-	if (command.token_sub_type_id == 3)
+	if (command->token_sub_type_id == 3)
 		fd_file = redir_here_in_exec(command);
 	return (fd_file);
 }
@@ -37,7 +37,7 @@ int redir_exec(t_command *command)
 			return (0);
 		if ((command->count > command->pipe_count + 1) &&
 			command->count != command->redir_count + command->pipe_count + 2)
-			command->file_fd = get_sub_type(*command);
+			command->file_fd = get_sub_type(command);
 		if (command->count == command->redir_count + command->pipe_count + 1)
 			command->count = 0;
 	}
@@ -46,7 +46,7 @@ int redir_exec(t_command *command)
 		if (command->count == 1)
 			return (0);
 		if ((command->count > 1) && command->count != command->redir_count + 2)
-			command->file_fd = get_sub_type(*command);
+			command->file_fd = get_sub_type(command);
 		if (command->count == command->redir_count + 1)
 			command->count = 0;
 	}
@@ -55,7 +55,7 @@ int redir_exec(t_command *command)
 		if (command->count == 1)
 			return (0);
 		if ((command->count > 1) && command->count != command->redir_count + 2)
-			command->file_fd = get_sub_type(*command);
+			command->file_fd = get_sub_type(command);
 		if (command->count == command->redir_count + 1)
 			command->count = 0;
 	}

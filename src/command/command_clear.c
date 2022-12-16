@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:42:09 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/16 00:27:11 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/16 01:57:58 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	command_clear(t_command *command_list)
 	command_list[8].keyword = "none";
 	command_list[9].keyword = "none";
 	i = -1;
-	while (++i < 10)
+	while (++i < 11)
 	{
 		if (token_size(command_list[i].tokens) > 0)
 			token_clear(&command_list[i].tokens);
