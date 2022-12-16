@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:42:09 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/16 13:52:05 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/16 15:13:14 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	command_clear(t_command *command_list)
 		{
 			free(command_list[i].keyword);
 		}
-		command_list[i].keyword = ft_strdup("none");
+		command_list[i].keyword = ft_strdup(none);
 	}
 	free(none);
 
