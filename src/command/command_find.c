@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_find.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:16:34 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/16 12:43:48 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/16 14:30:12 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,37 +32,30 @@ static int keyword_not_null(t_rdl *rdl, t_token *token)
 int command_find(t_rdl *rdl, int token_id)
 {
 	t_token *token;
-	char 	*p;
+	char *p;
 
 	token = get_token_id(rdl->token, token_id);
+	p = NULL;
 	if (rdl->redir_prop->count > 0)
 	{
-		p = rdl->command_list[9].keyword;
 		if (p)
-		{
-			free(rdl->command_list[9].keyword);
-		}
-			rdl->command_list[9].keyword = ft_strdup(token->context);
+			free(rdl->command_list[7].keyword);
+		rdl->command_list[9].keyword = ft_strdup(token->context);
 		return (9);
 	}
 	else if (rdl->pipe_prop->count > 0)
 	{
-		p = rdl->command_list[8].keyword;
 		if (p)
-		{
-			free(rdl->command_list[8].keyword);
-		}
-			rdl->command_list[8].keyword = ft_strdup(token->context);
+			free(rdl->command_list[7].keyword);
+		rdl->command_list[8].keyword = ft_strdup(token->context);
 		return (8);
 	}
 	else if (is_keyword_exec(rdl->keyword_list, token->context) && rdl->pipe_prop->count <= 0 && rdl->redir_prop->count <= 0)
 	{
 		p = rdl->command_list[7].keyword;
 		if (p)
-		{
 			free(rdl->command_list[7].keyword);
-		}
-			rdl->command_list[7].keyword = ft_strdup(token->context);
+		rdl->command_list[7].keyword = ft_strdup(token->context);
 		return (7);
 	}
 	return (keyword_not_null(rdl, token));
