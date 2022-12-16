@@ -2,7 +2,7 @@
 
 t_token *token_last(t_token *token)
 {
-	if (!token)
+	if (!token || !token->next)
 		return (token);
 	while (token->next)
 		token = token->next;
