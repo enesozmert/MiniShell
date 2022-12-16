@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:56:12 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/15 21:12:36 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/16 15:52:18 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	env_update(char *key, char *value)
 	key_find = ft_split(g_env.env[key_id], '=');
 	join_result = ft_strjoin(key_find[0], "=");
 	result = ft_strjoin(join_result, value);
+	free(g_env.env[key_id]);
 	g_env.env[key_id] = ft_strdup(result);
 	ft_free_dbl_str(key_find);
 	free(join_result);

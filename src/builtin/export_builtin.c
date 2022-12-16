@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:03:43 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/16 13:56:33 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/16 15:49:33 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,14 @@ static char *export_identifier(t_command command, char *identifier)
 	return (identifier);
 }
 
+static void export_add(char *identifier, char *value)
+{
+	env_add(identifier, value);
+	free(identifier);
+	free(value);
+	value = malloc(sizeof(char));
+}
+
 int export_start(t_command *command)
 {
 	int i;
@@ -62,7 +70,7 @@ int export_start(t_command *command)
 
 	i = -1;
 	identifier = NULL;
-	value = ft_strdup("");
+	value = malloc(sizeof(char));
 	size = token_size(command->tokens);
 	if (size == 0)
 	{
@@ -77,12 +85,7 @@ int export_start(t_command *command)
 		value = export_key(*command, value);
 		value = export_value(*command, value);
 		if (command->tokens->type_id == 12 || size == i + 1)
-		{
-			env_add(identifier, value);
-			free(identifier);
-			free(value);
-			value = ft_strdup("");
-		}
+			export_add(identifier, value);
 		get_next_token(&command->tokens);
 	}
 	free(value);
