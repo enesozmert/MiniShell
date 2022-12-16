@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:42:09 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/16 01:57:58 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/16 12:25:58 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,17 @@ int	command_clear(t_command *command_list)
 	i = -1;
 	while (++i < 8)
 		command_list[i].count = 0;
-	command_list[7].keyword = "none";
-	command_list[8].keyword = "none";
-	command_list[9].keyword = "none";
+
+		char *p = command_list[7].keyword;
+	if (p)
+	{
+		free(command_list[7].keyword);
+		command_list[7].keyword = ft_strdup("none");
+	}
+	// // free(command_list[8].keyword);
+	// command_list[8].keyword = ft_strdup("none");
+	// // free(command_list[9].keyword);
+	// command_list[9].keyword = ft_strdup("none");
 	i = -1;
 	while (++i < 11)
 	{

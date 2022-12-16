@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 23:29:03 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/16 02:18:43 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/16 12:21:45 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ typedef struct s_rdl
 	int						word_count;
 	int						t_flag;
 	int						key_flag;
+	char					*none;
 	char					*main_str;
 	int						*keywords_id;
 	char					*buffer;

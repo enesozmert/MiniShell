@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:03:43 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/15 21:47:28 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/16 10:44:20 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ int export_start(t_command *command)
 		if (command->tokens->type_id == 12 || size == i + 1)
 		{
 			env_add(identifier, value);
-			free(value);
 			free(identifier);
+			free(value);
 			value = ft_strdup("");
 		}
 		get_next_token(&command->tokens);

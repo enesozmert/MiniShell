@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 19:18:17 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/16 01:48:49 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/16 10:45:31 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static char **create_type(t_command command, char *path)
 	type[0] = ft_strdup(path);
 	while (++i < command.token_size)
 	{
+		free(arg);
 		arg = abc(command, arg);
 		if (command.tokens->type_id == 12 || command.token_size - 1 == command.tokens->id)
 		{

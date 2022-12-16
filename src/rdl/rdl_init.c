@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 12:36:59 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/16 00:24:47 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/16 12:25:16 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,14 @@ t_rdl *rdl_init(t_rdl *rdl)
 	rdl->i = 0;
 	rdl->key_flag = 0;
 	rdl->keywords_id = NULL;
+	rdl->none = ft_strdup("none");
 	rdl->buffer = malloc(sizeof(char) * rdl->len);
 	rdl->token_type_pre_id = -1;
 	rdl_init_list(rdl);
+	rdl->command_list[7].keyword = ft_strdup(rdl->none);
+	printf("command 7 : %p\n",rdl->command_list[7].keyword);
+	// rdl->command_list[8].keyword = ft_strdup("none");
+	// rdl->command_list[9].keyword = ft_strdup("none");
 	rdl_init_quote_prop(rdl);
 	rdl_init_token_type_prop(rdl);
 	rdl_init_redir_pipe_prop(rdl);

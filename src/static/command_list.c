@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 16:31:36 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/12 23:07:35 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/16 11:59:46 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	command_list(t_command *command)
 	command[4] = (t_command){"builtin", "unset", "5,6,10", NULL, unset_start, 0, 0, 0, 0, -1, 0, 0, 1};
 	command[5] = (t_command){"builtin", "env", "", NULL, env_start, 0, 0, 0, 0, -1, 0, 0, 1};
 	command[6] = (t_command){"builtin", "exit", "", NULL, exit_start, 0, 0, 0, 0, -1, 0, 0, 1};
-	command[7] = (t_command){"exec", "none", "5,6,7,12,13", NULL, command_exec, 0, 0, 0, 0, -1, 0, 0, 1};
-	command[8] = (t_command){"exec", "none", "5,6,7,12,13", NULL, pipe_exec, 0, 0, 0, 0, -1, 0, 0, 0};
-	command[9] = (t_command){"exec", "none", "5,12", NULL, redir_exec, 0, 0, 0, 0, -1, 0, 0, 1};
+	command[7] = (t_command){"exec", NULL, "5,6,7,12,13", NULL, command_exec, 0, 0, 0, 0, -1, 0, 0, 1};
+	command[8] = (t_command){"exec", NULL, "5,6,7,12,13", NULL, pipe_exec, 0, 0, 0, 0, -1, 0, 0, 0};
+	command[9] = (t_command){"exec", NULL, "5,12", NULL, redir_exec, 0, 0, 0, 0, -1, 0, 0, 1};
 	command[10] = (t_command){NULL, NULL, NULL, NULL, NULL, 0, 0, 0, 0, -1, 0, 0, 1};
 }
