@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rdl_clear.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 12:42:59 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/16 16:17:05 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/17 13:10:14 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,7 @@ void rdl_clear(t_rdl *rdl)
 	free(rdl->token_type_prop);
 	free(rdl->redir_prop);
 	free(rdl->pipe_prop);
+	free(rdl->keywords_id);
+	free(rdl->token);
+	free(rdl->redir_list);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_builtin.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:03:43 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/16 16:56:57 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/17 13:04:56 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,7 @@ static void export_add(char *identifier, char *value)
 	env_add(identifier, value);
 	free(identifier);
 	free(value);
-	if (command->tokens.type_id == 12 || command->token_size == i + 1)
-		value = ft_calloc(sizeof(char), 1);
+	value = ft_calloc(sizeof(char), 1);
 }
 
 int export_start(t_command *command)
