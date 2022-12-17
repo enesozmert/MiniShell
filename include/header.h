@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 23:29:03 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/17 19:34:07 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/18 01:08:23 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ typedef struct	s_quote_prop
 	int	flag;
 	int	dq;
 	int	sq;
+	int k_sq;
+	int k_dq;
 }	t_quote_prop;
 
 typedef struct s_quote
@@ -109,9 +111,9 @@ typedef struct s_rdl
 	int						*keywords_id;
 	char					*buffer;
 	char					*error_arg;
-	int						token_type_pre_id;
 	t_quote_prop			*quote_prop;
 	t_token_type_prop		*token_type_prop;
+	int						token_type_pre_id;
 	t_redir_prop			*redir_prop;
 	t_pipe_prop				*pipe_prop;
 	t_token					*token;
