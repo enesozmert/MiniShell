@@ -1,5 +1,36 @@
 #include "../../include/header.h"
 
+static void add_buf(t_rdl *rdl, char *buffer, int *j)
+{
+	if (buffer != NULL && ft_strlen(buffer) > 0)
+		parser_add_buffer(rdl, buffer, j);
+}
+
+static void add_arg(t_rdl *rdl,int i, int *j, char *buffer)
+{
+	int k;
+
+	k = *j;
+	if (is_dollar(rdl->buffer[i]))
+	{
+		add_buf(rdl, buffer, &k);
+		parser_add_dollar(rdl, rdl->buffer[i]);
+	}
+	else if (is_delimiter(rdl->delimiter_list , rdl->buffer[i]))
+	{
+		add_buf(rdl, buffer, &k);
+		parser_add_char(rdl, rdl->buffer[i]);
+	}
+	else if (is_operator(rdl->operator_list, rdl->buffer[i]))
+	{
+		add_buf(rdl, buffer, &k);
+		parser_add_operator(rdl, rdl->buffer[i]);
+	}
+	else if (rdl->buffer[i] > 32)
+		buffer[++k] = rdl->buffer[i];
+	*j = k;
+}
+
 void parser_arg_is(t_rdl *rdl)
 {
 	int i;
@@ -8,36 +39,11 @@ void parser_arg_is(t_rdl *rdl)
 
 	i = -1;
 	j = -1;
-	buffer = malloc(sizeof(char) * ft_strlen(rdl->buffer));
-	printf("rdl buf: %s\n", rdl->buffer);
+	buffer = malloc(sizeof(char)*(int)ft_strlen(rdl->buffer));
 	while (rdl->buffer[++i])
-	{
-		if (is_dollar(rdl->buffer[i]))
-		{
-			if (buffer != NULL && ft_strlen(buffer) > 0)
-				parser_add_buffer(rdl, buffer, &j);
-			parser_add_dollar(rdl, rdl->buffer[i]);
-		}
-		else if (is_delimiter(rdl->delimiter_list , rdl->buffer[i]))
-		{
-			if (buffer != NULL && ft_strlen(buffer) > 0)
-				parser_add_buffer(rdl, buffer, &j);
-			parser_add_char(rdl, rdl->buffer[i]);
-		}
-		else if (is_operator(rdl->operator_list, rdl->buffer[i]))
-		{
-			if (buffer != NULL && ft_strlen(buffer) > 0)
-				parser_add_buffer(rdl, buffer, &j);
-			parser_add_operator(rdl, rdl->buffer[i]);
-		}
-		else if (rdl->buffer[i] > 32)
-			buffer[++j] = rdl->buffer[i];
-	}
+		add_arg(rdl, i, &j, buffer);
 	if (buffer != NULL && ft_strlen(buffer) > 0)
-	{
-		printf("buf: %s\n", buffer);
 		parser_add_buffer(rdl, buffer, &j);
-	}
-	if (!buffer)
+	if (ft_strlen(buffer) > 0)
 		free (buffer);
 }
