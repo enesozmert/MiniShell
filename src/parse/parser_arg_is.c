@@ -9,6 +9,7 @@ void parser_arg_is(t_rdl *rdl)
 	i = -1;
 	j = -1;
 	buffer = malloc(sizeof(char) * ft_strlen(rdl->buffer));
+	printf("rdl buf: %s\n", rdl->buffer);
 	while (rdl->buffer[++i])
 	{
 		if (is_dollar(rdl->buffer[i]))
@@ -33,7 +34,10 @@ void parser_arg_is(t_rdl *rdl)
 			buffer[++j] = rdl->buffer[i];
 	}
 	if (buffer != NULL && ft_strlen(buffer) > 0)
-		parser_add_buffer(rdl, buffer, &j + 1);
+	{
+		printf("buf: %s\n", buffer);
+		parser_add_buffer(rdl, buffer, &j);
+	}
 	if (!buffer)
 		free (buffer);
 }
