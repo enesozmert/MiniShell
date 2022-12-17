@@ -26,19 +26,20 @@ void parser_add_char(t_rdl *rdl, char c)
 void parser_add_quote(t_rdl *rdl, char c)
 {
 	t_quote quote;
-	t_token token;
+	t_token *token;
 
+	token = malloc(sizeof(t_token));
 	quote = find_quote(rdl->quote_list, c);
-	token.context = ft_strdup(quote.sybl);
+	token->context = ft_strdup(quote.sybl);
 	if (c == '\'')
 	{
-		token.t_flag = 1;
-		rdl->token = token_add(rdl->token, token);
+		token->t_flag = 1;
+		rdl->token = token_add(rdl->token, *token);
 	}
 	else if (c == '\"')
 	{
-		token.t_flag = 2;
-		rdl->token = token_add(rdl->token, token);
+		token->t_flag = 2;
+		rdl->token = token_add(rdl->token, *token);
 	}
-	free(token.context);
+	token_delone(token);
 }
