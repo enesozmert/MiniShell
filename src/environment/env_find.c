@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:54:54 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/15 16:04:58 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/17 19:49:40 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ char	*env_find_value(char *key)
 	{
 		if (ft_strncmp(g_env.env[i], key, key_len) == 0
 			&& g_env.env[i][key_len] == '=')
-		{
-
 			return (g_env.env[env_id] + key_len + 1);
-		}
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:57:01 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/14 17:28:36 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/17 19:40:48 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ int	env_init(char **env)
 		return (307);
 	while (env[++i])
 		g_env.env[i] = ft_strdup(env[i]);
+	g_env.env[i] = NULL;
 	return (0);
 }

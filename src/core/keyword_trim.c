@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:04:53 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/15 17:54:17 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/17 19:44:15 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ char	*keyword_trim(char *str)
 
 	i = 0;
 	j = 0;
+	dest = NULL;
 	len = keyword_trim_len(str);
 	dest = malloc(sizeof(char) * len);
 	dest = keyword_trim_dest(str, dest, i, j);

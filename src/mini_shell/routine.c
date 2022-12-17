@@ -6,11 +6,29 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:22:50 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/17 19:00:33 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/17 19:36:56 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
+
+static void routine_crud(t_rdl *rdl)
+{
+	lexical_analizer(rdl);
+	parser(rdl);
+	token_pre(rdl);
+	redir_count(rdl);
+	pipe_count(rdl);
+	redir_handler(rdl);
+	pipe_handler(rdl);
+	if (rdl->pipe_prop->count == 0 && rdl->redir_prop->count <= 0)
+	{
+		if (syntax(rdl) != -1)
+			command(rdl);
+	}
+	my_add_history(rdl->main_str);
+	token_clear(&rdl->token);
+}
 
 void routine(void)
 {
@@ -22,22 +40,7 @@ void routine(void)
 		signal(SIGINT, set_signal);
 		rdl = rdl_init(rdl);
 		if (!check_white_space(rdl->main_str))
-		{
-			lexical_analizer(rdl);
-			parser(rdl);
-			token_pre(rdl);
-			redir_count(rdl);
-			pipe_count(rdl);
-			redir_handler(rdl);
-			pipe_handler(rdl);
-			if (rdl->pipe_prop->count == 0 && rdl->redir_prop->count <= 0)
-			{
-				if (syntax(rdl) != -1)
-					command(rdl);
-			}
-			my_add_history(rdl->main_str);
-			token_clear(&rdl->token);
-			rdl_clear(rdl);
-		}
+			routine_crud(rdl);
+		rdl_clear(rdl);
 	}
 }

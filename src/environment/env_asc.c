@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_asc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:51:58 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/12 15:53:06 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/17 19:32:48 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int	env_asc(char **env)
 	{
 		if (ft_tolower(env[i][j]) > ft_tolower(env[i + 1][j]))
 		{
-			temp = ft_strdup(env[i]);
-			env[i] = ft_strdup(env[i + 1]);
-			env[i + 1] = ft_strdup(temp);
+			temp = env[i];
+			env[i] = env[i + 1];
+			env[i + 1] = temp;
 			i = 0;
 		}
 		else if (ft_tolower(env[i][j]) == ft_tolower(env[i + 1][j]))
@@ -38,6 +38,6 @@ int	env_asc(char **env)
 			i++;
 		}
 	}
-	g_env.env = env;
+	env_all_update(env, env_len(env));
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 19:49:07 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/17 18:43:44 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/17 19:38:35 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static char **create_type(t_command command, char *path)
 	i = -1;
 	j = 1;
 	arg = NULL;
-	type = (char **)malloc(sizeof(char *) * ((type_size(command) + 1) + 2));
+	type = (char **)malloc(sizeof(char *) * (type_size(command) + 3));
 	type[0] = ft_strdup(path);
 	while (++i < command.token_size)
 	{

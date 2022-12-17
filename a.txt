@@ -1,9 +1,1 @@
-Makefile
-a.txt
-deneme.txt
-include
-libft
-minishell
-minishell.dSYM
-obj
-src
+enes /Users/eozmert

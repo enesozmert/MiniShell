@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 23:29:03 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/17 18:38:29 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/17 19:34:07 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -371,7 +371,6 @@ int				env_add(char *key, char *value);
 int				env_update(char *key, char *value);
 int				env_delete(char *key);
 int				env_asc(char **env);
-int				env_dsc(char **env);
 //new
 int				option_count(t_token *token);
 //delimiter

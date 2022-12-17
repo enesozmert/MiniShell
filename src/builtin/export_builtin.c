@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:03:43 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/17 18:57:04 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/17 19:37:46 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static char *export_key(t_command command, char *value)
 
 	key = NULL;
 	tmp_value = NULL;
-	join_value = malloc(sizeof(char));
+	join_value = ft_calloc(sizeof(char), 1);
 	if (command.tokens->type_id == 10)
 	{
 		key = ft_strdup(command.tokens->context);

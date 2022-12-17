@@ -60,7 +60,7 @@ EXCEPTION   	=	exception_handler exception_write
 COMMAND			=	command_create command_run command_find command_exec command_find_path \
 					command_clear command_fork command 
 BUILTIN			=	echo_builtin cd_builtin pwd_builtin exit_builtin env_builtin export_builtin unset_builtin
-ENVIRONMENT 	=	environment env_find env_len env_update env_add env_exist env_asc env_dsc env_delete env_all_update
+ENVIRONMENT 	=	environment env_find env_len env_update env_add env_exist env_asc env_delete env_all_update
 SIGNAL			=	signal_handler
 REDIRECTION 	= 	redir_handler redir_count redir_exec redir_file_name redir_file_create \
 					redir_in redir_out redir_here_in redir_here_out
