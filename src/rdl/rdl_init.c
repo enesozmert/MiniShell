@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rdl_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 12:36:59 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/16 16:19:30 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/18 01:08:29 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,14 @@ static void rdl_init_list(t_rdl *rdl)
 	rdl->token_type_list = malloc(sizeof(t_token_type) * 16);
 	rdl->redir_list = malloc(sizeof(t_redir) * 5);
 	rdl->quote_list = malloc(sizeof(t_quote) * 3);
-	rdl->quote_prop = malloc(sizeof(t_quote_prop) * 1);
 }
 static void rdl_init_quote_prop(t_rdl *rdl)
 {
+	rdl->quote_prop = malloc(sizeof(t_quote_prop) * 1);
 	rdl->quote_prop->dq = 0;
 	rdl->quote_prop->sq = 0;
+	rdl->quote_prop->k_dq = 0;
+	rdl->quote_prop->k_sq = 0;
 	rdl->quote_prop->flag = 0;
 }
 

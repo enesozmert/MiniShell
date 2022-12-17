@@ -3,21 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   keyword_quote_syntax.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 10:03:57 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/17 20:30:27 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/18 01:12:14 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-static int	pass_index(int i, char c, char *str)
+static void	pass_index(int *k, char c, char *str)
 {
-	i++;
+	int i;
+
+	i = *k;
 	while (str[i] != c && str[i] != '\0')
-		i++;
-	return (i);
+		++i;
+	*k = i;
 }
 
 static int	quote_result(int d_q, int s_q)
@@ -44,28 +46,25 @@ static int	is_double_quote(char c)
 int	keyword_quoute_syntax(t_rdl *rdl)
 {
 	int		i;
-	int		d_q;
-	int		s_q;
 	t_token	*token;
 
-	d_q = 0;
-	s_q = 0;
 	i = -1;
 	if (rdl->token->id != 0)
 		return (0);
 	token = get_token_id(rdl->token, 0);
 	while (++i < (int)ft_strlen(token->context))
 	{
-		if (token->context[i] == '\"' && d_q++)
+		if (is_double_quote(token->context[i]))
 		{
-			i += pass_index(i, '\"', token->context);
-			d_q += is_double_quote(token->context[i]);
+			pass_index(&i, '\"', token->context);
+			rdl->quote_prop->k_dq++;
 		}
-		else if (token->context[i] == '\'' && s_q++)
+		else if (is_single_quote(token->context[i]))
 		{
-			i += pass_index(i, '\'', token->context);
-			s_q += is_single_quote(token->context[i]);
+			pass_index(&i, '\'', token->context);
+			rdl->quote_prop->k_sq++;
 		}
 	}
-	return (quote_result(d_q, s_q));
+	printf("dq : %d, sq : %d\n",rdl->quote_prop->k_dq, rdl->quote_prop->k_sq);
+	return (quote_result(rdl->quote_prop->k_dq, rdl->quote_prop->k_sq));
 }
