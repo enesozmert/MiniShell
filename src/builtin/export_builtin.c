@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:03:43 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/17 14:07:11 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/17 18:57:04 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,8 @@ static char *export_key(t_command command, char *value)
 
 static char *export_value(t_command command, char *value)
 {
-	char *join_value;
-
-	join_value = malloc(sizeof(char));
 	if (command.tokens->type_id == 11)
-		value = ft_strjoin(join_value, command.tokens->context);
-	free(join_value);
+		value = s1free_join(value, command.tokens->context);
 	return (value);
 }
 

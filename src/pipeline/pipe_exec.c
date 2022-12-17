@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 19:49:07 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/17 18:22:05 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/17 18:43:44 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,13 @@ static int type_size(t_command command)
 	return (type_size);
 }
 
+static char *create_type_arg(t_command command, char *arg)
+{
+	if (command.tokens->type_id == 13)
+		arg = s1free_join(arg, command.tokens->context);
+	return (arg);
+}
+
 static char **create_type(t_command command, char *path)
 {
 	int i;
@@ -39,16 +46,16 @@ static char **create_type(t_command command, char *path)
 
 	i = -1;
 	j = 1;
-	arg = ft_strdup("");
+	arg = NULL;
 	type = (char **)malloc(sizeof(char *) * ((type_size(command) + 1) + 2));
 	type[0] = ft_strdup(path);
 	while (++i < command.token_size)
 	{
-		if (command.tokens->type_id == 13 || command.tokens->type_id == 7)
-			arg = ft_strjoin(arg, command.tokens->context);
+		arg = create_type_arg(command, arg);
 		if (command.tokens->type_id == 12 || command.token_size - 1 == command.tokens->id)
 		{
 			type[j++] = ft_strdup(arg);
+			free(arg);
 			arg = ft_strdup("");
 		}
 		get_next_token(&command.tokens);

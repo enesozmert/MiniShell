@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 23:29:03 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/17 17:15:07 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/17 18:38:29 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,6 +235,7 @@ int				token_type_is_pipe(t_rdl *rdl);
 int				token_type_is_unknown(t_rdl *rdl);
 void			token_add_keyword_id(t_rdl *rdl, t_token **token);
 int				token_find_count(t_token *token, char *context);
+char			*s1free_join(char *s1, char *s2);
 //rd_line
 char			*ft_read_line(void);
 t_rdl			*rdl_init(t_rdl *rdl);

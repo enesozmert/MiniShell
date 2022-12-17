@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 19:18:17 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/17 18:19:27 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/17 18:39:03 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,42 +30,11 @@ static int type_size(t_command command)
 	return (type_size);
 }
 
-static char *myjoin(char *s1, char *s2)
-{
-	unsigned int counter;
-	unsigned int counter2;
-	char *ret_val;
-	if (s1 == 0)
-	{
-		s1 = malloc(sizeof(char));
-		s1[0] = 0;
-	}
-
-	ret_val = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-
-	counter = 0;
-	while (s1[counter])
-	{
-		*(ret_val + counter) = *(s1 + counter);
-		counter++;
-	}
-	counter2 = 0;
-	while (s2[counter2])
-	{
-		*(ret_val + counter + counter2) = *(s2 + counter2);
-		counter2++;
-	}
-	*(ret_val + counter + counter2) = 0;
-	free(s1);
-
-	return (ret_val);
-}
-
 static char *create_type_arg(t_command command, char *arg)
 {
 
 	if (command.tokens->type_id == 13)
-		arg = myjoin(arg, command.tokens->context);
+		arg = s1free_join(arg, command.tokens->context);
 
 	return (arg);
 }
