@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_find.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:54:54 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/17 19:49:40 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/18 00:02:25 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,14 @@ int	env_find_id(char *key)
 {
 	int		i;
 	int		key_len;
-	int		len;
 
-	len = 0;
 	i = -1;
 	key_len = ft_strlen(key);
 	while (g_env.env[++i])
 	{
 		if (ft_strncmp(g_env.env[i], key, ft_strlen(key)) == 0
 			&& g_env.env[i][key_len] == '=')
-		{
 			return (i);
-		}
 	}
 	return (-1);
 }
