@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_builtin.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:03:43 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/17 13:04:56 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/17 14:07:11 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static char *export_key(t_command command, char *value)
 
 	key = NULL;
 	tmp_value = NULL;
-	join_value = malloc(sizeof(1));
+	join_value = malloc(sizeof(char));
 	if (command.tokens->type_id == 10)
 	{
 		key = ft_strdup(command.tokens->context);
