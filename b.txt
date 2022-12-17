@@ -1,0 +1,10 @@
+Makefile
+a.txt
+b.txt
+deneme.txt
+include
+libft
+minishell
+minishell.dSYM
+obj
+src

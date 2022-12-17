@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 19:18:17 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/17 16:50:55 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/17 18:19:27 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,43 @@ static int type_size(t_command command)
 	return (type_size);
 }
 
-static char *abc(t_command command, char *arg)
+static char *myjoin(char *s1, char *s2)
 {
-	char *join_arg;
+	unsigned int counter;
+	unsigned int counter2;
+	char *ret_val;
+	if (s1 == 0)
+	{
+		s1 = malloc(sizeof(char));
+		s1[0] = 0;
+	}
 
-	join_arg = ft_strdup(arg);
+	ret_val = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+
+	counter = 0;
+	while (s1[counter])
+	{
+		*(ret_val + counter) = *(s1 + counter);
+		counter++;
+	}
+	counter2 = 0;
+	while (s2[counter2])
+	{
+		*(ret_val + counter + counter2) = *(s2 + counter2);
+		counter2++;
+	}
+	*(ret_val + counter + counter2) = 0;
+	free(s1);
+
+	return (ret_val);
+}
+
+static char *create_type_arg(t_command command, char *arg)
+{
+
 	if (command.tokens->type_id == 13)
-		arg = ft_strjoin(join_arg, command.tokens->context);
-	free(join_arg);
+		arg = myjoin(arg, command.tokens->context);
+
 	return (arg);
 }
 
@@ -50,17 +79,18 @@ static char **create_type(t_command command, char *path)
 
 	i = -1;
 	j = 1;
-	arg = ft_strdup("");
+	arg = NULL;
 	type = (char **)malloc(sizeof(char *) * (type_size(command) + 2) + 1);
 	type[0] = ft_strdup(path);
 	while (++i < command.token_size)
 	{
-		arg = abc(command, arg);
+		arg = create_type_arg(command, arg);
 		if (command.tokens->type_id == 12 || command.token_size - 1 == command.tokens->id)
 		{
 			type[j++] = ft_strdup(arg);
 			free(arg);
 			arg = ft_strdup("");
+			
 		}
 		get_next_token(&command.tokens);
 	}

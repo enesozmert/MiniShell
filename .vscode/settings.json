@@ -44,6 +44,7 @@
         "ostream": "c",
         "typeinfo": "c",
         "cstdint": "c",
-        "cstring": "c"
+        "cstring": "c",
+        "__config": "c"
     }
 }

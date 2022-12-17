@@ -13,14 +13,15 @@ token.t_flag =	7 ---> parser_add_option */
 void parser_add_char(t_rdl *rdl, char c)
 {
 	char str[2];
-	t_token token;
+	t_token *token;
 
 	str[0] = c;
 	str[1] = '\0';
-	token.t_flag = -1;
-	token.context = ft_strdup(str);
+	token = malloc(sizeof(t_token));
+	token->t_flag = -1;
+	token->context = ft_strdup(str);
 	rdl->token = token_add(rdl->token, token);
-	free(token.context);
+	token_delone(token);
 }
 
 void parser_add_quote(t_rdl *rdl, char c)
@@ -34,12 +35,12 @@ void parser_add_quote(t_rdl *rdl, char c)
 	if (c == '\'')
 	{
 		token->t_flag = 1;
-		rdl->token = token_add(rdl->token, *token);
+		rdl->token = token_add(rdl->token, token);
 	}
 	else if (c == '\"')
 	{
 		token->t_flag = 2;
-		rdl->token = token_add(rdl->token, *token);
+		rdl->token = token_add(rdl->token, token);
 	}
 	token_delone(token);
 }

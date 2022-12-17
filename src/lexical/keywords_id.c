@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 23:53:46 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/01 00:06:29 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/17 18:21:31 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,4 @@ void keywords_id(t_rdl *rdl)
             rdl->keywords_id[++j] = rdl->token->id;
         get_next_token(&rdl->token);
     }
-    i = -1;
-    while (++i < len)
-    {
-        printf("id : %d\n", rdl->keywords_id[i]);
-    }
-    
 }

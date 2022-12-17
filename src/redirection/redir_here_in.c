@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:04:17 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/16 02:19:25 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/17 18:31:01 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static int redir_here_in_file(t_command *command)
 	int jump_token;
 	int take_token;
 
-	printf("redir_here_in_file\n");
 	fd_file = 0;
 	if (command->pipe_count > 0)
 	{
@@ -50,21 +49,16 @@ static int redir_here_in_file(t_command *command)
 	}
 	if (command->count < take_token && command->count > jump_token)
 	{
-		printf("file name1 : %s\n", "here_in.txt");
 		fd_file = redir_file_create(command, "here_in.txt");
 		close(fd_file);
 	}
 	else if (command->count == take_token && command->count > jump_token)
-	{
-		printf("file name2 : %s\n", "here_in.txt");
 		fd_file = redir_file_create(command, "here_in.txt");
-	}
 	return (fd_file);
 }
 
 static void redir_here_in_input(t_command *command)
 {
-	printf("redir_here_in_exec\n");
 	char *end;
 	char *input;
 
@@ -79,9 +73,7 @@ static void redir_here_in_input(t_command *command)
 			exit(0);
 		}
 		if (ft_strncmp(input, end, ft_strlen(input)))
-		{
 			ft_putendl_fd(input, command->file_fd);
-		}
 		else
 		{
 			free(input);

@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:53:08 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/15 15:55:25 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/17 17:15:57 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,11 @@ int	env_delete(char *key)
 		while (g_env.env[++i])
 		{
 			if (del_env_id != i)
-				new_env[j++] = g_env.env[i];
+				new_env[j++] = ft_strdup(g_env.env[i]);
 		}
-		g_env.env = new_env;
+		new_env[j] = NULL;
+		ft_free_dbl_str(g_env.env);
+		env_all_update(new_env, count);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 23:29:03 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/16 12:21:45 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/17 17:15:07 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,7 +197,7 @@ extern t_env g_env;
 //main
 void			routine(void);
 //lexcical
-t_token 		*token_add(t_token *token, t_token token_cpy);
+t_token 		*token_add(t_token *token, t_token *token_cpy);
 void			token_append(t_token **token, t_token *new);
 t_token			*token_last(t_token *token);
 t_token			*token_new(t_token *get_token);
@@ -208,7 +208,6 @@ int				token_size(t_token *token);
 void			token_add_index(t_token **token);
 void			token_add_type(t_rdl *rdl, t_token **token);
 int				token_add_type_handler(t_rdl *rdl);
-void			token_add_end(t_token *token);
 int				print_token(t_token *token);
 t_token			*get_token_id(t_token *token, int id);
 t_token			*get_token_type_id(t_token *token, int type_id);
@@ -360,6 +359,7 @@ int				exit_start(t_command *command);
 int				env_start(t_command *command);
 int				export_start(t_command *command);
 int				unset_start(t_command *command);
+void 			env_all_update(char **env, int count);
 //env
 int				env_init(char **env);
 int				env_len(char **env);

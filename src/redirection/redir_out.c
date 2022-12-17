@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:02:14 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/16 03:25:11 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/17 18:33:05 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int redir_out_exec(t_command *command)
 	int jump_token;
 	int take_token;
 
-	printf("redir out create\n");
 	fd_file = 0;
 	if (command->pipe_count > 0)
 	{
@@ -34,7 +33,6 @@ int redir_out_exec(t_command *command)
 	if (command->count < take_token && command->count > jump_token)
 	{
 		file_name = redir_file_name(command);
-		printf("file name1 : %s\n", file_name);
 		fd_file = redir_file_create(command, file_name);
 		free(file_name);
 		close(fd_file);
@@ -42,7 +40,6 @@ int redir_out_exec(t_command *command)
 	else if (command->count == take_token && command->count > jump_token)
 	{
 		file_name = redir_file_name(command);
-		printf("file name2 : %s\n", file_name);
 		fd_file = redir_file_create(command, file_name);
 		free(file_name);
 	}

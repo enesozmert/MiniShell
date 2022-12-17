@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 19:49:07 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/16 10:45:55 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/17 18:22:05 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,7 @@ int pipe_exec(t_command *command)
 			return (1);
 	}
 	else
-	{
 		pipe_fork_process(*command, fd);
-	}
 	wait(&pid);
 	ft_free_dbl_str(type);
 	free(path);
