@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:00:48 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/16 01:33:43 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/18 16:42:41 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,11 @@ static int echo_exit_status(t_command *command)
 
 static int echo_dollar(t_command *command)
 {
-	if (command->tokens->next->type_id != 10)
+	if (!command->tokens->next)
 		ft_putstr_fd(command->tokens->context, command->file_fd);
+	else if (command->tokens->next->type_id == 2)
+		ft_putstr_fd(command->tokens->context, command->file_fd);
+
 	return (0);
 }
 
@@ -36,6 +39,7 @@ static int echo_key(t_command *command)
 	env_value = env_find_value(command->tokens->context);
 	if (env_value != NULL)
 		ft_putstr_fd(env_value, command->file_fd);
+	echo_exit_status(command);
 	return (0);
 }
 
@@ -44,6 +48,15 @@ static int echo_string(t_command *command, int n_flag)
 	if (n_flag == 1 && command->tokens->context[0] == 'n')
 		return (0);
 	ft_putstr_fd(command->tokens->context, command->file_fd);
+	return (0);
+}
+
+static int echo_new_line(t_command *command)
+{
+	if (command->tokens->next->context[0] == 'n' && command->tokens->id == 0)
+		return (1);
+	else
+		ft_putstr_fd(command->tokens->context, command->file_fd);
 	return (0);
 }
 
@@ -61,12 +74,9 @@ int echo_start(t_command *command)
 		if (command->tokens->type_id == 3)
 			echo_dollar(command);
 		if (command->tokens->type_id == 7)
-			n_flag = 1;
+			n_flag = echo_new_line(command);
 		if (command->tokens->type_id == 10)
-		{
 			echo_key(command);
-			echo_exit_status(command);
-		}
 		if (command->tokens->type_id == 12)
 			echo_string(command, n_flag);
 		if (n_flag == 1 && command->tokens->context[0] == 'n')
