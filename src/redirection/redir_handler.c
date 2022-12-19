@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 10:32:07 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/19 13:30:33 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/19 15:20:09 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	redir_handler(t_rdl *rdl)
 			rdl->pipe_prop->index = -1;
 			rdl->redir_prop->index = -1;
 			rdl->redir_prop->count = -1;
-			token_clear(&rdl->command_list[9].tokens);
 			return ;
 		}
 		if (syntax(rdl) != -1)

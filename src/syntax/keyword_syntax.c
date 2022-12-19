@@ -6,11 +6,22 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 09:48:11 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/19 13:19:21 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/19 15:37:01 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
+
+static int	keyword_syntax_null(t_rdl *rdl, t_token *token)
+{
+	if (token == NULL)
+	{
+		token = get_token_id(rdl->token, 0);
+		rdl->error_arg = ft_strdup(token->context);
+		return (101);
+	}
+	return (0);
+}
 
 int	keyword_syntax(t_rdl *rdl)
 {
@@ -22,12 +33,8 @@ int	keyword_syntax(t_rdl *rdl)
 	if (rdl->token->id != 0)
 		return (0);
 	token = get_token_type_id(rdl->token, rdl->token->keyword_id);
-	if (token == NULL)
-	{
-		token = get_token_id(rdl->token, 0);
-		rdl->error_arg = ft_strdup(token->context);
+	if (keyword_syntax_null(rdl, token) == 101)
 		return (101);
-	}
 	while (token->context[++i])
 		token->context[i] = ft_tolower(token->context[i]);
 	keyword = keyword_trim(token->context);

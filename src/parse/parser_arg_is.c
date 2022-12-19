@@ -1,14 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser_arg_is.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/19 14:47:04 by eozmert           #+#    #+#             */
+/*   Updated: 2022/12/19 14:47:46 by eozmert          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/header.h"
 
-static void add_buf(t_rdl *rdl, char *buffer, int *j)
+static void	add_buf(t_rdl *rdl, char *buffer, int *j)
 {
 	if (buffer != NULL && ft_strlen(buffer) > 0)
 		parser_add_buffer(rdl, buffer, j);
 }
 
-static void add_arg(t_rdl *rdl,int i, int *j, char *buffer)
+static void	add_arg(t_rdl *rdl, int i, int *j, char *buffer)
 {
-	int k;
+	int	k;
 
 	k = *j;
 	if (is_dollar(rdl->buffer[i]))
@@ -16,7 +28,7 @@ static void add_arg(t_rdl *rdl,int i, int *j, char *buffer)
 		add_buf(rdl, buffer, &k);
 		parser_add_dollar(rdl, rdl->buffer[i]);
 	}
-	else if (is_delimiter(rdl->delimiter_list , rdl->buffer[i]))
+	else if (is_delimiter(rdl->delimiter_list, rdl->buffer[i]))
 	{
 		add_buf(rdl, buffer, &k);
 		parser_add_char(rdl, rdl->buffer[i]);
@@ -31,11 +43,11 @@ static void add_arg(t_rdl *rdl,int i, int *j, char *buffer)
 	*j = k;
 }
 
-void parser_arg_is(t_rdl *rdl)
+void	parser_arg_is(t_rdl *rdl)
 {
-	int i;
-	int j;
-	char *buffer;
+	int		i;
+	int		j;
+	char	*buffer;
 
 	i = -1;
 	j = -1;

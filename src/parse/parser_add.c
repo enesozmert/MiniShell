@@ -1,21 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser_add.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/19 14:43:57 by eozmert           #+#    #+#             */
+/*   Updated: 2022/12/19 14:44:30 by eozmert          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/header.h"
 
-void parser_add_space(t_rdl *rdl, char *buffer)
+void	parser_add_space(t_rdl *rdl, char *buffer)
 {
-    t_token *token;
+	t_token	*token;
 
-    token = malloc(sizeof(t_token));
-    token->t_flag = 8;
-    token->context = ft_strdup(buffer);
-    if (buffer[0] == 32)
-        rdl->token = token_add(rdl->token, token);
-    token_delone(token);
+	token = malloc(sizeof(t_token));
+	token->t_flag = 8;
+	token->context = ft_strdup(buffer);
+	if (buffer[0] == 32)
+		rdl->token = token_add(rdl->token, token);
+	token_delone(token);
 }
 
-void parser_add_char(t_rdl *rdl, char c)
+void	parser_add_char(t_rdl *rdl, char c)
 {
-	char str[2];
-	t_token *token;
+	char	str[2];
+	t_token	*token;
 
 	str[0] = c;
 	str[1] = '\0';
@@ -26,10 +38,10 @@ void parser_add_char(t_rdl *rdl, char c)
 	token_delone(token);
 }
 
-void parser_add_quote(t_rdl *rdl, char c)
+void	parser_add_quote(t_rdl *rdl, char c)
 {
-	t_quote quote;
-	t_token *token;
+	t_quote	quote;
+	t_token	*token;
 
 	token = malloc(sizeof(t_token));
 	quote = find_quote(rdl->quote_list, c);

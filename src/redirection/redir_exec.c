@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_exec.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:39:48 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/19 12:57:22 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/19 15:23:43 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	redir_token_type_pre_id(t_command *command)
 		if (command->count == command->redir_count + command->pipe_count + 1)
 			command->count = 0;
 	}
-	else if (command->token_type_pre_id == 5)
+	else if (command->token_type_pre_id == 5 && command->pipe_count > 0)
 	{
 		if (command->count == 1)
 			return (0);
