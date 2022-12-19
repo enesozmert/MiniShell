@@ -10,6 +10,18 @@ token.t_flag =	5 ---> parser_add_redir
 token.t_flag =	6 ---> parser_add_pipe
 token.t_flag =	7 ---> parser_add_option */
 
+void parser_add_space(t_rdl *rdl, char *buffer)
+{
+    t_token *token;
+
+    token = malloc(sizeof(t_token));
+    token->t_flag = 8;
+    token->context = ft_strdup(buffer);
+    if (buffer[0] == 32)
+        rdl->token = token_add(rdl->token, token);
+    token_delone(token);
+}
+
 void parser_add_char(t_rdl *rdl, char c)
 {
 	char str[2];

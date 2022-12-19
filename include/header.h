@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 23:29:03 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/19 11:56:54 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/19 12:07:19 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,6 +270,7 @@ void 			parser_add_redir(t_rdl *rdl, char *buffer);
 void			parser_add_option(t_rdl *rdl, char c);
 void			parser_add_pipe(t_rdl *rdl, char c);
 void			parser_add_char(t_rdl *rdl, char c);
+void 			parser_add_space(t_rdl *rdl, char *buffer);
 void			parser_add_quote(t_rdl *rdl, char c);
 void			parser_add_dollar(t_rdl *rdl, char c);
 void 			parser_add_buffer(t_rdl *rdl, char *buffer, int *k);

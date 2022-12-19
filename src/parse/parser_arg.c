@@ -84,7 +84,7 @@ void parser_arg_space(int *k, t_rdl *rdl)
 	while(rdl->main_str[i] <= 32 && rdl->main_str[i] != '\0')
 		i++;
 	if (rdl->main_str[i])
-		parser_add(rdl, space);
+		parser_add_space(rdl, space);
 	free(space);
 	i--;
 	*k = i;

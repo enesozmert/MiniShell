@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_builtin.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:03:43 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/19 11:46:36 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/19 12:19:10 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	export_start(t_command *command)
 			identifier = ft_strdup(command->tokens->context);
 		value = export_key(*command, value);
 		value = export_value(*command, value);
-		if (command->tokens->type_id == 12 || command->token_size == i + 1)
+		if (command->tokens->type_id == 14 || command->token_size == i + 1)
 			export_add(identifier, value);
 		get_next_token(&command->tokens);
 	}

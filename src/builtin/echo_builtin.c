@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo_builtin.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:00:48 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/18 16:42:41 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/19 12:18:02 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int echo_start(t_command *command)
 			n_flag = echo_new_line(command);
 		if (command->tokens->type_id == 10)
 			echo_key(command);
-		if (command->tokens->type_id == 12)
+		if (command->tokens->type_id == 12 || command->tokens->type_id == 14)
 			echo_string(command, n_flag);
 		if (n_flag == 1 && command->tokens->context[0] == 'n')
 			get_next_token(&command->tokens);

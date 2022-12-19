@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:32:33 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/19 11:59:03 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/19 12:19:40 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	cd_start(t_command *command)
 	{
 		if (command->tokens->type_id == 10)
 			error = cd_key(*command);
-		if (command->tokens->type_id == 13 || command->tokens->type_id == 12)
+		if (command->tokens->type_id == 13 || command->tokens->type_id == 14)
 		{
 			new_dir = s1free_join(new_dir, command->tokens->context);
 			error = cd_arg(*command, new_dir);

@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 19:49:07 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/17 19:38:35 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/19 12:21:28 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int type_size(t_command command)
 	size = token_size(command.tokens);
 	while (++i < size)
 	{
-		if (command.tokens->type_id == 12)
+		if (command.tokens->type_id == 14)
 			type_size++;
 		get_next_token(&command.tokens);
 	}
@@ -52,7 +52,7 @@ static char **create_type(t_command command, char *path)
 	while (++i < command.token_size)
 	{
 		arg = create_type_arg(command, arg);
-		if (command.tokens->type_id == 12 || command.token_size - 1 == command.tokens->id)
+		if (command.tokens->type_id == 14 || command.token_size - 1 == command.tokens->id)
 		{
 			type[j++] = ft_strdup(arg);
 			free(arg);
