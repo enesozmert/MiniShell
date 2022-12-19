@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:22:50 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/19 15:09:44 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/19 16:45:21 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ void	routine(void)
 		signal(SIGINT, set_signal);
 		rdl = rdl_init(rdl);
 		if (!check_white_space(rdl->main_str))
+		{
 			routine_crud(rdl);
+		}
 		rdl_clear(rdl);
 	}
 }

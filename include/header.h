@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 23:29:03 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/19 15:46:43 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/19 16:46:29 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -315,6 +315,7 @@ t_keyword	find_keyword(t_keyword *keyword_list, char *str);
 int			find_keyword_id(t_keyword *keyword_list, char *str);
 t_operator	find_operator(t_operator *operator_list, char c);
 t_quote		find_quote(t_quote *quote_list, char c);
+int			command_in_token_type(t_rdl *rdl, int command_id, int token_id);
 int			keyword_in_operator(t_rdl *rdl, int keyword_id, char operator);
 int			exception_handler(t_rdl *rdl);
 void		exception_write(t_rdl *rdl, char *message);

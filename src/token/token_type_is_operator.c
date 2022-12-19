@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_type_is_operator.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 11:51:41 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/19 12:48:20 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/19 17:07:52 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	token_type_is_operator(t_rdl *rdl)
 
 int	token_type_is_redir(t_rdl *rdl)
 {
+	if (rdl->ttp->sq_f == 1 || rdl->ttp->dq_f == 1)
+		return (0);
 	if (rdl->ttp->token->len < 3
 		&& is_redir(rdl->redir_list, rdl->ttp->token->context)
 		&& rdl->ttp->keyword_id != 3)
@@ -56,6 +58,8 @@ int	token_type_is_option(t_rdl *rdl)
 
 int	token_type_is_pipe(t_rdl *rdl)
 {
+	if (rdl->ttp->sq_f == 1 || rdl->ttp->dq_f == 1)
+		return (0);
 	if (rdl->ttp->token->len == 1
 		&& is_pipe(rdl->ttp->token->context[0]))
 	{

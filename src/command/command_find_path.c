@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_find_path.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:59:12 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/19 11:51:34 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/19 17:12:52 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static char	**command_get_path(void)
 	paths = NULL;
 	if (path != NULL)
 		paths = ft_split(path, ':');
+	else
+		return (NULL);
 	if (!paths)
 		return (NULL);
 	return (paths);
@@ -50,6 +52,8 @@ char	*command_find_path(char *keyword)
 	i = -1;
 	new_path = NULL;
 	paths = command_get_path();
+	if (paths == NULL)
+		return (NULL);
 	if (access(keyword, 0) == 0 && ft_strchr(keyword, '/'))
 	{
 		ft_free_dbl_str(paths);
