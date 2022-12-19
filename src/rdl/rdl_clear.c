@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rdl_clear.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 12:42:59 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/19 11:32:47 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/19 13:04:56 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-void rdl_clear(t_rdl *rdl)
+void	rdl_clear(t_rdl *rdl)
 {
 	free(rdl->parser_list);
 	free(rdl->keyword_list);

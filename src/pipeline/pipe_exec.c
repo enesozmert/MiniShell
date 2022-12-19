@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_exec.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 19:49:07 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/19 12:21:28 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/19 13:08:14 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-static int type_size(t_command command)
+static int	type_size(t_command command)
 {
-	int i;
-	int size;
-	int type_size;
+	int	i;
+	int	size;
+	int	type_size;
 
 	i = -1;
 	type_size = 0;
@@ -30,19 +30,19 @@ static int type_size(t_command command)
 	return (type_size);
 }
 
-static char *create_type_arg(t_command command, char *arg)
+static char	*create_type_arg(t_command command, char *arg)
 {
 	if (command.tokens->type_id == 13)
 		arg = s1free_join(arg, command.tokens->context);
 	return (arg);
 }
 
-static char **create_type(t_command command, char *path)
+static char	**create_type(t_command command, char *path)
 {
-	int i;
-	int j;
-	char *arg;
-	char **type;
+	int		i;
+	int		j;
+	char	*arg;
+	char	**type;
 
 	i = -1;
 	j = 1;
@@ -52,7 +52,8 @@ static char **create_type(t_command command, char *path)
 	while (++i < command.token_size)
 	{
 		arg = create_type_arg(command, arg);
-		if (command.tokens->type_id == 14 || command.token_size - 1 == command.tokens->id)
+		if (command.tokens->type_id == 14
+			|| command.token_size - 1 == command.tokens->id)
 		{
 			type[j++] = ft_strdup(arg);
 			free(arg);
@@ -65,7 +66,7 @@ static char **create_type(t_command command, char *path)
 	return (type);
 }
 
-static void pipe_fork_process(t_command command, int *fd)
+static void	pipe_fork_process(t_command command, int *fd)
 {
 	if (command.count != command.pipe_count + 1)
 	{
@@ -84,12 +85,12 @@ static void pipe_fork_process(t_command command, int *fd)
 	}
 }
 
-int pipe_exec(t_command *command)
+int	pipe_exec(t_command *command)
 {
-	pid_t pid;
-	int fd[2];
-	char *path;
-	char **type;
+	pid_t	pid;
+	int		fd[2];
+	char	*path;
+	char	**type;
 
 	path = command_find_path(command->keyword);
 	type = create_type(*command, path);

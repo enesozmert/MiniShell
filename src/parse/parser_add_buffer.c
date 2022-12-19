@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser_add_buffer.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/19 13:10:13 by cyalniz           #+#    #+#             */
+/*   Updated: 2022/12/19 13:12:45 by cyalniz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/header.h"
 
-void parser_add_buffer(t_rdl *rdl, char *buffer, int *k)
+void	parser_add_buffer(t_rdl *rdl, char *buffer, int *k)
 {
-	int i;
+	int	i;
 
 	i = *k;
 	if (buffer != NULL && ft_strlen(buffer) > 0)
@@ -14,9 +26,9 @@ void parser_add_buffer(t_rdl *rdl, char *buffer, int *k)
 	*k = i;
 }
 
-void parser_add_keyword(t_rdl *rdl, char *buffer)
+void	parser_add_keyword(t_rdl *rdl, char *buffer)
 {
-	t_token *token;
+	t_token	*token;
 	char	*keyword;
 
 	keyword = keyword_trim(rdl->buffer);
@@ -32,9 +44,9 @@ void parser_add_keyword(t_rdl *rdl, char *buffer)
 	token_delone(token);
 }
 
-void parser_add(t_rdl *rdl, char *buffer)
+void	parser_add(t_rdl *rdl, char *buffer)
 {
-	t_token *token;
+	t_token	*token;
 
 	token = malloc(sizeof(t_token));
 	token->t_flag = -1;

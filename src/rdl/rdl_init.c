@@ -3,16 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   rdl_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 12:36:59 by eozmert           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/12/19 13:08:57 by eozmert          ###   ########.fr       */
+=======
+/*   Updated: 2022/12/19 13:05:46 by cyalniz          ###   ########.fr       */
+>>>>>>> 76b4fc7a9fb3992a4aaa432a191e1aa041b3a00e
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-static void rdl_init_list(t_rdl *rdl)
+static void	rdl_init_list(t_rdl *rdl)
 {
 	rdl->parser_list = malloc(sizeof(t_parser) * 11);
 	rdl->keyword_list = malloc(sizeof(t_keyword) * 8);
@@ -24,7 +28,8 @@ static void rdl_init_list(t_rdl *rdl)
 	rdl->redir_list = malloc(sizeof(t_redir) * 5);
 	rdl->quote_list = malloc(sizeof(t_quote) * 3);
 }
-static void rdl_init_quote_prop(t_rdl *rdl)
+
+static void	rdl_init_quote_prop(t_rdl *rdl)
 {
 	rdl->quote_prop = malloc(sizeof(t_quote_prop) * 1);
 	rdl->quote_prop->dq = 0;
@@ -34,7 +39,7 @@ static void rdl_init_quote_prop(t_rdl *rdl)
 	rdl->quote_prop->flag = 0;
 }
 
-static void rdl_init_token_type_prop(t_rdl *rdl)
+static void	rdl_init_token_type_prop(t_rdl *rdl)
 {
 	rdl->ttp = malloc(sizeof(t_token_type_prop) * 1);
 	rdl->ttp->opr_f = 0;
@@ -47,7 +52,7 @@ static void rdl_init_token_type_prop(t_rdl *rdl)
 	rdl->ttp->trim = NULL;
 }
 
-static void rdl_init_redir_pipe_prop(t_rdl *rdl)
+static void	rdl_init_redir_pipe_prop(t_rdl *rdl)
 {
 	rdl->redir_prop = malloc(sizeof(t_redir_prop) * 1);
 	rdl->redir_prop->input_count = 0;
@@ -60,7 +65,7 @@ static void rdl_init_redir_pipe_prop(t_rdl *rdl)
 	rdl->pipe_prop->index = -1;
 }
 
-t_rdl *rdl_init(t_rdl *rdl)
+t_rdl	*rdl_init(t_rdl *rdl)
 {
 	if (rdl == NULL)
 		rdl = malloc(sizeof(t_rdl) * 1);
