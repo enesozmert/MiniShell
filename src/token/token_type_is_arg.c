@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 11:53:05 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/19 11:55:26 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/19 12:02:29 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,10 +103,14 @@ int	token_type_is_string(t_rdl *rdl)
 	return (0);
 }
 
-int token_type_is_unknown(t_rdl *rdl)
+int token_type_is_space(t_rdl *rdl)
 {
-	(void)rdl;
-	// if (rdl->token->type_id == -1)
-	// 	return (1);
+    (void)rdl;
+	if (rdl->ttp->token->context[0] == ' ' && rdl->token->t_flag == )
+	{
+		rdl->ttp->space_f = 1;
+		rdl->ttp->dollar_f = 0;
+		return (1);
+	}
 	return (0);
 }
