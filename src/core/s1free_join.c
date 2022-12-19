@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   s1free_join.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/17 18:37:48 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/17 19:43:21 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/19 12:06:07 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-char *s1free_join(char *s1, char *s2)
+char	*s1free_join(char *s1, char *s2)
 {
-	unsigned int 	counter;
+	unsigned int	counter;
 	unsigned int	counter2;
 	char			*ret_val;
-	
+
 	if (s1 == 0)
 	{
 		s1 = malloc(sizeof(char));

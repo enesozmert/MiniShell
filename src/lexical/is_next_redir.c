@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   is_next_redir.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 16:08:55 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/14 14:33:58 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/19 12:16:45 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-int is_next_redir(int k, char *str)
+int	is_next_redir(int k, char *str)
 {
 	while (str[k])
 	{
@@ -20,7 +20,7 @@ int is_next_redir(int k, char *str)
 			return (1);
 		else if (str[k] <= 32)
 			k++;
-		else 
+		else
 			return (0);
 	}
 	return (0);
