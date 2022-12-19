@@ -6,13 +6,13 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:17:22 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/09 13:41:47 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/19 12:14:15 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-int	is_delimiter(t_delimiter *delimiter_list , char c)
+int	is_delimiter(t_delimiter *delimiter_list, char c)
 {
 	int	i;
 

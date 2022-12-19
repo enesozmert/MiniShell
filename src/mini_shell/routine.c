@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:22:50 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/19 11:46:03 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/19 12:20:27 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-static void routine_crud(t_rdl *rdl)
+static void	routine_crud(t_rdl *rdl)
 {
 	lexical_analizer(rdl);
 	parser(rdl);
@@ -30,9 +30,9 @@ static void routine_crud(t_rdl *rdl)
 	token_clear(&rdl->token);
 }
 
-void routine(void)
+void	routine(void)
 {
-	t_rdl *rdl;
+	t_rdl	*rdl;
 
 	rdl = NULL;
 	while (1)
