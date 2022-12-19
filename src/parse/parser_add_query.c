@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_add_query.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 16:21:29 by eozmert           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/12/19 12:56:23 by eozmert          ###   ########.fr       */
-=======
-/*   Updated: 2022/12/19 13:15:52 by cyalniz          ###   ########.fr       */
->>>>>>> 76b4fc7a9fb3992a4aaa432a191e1aa041b3a00e
+/*   Updated: 2022/12/19 13:29:38 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,25 +48,7 @@ int	parser_add_char_q(t_rdl *rdl)
 	if (ft_isalnum(rdl->main_str[rdl->i]) == 0 && rdl->main_str[rdl->i] > 32)
 	{
 		parser_add_char(rdl, rdl->main_str[rdl->i]);
-<<<<<<< HEAD
-        return (1);
-   }
-   return (0);
-}
-
-int parser_arg_space_q(t_rdl *rdl)
-{
-    if (rdl->main_str[rdl->i] <= 32)
-    {
-        if (is_next_redir(rdl->i, rdl->main_str) == 0 && is_next_pipe(rdl->i, rdl->main_str) == 0)
-            parser_arg_space(&rdl->i, rdl);
-        return (1);
-    }
-    return (0);
-}
-=======
 		return (1);
 	}
 	return (0);
 }
->>>>>>> 76b4fc7a9fb3992a4aaa432a191e1aa041b3a00e
