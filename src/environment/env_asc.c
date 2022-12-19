@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 15:51:58 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/17 19:32:48 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/19 13:43:18 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	env_asc(char **env)
 
 	j = 0;
 	i = 0;
-	temp = NULL;
 	while (env[i + 1])
 	{
 		if (ft_tolower(env[i][j]) > ft_tolower(env[i + 1][j]))

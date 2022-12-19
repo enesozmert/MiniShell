@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:32:33 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/19 12:19:40 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/19 13:36:25 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static int	cd_home(t_command command)
 {
-	(void)command;
 	char	*new_dir;
 
+	(void)command;
 	new_dir = env_find_value("HOME");
 	if (chdir(new_dir) == -1)
 		return (205);
