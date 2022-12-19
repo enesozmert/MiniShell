@@ -58,7 +58,7 @@ CORE			=	white_space count_char quote_count count_matris char_replace free_doubl
 					token_key_count token_value_count token_pre s1free_join
 EXCEPTION   	=	exception_handler exception_write
 COMMAND			=	command_create command_run command_find command_exec command_find_path \
-					command_clear command_fork command 
+					command_clear command 
 BUILTIN			=	echo_builtin cd_builtin pwd_builtin exit_builtin env_builtin export_builtin unset_builtin
 ENVIRONMENT 	=	environment env_find env_len env_update env_add env_exist env_asc env_delete env_all_update
 SIGNAL			=	signal_handler

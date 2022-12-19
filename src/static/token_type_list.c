@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_type_list.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 09:45:23 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/19 10:27:40 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/19 11:57:11 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ void	token_type_list(t_token_type *token_type)
 	token_type[11] = (t_token_type){"value", token_type_is_value};
 	token_type[12] = (t_token_type){"string", token_type_is_string};
 	token_type[13] = (t_token_type){"arg", token_type_is_arg};
-	token_type[14] = (t_token_type){"unknown", token_type_is_unknown};
+	token_type[14] = (t_token_type){"unknown", token_type_is_space};
 	token_type[15] = (t_token_type){NULL, NULL};
 }

@@ -3,16 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 23:29:03 by eozmert           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/12/19 11:49:04 by eozmert          ###   ########.fr       */
-=======
-/*   Updated: 2022/12/19 11:53:41 by cyalniz          ###   ########.fr       */
->>>>>>> 5b1aaebaf332d6749823c60b899097e2a46fa625
+/*   Updated: 2022/12/19 11:56:54 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 
 #ifndef HEADER_H
@@ -237,7 +234,7 @@ int				token_type_is_dollar(t_rdl *rdl);
 int				token_type_is_redir(t_rdl *rdl);
 int				token_type_is_option(t_rdl *rdl);
 int				token_type_is_pipe(t_rdl *rdl);
-int				token_type_is_unknown(t_rdl *rdl);
+int				token_type_is_space(t_rdl *rdl);
 void			token_add_keyword_id(t_rdl *rdl, t_token **token);
 int				token_find_count(t_token *token, char *context);
 char			*s1free_join(char *s1, char *s2);
