@@ -17,7 +17,6 @@ OBJ_DIR			=	obj/
 SRC_DIR			= 	src/
 
 SRC_COMMON		= 	mini_shell/
-SRC_KEYWORDS	=	keywords/
 SRC_TOKEN		= 	token/
 SRC_HISTORY		= 	history/
 SRC_PARSE		= 	parse/
@@ -37,7 +36,6 @@ SRC_ENVIRONMENT = 	environment/
 
 #Files
 COMMON			= 	main reader routine
-KEYWORDS		=	keywords keywords_size
 TOKEN			=	get_token token_clear token_delone token_add_copy token_add token_new token_size token_add_type \
 					token_type_is token_add_keyword_id token_print token_type_is_operator token_type_is_arg \
 					token_find 
@@ -68,7 +66,6 @@ PIPE			=	pipe_handler pipe_count pipe_exec pipe_open pipe_close
 #FileCreate
 
 SRC_FILES		+=	$(addprefix $(SRC_COMMON),$(COMMON))
-SRC_FILES		+=	$(addprefix $(SRC_KEYWORDS),$(KEYWORDS))
 SRC_FILES		+=	$(addprefix $(SRC_TOKEN),$(TOKEN))
 SRC_FILES		+=	$(addprefix $(SRC_HISTORY),$(HISTORY))
 SRC_FILES		+=	$(addprefix $(SRC_PARSE),$(PARSE))
