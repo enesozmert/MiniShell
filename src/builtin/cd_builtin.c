@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd_builtin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:32:33 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/17 20:26:33 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/19 11:45:16 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int	cd_home(t_command command)
 {
-	(void)command;
 	char	*new_dir;
 
 	new_dir = env_find_value("HOME");
@@ -42,14 +41,13 @@ static int	cd_arg(t_command command, char *new_dir)
 		cd_home(command);
 		return (0);
 	}
-	
 	if (chdir(new_dir) == -1)
 		return (205);
 	getcwd(new_dir, sizeof(new_dir));
 	return (0);
 }
 
-static void cd_update(char *new_dir)
+static void	cd_update(char *new_dir)
 {
 	char	*pwd;
 
@@ -63,9 +61,9 @@ static void cd_update(char *new_dir)
 
 int	cd_start(t_command *command)
 {
-	int	i;
-	int	error;
-	char *new_dir;
+	int		i;
+	int		error;
+	char	*new_dir;
 
 	i = -1;
 	error = 0;

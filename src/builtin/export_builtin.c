@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   export_builtin.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:03:43 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/17 19:37:46 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/19 11:46:36 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-static void export_default(t_command command)
+static void	export_default(t_command command)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	if (command.token_size == 0)
@@ -25,11 +25,11 @@ static void export_default(t_command command)
 	}
 }
 
-static char *export_key(t_command command, char *value)
+static char	*export_key(t_command command, char *value)
 {
-	char *key;
-	char *join_value;
-	char *tmp_value;
+	char	*key;
+	char	*join_value;
+	char	*tmp_value;
 
 	key = NULL;
 	tmp_value = NULL;
@@ -48,14 +48,14 @@ static char *export_key(t_command command, char *value)
 	return (value);
 }
 
-static char *export_value(t_command command, char *value)
+static char	*export_value(t_command command, char *value)
 {
 	if (command.tokens->type_id == 11)
 		value = s1free_join(value, command.tokens->context);
 	return (value);
 }
 
-static void export_add(char *identifier, char *value)
+static void	export_add(char *identifier, char *value)
 {
 	env_add(identifier, value);
 	free(identifier);
@@ -63,11 +63,11 @@ static void export_add(char *identifier, char *value)
 	value = ft_calloc(sizeof(char), 1);
 }
 
-int export_start(t_command *command)
+int	export_start(t_command *command)
 {
-	int i;
-	char *value;
-	char *identifier;
+	int		i;
+	char	*value;
+	char	*identifier;
 
 	i = -1;
 	identifier = NULL;
