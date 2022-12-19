@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 23:29:03 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/19 11:31:50 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/19 11:49:04 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,7 +226,6 @@ int				token_type_is_invalid_identifier(t_rdl *rdl);
 int				token_type_is_value(t_rdl *rdl);
 int				token_type_is_key(t_rdl *rdl);
 int				token_type_is_operator(t_rdl *rdl);
-int				token_type_is_value1(t_rdl *r);
 int				token_type_is_value(t_rdl *rdl);
 int				token_type_is_arg(t_rdl *rdl);
 int				token_type_is_string(t_rdl *rdl);
