@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyword_quote_syntax.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 10:03:57 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/18 01:12:14 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/12/19 10:14:24 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	pass_index(int *k, char c, char *str)
 {
-	int i;
+	int	i;
 
 	i = *k;
 	while (str[i] != c && str[i] != '\0')
@@ -65,6 +65,5 @@ int	keyword_quoute_syntax(t_rdl *rdl)
 			rdl->quote_prop->k_sq++;
 		}
 	}
-	printf("dq : %d, sq : %d\n",rdl->quote_prop->k_dq, rdl->quote_prop->k_sq);
 	return (quote_result(rdl->quote_prop->k_dq, rdl->quote_prop->k_sq));
 }

@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   syntax.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 10:08:49 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/17 19:00:30 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/19 10:16:05 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-int syntax(t_rdl *rdl)
+int	syntax(t_rdl *rdl)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < token_size(rdl->token))

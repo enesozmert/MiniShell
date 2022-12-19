@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   token_clear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 13:57:47 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/15 21:50:58 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/19 10:10:55 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-void token_clear(t_token **token)
+void	token_clear(t_token **token)
 {
 	t_token	*current;
 	t_token	*next;

@@ -6,27 +6,27 @@
 /*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 10:07:31 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/05 12:36:01 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/19 10:15:51 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-static int redir_syntax_first_single_next(t_rdl *rdl)
+static int	redir_syntax_first_single_next(t_rdl *rdl)
 {
-	if (rdl->token->next->t_flag == 5 
+	if (rdl->token->next->t_flag == 5
 		&& (rdl->token->context[0] != rdl->token->next->context[0]))
-			return (103);
-	else 
+		return (103);
+	else
 		return (0);
 }
 
-static int redir_syntax_first_plural_next(t_rdl *rdl)
+static int	redir_syntax_first_plural_next(t_rdl *rdl)
 {
-	if (rdl->token->next->t_flag == 5 
+	if (rdl->token->next->t_flag == 5
 		&& (rdl->token->context[1] != rdl->token->next->context[0]))
-			return (103);
-	else 
+		return (103);
+	else
 		return (0);
 }
 

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   token_add.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/19 10:10:59 by cyalniz           #+#    #+#             */
+/*   Updated: 2022/12/19 10:11:28 by cyalniz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/header.h"
 
-t_token *token_last(t_token *token)
+t_token	*token_last(t_token *token)
 {
 	if (!token || !token->next)
 		return (token);
@@ -9,9 +21,9 @@ t_token *token_last(t_token *token)
 	return (token);
 }
 
-void token_append(t_token **token, t_token *new)
+void	token_append(t_token **token, t_token *new)
 {
-	t_token *tmp;
+	t_token	*tmp;
 
 	if (!*token)
 		*token = new;
@@ -22,7 +34,7 @@ void token_append(t_token **token, t_token *new)
 	}
 }
 
-t_token *token_add(t_token *token, t_token *token_cpy)
+t_token	*token_add(t_token *token, t_token *token_cpy)
 {
 	token_cpy->type_id = -1;
 	token_append(&token, token_new(token_cpy));
@@ -30,7 +42,7 @@ t_token *token_add(t_token *token, t_token *token_cpy)
 	return (token);
 }
 
-void token_add_index(t_token **token)
+void	token_add_index(t_token **token)
 {
 	int		i;
 	t_token	*token_cpy;

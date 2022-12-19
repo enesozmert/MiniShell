@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 23:29:03 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/18 01:08:23 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/12/19 10:06:37 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,7 +226,7 @@ int				token_type_is_invalid_identifier(t_rdl *rdl);
 int				token_type_is_value(t_rdl *rdl);
 int				token_type_is_key(t_rdl *rdl);
 int				token_type_is_operator(t_rdl *rdl);
-int				token_type_is_value1(t_rdl *rdl);
+int				token_type_is_value1(t_rdl *r);
 int				token_type_is_value(t_rdl *rdl);
 int				token_type_is_arg(t_rdl *rdl);
 int				token_type_is_string(t_rdl *rdl);
