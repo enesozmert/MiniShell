@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_type_is_operator.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 11:51:41 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/19 11:52:23 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/19 12:48:20 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int	token_type_is_option(t_rdl *rdl)
 {
 	if (rdl->ttp->redir_f == 1)
 		return (0);
-	if (rdl->ttp->token->len == 1 &&
-		is_option(rdl->ttp->token->context[0])
+	if (rdl->ttp->token->len == 1
+		&& is_option(rdl->ttp->token->context[0])
 		&& rdl->ttp->keyword_id == 0)
 		return (1);
 	return (0);

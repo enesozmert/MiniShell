@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_here_in.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:04:17 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/17 18:31:01 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/19 13:01:40 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	redir_here_in_file_clear(void)
 {
-	int		tmp_fd;
+	int	tmp_fd;
 
 	tmp_fd = open("here_in.txt", O_WRONLY | O_TRUNC, 0600);
 	close(tmp_fd);
@@ -30,11 +30,11 @@ static void	redir_here_in_file_run(t_command *command)
 	close(tmp_fd);
 }
 
-static int redir_here_in_file(t_command *command)
+static int	redir_here_in_file(t_command *command)
 {
-	int fd_file;
-	int jump_token;
-	int take_token;
+	int	fd_file;
+	int	jump_token;
+	int	take_token;
 
 	fd_file = 0;
 	if (command->pipe_count > 0)
@@ -57,10 +57,10 @@ static int redir_here_in_file(t_command *command)
 	return (fd_file);
 }
 
-static void redir_here_in_input(t_command *command)
+static void	redir_here_in_input(t_command *command)
 {
-	char *end;
-	char *input;
+	char	*end;
+	char	*input;
 
 	input = NULL;
 	end = redir_file_name(command);
@@ -77,18 +77,18 @@ static void redir_here_in_input(t_command *command)
 		else
 		{
 			free(input);
-			break;
+			break ;
 		}
 		free(input);
 	}
 	exit(0);
 }
 
-int redir_here_in_exec(t_command *command)
+int	redir_here_in_exec(t_command *command)
 {
-	pid_t pid;
-	int status;
-	int fd_file;
+	pid_t	pid;
+	int		status;
+	int		fd_file;
 
 	status = 0;
 	fd_file = redir_here_in_file(command);
