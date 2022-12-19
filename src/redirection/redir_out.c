@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_out.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:02:14 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/19 13:03:26 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/19 13:30:42 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 int redir_out_exec(t_command *command)
 {
 	int fd_file;
-	char *file_name;
 	int jump_token;
 	int take_token;
+	char *file_name;
 
 	fd_file = 0;
 	if (command->pipe_count > 0)

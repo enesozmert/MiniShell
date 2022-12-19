@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rdl_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 12:36:59 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/19 13:05:46 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/19 13:30:22 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ static void	rdl_init_redir_pipe_prop(t_rdl *rdl)
 	rdl->redir_prop->index = -1;
 	rdl->pipe_prop = malloc(sizeof(t_pipe_prop) * 1);
 	rdl->pipe_prop->count = 0;
+	rdl->pipe_prop->syntax_count = 0;
 	rdl->pipe_prop->index = -1;
 }
 
