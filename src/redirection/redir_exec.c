@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:39:48 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/17 19:28:20 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/19 11:35:24 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int get_sub_type(t_command *command)
 
 static int redir_token_type_pre_id(t_command *command)
 {
-	if (command->token_type_pre_id == 5)
+	if (command->token_type_pre_id == 6)
 	{
 		if (command->count < command->pipe_count + 2)
 			return (0);
@@ -40,7 +40,7 @@ static int redir_token_type_pre_id(t_command *command)
 		if (command->count == command->redir_count + command->pipe_count + 1)
 			command->count = 0;
 	}
-	else if (command->token_type_pre_id == 6)
+	else if (command->token_type_pre_id == 5)
 	{
 		if (command->count == 1)
 			return (0);

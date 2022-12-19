@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rdl_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 12:36:59 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/18 01:08:29 by efyaz            ###   ########.fr       */
+/*   Updated: 2022/12/19 11:34:31 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,15 @@ static void rdl_init_quote_prop(t_rdl *rdl)
 
 static void rdl_init_token_type_prop(t_rdl *rdl)
 {
-	rdl->token_type_prop = malloc(sizeof(t_token_type_prop) * 1);
-	rdl->token_type_prop->opr_flag = 0;
-	rdl->token_type_prop->dq_flag = 0;
-	rdl->token_type_prop->sq_flag = 0;
-	rdl->token_type_prop->dollar_flag = 0;
-	rdl->token_type_prop->redir_flag = 0;
-	rdl->token_type_prop->space_flag = 0;
-	rdl->token_type_prop->redir_flag = 0;
-	rdl->token_type_prop->new_trim = NULL;
+	rdl->ttp = malloc(sizeof(t_token_type_prop) * 1);
+	rdl->ttp->opr_f = 0;
+	rdl->ttp->dq_f = 0;
+	rdl->ttp->sq_f = 0;
+	rdl->ttp->dollar_f = 0;
+	rdl->ttp->redir_f = 0;
+	rdl->ttp->space_f = 0;
+	rdl->ttp->redir_f = 0;
+	rdl->ttp->trim = NULL;
 }
 
 static void rdl_init_redir_pipe_prop(t_rdl *rdl)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 23:29:03 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/19 10:06:37 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/19 11:31:50 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,15 +87,15 @@ typedef struct s_redir
 
 typedef struct s_token_type_prop
 {
-	int		opr_flag;
-	int		sq_flag;
-	int		dq_flag;
-	int		space_flag;
-	int		dollar_flag;
-	int		redir_flag;
-	int		option_flag;
+	int		opr_f;
+	int		sq_f;
+	int		dq_f;
+	int		space_f;
+	int		dollar_f;
+	int		redir_f;
+	int		option_f;
 	int		keyword_id;
-	char	*new_trim;
+	char	*trim;
 	struct	s_token	*token;
 }	t_token_type_prop;
 
@@ -112,7 +112,7 @@ typedef struct s_rdl
 	char					*buffer;
 	char					*error_arg;
 	t_quote_prop			*quote_prop;
-	t_token_type_prop		*token_type_prop;
+	t_token_type_prop		*ttp;
 	int						token_type_pre_id;
 	t_redir_prop			*redir_prop;
 	t_pipe_prop				*pipe_prop;

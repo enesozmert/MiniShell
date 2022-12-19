@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_add_type.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 10:11:32 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/19 10:12:24 by cyalniz          ###   ########.fr       */
+/*   Updated: 2022/12/19 11:32:56 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	token_add_type_handler(t_rdl *rdl)
 		handle_code = rdl->token_type_list[i].f(rdl);
 		if (handle_code == 1)
 		{
-			rdl->token_type_prop->token->type_id = i;
+			rdl->ttp->token->type_id = i;
 			break ;
 		}
 		i++;
@@ -39,9 +39,9 @@ void	token_add_type(t_rdl *rdl, t_token **token)
 	i = -1;
 	while (++i < token_size(*token))
 	{
-		rdl->token_type_prop->token = *token;
+		rdl->ttp->token = *token;
 		token_add_type_handler(rdl);
-		*token = rdl->token_type_prop->token;
+		*token = rdl->ttp->token;
 		get_next_token(&rdl->token);
 	}
 }
