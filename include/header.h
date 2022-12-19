@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 23:29:03 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/19 12:07:19 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/19 13:08:26 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_quote
 typedef	struct s_pipe_prop
 {
 	int	count;
+	int syntax_count;
 	int index;
 }	t_pipe_prop;
 

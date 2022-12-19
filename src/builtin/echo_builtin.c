@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:00:48 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/19 12:51:16 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/19 12:52:56 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static int echo_dollar(t_command *command)
 		ft_putstr_fd(command->tokens->context, command->file_fd);
 	else if (command->tokens->next->type_id == 2)
 		ft_putstr_fd(command->tokens->context, command->file_fd);
-
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 14:02:14 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/17 18:33:05 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/19 13:05:28 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 int redir_out_exec(t_command *command)
 {
 	int fd_file;
-	char *file_name;
 	int jump_token;
 	int take_token;
+	char *file_name;
 
 	fd_file = 0;
 	if (command->pipe_count > 0)

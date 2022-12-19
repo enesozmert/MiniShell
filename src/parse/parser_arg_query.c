@@ -6,7 +6,7 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 16:10:12 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/14 16:47:55 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/19 12:56:10 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,6 @@ int parser_arg_pipe_q(t_rdl *rdl)
     {
         parser_arg_pipe(&rdl->i, rdl);
         rdl->key_flag = 1;
-        return (1);
-    }
-    return (0);
-}
-
-int parser_arg_space_q(t_rdl *rdl)
-{
-    if (rdl->main_str[rdl->i] <= 32)
-    {
-        if (is_next_redir(rdl->i, rdl->main_str) == 0 && is_next_pipe(rdl->i, rdl->main_str) == 0)
-            parser_arg_space(&rdl->i, rdl);
         return (1);
     }
     return (0);
