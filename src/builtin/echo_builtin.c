@@ -6,21 +6,11 @@
 /*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:00:48 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/19 12:18:02 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/19 12:51:16 by eozmert          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
-
-static int echo_exit_status(t_command *command)
-{
-	if (command->tokens->context[0] == '?' && ft_strlen(command->tokens->context) == 1)
-	{
-		ft_putnbr_fd(g_env.exit_status, command->file_fd);
-		return (0);
-	}
-	return (0);
-}
 
 static int echo_dollar(t_command *command)
 {
@@ -39,7 +29,11 @@ static int echo_key(t_command *command)
 	env_value = env_find_value(command->tokens->context);
 	if (env_value != NULL)
 		ft_putstr_fd(env_value, command->file_fd);
-	echo_exit_status(command);
+	if (command->tokens->context[0] == '?' && ft_strlen(command->tokens->context) == 1)
+	{
+		ft_putnbr_fd(g_env.exit_status, command->file_fd);
+		return (0);
+	}
 	return (0);
 }
 
