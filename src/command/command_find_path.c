@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   command_find_path.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:59:12 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/17 17:41:21 by eozmert          ###   ########.fr       */
+/*   Updated: 2022/12/19 11:51:34 by cyalniz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/header.h"
 
-static char **command_get_path(void)
+static char	**command_get_path(void)
 {
-	char *path;
-	char **paths;
+	char	*path;
+	char	**paths;
 
 	path = env_find_value("PATH");
 	paths = NULL;
@@ -28,7 +28,7 @@ static char **command_get_path(void)
 
 static int	stat_check(char	*new_path, char	**paths)
 {
-	struct stat s;
+	struct stat	s;
 
 	if (stat(new_path, &s) == 0)
 	{
@@ -40,13 +40,12 @@ static int	stat_check(char	*new_path, char	**paths)
 	return (0);
 }
 
-char *command_find_path(char *keyword)
+char	*command_find_path(char *keyword)
 {
 	int		i;
 	char	*tmp;
 	char	**paths;
 	char	*new_path;
-
 
 	i = -1;
 	new_path = NULL;

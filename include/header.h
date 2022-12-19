@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 23:29:03 by eozmert           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/12/19 11:49:04 by eozmert          ###   ########.fr       */
+=======
+/*   Updated: 2022/12/19 11:53:41 by cyalniz          ###   ########.fr       */
+>>>>>>> 5b1aaebaf332d6749823c60b899097e2a46fa625
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -343,7 +347,6 @@ int				exception_handler(t_rdl *rdl);
 void			exception_write(t_rdl *rdl, char *message);
 //command
 int				command(t_rdl *rdl);
-int				command_init();
 int				command_malloc(t_rdl *rdl);
 int 			command_clear(t_command *command_list);
 int				command_create(t_rdl *rdl);

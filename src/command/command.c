@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   command.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/19 11:53:10 by cyalniz           #+#    #+#             */
+/*   Updated: 2022/12/19 11:53:28 by cyalniz          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/header.h"
 
 static int	command_sub_type(t_rdl *rdl)
 {
-
-	int		is_token_type;
-	int		command_id;
+	int	is_token_type;
+	int	command_id;
 
 	command_id = command_find(rdl, rdl->token->keyword_id);
 	is_token_type = command_in_token_type(rdl, command_id, rdl->token->id);
@@ -27,11 +38,6 @@ static int	redir_pipe_prop_index(t_rdl *rdl)
 	if (rdl->pipe_prop->count > 0)
 		i = rdl->pipe_prop->index;
 	return (i);
-}
-
-int command_init()
-{
-    return (0);
 }
 
 int	command(t_rdl *rdl)
