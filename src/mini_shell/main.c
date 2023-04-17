@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 12:19:11 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/19 12:48:28 by eozmert          ###   ########.fr       */
+/*   Updated: 2023/04/18 00:09:18 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,3 +21,4 @@ int	main(int argc, char const *argv[], char **env)
 	routine();
 	return (0);
 }
+ 
