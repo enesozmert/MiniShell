@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_builtin.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:03:43 by cyalniz           #+#    #+#             */
-/*   Updated: 2022/12/19 17:17:07 by eozmert          ###   ########.fr       */
+/*   Updated: 2023/01/01 16:28:16 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	export_default(t_command command)
 	{
 		env_asc(g_env.env);
 		while (g_env.env[++i])
-			ft_printf("declare -x %s\n", g_env.env[i]);
+			printf("declare -x %s\n", g_env.env[i]);
 	}
 }
 

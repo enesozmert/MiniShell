@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_file_name.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cyalniz <cyalniz@student.42.fr>            +#+  +:+       +#+        */
+/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 11:58:40 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/19 12:58:31 by cyalniz          ###   ########.fr       */
+/*   Updated: 2023/04/18 00:05:56 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*redir_file_name(t_command *command)
 	char	*result;
 
 	i = -1;
-	file_name = malloc(sizeof(char));
+	file_name = ft_calloc(sizeof(char), 1);
 	result = NULL;
 	while (++i < command->token_size)
 	{

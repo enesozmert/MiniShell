@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rdl_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eozmert <eozmert@student.42.fr>            +#+  +:+       +#+        */
+/*   By: efyaz <efyaz@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 12:36:59 by eozmert           #+#    #+#             */
-/*   Updated: 2022/12/19 16:44:08 by eozmert          ###   ########.fr       */
+/*   Updated: 2023/04/17 23:59:13 by efyaz            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	rdl_init_list(t_rdl *rdl)
 	rdl->keyword_list = malloc(sizeof(t_keyword) * 8);
 	rdl->operator_list = malloc(sizeof(t_operator) * 3);
 	rdl->delimiter_list = malloc(sizeof(t_delimiter) * 18);
-	rdl->identifier_list = malloc(sizeof(t_operator) * 11);
+	rdl->identifier_list = malloc(sizeof(t_identifier) * 11);
 	rdl->command_list = malloc(sizeof(t_command) * 11);
 	rdl->token_type_list = malloc(sizeof(t_token_type) * 16);
 	rdl->redir_list = malloc(sizeof(t_redir) * 5);
